@@ -1,8 +1,33 @@
-node_modules/
-build/
-dist/
-coverage/
-.DS_Store
-*.log
+# ── SECRETS — never commit ────────────────────────────────────
+local.properties
+*.keystore
+*.jks
+keystore.properties
+secrets.properties
 .env*
 !.env.example
+
+# ── Android build outputs ─────────────────────────────────────
+/build
+/app/build
+*.apk
+*.aab
+
+# ── Gradle ────────────────────────────────────────────────────
+.gradle/
+gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# ── Android Studio / IntelliJ ─────────────────────────────────
+.idea/
+*.iml
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ── Node (keeping your original) ──────────────────────────────
+node_modules/
+dist/
+coverage/
+*.log
