@@ -32,12 +32,11 @@ export interface QuizQuestion {
 }
 
 export interface AdinkraSymbol {
-  id: string;
+  id: string; // also the key used to render the authentic SVG glyph in App.tsx
   name: string;
   literalTranslation: string;
   coreValue: string;
   symbolDescription: string;
-  emojiCode?: string; // a close symbolic character
 }
 
 export const ACAN_DAY_NAMES: AkanDayName[] = [
@@ -347,38 +346,92 @@ export const VOCABULARY_CATEGORIES: VocabularyCategory[] = [
   }
 ];
 
+// Symbols and meanings sourced from adinkrasymbols.org.
+// Each `id` maps to an authentic monochrome SVG glyph rendered by <AdinkraGlyph /> in App.tsx.
 export const ADINKRA_SYMBOLS: AdinkraSymbol[] = [
-  {
-    id: "sankofa",
-    name: "Sankofa",
-    literalTranslation: "Go back and get it",
-    coreValue: "Learning from the past / Cultural Heritage",
-    symbolDescription: "Depicted either as a bird with its head turned backwards taking an egg from its back, or a stylized heart shape. It teaches that gathering wisdom and values from our ancestors is critical to building a prosperous future.",
-    emojiCode: "𓅃"
-  },
   {
     id: "gyenyame",
     name: "Gye Nyame",
     literalTranslation: "Except God",
-    coreValue: "Supremacy of God / Spiritual Faith",
-    symbolDescription: "One of the most famous Adinkra symbols. It represents the omnipotence and supremacy of God over all creation, expressing that nothing can happen without divine authorization.",
-    emojiCode: "𓋹"
+    coreValue: "Omnipotence & Supremacy of God",
+    symbolDescription: "Probably the most popular Adinkra symbol, expressing the omnipotence and supremacy of God over all creation. It conveys that nothing happens without divine authorization. It is featured on Ghana's largest-denomination banknote, the 200 cedi note."
+  },
+  {
+    id: "sankofa",
+    name: "Sankofa",
+    literalTranslation: "Go back and get it",
+    coreValue: "Learning from the past to build the future",
+    symbolDescription: "A symbol of the wisdom of learning from the past to build for the future. From the Akan proverb, 'Se wo were fi na wosan kofa a yenkyiri,' meaning 'It is not taboo to go back for what you forgot (or left behind).'"
   },
   {
     id: "dwennimmen",
     name: "Dwennimmen",
     literalTranslation: "Ram's horns",
-    coreValue: "Humility combined with Strength",
-    symbolDescription: "Represents the horns of a ram. It symbolizes that even when you are strong, powerful, and accomplished, you should maintain a humble spirit, learning from others and serving the community.",
-    emojiCode: "🐏"
+    coreValue: "Strength tempered with Humility",
+    symbolDescription: "Represents a ram's horns. A symbol of strength (in mind, body, and soul), humility, wisdom, and learning. It teaches that even the strong should remain humble. It features prominently in the logo of the University of Ghana."
+  },
+  {
+    id: "akoma",
+    name: "Akoma",
+    literalTranslation: "The heart",
+    coreValue: "Love, Patience & Endurance",
+    symbolDescription: "A symbol of love, goodwill, patience, faithfulness, fondness, endurance, and consistency. The heart reminds one to 'take heart' and be tolerant and patient with others."
+  },
+  {
+    id: "nkyinkyim",
+    name: "Nkyinkyim",
+    literalTranslation: "Twisting",
+    coreValue: "Adaptability & Resourcefulness",
+    symbolDescription: "A symbol representing the tortuous, twisting nature of life's journey. It speaks to the dynamism, adaptability, and resourcefulness required to navigate life's many turns."
+  },
+  {
+    id: "adinkrahene",
+    name: "Adinkrahene",
+    literalTranslation: "King of the Adinkra symbols",
+    coreValue: "Authority, Leadership & Charisma",
+    symbolDescription: "Three concentric circles forming a symbol of authority, leadership, and charisma, and the qualities associated with kings. Adinkrahene is reportedly the inspiration for the design of the other Adinkra symbols."
   },
   {
     id: "mate_masie",
     name: "Mate Masie",
     literalTranslation: "I have heard and kept it",
     coreValue: "Wisdom, Knowledge & Prudence",
-    symbolDescription: "A symbol of four interconnected circles. It signifies listening deeply, reflecting, and storing wisdom. It is the hallmark of a wise scholar or chief.",
-    emojiCode: "🔘"
+    symbolDescription: "Also known as Ntesie. A symbol of wisdom, knowledge, and prudence. It signifies listening deeply, reflecting, and storing wisdom — the hallmark of a wise and discerning person."
+  },
+  {
+    id: "fihankra",
+    name: "Fihankra",
+    literalTranslation: "Enclosed, secured compound",
+    coreValue: "Brotherhood, Safety & Solidarity",
+    symbolDescription: "An enclosed or secured compound house. A symbol of brotherhood, safety, security, completeness, and solidarity — representing the ideal of a unified, protected community."
+  },
+  {
+    id: "aya",
+    name: "Aya",
+    literalTranslation: "Fern",
+    coreValue: "Endurance & Defiance Against Difficulties",
+    symbolDescription: "The fern, a hardy plant that can grow in difficult places. A symbol of endurance, independence, defiance against difficulties, hardiness, perseverance, and resourcefulness."
+  },
+  {
+    id: "funtumfunefu",
+    name: "Funtumfunefu Denkyemfunefu",
+    literalTranslation: "Conjoined crocodiles",
+    coreValue: "Unity in Diversity",
+    symbolDescription: "Two crocodiles sharing a single stomach. A symbol of unity in diversity and a common destiny — reminding us that though individuals may compete, the community shares one fate and thrives through cooperation."
+  },
+  {
+    id: "nyame_dua",
+    name: "Nyame Dua",
+    literalTranslation: "God's tree (altar)",
+    coreValue: "God's Presence & Protection",
+    symbolDescription: "A sacred altar or 'tree of God,' traditionally a three- or four-pronged stump. A symbol of God's presence and protection, marking a place of worship and spiritual purification."
+  },
+  {
+    id: "epa",
+    name: "Epa",
+    literalTranslation: "Handcuffs",
+    coreValue: "Law, Justice & Accountability",
+    symbolDescription: "The handcuff or shackle. A symbol of law, justice, slavery, and captivity. It carries the proverb that whatever binds another also binds the one who holds the chain — a reminder of mutual accountability."
   }
 ];
 

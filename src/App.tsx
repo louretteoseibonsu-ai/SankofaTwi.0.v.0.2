@@ -67,6 +67,127 @@ const playChime = (frequency = 440, type: OscillatorType = "sine") => {
   }
 };
 
+// ==================== AUTHENTIC ADINKRA SVG GLYPHS ====================
+// Consistent monochrome line-art interpretations of traditional Adinkra symbols,
+// keyed by the `id` field in ADINKRA_SYMBOLS. Rendered in a single ink color
+// (via currentColor) so the whole gallery reads as one visual family.
+// Symbol meanings sourced from adinkrasymbols.org.
+const ADINKRA_GLYPHS: Record<string, React.ReactNode> = {
+  gyenyame: (
+    <>
+      <path d="M34 68 C 16 56, 22 30, 44 32 C 60 33, 58 51, 45 49 C 37 48, 39 39, 47 41" />
+      <path d="M66 32 C 84 44, 78 70, 56 68 C 40 67, 42 49, 55 51 C 63 52, 61 61, 53 59" />
+    </>
+  ),
+  sankofa: (
+    <>
+      <path d="M50 78 C 18 54, 26 26, 45 33 C 50 35, 50 43, 50 48 C 50 43, 50 35, 55 33 C 74 26, 82 54, 50 78" />
+      <path d="M50 78 C 50 85, 59 85, 59 77" />
+    </>
+  ),
+  dwennimmen: (
+    <>
+      <path d="M50 34 V66" />
+      <path d="M50 34 C 34 30, 26 40, 34 48 C 40 53, 48 49, 45 43" />
+      <path d="M50 34 C 66 30, 74 40, 66 48 C 60 53, 52 49, 55 43" />
+      <path d="M50 66 C 34 70, 26 60, 34 52 C 40 47, 48 51, 45 57" />
+      <path d="M50 66 C 66 70, 74 60, 66 52 C 60 47, 52 51, 55 57" />
+    </>
+  ),
+  akoma: (
+    <path
+      d="M50 78 C 18 54, 26 26, 45 33 C 50 35, 50 43, 50 48 C 50 43, 50 35, 55 33 C 74 26, 82 54, 50 78 Z"
+      fill="currentColor"
+      stroke="none"
+    />
+  ),
+  nkyinkyim: (
+    <path d="M20 68 L36 68 L36 40 L52 40 L52 68 L68 68 L68 40 L80 40" />
+  ),
+  adinkrahene: (
+    <>
+      <circle cx="50" cy="50" r="32" />
+      <circle cx="50" cy="50" r="20" />
+      <circle cx="50" cy="50" r="8" fill="currentColor" stroke="none" />
+    </>
+  ),
+  mate_masie: (
+    <>
+      <path d="M60 24 A 30 30 0 1 0 60 76" />
+      <path d="M57 38 A 15 15 0 1 0 57 62" />
+      <circle cx="53" cy="50" r="5" fill="currentColor" stroke="none" />
+    </>
+  ),
+  fihankra: (
+    <path d="M64 74 H26 V26 H74 V64 H44 V46" />
+  ),
+  aya: (
+    <>
+      <path d="M50 84 V20" />
+      <path d="M50 36 C 40 34, 35 27, 35 22" />
+      <path d="M50 36 C 60 34, 65 27, 65 22" />
+      <path d="M50 50 C 39 48, 33 41, 33 35" />
+      <path d="M50 50 C 61 48, 67 41, 67 35" />
+      <path d="M50 64 C 40 62, 35 55, 35 49" />
+      <path d="M50 64 C 60 62, 65 55, 65 49" />
+    </>
+  ),
+  funtumfunefu: (
+    <>
+      <path d="M50 50 C 40 38, 36 26, 28 20" />
+      <path d="M50 50 C 60 38, 64 26, 72 20" />
+      <path d="M50 50 C 40 62, 36 74, 28 80" />
+      <path d="M50 50 C 60 62, 64 74, 72 80" />
+      <circle cx="50" cy="50" r="8" fill="currentColor" stroke="none" />
+      <circle cx="28" cy="20" r="3.5" fill="currentColor" stroke="none" />
+      <circle cx="72" cy="20" r="3.5" fill="currentColor" stroke="none" />
+      <circle cx="28" cy="80" r="3.5" fill="currentColor" stroke="none" />
+      <circle cx="72" cy="80" r="3.5" fill="currentColor" stroke="none" />
+    </>
+  ),
+  nyame_dua: (
+    <>
+      <path d="M50 50 V24" />
+      <path d="M50 24 L44 32" />
+      <path d="M50 24 L56 32" />
+      <path d="M50 50 V76" />
+      <path d="M50 76 L44 68" />
+      <path d="M50 76 L56 68" />
+      <path d="M50 50 H24" />
+      <path d="M24 50 L32 44" />
+      <path d="M24 50 L32 56" />
+      <path d="M50 50 H76" />
+      <path d="M76 50 L68 44" />
+      <path d="M76 50 L68 56" />
+      <circle cx="50" cy="50" r="6" fill="currentColor" stroke="none" />
+    </>
+  ),
+  epa: (
+    <>
+      <circle cx="36" cy="50" r="16" />
+      <circle cx="64" cy="50" r="16" />
+    </>
+  )
+};
+
+function AdinkraGlyph({ id, className }: { id: string; className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 100 100"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={7}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      role="img"
+      aria-hidden="true"
+    >
+      {ADINKRA_GLYPHS[id] ?? <circle cx="50" cy="50" r="30" />}
+    </svg>
+  );
+}
+
 export default function App() {
   // Current tab state: 'lessons' | 'naming' | 'tutor' | 'quizzes' | 'symbols'
   const [activeTab, setActiveTab] = useState<string>("lessons");
@@ -1329,11 +1450,13 @@ export default function App() {
                     id={`symbol-card-${symbol.id}`}
                     className="bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm flex flex-col sm:flex-row gap-6 hover:shadow-md hover:border-emerald-200 transition-all duration-300"
                   >
-                    {/* Symbol Emblem representation */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-emerald-50 to-amber-50 flex items-center justify-center border border-emerald-100 shadow-inner shrink-0 select-none">
-                      <span className="text-3xl sm:text-4xl" role="img" aria-label={symbol.name}>
-                        {symbol.emojiCode || "❖"}
-                      </span>
+                    {/* Authentic Adinkra symbol rendered as consistent monochrome SVG */}
+                    <div
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-emerald-50 to-amber-50 flex items-center justify-center border border-emerald-100 shadow-inner shrink-0 select-none text-emerald-900"
+                      role="img"
+                      aria-label={`${symbol.name} Adinkra symbol`}
+                    >
+                      <AdinkraGlyph id={symbol.id} className="w-10 h-10 sm:w-12 sm:h-12" />
                     </div>
 
                     <div className="space-y-3 flex-grow">
@@ -1373,6 +1496,19 @@ export default function App() {
                   </div>
                 ))}
               </div>
+
+              <p className="text-[11px] text-stone-400 pt-2">
+                Symbol meanings adapted from{" "}
+                <a
+                  href="https://www.adinkrasymbols.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-emerald-700"
+                >
+                  adinkrasymbols.org
+                </a>
+                . Glyphs are stylized line-art interpretations of traditional Adinkra symbols.
+              </p>
             </motion.div>
           )}
         </AnimatePresence>
