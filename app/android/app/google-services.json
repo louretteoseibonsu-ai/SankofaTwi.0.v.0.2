@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "401880298696",
+    "project_id": "sankofa-twi",
+    "storage_bucket": "sankofa-twi.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401880298696:android:e59d2583f059183b1ee1fd",
+        "android_client_info": {
+          "package_name": "com.sankofatwi.sankofa_twi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOxj5aL0dUyXx7EInpswU3ZgLOYpc0_RE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
