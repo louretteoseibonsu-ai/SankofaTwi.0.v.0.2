@@ -2,16 +2,15 @@
 <img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
 </div>
 
-# Run and deploy your AI Studio app
+# Sankofa
 
-This contains everything you need to run your app locally.
+A language learning app for Twi and Akan culture.
 
 View your app in AI Studio: https://ai.studio/apps/6c0fb1f3-11c1-4dce-8630-db9e18e86745
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js
 
 1. Install dependencies:
    `npm install`
