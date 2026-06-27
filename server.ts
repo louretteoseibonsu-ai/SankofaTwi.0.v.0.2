@@ -12,6 +12,7 @@ const PORT = Number(process.env.PORT) || 3000;
 // Initialize Gemini SDK with telemetry header
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
+  vertexai: false, // force the Gemini Developer API (API-key auth); never fall back to Vertex/ADC
   httpOptions: {
     headers: {
       "User-Agent": "aistudio-build",
@@ -33,6 +34,11 @@ app.post("/api/tutor", async (req, res) => {
 
     if (!message) {
       return res.status(400).json({ error: "Message is required" });
+    }
+    if (!process.env.GEMINI_API_KEY) {
+      return res
+        .status(500)
+        .json({ error: "GEMINI_API_KEY is not configured on the server (Sankofa AI tutor)." });
     }
 
     const systemInstruction = `
