@@ -1,0 +1,127 @@
+{
+  "unit_title": "Abusua ne Onipa: Lineage and the Akan Person",
+  "theological_framework": "mogya",
+  "vocabulary_spotlight": {
+    "headword": "abusua",
+    "gloss": "The matrilineal family group whose identity is traced through mogya (blood).",
+    "phonetic_bridge": {
+      "pronunciation": "a-bu-sua"
+    },
+    "theological_framework": "abusua",
+    "example_sentences": [
+      "Me abusua mu nnipa dɔɔso.",
+      "Abusua baako mu na yɛwɔ."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Subject pronouns with the present habitual",
+    "explanation": "Akan marks person on the verb with a preposed subject pronoun (me, wo, ɔ, yɛn, mo, wɔn). The present habitual states general truths about kinship and personhood.",
+    "patterns": [
+      "Me + verb (I ...)",
+      "Ɔ + verb (he/she ...)",
+      "Yɛn + verb (we ...)"
+    ],
+    "theological_framework": "abusua"
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "Through which substance is abusua (matriclan) identity inherited?",
+      "type": "recall",
+      "options": ["mogya (blood)", "ntɔrɔ", "honam", "sunsum"],
+      "correct_index": 0,
+      "theological_framework": "mogya"
+    },
+    {
+      "prompt": "Which component of personhood is the life-giving soul received from Onyame?",
+      "type": "concept_match",
+      "options": ["ɔkra", "sunsum", "mogya", "honam"],
+      "correct_index": 0,
+      "theological_framework": "okra"
+    },
+    {
+      "prompt": "Within Akan cosmology, sunsum is best described as:",
+      "type": "recall",
+      "options": [
+        "the spirit that shapes personality and character",
+        "the matrilineal blood",
+        "the physical body",
+        "the ceremonial sword"
+      ],
+      "correct_index": 0,
+      "theological_framework": "sunsum"
+    },
+    {
+      "prompt": "Choose the correct ordering from the individual outward to the widest kin unit.",
+      "type": "lineage_ordering",
+      "options": [
+        "onipa → fie → abusua",
+        "abusua → fie → onipa",
+        "fie → onipa → abusua",
+        "abusua → onipa → fie"
+      ],
+      "correct_index": 0,
+      "theological_framework": "abusua"
+    },
+    {
+      "prompt": "From whom is ntɔrɔ transmitted to a child?",
+      "type": "concept_match",
+      "options": ["the father", "the mother", "the chief", "the ancestors"],
+      "correct_index": 0,
+      "theological_framework": "ntoro"
+    },
+    {
+      "prompt": "Animuonyam refers to:",
+      "type": "recall",
+      "options": ["dignity, honor, and glory", "blood lineage", "a war horn", "a talking drum"],
+      "correct_index": 0,
+      "theological_framework": "animuonyam"
+    },
+    {
+      "prompt": "Who are the nsamanfo?",
+      "type": "concept_match",
+      "options": ["the venerated ancestors", "tutelary deities", "the Supreme Being", "the matriclans"],
+      "correct_index": 0,
+      "theological_framework": "nsamanfo"
+    },
+    {
+      "prompt": "In the ahenfie (chief's court), a ruler's authority is legitimized through:",
+      "type": "recall",
+      "options": [
+        "state regalia and the council of elders",
+        "personal wealth alone",
+        "individual military strength alone",
+        "ownership of farmland"
+      ],
+      "correct_index": 0,
+      "theological_framework": "ahenfie"
+    },
+    {
+      "prompt": "Select the word with the retracted (-ATR) vowel ɔ.",
+      "type": "phonetic_discrimination",
+      "options": ["bo", "bɔ"],
+      "correct_index": 1,
+      "phonetic_target": {
+        "pronunciation": "bɔ",
+        "segments": [
+          { "orthography": "b", "ipa": "b", "tone": "mid", "atr": "advanced" },
+          { "orthography": "ɔ", "ipa": "ɔ", "tone": "low", "atr": "retracted" }
+        ],
+        "homophone_set_id": "b-vowel-set",
+        "sense_key": "bɔ.to-fashion"
+      },
+      "theological_framework": "onyame"
+    },
+    {
+      "prompt": "The Adinkra symbol system primarily encodes:",
+      "type": "concept_match",
+      "options": [
+        "proverbs and philosophical concepts",
+        "phonetic tone marks",
+        "lineage blood types",
+        "calendar days"
+      ],
+      "correct_index": 0,
+      "theological_framework": "adinkra"
+    }
+  ]
+}
