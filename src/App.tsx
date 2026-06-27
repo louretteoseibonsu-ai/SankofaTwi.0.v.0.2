@@ -67,6 +67,27 @@ const playChime = (frequency = 440, type: OscillatorType = "sine") => {
   }
 };
 
+// Approximate Asante Twi orthography as an English re-spelling so the browser
+// fallback voice pronounces Twi digraphs correctly (e.g. "ky" -> "ch", "ɛ" -> "eh").
+// Only used when Khaya's native Twi TTS is unavailable; Khaya speaks real Twi directly.
+const twiToPhonetic = (text: string): string => {
+  let s = text.toLowerCase();
+  const rules: [RegExp, string][] = [
+    [/ky/g, "ch"],   // akye -> achɛ
+    [/tw/g, "chw"],  // Twi -> chwee
+    [/dw/g, "j"],    // adwo -> ajo
+    [/gy/g, "j"],    // gye -> jeh
+    [/hy/g, "sh"],   // hyɛ -> sheh
+    [/ny/g, "ny"],
+    [/kw/g, "kw"],
+    [/nw/g, "nw"],
+    [/ɛ/g, "eh"],
+    [/ɔ/g, "aw"],
+  ];
+  for (const [re, rep] of rules) s = s.replace(re, rep);
+  return s;
+};
+
 // ==================== AUTHENTIC ADINKRA SVG GLYPHS ====================
 // Consistent monochrome line-art interpretations of traditional Adinkra symbols,
 // keyed by the `id` field in ADINKRA_SYMBOLS. Rendered in a single ink color
@@ -803,14 +824,31 @@ export default function App() {
     }
   };
 
-  // Speak Word phonetics / translations
-  const speakText = (text: string) => {
+  // Speak Twi text using Khaya (GhanaNLP) Twi TTS so audio is in Twi, not an English voice.
+  // Falls back to the browser voice only if the Twi TTS service is unavailable.
+  const speakText = async (text: string, lang: string = "tw") => {
     playChime(659.25, "sine"); // soft audio feedback
-    if ("speechSynthesis" in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.85;
-      utterance.pitch = 1.0;
-      window.speechSynthesis.speak(utterance);
+    try {
+      const res = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text, lang }),
+      });
+      if (!res.ok) throw new Error("tts unavailable");
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      audio.onended = () => URL.revokeObjectURL(url);
+      await audio.play();
+    } catch {
+      // Fallback: browser speech. Re-spell Twi so digraphs (ky->ch, etc.) sound right.
+      if ("speechSynthesis" in window) {
+        const spoken = lang === "tw" ? twiToPhonetic(text) : text;
+        const utterance = new SpeechSynthesisUtterance(spoken);
+        utterance.rate = 0.8;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+      }
     }
   };
 
@@ -1277,7 +1315,7 @@ export default function App() {
                                 <button
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    speakText(item.english);
+                                    speakText(item.twi);
                                   }}
                                   className="text-stone-400 hover:text-emerald-700 p-1 rounded-full hover:bg-stone-100 transition-colors"
                                 >
@@ -1329,7 +1367,7 @@ export default function App() {
                                     [{filteredCategoryItems[activeWordIndex].phonetic}]
                                   </span>
                                   <button
-                                    onClick={() => speakText(filteredCategoryItems[activeWordIndex].english)}
+                                    onClick={() => speakText(filteredCategoryItems[activeWordIndex].twi)}
                                     className="p-1.5 bg-emerald-50 text-emerald-800 rounded-lg hover:bg-emerald-100 transition-colors flex items-center gap-1 text-xs font-bold"
                                   >
                                     <Volume2 className="w-3.5 h-3.5" />
