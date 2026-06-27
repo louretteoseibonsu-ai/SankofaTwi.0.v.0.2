@@ -1,0 +1,26 @@
+name: Curriculum CI
+
+on:
+  push:
+    paths:
+      - "content/**"
+      - "contracts/**"
+      - "scripts/validate_curriculum.mjs"
+      - ".github/workflows/curriculum-ci.yml"
+  pull_request:
+    paths:
+      - "content/**"
+      - "contracts/**"
+      - "scripts/validate_curriculum.mjs"
+
+jobs:
+  validate-curriculum:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      # Enforces I1-I4, I6 and the phonetic-bridge rule on every content unit.
+      - name: Validate curriculum invariants
+        run: node scripts/validate_curriculum.mjs

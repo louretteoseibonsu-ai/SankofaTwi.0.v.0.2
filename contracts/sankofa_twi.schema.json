@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sankofatwi.app/contracts/sankofa_twi.schema.json",
+  "title": "Sankofa Twi Curriculum Unit",
+  "description": "DRAFT v0.1 — canonical content contract for a curriculum unit. NOTE: action_button is a fixed UI label ('Continue') and is intentionally NOT part of authored content; additionalProperties:false forbids it from appearing in data.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "unit_title",
+    "vocabulary_spotlight",
+    "grammar_mechanics",
+    "lineage_challenges",
+    "theological_framework"
+  ],
+  "properties": {
+    "unit_title": { "type": "string", "minLength": 1 },
+    "theological_framework": { "$ref": "#/$defs/theologicalFramework" },
+    "vocabulary_spotlight": { "$ref": "#/$defs/vocabularySpotlight" },
+    "grammar_mechanics": { "$ref": "#/$defs/grammarMechanics" },
+    "lineage_challenges": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": { "$ref": "#/$defs/lineageChallenge" }
+    }
+  },
+  "$defs": {
+    "theologicalFramework": {
+      "description": "Controlled vocabulary bound to Akan cosmology + sociopolitical structures. No external/diaspora framings permitted.",
+      "type": "string",
+      "enum": [
+        "onyame",
+        "abosom",
+        "nsamanfo",
+        "okra",
+        "sunsum",
+        "mogya",
+        "ntoro",
+        "animuonyam",
+        "abusua",
+        "ahenfie",
+        "adinkra"
+      ]
+    },
+    "phoneticSegment": {
+      "description": "One phonological segment; graphemes are exact (ɔ != o, ɛ != e). Used for homophone disambiguation.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["orthography", "ipa", "tone", "atr"],
+      "properties": {
+        "orthography": { "type": "string", "minLength": 1 },
+        "ipa": { "type": "string", "minLength": 1 },
+        "tone": { "type": "string", "enum": ["high", "low", "mid", "rising", "falling"] },
+        "atr": { "type": "string", "enum": ["advanced", "retracted"] },
+        "nasalized": { "type": "boolean", "default": false }
+      }
+    },
+    "phoneticBridge": {
+      "description": "Two-mode phonetic bridge: 'pronunciation' (simple string) is always present; 'segments' (structured) is added for homophone-sensitive items such as bo vs bɔ and requires a homophone_set_id.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pronunciation"],
+      "properties": {
+        "pronunciation": { "type": "string", "minLength": 1 },
+        "segments": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/phoneticSegment" }
+        },
+        "homophone_set_id": { "type": "string" },
+        "sense_key": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "required": ["segments"] },
+          "then": { "required": ["homophone_set_id"] }
+        }
+      ]
+    },
+    "vocabularySpotlight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["headword", "gloss", "phonetic_bridge", "theological_framework"],
+      "properties": {
+        "headword": { "type": "string", "minLength": 1 },
+        "gloss": { "type": "string", "minLength": 1 },
+        "phonetic_bridge": { "$ref": "#/$defs/phoneticBridge" },
+        "theological_framework": { "$ref": "#/$defs/theologicalFramework" },
+        "example_sentences": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "grammarMechanics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focus", "explanation", "theological_framework"],
+      "properties": {
+        "focus": { "type": "string", "minLength": 1 },
+        "explanation": { "type": "string", "minLength": 1 },
+        "patterns": { "type": "array", "items": { "type": "string" } },
+        "theological_framework": { "$ref": "#/$defs/theologicalFramework" }
+      }
+    },
+    "lineageChallenge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt", "type", "options", "correct_index", "theological_framework"],
+      "properties": {
+        "prompt": { "type": "string", "minLength": 1 },
+        "type": {
+          "type": "string",
+          "enum": ["recall", "phonetic_discrimination", "lineage_ordering", "concept_match"]
+        },
+        "options": { "type": "array", "minItems": 2, "items": { "type": "string" } },
+        "correct_index": { "type": "integer", "minimum": 0 },
+        "phonetic_target": { "$ref": "#/$defs/phoneticBridge" },
+        "theological_framework": { "$ref": "#/$defs/theologicalFramework" }
+      }
+    }
+  }
+}
