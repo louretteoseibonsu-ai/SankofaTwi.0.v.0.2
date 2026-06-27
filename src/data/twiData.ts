@@ -432,6 +432,356 @@ export const ADINKRA_SYMBOLS: AdinkraSymbol[] = [
     literalTranslation: "Handcuffs",
     coreValue: "Law, Justice & Accountability",
     symbolDescription: "The handcuff or shackle. A symbol of law, justice, slavery, and captivity. It carries the proverb that whatever binds another also binds the one who holds the chain — a reminder of mutual accountability."
+  },
+  {
+    id: "akofena",
+    name: "Akofena",
+    literalTranslation: "Sword of war",
+    coreValue: "Courage, Valor & State Authority",
+    symbolDescription: "Crossed ceremonial swords. A symbol of courage, valor, and heroism, and of the legitimized authority of a ruler. A pair of these state swords appears in Ghana's coat of arms."
+  },
+  {
+    id: "akoben",
+    name: "Akoben",
+    literalTranslation: "War horn",
+    coreValue: "Vigilance & Readiness",
+    symbolDescription: "A war horn sounded to call warriors to battle. A symbol of vigilance, wariness, and readiness — a call to action and a readiness to serve voluntarily."
+  },
+  {
+    id: "osram_ne_nsoromma",
+    name: "Osram ne Nsoromma",
+    literalTranslation: "The moon and the star",
+    coreValue: "Love, Faithfulness & Harmony",
+    symbolDescription: "The moon and the evening star. A symbol of love, faithfulness, fondness, harmony, and benevolence — depicting the bond between two devoted souls, as the star awaits the rising of the moon."
+  },
+  {
+    id: "nkonsonkonson",
+    name: "Nkonsonkonson",
+    literalTranslation: "Chain link",
+    coreValue: "Unity & Human Relations",
+    symbolDescription: "A chain of links. A symbol of unity, brotherhood, and cooperation, reminding us that we are linked in both life and death. 'We are linked together like a chain; in unity lies our strength.'"
+  },
+  {
+    id: "hye_wo_nhye",
+    name: "Hye Wo Nhye",
+    literalTranslation: "That which does not burn",
+    coreValue: "Imperishability & Endurance",
+    symbolDescription: "Literally 'burn you do not burn.' A symbol of imperishability, endurance, and permanence — inspired by priests who walked on fire unharmed. It encourages steadfastness in the face of hardship."
+  },
+  {
+    id: "mpatapo",
+    name: "Mpatapo",
+    literalTranslation: "Knot of reconciliation",
+    coreValue: "Peace & Reconciliation",
+    symbolDescription: "The 'pacification' or reconciliation knot. A symbol of peacemaking after strife, binding parties together in renewed bonds of harmony, forgiveness, and reconciliation."
+  },
+  {
+    id: "owuo_atwedee",
+    name: "Owuo Atwedee",
+    literalTranslation: "The ladder of death",
+    coreValue: "Mortality & The Human Condition",
+    symbolDescription: "The ladder of death, which all must climb. A symbol of mortality, reminding everyone that death is the common destiny of all: 'Owuo atwedee baako mforo,' meaning all people will climb the ladder of death."
+  },
+  {
+    id: "aban",
+    name: "Aban",
+    literalTranslation: "Fortress / castle",
+    coreValue: "Strength, Authority & Security",
+    symbolDescription: "A fortress or castle. A symbol of strength, safety, and the seat of power, authority, and magnificence. It represents the security and permanence of a well-protected society."
+  },
+  {
+    id: "mframadan",
+    name: "Mframadan",
+    literalTranslation: "Wind-resistant house",
+    coreValue: "Resilience & Preparedness",
+    symbolDescription: "A well-ventilated, sturdily built house. A symbol of resilience and readiness to withstand the storms and vicissitudes of life — preparedness against forces one cannot control."
+  },
+  {
+    id: "duafe",
+    name: "Duafe",
+    literalTranslation: "Wooden comb",
+    coreValue: "Feminine Virtue & Care",
+    symbolDescription: "A wooden comb used to groom and beautify the hair. A symbol of good feminine qualities such as patience, prudence, fondness, love, and care, and of feminine consideration and tenderness."
+  },
+  {
+    id: "denkyem",
+    name: "Denkyem",
+    literalTranslation: "Crocodile",
+    coreValue: "Adaptability & Cleverness",
+    symbolDescription: "The crocodile, which lives in water yet breathes air. A symbol of adaptability and cleverness — the wisdom to thrive in changing and challenging environments by adjusting one's approach."
+  },
+  {
+    id: "akoma_ntoaso",
+    name: "Akoma Ntoaso",
+    literalTranslation: "Linked hearts",
+    coreValue: "Agreement, Unity & Charter",
+    symbolDescription: "Joined or linked hearts, an extension of the Akoma symbol. A symbol of understanding, agreement, togetherness, and unity — a charter binding people to a common purpose and shared commitment."
+  },
+  {
+    id: "odo_nnyew_fie_kwan",
+    name: "Odo Nnyew Fie Kwan",
+    literalTranslation: "Love never loses its way home",
+    coreValue: "Power of Love",
+    symbolDescription: "Love does not lose its way home. A symbol of the enduring power of love and devotion — those led by love always find their way to the right place."
+  },
+  {
+    id: "nea_onnim",
+    name: "Nea Onnim",
+    literalTranslation: "He who does not know can know",
+    coreValue: "Knowledge & Lifelong Learning",
+    symbolDescription: "From the proverb, 'He who does not know can come to know from learning.' A symbol of knowledge, lifelong education, and the continued quest for understanding."
+  },
+  {
+    id: "nsoromma",
+    name: "Nsoromma",
+    literalTranslation: "Star, child of the heavens",
+    coreValue: "Faith & Reliance on God",
+    symbolDescription: "The star, literally 'child of the heavens.' A symbol of faith and the belief in the patronage, guardianship, and benevolence of a supreme being."
+  },
+  {
+    id: "abe_dua",
+    name: "Abe Dua",
+    literalTranslation: "Palm tree",
+    coreValue: "Wealth & Self-Sufficiency",
+    symbolDescription: "The palm tree, which provides many resources. A symbol of wealth, resourcefulness, self-sufficiency, and vitality."
+  },
+  {
+    id: "adwo",
+    name: "Adwo",
+    literalTranslation: "Calmness",
+    coreValue: "Peace & Tranquility",
+    symbolDescription: "A symbol for calmness, peace, tranquility, and quiet — the serenity that comes from a settled and harmonious spirit."
+  },
+  {
+    id: "agyin_dawuru",
+    name: "Agyin Dawuru",
+    literalTranslation: "Agyin's gong",
+    coreValue: "Faithfulness & Dutifulness",
+    symbolDescription: "Agyin's gong. A symbol of faithfulness, alertness, and dutifulness, designed to commemorate the loyalty of Agyin, a dutiful servant and gong-beater of the Asantehene."
+  },
+  {
+    id: "akoko_nan",
+    name: "Akoko Nan",
+    literalTranslation: "The foot of a hen",
+    coreValue: "Discipline with Mercy",
+    symbolDescription: "The foot of a hen. A symbol of discipline coupled with care and nurturing, from the proverb 'the hen treads on her chicks but does not kill them' — firm yet loving guidance."
+  },
+  {
+    id: "ananse_ntentan",
+    name: "Ananse Ntentan",
+    literalTranslation: "Spider's web",
+    coreValue: "Wisdom & Creativity",
+    symbolDescription: "The web of Ananse, the crafty spider of African folklore. A symbol of wisdom, craftiness, creativity, and the complexities of life."
+  },
+  {
+    id: "ani_bere_a_enso_gya",
+    name: "Ani Bere A Enso Gya",
+    literalTranslation: "Serious eyes do not spark fire",
+    coreValue: "Patience & Self-Control",
+    symbolDescription: "No matter how serious (red-eyed) one becomes, the eyes do not spark flames. A symbol of patience, self-containment, self-discipline, and self-control."
+  },
+  {
+    id: "asase_ye_duru",
+    name: "Asase Ye Duru",
+    literalTranslation: "The earth has weight",
+    coreValue: "Providence & Divinity of Earth",
+    symbolDescription: "The earth has weight. A symbol of providence and the divinity of Mother Earth, honoring the importance of the land in sustaining life."
+  },
+  {
+    id: "bese_saka",
+    name: "Bese Saka",
+    literalTranslation: "Bunch of cola nuts",
+    coreValue: "Affluence, Abundance & Unity",
+    symbolDescription: "A bunch of cola nuts, an important cash crop. A symbol of affluence, power, abundance, plenty, and togetherness."
+  },
+  {
+    id: "bi_nka_bi",
+    name: "Bi Nka Bi",
+    literalTranslation: "Bite not one another",
+    coreValue: "Peace & Harmony",
+    symbolDescription: "No one should bite another. A symbol of peace, harmony, and the avoidance of strife, conflict, and provocation within the community."
+  },
+  {
+    id: "dame_dame",
+    name: "Dame Dame",
+    literalTranslation: "Checkers / draughts",
+    coreValue: "Intelligence & Strategy",
+    symbolDescription: "The board game of checkers (draughts). A symbol of craftiness, intelligence, and strategy."
+  },
+  {
+    id: "dono_ntoaso",
+    name: "Dono Ntoaso",
+    literalTranslation: "Double talking drum",
+    coreValue: "United Action & Goodwill",
+    symbolDescription: "The joined double dono (talking drum). A symbol of united action, alertness, goodwill, praise, and rejoicing."
+  },
+  {
+    id: "dono",
+    name: "Dono",
+    literalTranslation: "Talking drum",
+    coreValue: "Praise, Goodwill & Rhythm",
+    symbolDescription: "The tension talking drum used to send messages and praise. A symbol of appellation, praise, goodwill, and rhythm."
+  },
+  {
+    id: "eban",
+    name: "Eban",
+    literalTranslation: "Fence",
+    coreValue: "Safety, Security & Love",
+    symbolDescription: "A fence. A symbol of safety, security, and love — the protective enclosure of a loving home that shields and nurtures those within."
+  },
+  {
+    id: "ese_ne_tekrema",
+    name: "Ese ne Tekrema",
+    literalTranslation: "Teeth and tongue",
+    coreValue: "Friendship & Interdependence",
+    symbolDescription: "The teeth and the tongue, which play interdependent roles in the mouth. A symbol of friendship, interdependence, growth, and the need to resolve conflict."
+  },
+  {
+    id: "fafanto",
+    name: "Fafanto",
+    literalTranslation: "Butterfly",
+    coreValue: "Tenderness & Gentleness",
+    symbolDescription: "The butterfly. A symbol of tenderness, gentleness, honesty, and fragility — and of transformation and new life."
+  },
+  {
+    id: "fofo",
+    name: "Fofo",
+    literalTranslation: "Yellow-flowered plant",
+    coreValue: "Warning Against Jealousy",
+    symbolDescription: "The fofo, a plant whose seeds scatter in the wind. A symbol of warning against jealousy, envy, and covetousness."
+  },
+  {
+    id: "gyawu_atiko",
+    name: "Gyawu Atiko",
+    literalTranslation: "Back of Gyawu's head",
+    coreValue: "Valor & Bravery",
+    symbolDescription: "The shaved hairstyle worn at the back of war-captain Gyawu's head. A symbol of valor and bravery."
+  },
+  {
+    id: "hwehwemudua",
+    name: "Hwehwemudua",
+    literalTranslation: "Measuring rod",
+    coreValue: "Excellence & Quality Control",
+    symbolDescription: "The measuring rod or rule. A symbol of excellence, superior quality, perfection, knowledge, and critical examination."
+  },
+  {
+    id: "kramo_bone",
+    name: "Kramo Bone",
+    literalTranslation: "The bad makes the good unseen",
+    coreValue: "Warning Against Hypocrisy",
+    symbolDescription: "The bad one makes it hard to recognize the good. A symbol warning against deception and hypocrisy, since the dishonest obscure the honest."
+  },
+  {
+    id: "kuronti_ne_akwamu",
+    name: "Kuronti ne Akwamu",
+    literalTranslation: "Two state councils",
+    coreValue: "Democracy & Shared Counsel",
+    symbolDescription: "The Kuronti and Akwamu chiefs who share governance. A symbol of democracy, the sharing of ideas, and taking counsel together."
+  },
+  {
+    id: "kwatakye_atiko",
+    name: "Kwatakye Atiko",
+    literalTranslation: "Back of Kwatakye's head",
+    coreValue: "Valor & Bravery",
+    symbolDescription: "The hairstyle of Kwatakye, a war captain of old Asante. A symbol of valor, bravery, and fearlessness."
+  },
+  {
+    id: "mako",
+    name: "Mako",
+    literalTranslation: "Peppers",
+    coreValue: "Equality & Patience",
+    symbolDescription: "From the proverb 'all peppers on the same plant do not ripen at once.' A symbol of inequality, uneven development, and the patience that uneven progress requires."
+  },
+  {
+    id: "menso_wo_kenten",
+    name: "Menso Wo Kenten",
+    literalTranslation: "I carry not your basket",
+    coreValue: "Self-Reliance",
+    symbolDescription: "I am not carrying your basket. A symbol of industry, self-reliance, and economic self-determination."
+  },
+  {
+    id: "mmere_dane",
+    name: "Mmere Dane",
+    literalTranslation: "Time changes",
+    coreValue: "Change & Impermanence",
+    symbolDescription: "Times change. A symbol of the dynamism of life and the temporariness of good (and bad) times — fortunes turn, so remain humble and hopeful."
+  },
+  {
+    id: "mpuannum",
+    name: "Mpuannum",
+    literalTranslation: "Five tufts of hair",
+    coreValue: "Loyalty & Priestly Office",
+    symbolDescription: "Five tufts of hair, a traditional hairstyle. A symbol of loyalty, adroitness, and priestly office."
+  },
+  {
+    id: "nsaa",
+    name: "Nsaa",
+    literalTranslation: "Hand-woven blanket",
+    coreValue: "Excellence & Authenticity",
+    symbolDescription: "A type of finely woven cloth renowned for its quality. A symbol of excellence, genuineness, and authenticity — discerning the real from the counterfeit."
+  },
+  {
+    id: "nteasee",
+    name: "Nteasee",
+    literalTranslation: "Understanding",
+    coreValue: "Understanding & Cooperation",
+    symbolDescription: "Understanding. A symbol of understanding, agreement, and cooperation between people who reach common ground."
+  },
+  {
+    id: "nyame_biribi_wo_soro",
+    name: "Nyame Biribi Wo Soro",
+    literalTranslation: "God is in the heavens",
+    coreValue: "Hope & Inspiration",
+    symbolDescription: "From the saying 'God, there is something in the heavens; let it reach me.' A symbol of hope, aspiration, and inspiration."
+  },
+  {
+    id: "nyame_nwu_na_mawu",
+    name: "Nyame Nwu Na Mawu",
+    literalTranslation: "God never dies",
+    coreValue: "Immortality of the Soul",
+    symbolDescription: "God will not die for me to die. A symbol expressing the immortality of the human soul and the eternal nature of God."
+  },
+  {
+    id: "okuafo_pa",
+    name: "Okuafo Pa",
+    literalTranslation: "The good farmer",
+    coreValue: "Diligence & Hard Work",
+    symbolDescription: "The good farmer. A symbol of diligence, hard work, and entrepreneurship — the industrious cultivator who reaps a bountiful harvest."
+  },
+  {
+    id: "sepow",
+    name: "Sepow",
+    literalTranslation: "Executioner's knife",
+    coreValue: "Justice",
+    symbolDescription: "The knife once used by the executioner. A symbol of justice and the gravity of judicial authority."
+  },
+  {
+    id: "tamfo_bebre",
+    name: "Tamfo Bebre",
+    literalTranslation: "The enemy will stew",
+    coreValue: "Resilience Against Envy",
+    symbolDescription: "The enemy will stew in his own juice. A symbol concerning ill-will, jealousy, and envy — and the resilience to rise above the spite of others."
+  },
+  {
+    id: "uac_nkanea",
+    name: "UAC Nkanea",
+    literalTranslation: "UAC lights",
+    coreValue: "Technological Advancement",
+    symbolDescription: "The street lights once installed by the United Africa Company. A symbol of technological advancement, modernity, and progress."
+  },
+  {
+    id: "wawa_aba",
+    name: "Wawa Aba",
+    literalTranslation: "Seed of the wawa tree",
+    coreValue: "Hardiness & Perseverance",
+    symbolDescription: "The seed of the wawa tree, which is extremely hard. A symbol of hardiness, toughness, perseverance, and resilience in the face of adversity."
+  },
+  {
+    id: "woforo_dua_pa",
+    name: "Woforo Dua Pa A",
+    literalTranslation: "When you climb a good tree",
+    coreValue: "Support for Good Causes",
+    symbolDescription: "When you climb a good tree, you are given a push. A symbol of support, cooperation, and encouragement for those who pursue worthy goals."
   }
 ];
 

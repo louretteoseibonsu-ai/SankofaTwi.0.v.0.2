@@ -75,97 +75,489 @@ const playChime = (frequency = 440, type: OscillatorType = "sine") => {
 const ADINKRA_GLYPHS: Record<string, React.ReactNode> = {
   gyenyame: (
     <>
-      <path d="M34 68 C 16 56, 22 30, 44 32 C 60 33, 58 51, 45 49 C 37 48, 39 39, 47 41" />
-      <path d="M66 32 C 84 44, 78 70, 56 68 C 40 67, 42 49, 55 51 C 63 52, 61 61, 53 59" />
+      <path d="M34 68 C 16 56, 22 30, 44 32 C 60 33, 58 51, 45 49 C 37 48, 39 39, 47 41"/>
+      <path d="M66 32 C 84 44, 78 70, 56 68 C 40 67, 42 49, 55 51 C 63 52, 61 61, 53 59"/>
     </>
   ),
   sankofa: (
     <>
-      <path d="M50 78 C 18 54, 26 26, 45 33 C 50 35, 50 43, 50 48 C 50 43, 50 35, 55 33 C 74 26, 82 54, 50 78" />
-      <path d="M50 78 C 50 85, 59 85, 59 77" />
+      <path d="M50 78 C 18 54, 26 26, 45 33 C 50 35, 50 43, 50 48 C 50 43, 50 35, 55 33 C 74 26, 82 54, 50 78"/>
+      <path d="M50 78 C 50 85, 59 85, 59 77"/>
     </>
   ),
   dwennimmen: (
     <>
-      <path d="M50 34 V66" />
-      <path d="M50 34 C 34 30, 26 40, 34 48 C 40 53, 48 49, 45 43" />
-      <path d="M50 34 C 66 30, 74 40, 66 48 C 60 53, 52 49, 55 43" />
-      <path d="M50 66 C 34 70, 26 60, 34 52 C 40 47, 48 51, 45 57" />
-      <path d="M50 66 C 66 70, 74 60, 66 52 C 60 47, 52 51, 55 57" />
+      <path d="M50 34 V66"/>
+      <path d="M50 34 C 34 30, 26 40, 34 48 C 40 53, 48 49, 45 43"/>
+      <path d="M50 34 C 66 30, 74 40, 66 48 C 60 53, 52 49, 55 43"/>
+      <path d="M50 66 C 34 70, 26 60, 34 52 C 40 47, 48 51, 45 57"/>
+      <path d="M50 66 C 66 70, 74 60, 66 52 C 60 47, 52 51, 55 57"/>
     </>
   ),
   akoma: (
-    <path
-      d="M50 78 C 18 54, 26 26, 45 33 C 50 35, 50 43, 50 48 C 50 43, 50 35, 55 33 C 74 26, 82 54, 50 78 Z"
-      fill="currentColor"
-      stroke="none"
-    />
+    <>
+      <path d="M50 78 C 18 54, 26 26, 45 33 C 50 35, 50 43, 50 48 C 50 43, 50 35, 55 33 C 74 26, 82 54, 50 78 Z" fill="currentColor" stroke="none"/>
+    </>
   ),
   nkyinkyim: (
-    <path d="M20 68 L36 68 L36 40 L52 40 L52 68 L68 68 L68 40 L80 40" />
+    <>
+      <path d="M20 68 L36 68 L36 40 L52 40 L52 68 L68 68 L68 40 L80 40"/>
+    </>
   ),
   adinkrahene: (
     <>
-      <circle cx="50" cy="50" r="32" />
-      <circle cx="50" cy="50" r="20" />
-      <circle cx="50" cy="50" r="8" fill="currentColor" stroke="none" />
+      <circle cx="50" cy="50" r="32"/>
+      <circle cx="50" cy="50" r="20"/>
+      <circle cx="50" cy="50" r="8" fill="currentColor" stroke="none"/>
     </>
   ),
   mate_masie: (
     <>
-      <path d="M60 24 A 30 30 0 1 0 60 76" />
-      <path d="M57 38 A 15 15 0 1 0 57 62" />
-      <circle cx="53" cy="50" r="5" fill="currentColor" stroke="none" />
+      <path d="M60 24 A 30 30 0 1 0 60 76"/>
+      <path d="M57 38 A 15 15 0 1 0 57 62"/>
+      <circle cx="53" cy="50" r="5" fill="currentColor" stroke="none"/>
     </>
   ),
   fihankra: (
-    <path d="M64 74 H26 V26 H74 V64 H44 V46" />
+    <>
+      <path d="M64 74 H26 V26 H74 V64 H44 V46"/>
+    </>
   ),
   aya: (
     <>
-      <path d="M50 84 V20" />
-      <path d="M50 36 C 40 34, 35 27, 35 22" />
-      <path d="M50 36 C 60 34, 65 27, 65 22" />
-      <path d="M50 50 C 39 48, 33 41, 33 35" />
-      <path d="M50 50 C 61 48, 67 41, 67 35" />
-      <path d="M50 64 C 40 62, 35 55, 35 49" />
-      <path d="M50 64 C 60 62, 65 55, 65 49" />
+      <path d="M50 84 V20"/>
+      <path d="M50 36 C 40 34, 35 27, 35 22"/>
+      <path d="M50 36 C 60 34, 65 27, 65 22"/>
+      <path d="M50 50 C 39 48, 33 41, 33 35"/>
+      <path d="M50 50 C 61 48, 67 41, 67 35"/>
+      <path d="M50 64 C 40 62, 35 55, 35 49"/>
+      <path d="M50 64 C 60 62, 65 55, 65 49"/>
     </>
   ),
   funtumfunefu: (
     <>
-      <path d="M50 50 C 40 38, 36 26, 28 20" />
-      <path d="M50 50 C 60 38, 64 26, 72 20" />
-      <path d="M50 50 C 40 62, 36 74, 28 80" />
-      <path d="M50 50 C 60 62, 64 74, 72 80" />
-      <circle cx="50" cy="50" r="8" fill="currentColor" stroke="none" />
-      <circle cx="28" cy="20" r="3.5" fill="currentColor" stroke="none" />
-      <circle cx="72" cy="20" r="3.5" fill="currentColor" stroke="none" />
-      <circle cx="28" cy="80" r="3.5" fill="currentColor" stroke="none" />
-      <circle cx="72" cy="80" r="3.5" fill="currentColor" stroke="none" />
+      <path d="M50 50 C 40 38, 36 26, 28 20"/>
+      <path d="M50 50 C 60 38, 64 26, 72 20"/>
+      <path d="M50 50 C 40 62, 36 74, 28 80"/>
+      <path d="M50 50 C 60 62, 64 74, 72 80"/>
+      <circle cx="50" cy="50" r="8" fill="currentColor" stroke="none"/>
+      <circle cx="28" cy="20" r="3.5" fill="currentColor" stroke="none"/>
+      <circle cx="72" cy="20" r="3.5" fill="currentColor" stroke="none"/>
+      <circle cx="28" cy="80" r="3.5" fill="currentColor" stroke="none"/>
+      <circle cx="72" cy="80" r="3.5" fill="currentColor" stroke="none"/>
     </>
   ),
   nyame_dua: (
     <>
-      <path d="M50 50 V24" />
-      <path d="M50 24 L44 32" />
-      <path d="M50 24 L56 32" />
-      <path d="M50 50 V76" />
-      <path d="M50 76 L44 68" />
-      <path d="M50 76 L56 68" />
-      <path d="M50 50 H24" />
-      <path d="M24 50 L32 44" />
-      <path d="M24 50 L32 56" />
-      <path d="M50 50 H76" />
-      <path d="M76 50 L68 44" />
-      <path d="M76 50 L68 56" />
-      <circle cx="50" cy="50" r="6" fill="currentColor" stroke="none" />
+      <path d="M50 50 V24"/>
+      <path d="M50 24 L44 32"/>
+      <path d="M50 24 L56 32"/>
+      <path d="M50 50 V76"/>
+      <path d="M50 76 L44 68"/>
+      <path d="M50 76 L56 68"/>
+      <path d="M50 50 H24"/>
+      <path d="M24 50 L32 44"/>
+      <path d="M24 50 L32 56"/>
+      <path d="M50 50 H76"/>
+      <path d="M76 50 L68 44"/>
+      <path d="M76 50 L68 56"/>
+      <circle cx="50" cy="50" r="6" fill="currentColor" stroke="none"/>
     </>
   ),
   epa: (
     <>
-      <circle cx="36" cy="50" r="16" />
-      <circle cx="64" cy="50" r="16" />
+      <circle cx="36" cy="50" r="16"/>
+      <circle cx="64" cy="50" r="16"/>
+    </>
+  ),
+  akofena: (
+    <>
+      <path d="M30 74 L68 28"/>
+      <path d="M70 74 L32 28"/>
+      <path d="M22 66 L40 78"/>
+      <path d="M60 78 L78 66"/>
+      <circle cx="29" cy="77" r="4" fill="currentColor" stroke="none"/>
+      <circle cx="71" cy="77" r="4" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  akoben: (
+    <>
+      <path d="M28 34 C 30 22, 48 22, 58 30 C 74 42, 78 64, 70 78 C 70 64, 62 54, 48 52 C 36 50, 30 46, 28 34 Z"/>
+      <circle cx="29" cy="32" r="4" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  osram_ne_nsoromma: (
+    <>
+      <path d="M58 22 C 30 26, 30 74, 58 78 C 44 60, 44 40, 58 22 Z" fill="currentColor" stroke="none"/>
+      <path d="M70.0 19.0 L72.6 26.4 L80.5 26.6 L74.3 31.4 L76.5 38.9 L70.0 34.5 L63.5 38.9 L65.7 31.4 L59.5 26.6 L67.4 26.4 Z" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  nkonsonkonson: (
+    <>
+      <ellipse cx="30" cy="50" rx="14" ry="9"/>
+      <ellipse cx="50" cy="50" rx="14" ry="9"/>
+      <ellipse cx="70" cy="50" rx="14" ry="9"/>
+    </>
+  ),
+  hye_wo_nhye: (
+    <>
+      <circle cx="37" cy="50" r="18"/>
+      <circle cx="37" cy="50" r="7"/>
+      <circle cx="63" cy="50" r="18"/>
+      <circle cx="63" cy="50" r="7"/>
+    </>
+  ),
+  mpatapo: (
+    <>
+      <path d="M40 28 C 22 28, 22 50, 40 50 C 58 50, 58 72, 40 72"/>
+      <path d="M60 28 C 78 28, 78 50, 60 50 C 42 50, 42 72, 60 72"/>
+    </>
+  ),
+  owuo_atwedee: (
+    <>
+      <path d="M37 22 L33 80"/>
+      <path d="M63 22 L67 80"/>
+      <path d="M35 34 L65 34"/>
+      <path d="M35 46 L65 46"/>
+      <path d="M35 58 L65 58"/>
+      <path d="M34 70 L66 70"/>
+    </>
+  ),
+  aban: (
+    <>
+      <rect x="22" y="22" width="56" height="56"/>
+      <rect x="34" y="34" width="32" height="32"/>
+      <rect x="45" y="45" width="10" height="10" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  mframadan: (
+    <>
+      <rect x="24" y="24" width="52" height="52"/>
+      <path d="M41 24 V76"/>
+      <path d="M59 24 V76"/>
+      <path d="M24 41 H76"/>
+      <path d="M24 59 H76"/>
+    </>
+  ),
+  duafe: (
+    <>
+      <path d="M28 40 H72"/>
+      <path d="M50 40 C 50 30, 46 26, 50 22 C 54 26, 50 30, 50 40"/>
+      <path d="M32 40 V68"/>
+      <path d="M41 40 V72"/>
+      <path d="M50 40 V74"/>
+      <path d="M59 40 V72"/>
+      <path d="M68 40 V68"/>
+    </>
+  ),
+  denkyem: (
+    <>
+      <path d="M16 56 C 32 50, 48 50, 60 50 L74 44 L82 50 L74 55 L62 56 C 48 60, 30 60, 18 60 Z" fill="currentColor" stroke="none"/>
+      <path d="M30 50 L34 42 L40 50"/>
+      <path d="M44 50 L48 42 L54 50"/>
+      <path d="M30 60 L28 70"/>
+      <path d="M52 60 L54 70"/>
+    </>
+  ),
+  akoma_ntoaso: (
+    <>
+      <path d="M38 64 C 22 52, 26 36, 38 40 C 41 41, 41 46, 41 49 C 41 46, 41 41, 44 40 C 50 38, 52 46, 48 52"/>
+      <path d="M62 64 C 78 52, 74 36, 62 40 C 59 41, 59 46, 59 49 C 59 46, 59 41, 56 40 C 50 38, 48 46, 52 52"/>
+      <path d="M41 49 C 45 56, 55 56, 59 49"/>
+    </>
+  ),
+  odo_nnyew_fie_kwan: (
+    <>
+      <path d="M50 74 C 22 54, 28 30, 44 34 C 50 36, 50 44, 50 48 C 50 44, 50 36, 56 34 C 72 30, 78 54, 50 74"/>
+      <circle cx="50" cy="50" r="7"/>
+    </>
+  ),
+  nea_onnim: (
+    <>
+      <circle cx="50" cy="33" r="13"/>
+      <circle cx="67" cy="50" r="13"/>
+      <circle cx="50" cy="67" r="13"/>
+      <circle cx="33" cy="50" r="13"/>
+    </>
+  ),
+  nsoromma: (
+    <>
+      <path d="M50.0 22.0 L57.1 40.3 L76.6 41.3 L61.4 53.7 L66.5 72.7 L50.0 62.0 L33.5 72.7 L38.6 53.7 L23.4 41.3 L42.9 40.3 Z" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  abe_dua: (
+    <>
+      <path d="M50 84 V44"/>
+      <path d="M50 46 C 38 38, 28 36, 22 38"/>
+      <path d="M50 46 C 62 38, 72 36, 78 38"/>
+      <path d="M50 44 C 42 30, 38 24, 36 18"/>
+      <path d="M50 44 C 58 30, 62 24, 64 18"/>
+      <path d="M50 42 C 50 28, 50 22, 50 16"/>
+    </>
+  ),
+  adwo: (
+    <>
+      <path d="M50 20 L74 50 L50 80 L26 50 Z"/>
+      <path d="M50 34 L62 50 L50 66 L38 50 Z"/>
+    </>
+  ),
+  agyin_dawuru: (
+    <>
+      <path d="M34 64 C 34 38, 66 38, 66 64 Z"/>
+      <path d="M30 64 H70"/>
+      <path d="M50 38 V30"/>
+      <circle cx="50" cy="72" r="4" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  akoko_nan: (
+    <>
+      <circle cx="50" cy="26" r="6"/>
+      <path d="M50 32 V60"/>
+      <path d="M50 60 L36 78"/>
+      <path d="M50 60 L50 80"/>
+      <path d="M50 60 L64 78"/>
+    </>
+  ),
+  ananse_ntentan: (
+    <>
+      <path d="M50 18 V82"/>
+      <path d="M18 50 H82"/>
+      <path d="M27 27 L73 73"/>
+      <path d="M73 27 L27 73"/>
+      <circle cx="50" cy="50" r="12"/>
+      <circle cx="50" cy="50" r="24"/>
+    </>
+  ),
+  ani_bere_a_enso_gya: (
+    <>
+      <path d="M22 50 C 35 34, 65 34, 78 50 C 65 66, 35 66, 22 50 Z"/>
+      <circle cx="50" cy="50" r="9" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  asase_ye_duru: (
+    <>
+      <ellipse cx="50" cy="50" rx="30" ry="22"/>
+      <path d="M20 50 H80"/>
+      <path d="M50 28 C 40 40, 40 60, 50 72"/>
+      <path d="M50 28 C 60 40, 60 60, 50 72"/>
+    </>
+  ),
+  bese_saka: (
+    <>
+      <ellipse cx="40" cy="40" rx="11" ry="14"/>
+      <ellipse cx="60" cy="40" rx="11" ry="14"/>
+      <ellipse cx="40" cy="62" rx="11" ry="14"/>
+      <ellipse cx="60" cy="62" rx="11" ry="14"/>
+    </>
+  ),
+  bi_nka_bi: (
+    <>
+      <path d="M48 26 C 26 30, 26 54, 46 52 C 34 52, 30 40, 44 38"/>
+      <path d="M52 74 C 74 70, 74 46, 54 48 C 66 48, 70 60, 56 62"/>
+    </>
+  ),
+  dame_dame: (
+    <>
+      <rect x="26" y="26" width="16" height="16" fill="currentColor" stroke="none"/>
+      <rect x="26" y="58" width="16" height="16" fill="currentColor" stroke="none"/>
+      <rect x="42" y="42" width="16" height="16" fill="currentColor" stroke="none"/>
+      <rect x="58" y="26" width="16" height="16" fill="currentColor" stroke="none"/>
+      <rect x="58" y="58" width="16" height="16" fill="currentColor" stroke="none"/>
+      <rect x="26" y="26" width="48" height="48"/>
+    </>
+  ),
+  dono_ntoaso: (
+    <>
+      <path d="M22 32 H46 M22 68 H46 M22 32 L46 68 M46 32 L22 68"/>
+      <path d="M54 32 H78 M54 68 H78 M54 32 L78 68 M78 32 L54 68"/>
+    </>
+  ),
+  dono: (
+    <>
+      <path d="M38 32 H62 M38 68 H62 M38 32 L62 68 M62 32 L38 68"/>
+    </>
+  ),
+  eban: (
+    <>
+      <rect x="24" y="30" width="52" height="40" rx="4"/>
+      <path d="M50 62 C 40 54, 42 44, 50 48 C 58 44, 60 54, 50 62"/>
+    </>
+  ),
+  ese_ne_tekrema: (
+    <>
+      <path d="M24 42 H76"/>
+      <path d="M30 42 V52"/>
+      <path d="M40 42 V52"/>
+      <path d="M50 42 V52"/>
+      <path d="M60 42 V52"/>
+      <path d="M70 42 V52"/>
+      <path d="M42 58 C 42 72, 58 72, 58 58 Z"/>
+    </>
+  ),
+  fafanto: (
+    <>
+      <path d="M50 34 V66"/>
+      <path d="M50 42 C 30 26, 18 42, 30 50 C 18 58, 30 74, 50 58"/>
+      <path d="M50 42 C 70 26, 82 42, 70 50 C 82 58, 70 74, 50 58"/>
+      <circle cx="50" cy="34" r="4" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  fofo: (
+    <>
+      <path d="M50 82 V46"/>
+      <path d="M50 46 C 40 40, 36 30, 40 22"/>
+      <path d="M50 46 C 60 40, 64 30, 60 22"/>
+      <path d="M50 46 C 50 34, 50 26, 50 18"/>
+      <circle cx="50" cy="16" r="4" fill="currentColor" stroke="none"/>
+      <circle cx="40" cy="20" r="3" fill="currentColor" stroke="none"/>
+      <circle cx="60" cy="20" r="3" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  gyawu_atiko: (
+    <>
+      <path d="M50 50 C 50 30, 34 30, 38 46"/>
+      <path d="M50 50 C 70 50, 70 34, 54 38"/>
+      <path d="M50 50 C 50 70, 66 70, 62 54"/>
+      <path d="M50 50 C 30 50, 30 66, 46 62"/>
+    </>
+  ),
+  hwehwemudua: (
+    <>
+      <rect x="44" y="20" width="12" height="60"/>
+      <path d="M44 32 H56"/>
+      <path d="M44 44 H56"/>
+      <path d="M44 56 H56"/>
+      <path d="M44 68 H56"/>
+    </>
+  ),
+  kramo_bone: (
+    <>
+      <rect x="22" y="34" width="26" height="32"/>
+      <rect x="52" y="34" width="26" height="32" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  kuronti_ne_akwamu: (
+    <>
+      <path d="M44 24 C 24 24, 24 76, 44 76"/>
+      <path d="M56 24 C 76 24, 76 76, 56 76"/>
+      <circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  kwatakye_atiko: (
+    <>
+      <path d="M28 72 V28 H72 V72"/>
+      <path d="M40 72 V44 H60 V72"/>
+      <path d="M50 44 V30"/>
+    </>
+  ),
+  mako: (
+    <>
+      <path d="M40 36 C 32 44, 32 64, 44 64 C 54 64, 54 48, 44 40 Z"/>
+      <path d="M44 36 V28"/>
+      <path d="M60 36 C 52 44, 52 64, 64 64 C 74 64, 74 48, 64 40 Z"/>
+      <path d="M64 36 V28"/>
+    </>
+  ),
+  menso_wo_kenten: (
+    <>
+      <path d="M30 38 H70 L64 74 H36 Z"/>
+      <path d="M30 38 C 40 30, 60 30, 70 38"/>
+      <path d="M38 50 H62"/>
+      <path d="M37 62 H63"/>
+    </>
+  ),
+  mmere_dane: (
+    <>
+      <path d="M50 50 C 50 38, 64 38, 64 50 C 64 66, 44 66, 44 50 C 44 30, 70 30, 70 50 C 70 72, 38 72, 38 50"/>
+    </>
+  ),
+  mpuannum: (
+    <>
+      <path d="M50 22 V40"/>
+      <path d="M50 60 V78"/>
+      <path d="M22 50 H40"/>
+      <path d="M60 50 H78"/>
+      <circle cx="50" cy="50" r="9"/>
+      <circle cx="50" cy="22" r="4" fill="currentColor" stroke="none"/>
+      <circle cx="50" cy="78" r="4" fill="currentColor" stroke="none"/>
+      <circle cx="22" cy="50" r="4" fill="currentColor" stroke="none"/>
+      <circle cx="78" cy="50" r="4" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  nsaa: (
+    <>
+      <rect x="26" y="26" width="48" height="48"/>
+      <path d="M26 50 L50 26 L74 50 L50 74 Z"/>
+      <path d="M38 38 L62 62"/>
+      <path d="M62 38 L38 62"/>
+    </>
+  ),
+  nteasee: (
+    <>
+      <ellipse cx="42" cy="50" rx="20" ry="14"/>
+      <ellipse cx="58" cy="50" rx="20" ry="14"/>
+    </>
+  ),
+  nyame_biribi_wo_soro: (
+    <>
+      <path d="M24 64 C 24 40, 76 40, 76 64"/>
+      <path d="M50 40 V62"/>
+      <circle cx="50" cy="32" r="6" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  nyame_nwu_na_mawu: (
+    <>
+      <rect x="30" y="30" width="40" height="40"/>
+      <rect x="30" y="30" width="40" height="40" transform="rotate(45 50 50)"/>
+    </>
+  ),
+  okuafo_pa: (
+    <>
+      <path d="M34 24 H46"/>
+      <path d="M40 24 V58"/>
+      <path d="M40 58 C 40 74, 62 74, 66 58 H72"/>
+    </>
+  ),
+  sepow: (
+    <>
+      <path d="M50 20 L58 60 L50 72 L42 60 Z" fill="currentColor" stroke="none"/>
+      <path d="M40 60 H60"/>
+      <path d="M50 72 V82"/>
+    </>
+  ),
+  tamfo_bebre: (
+    <>
+      <path d="M50 24 L60 34 L50 44 L40 34 Z"/>
+      <path d="M50 44 L66 60 L50 76 L34 60 Z"/>
+    </>
+  ),
+  uac_nkanea: (
+    <>
+      <path d="M50 30 V80"/>
+      <path d="M30 30 H70"/>
+      <path d="M40 80 H60"/>
+      <circle cx="30" cy="30" r="6"/>
+      <circle cx="50" cy="30" r="6"/>
+      <circle cx="70" cy="30" r="6"/>
+    </>
+  ),
+  wawa_aba: (
+    <>
+      <ellipse cx="50" cy="50" rx="20" ry="28"/>
+      <path d="M50 30 C 40 40, 40 60, 50 70"/>
+      <path d="M50 30 C 60 40, 60 60, 50 70"/>
+      <circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/>
+    </>
+  ),
+  woforo_dua_pa: (
+    <>
+      <path d="M40 82 V26"/>
+      <path d="M60 82 V26"/>
+      <path d="M40 70 H60"/>
+      <path d="M40 58 H60"/>
+      <path d="M40 46 H60"/>
+      <path d="M40 34 H60"/>
+      <path d="M38 26 C 50 16, 50 16, 62 26"/>
     </>
   )
 };
