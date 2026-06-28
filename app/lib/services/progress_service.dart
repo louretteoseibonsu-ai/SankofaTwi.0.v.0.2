@@ -32,6 +32,41 @@ class Progress {
   }
 }
 
+/// Full gamification snapshot for the Progress dashboard.
+class Stats {
+  final Progress progress;
+  final int streak;
+  final int freezes;
+  final int dailyLessons;
+  final int dailyXp;
+  final bool dailyPerfect;
+  const Stats({
+    required this.progress,
+    required this.streak,
+    required this.freezes,
+    required this.dailyLessons,
+    required this.dailyXp,
+    required this.dailyPerfect,
+  });
+
+  static const empty = Stats(
+    progress: Progress.empty,
+    streak: 0,
+    freezes: 1,
+    dailyLessons: 0,
+    dailyXp: 0,
+    dailyPerfect: false,
+  );
+
+  int get lessonsCompleted =>
+      progress.best.values.where((v) => v >= kPassScore).length;
+  int get perfectLessons => progress.best.values.where((v) => v == 10).length;
+  int get wordsLearned => lessonsCompleted * 10; // ~10 glossary words / unit
+}
+
+String _dayKey(DateTime d) =>
+    '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+
 class LeaderboardEntry {
   final String uid;
   final String name;
@@ -114,26 +149,87 @@ class ProgressService {
     return Progress(best);
   }
 
-  /// Records an attempt (keeps the best per lesson), updates XP and the
-  /// public leaderboard. Returns the updated progress.
+  /// Reads the full gamification snapshot for the Progress dashboard.
+  Future<Stats> loadStats() async {
+    final uid = _uid;
+    if (uid == null) return Stats.empty;
+    final doc = await _db.collection('users').doc(uid).get();
+    final data = doc.data() ?? {};
+    final raw = (data['lessonBest'] as Map?)?.cast<String, dynamic>() ?? {};
+    final best = raw.map((k, v) => MapEntry(k, (v as num).toInt()));
+
+    final today = _dayKey(DateTime.now());
+    final yesterday =
+        _dayKey(DateTime.now().subtract(const Duration(days: 1)));
+    final lastActive = data['lastActive'] as String?;
+    var streak = (data['streak'] as num?)?.toInt() ?? 0;
+    if (lastActive != today && lastActive != yesterday) streak = 0; // lapsed
+
+    final isToday = (data['dailyDate'] as String?) == today;
+    return Stats(
+      progress: Progress(best),
+      streak: streak,
+      freezes: (data['freezes'] as num?)?.toInt() ?? 1,
+      dailyLessons: isToday ? (data['dailyLessons'] as num?)?.toInt() ?? 0 : 0,
+      dailyXp: isToday ? (data['dailyXp'] as num?)?.toInt() ?? 0 : 0,
+      dailyPerfect: isToday ? (data['dailyPerfect'] as bool?) ?? false : false,
+    );
+  }
+
+  /// Records an attempt (keeps the best per lesson), updates XP, streak,
+  /// daily quests, and the public leaderboards. Returns the updated progress.
   Future<Progress> recordResult(String lessonId, int correct) async {
     final uid = _uid;
     if (uid == null) return Progress.empty;
-    final current = await load();
-    final best = Map<String, int>.from(current.best);
+    final doc = await _db.collection('users').doc(uid).get();
+    final data = doc.data() ?? {};
+    final raw = (data['lessonBest'] as Map?)?.cast<String, dynamic>() ?? {};
+    final best = raw.map((k, v) => MapEntry(k, (v as num).toInt()));
+    final oldXp = Progress(best).totalXp;
     if (correct > (best[lessonId] ?? 0)) best[lessonId] = correct;
     final updated = Progress(best);
+    final delta = updated.totalXp - oldXp; // XP newly earned now
 
     final user = _auth.currentUser;
     final name = user?.displayName?.trim().isNotEmpty == true
         ? user!.displayName!.trim()
         : (user?.email?.split('@').first ?? 'Learner');
-    final delta = updated.totalXp - current.totalXp; // XP newly earned now
+
+    // ── Streak ──
+    final today = _dayKey(DateTime.now());
+    final yesterday =
+        _dayKey(DateTime.now().subtract(const Duration(days: 1)));
+    final lastActive = data['lastActive'] as String?;
+    var streak = (data['streak'] as num?)?.toInt() ?? 0;
+    if (lastActive == today) {
+      if (streak == 0) streak = 1;
+    } else if (lastActive == yesterday) {
+      streak += 1;
+    } else {
+      streak = 1;
+    }
+
+    // ── Daily quests ──
+    final sameDay = (data['dailyDate'] as String?) == today;
+    final dailyLessons =
+        (sameDay ? (data['dailyLessons'] as num?)?.toInt() ?? 0 : 0) + 1;
+    final dailyXp =
+        (sameDay ? (data['dailyXp'] as num?)?.toInt() ?? 0 : 0) +
+            (delta > 0 ? delta : 0);
+    final dailyPerfect =
+        (sameDay ? (data['dailyPerfect'] as bool?) ?? false : false) ||
+            correct == 10;
 
     await _db.collection('users').doc(uid).set({
       'lessonBest': best,
       'xp': updated.totalXp,
       'level': updated.level,
+      'streak': streak,
+      'lastActive': today,
+      'dailyDate': today,
+      'dailyLessons': dailyLessons,
+      'dailyXp': dailyXp,
+      'dailyPerfect': dailyPerfect,
       'updatedAt': FieldValue.serverTimestamp(),
     }, SetOptions(merge: true));
 
