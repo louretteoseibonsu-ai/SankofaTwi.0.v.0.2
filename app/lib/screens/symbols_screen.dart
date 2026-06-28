@@ -225,13 +225,25 @@ class _WeeklyTop3Strip extends StatelessWidget {
                             ),
                             const SizedBox(width: 10),
                             Expanded(
-                              child: Text(list[i].name,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                      color: ink)),
+                              child: Row(
+                                children: [
+                                  Flexible(
+                                    child: Text(list[i].name,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 14,
+                                            color: ink)),
+                                  ),
+                                  if (list[i].isBot)
+                                    const Padding(
+                                      padding: EdgeInsets.only(left: 5),
+                                      child: Icon(Icons.circle,
+                                          size: 4.5, color: silver),
+                                    ),
+                                ],
+                              ),
                             ),
                             Text('${list[i].xp} XP',
                                 style: const TextStyle(

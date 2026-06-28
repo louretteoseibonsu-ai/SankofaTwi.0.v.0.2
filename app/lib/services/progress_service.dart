@@ -60,19 +60,21 @@ class _Ghost {
   const _Ghost(this.name, this.glyph, this.hex, this.xp, this.weeklyXp);
 }
 
+// XP is spread low→high so a real beginner (~100–200 XP) lands mid-pack,
+// not dead last. Roughly half the bots sit below a typical starter score.
 const List<_Ghost> _kGhosts = [
-  _Ghost('Kwame Mensah', 'gyenyame', 'E2725B', 480, 120),
-  _Ghost('Ama Owusu', 'sankofa', '2E6B3B', 430, 95),
-  _Ghost('Yaw Boateng', 'dwennimmen', 'E3A92C', 390, 150),
-  _Ghost('Akosua Sarpong', 'akoma', '9B2D2A', 360, 60),
-  _Ghost('Kojo Asante', 'nyame_dua', '5A5E63', 320, 110),
-  _Ghost('Abena Frimpong', 'gyenyame', '2B2B2D', 300, 45),
-  _Ghost('Kwabena Osei', 'sankofa', 'E3A92C', 270, 85),
-  _Ghost('Esi Adjei', 'dwennimmen', 'E2725B', 240, 100),
-  _Ghost('Yaa Danso', 'akoma', '2E6B3B', 210, 35),
-  _Ghost('Kofi Appiah', 'nyame_dua', '9B2D2A', 180, 70),
-  _Ghost('Adwoa Ofori', 'gyenyame', '5A5E63', 150, 50),
-  _Ghost('Fiifi Quaye', 'sankofa', '2B2B2D', 120, 25),
+  _Ghost('Kwame Mensah', 'gyenyame', 'E2725B', 560, 240),
+  _Ghost('Ama Owusu', 'sankofa', '2E6B3B', 480, 210),
+  _Ghost('Yaw Boateng', 'dwennimmen', 'E3A92C', 400, 180),
+  _Ghost('Akosua Sarpong', 'akoma', '9B2D2A', 320, 150),
+  _Ghost('Kojo Asante', 'nyame_dua', '5A5E63', 260, 130),
+  _Ghost('Abena Frimpong', 'gyenyame', '2B2B2D', 210, 110),
+  _Ghost('Kwabena Osei', 'sankofa', 'E3A92C', 175, 90),
+  _Ghost('Esi Adjei', 'dwennimmen', 'E2725B', 145, 70),
+  _Ghost('Yaa Danso', 'akoma', '2E6B3B', 120, 55),
+  _Ghost('Kofi Appiah', 'nyame_dua', '9B2D2A', 100, 40),
+  _Ghost('Adwoa Ofori', 'gyenyame', '5A5E63', 70, 25),
+  _Ghost('Fiifi Quaye', 'sankofa', '2B2B2D', 40, 15),
 ];
 
 List<LeaderboardEntry> _withGhosts(

@@ -82,13 +82,25 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(isMe ? '${e.name}  (you)' : e.name,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 15,
-                                  color: ink)),
+                          Row(
+                            children: [
+                              Flexible(
+                                child: Text(isMe ? '${e.name}  (you)' : e.name,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 15,
+                                        color: ink)),
+                              ),
+                              if (e.isBot)
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 5),
+                                  child: Icon(Icons.circle,
+                                      size: 5, color: silver),
+                                ),
+                            ],
+                          ),
                           Text('Level ${e.level}',
                               style:
                                   const TextStyle(color: slate, fontSize: 12)),
