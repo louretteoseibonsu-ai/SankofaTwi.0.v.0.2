@@ -121,13 +121,16 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final birdSvg = kAdinkraSymbols.firstWhere((s) => s.id == 'sankofa').svg;
     return Scaffold(
-      body: Column(
-        children: [
-          KenteStrip(height: MediaQuery.of(context).padding.top + 60),
-          Expanded(
-            child: SafeArea(
-              top: false,
-              child: Center(
+      appBar: AppBar(
+        toolbarHeight: 60,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        flexibleSpace: const KenteHeaderBackground(),
+      ),
+      body: SafeArea(
+        top: false,
+        child: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(24),
             child: ConstrainedBox(
@@ -251,10 +254,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         ),
-              ),
-            ),
-          ],
-        ),
-      );
+      ),
+    );
   }
 }
