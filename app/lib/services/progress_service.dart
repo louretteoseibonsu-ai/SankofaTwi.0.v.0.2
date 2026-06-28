@@ -38,13 +38,61 @@ class LeaderboardEntry {
   final String? photoURL;
   final int xp;
   final int level;
+  final bool isBot;
   const LeaderboardEntry({
     required this.uid,
     required this.name,
     this.photoURL,
     required this.xp,
     required this.level,
+    this.isBot = false,
   });
+}
+
+/// Artificial players so a new leaderboard feels alive. They blend into the
+/// rankings client-side and never write to Firestore.
+class _Ghost {
+  final String name;
+  final String glyph;
+  final String hex;
+  final int xp;
+  final int weeklyXp;
+  const _Ghost(this.name, this.glyph, this.hex, this.xp, this.weeklyXp);
+}
+
+const List<_Ghost> _kGhosts = [
+  _Ghost('Kwame Mensah', 'gyenyame', 'E2725B', 480, 120),
+  _Ghost('Ama Owusu', 'sankofa', '2E6B3B', 430, 95),
+  _Ghost('Yaw Boateng', 'dwennimmen', 'E3A92C', 390, 150),
+  _Ghost('Akosua Sarpong', 'akoma', '9B2D2A', 360, 60),
+  _Ghost('Kojo Asante', 'nyame_dua', '5A5E63', 320, 110),
+  _Ghost('Abena Frimpong', 'gyenyame', '2B2B2D', 300, 45),
+  _Ghost('Kwabena Osei', 'sankofa', 'E3A92C', 270, 85),
+  _Ghost('Esi Adjei', 'dwennimmen', 'E2725B', 240, 100),
+  _Ghost('Yaa Danso', 'akoma', '2E6B3B', 210, 35),
+  _Ghost('Kofi Appiah', 'nyame_dua', '9B2D2A', 180, 70),
+  _Ghost('Adwoa Ofori', 'gyenyame', '5A5E63', 150, 50),
+  _Ghost('Fiifi Quaye', 'sankofa', '2B2B2D', 120, 25),
+];
+
+List<LeaderboardEntry> _withGhosts(
+  List<LeaderboardEntry> real, {
+  required bool weekly,
+  required int limit,
+}) {
+  final ghosts = _kGhosts.map((g) {
+    final xp = weekly ? g.weeklyXp : g.xp;
+    return LeaderboardEntry(
+      uid: 'ghost_${g.name}',
+      name: g.name,
+      photoURL: 'adinkra://${g.glyph}/${g.hex}',
+      xp: xp,
+      level: 1 + xp ~/ 100,
+      isBot: true,
+    );
+  });
+  final all = [...real, ...ghosts]..sort((a, b) => b.xp.compareTo(a.xp));
+  return all.take(limit).toList();
 }
 
 class ProgressService {
@@ -135,16 +183,19 @@ class ProgressService {
         .orderBy('xp', descending: true)
         .limit(limit)
         .snapshots()
-        .map((s) => s.docs.map((d) {
-              final m = d.data();
-              return LeaderboardEntry(
-                uid: d.id,
-                name: (m['name'] ?? 'Learner') as String,
-                photoURL: m['photoURL'] as String?,
-                xp: (m['xp'] as num?)?.toInt() ?? 0,
-                level: (m['level'] as num?)?.toInt() ?? 1,
-              );
-            }).toList());
+        .map((s) {
+      final real = s.docs.map((d) {
+        final m = d.data();
+        return LeaderboardEntry(
+          uid: d.id,
+          name: (m['name'] ?? 'Learner') as String,
+          photoURL: m['photoURL'] as String?,
+          xp: (m['xp'] as num?)?.toInt() ?? 0,
+          level: (m['level'] as num?)?.toInt() ?? 1,
+        );
+      }).toList();
+      return _withGhosts(real, weekly: true, limit: limit);
+    });
   }
 
   Stream<List<LeaderboardEntry>> leaderboard({int limit = 50}) {
@@ -153,15 +204,18 @@ class ProgressService {
         .orderBy('xp', descending: true)
         .limit(limit)
         .snapshots()
-        .map((s) => s.docs.map((d) {
-              final m = d.data();
-              return LeaderboardEntry(
-                uid: d.id,
-                name: (m['name'] ?? 'Learner') as String,
-                photoURL: m['photoURL'] as String?,
-                xp: (m['xp'] as num?)?.toInt() ?? 0,
-                level: (m['level'] as num?)?.toInt() ?? 1,
-              );
-            }).toList());
+        .map((s) {
+      final real = s.docs.map((d) {
+        final m = d.data();
+        return LeaderboardEntry(
+          uid: d.id,
+          name: (m['name'] ?? 'Learner') as String,
+          photoURL: m['photoURL'] as String?,
+          xp: (m['xp'] as num?)?.toInt() ?? 0,
+          level: (m['level'] as num?)?.toInt() ?? 1,
+        );
+      }).toList();
+      return _withGhosts(real, weekly: false, limit: limit);
+    });
   }
 }
