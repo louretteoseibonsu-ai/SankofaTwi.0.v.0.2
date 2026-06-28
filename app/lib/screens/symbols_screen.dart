@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../data/adinkra_symbols.dart';
+import '../services/progress_service.dart';
 import '../theme.dart';
 import '../widgets/adinkra_glyph.dart';
 import '../widgets/floating_card.dart';
+import 'leaderboard_screen.dart';
 
 class SymbolsScreen extends StatelessWidget {
   const SymbolsScreen({super.key});
@@ -43,6 +45,7 @@ class SymbolsScreen extends StatelessWidget {
             );
           },
         ),
+        const _WeeklyTop3Strip(),
         const Padding(
           padding: EdgeInsets.fromLTRB(20, 0, 20, 4),
           child: Text(
@@ -148,6 +151,103 @@ class SymbolsScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Compact "Top 3 this week" strip; taps through to the full leaderboard.
+class _WeeklyTop3Strip extends StatelessWidget {
+  const _WeeklyTop3Strip();
+
+  static const _medals = [Color(0xFFE3A92C), Color(0xFFB7BCC2), Color(0xFFC68A4E)];
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<List<LeaderboardEntry>>(
+      stream: ProgressService().weeklyTop(limit: 3),
+      builder: (context, snap) {
+        final list = snap.data ?? const [];
+        if (list.isEmpty) return const SizedBox.shrink();
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(20, 6, 20, 12),
+          child: Material(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(18),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(18),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => const LeaderboardScreen())),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(18),
+                  border: Border.all(color: silverLight, width: 1.2),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.emoji_events_outlined,
+                            size: 18, color: terracotta),
+                        const SizedBox(width: 8),
+                        const Expanded(
+                          child: Text('Top 3 this week',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 14,
+                                  color: ink)),
+                        ),
+                        Row(
+                          children: const [
+                            Text('Leaderboard',
+                                style: TextStyle(color: slate, fontSize: 12)),
+                            Icon(Icons.chevron_right,
+                                size: 18, color: Colors.black26),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    for (int i = 0; i < list.length; i++)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 6),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 11,
+                              backgroundColor: _medals[i],
+                              child: Text('${i + 1}',
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w800)),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(list[i].name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 14,
+                                      color: ink)),
+                            ),
+                            Text('${list[i].xp} XP',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 13,
+                                    color: charcoal)),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
