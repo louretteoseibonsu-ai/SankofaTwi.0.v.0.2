@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../data/adinkra_symbols.dart';
 import '../theme.dart';
@@ -7,13 +8,43 @@ import '../widgets/floating_card.dart';
 class SymbolsScreen extends StatelessWidget {
   const SymbolsScreen({super.key});
 
+  /// Time-aware Akan greeting.
+  String _greeting() {
+    final h = DateTime.now().hour;
+    if (h < 12) return 'Maakye'; // good morning
+    if (h < 17) return 'Maaha'; // good afternoon
+    return 'Maadwo'; // good evening
+  }
+
+  String _firstName(User? u) {
+    final dn = u?.displayName?.trim();
+    if (dn != null && dn.isNotEmpty) return dn.split(' ').first;
+    final email = u?.email;
+    if (email != null && email.contains('@')) return email.split('@').first;
+    return 'friend';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.userChanges(),
+          builder: (context, snap) {
+            final u = snap.data ?? FirebaseAuth.instance.currentUser;
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(20, 14, 20, 2),
+              child: Text(
+                '${_greeting()}, ${_firstName(u)}',
+                style: const TextStyle(
+                    fontWeight: FontWeight.w800, fontSize: 22, color: terracotta),
+              ),
+            );
+          },
+        ),
         const Padding(
-          padding: EdgeInsets.fromLTRB(20, 16, 20, 4),
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 4),
           child: Text(
             'Adinkra Symbols',
             style: TextStyle(fontWeight: FontWeight.w800, fontSize: 26, color: ink),
