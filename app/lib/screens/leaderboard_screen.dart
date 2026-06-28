@@ -5,23 +5,63 @@ import '../data/adinkra_symbols.dart';
 import '../services/progress_service.dart';
 import '../theme.dart';
 
-class LeaderboardScreen extends StatefulWidget {
+/// Pushed full-screen leaderboard (with its own app bar + back button).
+class LeaderboardScreen extends StatelessWidget {
   const LeaderboardScreen({super.key});
 
   @override
-  State<LeaderboardScreen> createState() => _LeaderboardScreenState();
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      appBar: null,
+      body: SafeArea(
+        child: Column(
+          children: [
+            _LbHeader(),
+            Expanded(child: LeaderboardView()),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
-class _LeaderboardScreenState extends State<LeaderboardScreen> {
+class _LbHeader extends StatelessWidget {
+  const _LbHeader();
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 8, 16, 0),
+      child: Row(
+        children: [
+          IconButton(
+            icon: const Icon(Icons.arrow_back, color: charcoal),
+            onPressed: () => Navigator.of(context).maybePop(),
+          ),
+          const Text('Leaderboard',
+              style: TextStyle(
+                  fontWeight: FontWeight.w800, fontSize: 20, color: charcoal)),
+        ],
+      ),
+    );
+  }
+}
+
+/// Body-only leaderboard (no Scaffold) — used inside the app shell tab.
+class LeaderboardView extends StatefulWidget {
+  const LeaderboardView({super.key});
+
+  @override
+  State<LeaderboardView> createState() => _LeaderboardViewState();
+}
+
+class _LeaderboardViewState extends State<LeaderboardView> {
   final _service = ProgressService();
   bool _weekly = true;
 
   @override
   Widget build(BuildContext context) {
     final me = FirebaseAuth.instance.currentUser?.uid;
-    return Scaffold(
-      appBar: AppBar(title: const Text('Leaderboard')),
-      body: Column(
+    return Column(
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
@@ -121,8 +161,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
             ),
           ),
         ],
-      ),
-    );
+      );
   }
 }
 
