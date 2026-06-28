@@ -5,6 +5,7 @@ import 'theme.dart';
 import 'widgets/app_avatar.dart';
 import 'widgets/kente_pattern.dart';
 import 'screens/profile_screen.dart';
+import 'screens/journey_screen.dart';
 import 'screens/symbols_screen.dart';
 import 'screens/lessons_screen.dart';
 import 'screens/translate_screen.dart';
@@ -26,9 +27,10 @@ class AppShell extends StatefulWidget {
 }
 
 class _AppShellState extends State<AppShell> {
-  int _index = 0;
+  int _index = 1; // land on Symbols (home); Journey is in the menu
 
   static const _dest = [
+    _Dest('Journey', Icons.route_outlined),
     _Dest('Symbols', Icons.auto_awesome_outlined),
     _Dest('Lessons', Icons.menu_book_outlined),
     _Dest('Translate', Icons.translate_outlined),
@@ -38,6 +40,7 @@ class _AppShellState extends State<AppShell> {
   ];
 
   static const _screens = [
+    JourneyScreen(),
     SymbolsScreen(),
     LessonsScreen(),
     TranslateScreen(),
