@@ -1,0 +1,47 @@
+{
+  "unit_id": "unit_023",
+  "unit_title": "Ayie: Funerals & Condolences",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "ayie",
+    "gloss": "A funeral — a major communal gathering to honour the dead and console the family.",
+    "phonetic_bridge": { "pronunciation": "a-yie" },
+    "example_sentences": [
+      "Yɛrekɔ ayie.",
+      "Due, due."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Offering condolences",
+    "explanation": "An 'ayie' (funeral) is a major Akan event honouring the departed. To offer sympathy you say 'Due' (condolences). The deceased is 'owufoɔ' and the revered ancestors are 'nsamanfoɔ'.",
+    "patterns": [
+      "Due! = My condolences",
+      "owuo = death · wu = to die",
+      "owufoɔ (the deceased)"
+    ]
+  },
+  "lineage_challenges": [
+    { "prompt": "How do you say 'funeral'?", "type": "recall", "options": ["ayie", "aware", "afahyɛ", "Bronya"], "correct_index": 0 },
+    { "prompt": "'owuo' means:", "type": "concept_match", "options": ["death", "birth", "marriage", "joy"], "correct_index": 0 },
+    { "prompt": "How do you offer condolences?", "type": "recall", "options": ["Due!", "Akwaaba!", "Ayɛkoo!", "Medaase!"], "correct_index": 0 },
+    { "prompt": "Which verb means 'to die'?", "type": "recall", "options": ["wu", "ware", "su", "kɔ"], "correct_index": 0 },
+    { "prompt": "'owufoɔ' means:", "type": "concept_match", "options": ["the deceased", "the elder", "the guest", "the chief"], "correct_index": 0 },
+    { "prompt": "Who are the 'nsamanfoɔ'?", "type": "concept_match", "options": ["the ancestors", "the mourners", "the family", "the drummers"], "correct_index": 0 },
+    { "prompt": "Which verb means 'to cry'?", "type": "recall", "options": ["su", "didi", "tie", "sua"], "correct_index": 0 },
+    { "prompt": "'sie' means:", "type": "concept_match", "options": ["to bury", "to sing", "to cook", "to read"], "correct_index": 0 },
+    { "prompt": "What is 'kuntunkuni'?", "type": "concept_match", "options": ["dark mourning cloth", "a drum", "a feast", "a song"], "correct_index": 0 },
+    { "prompt": "The wider family that gathers is the:", "type": "recall", "options": ["abusua", "ayeforɔ", "sukuu", "dwam"], "correct_index": 0 }
+  ],
+  "glossary": [
+    { "twi": "ayie", "en": "funeral" },
+    { "twi": "owuo", "en": "death" },
+    { "twi": "wu", "en": "to die" },
+    { "twi": "owufoɔ", "en": "the deceased" },
+    { "twi": "nsamanfoɔ", "en": "the ancestors" },
+    { "twi": "Due!", "en": "condolences" },
+    { "twi": "su", "en": "to cry" },
+    { "twi": "sie", "en": "to bury" },
+    { "twi": "kuntunkuni", "en": "dark mourning cloth" },
+    { "twi": "abusua", "en": "family / clan" }
+  ]
+}

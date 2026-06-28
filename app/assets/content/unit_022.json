@@ -1,0 +1,47 @@
+{
+  "unit_id": "unit_022",
+  "unit_title": "Ayeforɔhyia: Weddings",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "ayeforɔhyia",
+    "gloss": "A wedding — the joining of two families in marriage.",
+    "phonetic_bridge": { "pronunciation": "aye-fro-hyia" },
+    "example_sentences": [
+      "Yɛrekɔ ayeforɔhyia.",
+      "Wɔware nnɛ."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about marriage",
+    "explanation": "Marriage is 'aware'; the verb 'to marry' is 'ware'. A wedding ceremony is 'ayeforɔhyia', the bride is 'ayeforɔ', and 'tiri nsa' is the customary drink that seals the union between families.",
+    "patterns": [
+      "ware = to marry",
+      "aware = marriage",
+      "okunu (husband) · ɔyere (wife)"
+    ]
+  },
+  "lineage_challenges": [
+    { "prompt": "How do you say 'wedding'?", "type": "recall", "options": ["ayeforɔhyia", "ayie", "afahyɛ", "Bronya"], "correct_index": 0 },
+    { "prompt": "'aware' means:", "type": "concept_match", "options": ["marriage", "funeral", "birthday", "festival"], "correct_index": 0 },
+    { "prompt": "Which verb means 'to marry'?", "type": "recall", "options": ["ware", "didi", "kɔ", "sua"], "correct_index": 0 },
+    { "prompt": "'ayeforɔ' means:", "type": "concept_match", "options": ["bride", "groom", "elder", "guest"], "correct_index": 0 },
+    { "prompt": "How do you say 'husband'?", "type": "recall", "options": ["okunu", "ɔyere", "agya", "nana"], "correct_index": 0 },
+    { "prompt": "How do you say 'wife'?", "type": "recall", "options": ["ɔyere", "okunu", "ɛna", "ɔba"], "correct_index": 0 },
+    { "prompt": "'ɔdɔ' means:", "type": "concept_match", "options": ["love", "ring", "drink", "joy"], "correct_index": 0 },
+    { "prompt": "How do you say 'ring'?", "type": "recall", "options": ["kawa", "akoma", "twene", "krataa"], "correct_index": 0 },
+    { "prompt": "What is 'tiri nsa'?", "type": "concept_match", "options": ["the customary marriage drink", "a wedding cake", "a song", "a dance"], "correct_index": 0 },
+    { "prompt": "How do you say 'congratulations'?", "type": "recall", "options": ["Ayɛkoo!", "Daabi", "Due!", "Medaase"], "correct_index": 0 }
+  ],
+  "glossary": [
+    { "twi": "ayeforɔhyia", "en": "wedding" },
+    { "twi": "ayeforɔ", "en": "bride" },
+    { "twi": "aware", "en": "marriage" },
+    { "twi": "ware", "en": "to marry" },
+    { "twi": "okunu", "en": "husband" },
+    { "twi": "ɔyere", "en": "wife" },
+    { "twi": "ɔdɔ", "en": "love" },
+    { "twi": "kawa", "en": "ring" },
+    { "twi": "tiri nsa", "en": "customary marriage drink" },
+    { "twi": "Ayɛkoo!", "en": "congratulations" }
+  ]
+}

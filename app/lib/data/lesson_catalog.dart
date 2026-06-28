@@ -122,6 +122,17 @@ const List<LessonCategory> kCategories = [
     ],
   ),
   LessonCategory(
+    id: 'occasions',
+    name: 'Special Occasions',
+    blurb: 'Birthdays, Christmas, weddings, and funerals.',
+    icon: Icons.celebration_outlined,
+    lessons: [
+      Lesson(id: 'unit_021', title: 'Celebrations', subtitle: 'Afahyɛ', asset: 'assets/content/unit_021.json', categoryId: 'occasions'),
+      Lesson(id: 'unit_022', title: 'Weddings', subtitle: 'Ayeforɔhyia', asset: 'assets/content/unit_022.json', categoryId: 'occasions'),
+      Lesson(id: 'unit_023', title: 'Funerals & Condolences', subtitle: 'Ayie', asset: 'assets/content/unit_023.json', categoryId: 'occasions'),
+    ],
+  ),
+  LessonCategory(
     id: 'numbers',
     name: 'Numbers & Counting',
     blurb: 'Count from one all the way to one hundred.',
