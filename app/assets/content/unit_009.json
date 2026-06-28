@@ -1,0 +1,136 @@
+{
+  "unit_id": "unit_009",
+  "unit_title": "Akontaabuo: Numbers 51–60",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "aduonum baako",
+    "gloss": "The number 51. This unit covers 51 through 60.",
+    "phonetic_bridge": {
+      "pronunciation": "aduonum baako"
+    },
+    "example_sentences": [
+      "aduonum baako, aduonum mmienu, aduonum mmiɛnsa."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Counting 51 to 60",
+    "explanation": "Tens are built on a base word (edu 10, aduonu 20, aduasa 30, aduanan 40, aduonum 50, aduosia 60, aduoson 70, aduowɔtwe 80, aduokron 90, ɔha 100). From 21 upward a number is the tens word plus the unit, e.g. 'aduonu baako' = 21.",
+    "patterns": [
+      "aduonum baako = 51",
+      "aduonum enum = 55",
+      "aduosia = 60"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say '51' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduonum baako",
+        "aduanan",
+        "aduowɔtwe ɛnan",
+        "aduoson enum"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '52' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduonum mmienu",
+        "aduowɔtwe nkron",
+        "aduonum nkron",
+        "aduasa nson"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '53' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduonum mmiɛnsa",
+        "aduokron mmiɛnsa",
+        "aduonum",
+        "aduowɔtwe nson"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '54' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduonum ɛnan",
+        "aduanan enum",
+        "mmiɛnsa",
+        "aduosia baako"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '55' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduonum enum",
+        "aduanan nsia",
+        "aduonu mmienu",
+        "aduowɔtwe"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '56' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduonum nsia",
+        "dunum",
+        "aduosia enum",
+        "nwɔtwe"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '57' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduonum nson",
+        "aduonu nwɔtwe",
+        "ɔha",
+        "aduasa nson"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '58' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduonum nwɔtwe",
+        "dunson",
+        "aduokron nsia",
+        "aduasa mmienu"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '59' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduonum nkron",
+        "aduonum baako",
+        "aduosia enum",
+        "dubaako"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '60' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduosia",
+        "aduonu mmienu",
+        "aduonum nwɔtwe",
+        "aduonum mmienu"
+      ],
+      "correct_index": 0
+    }
+  ]
+}

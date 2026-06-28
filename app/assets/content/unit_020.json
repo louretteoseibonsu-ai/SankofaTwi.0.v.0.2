@@ -1,0 +1,136 @@
+{
+  "unit_id": "unit_020",
+  "unit_title": "Music",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "dwom",
+    "gloss": "song / music — Songs, drums, and dancing.",
+    "phonetic_bridge": {
+      "pronunciation": "dwom"
+    },
+    "example_sentences": [
+      "dwom, to dwom, twene."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about music",
+    "explanation": "Key music vocabulary: dwom (song / music), to dwom (to sing), twene (drum), saw (to dance), ɛnne (voice), ɔdwontofoɔ (singer).",
+    "patterns": [
+      "dwom = song / music",
+      "to dwom = to sing",
+      "twene = drum"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say 'song / music' in Twi?",
+      "type": "recall",
+      "options": [
+        "dwom",
+        "ɛnne",
+        "to dwom",
+        "bɔ twene"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'to dwom' mean?",
+      "type": "recall",
+      "options": [
+        "to sing",
+        "to dance",
+        "singer",
+        "nice / sweet"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'drum' in Twi?",
+      "type": "recall",
+      "options": [
+        "twene",
+        "dɛ",
+        "saw",
+        "dwom"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'saw' mean?",
+      "type": "recall",
+      "options": [
+        "to dance",
+        "to listen",
+        "drum",
+        "voice"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'voice' in Twi?",
+      "type": "recall",
+      "options": [
+        "ɛnne",
+        "tie",
+        "twene",
+        "ɔdwontofoɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'ɔdwontofoɔ' mean?",
+      "type": "recall",
+      "options": [
+        "singer",
+        "song / music",
+        "nice / sweet",
+        "to dance"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to listen' in Twi?",
+      "type": "recall",
+      "options": [
+        "tie",
+        "ɔdwontofoɔ",
+        "ɛnne",
+        "dwom"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'atɛntɛbɛn' mean?",
+      "type": "recall",
+      "options": [
+        "flute",
+        "song / music",
+        "to sing",
+        "to dance"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to play a drum' in Twi?",
+      "type": "recall",
+      "options": [
+        "bɔ twene",
+        "to dwom",
+        "ɛnne",
+        "twene"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'dɛ' mean?",
+      "type": "recall",
+      "options": [
+        "nice / sweet",
+        "drum",
+        "to sing",
+        "song / music"
+      ],
+      "correct_index": 0
+    }
+  ]
+}

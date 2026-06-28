@@ -1,0 +1,136 @@
+{
+  "unit_id": "unit_014",
+  "unit_title": "Dating & Love",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "ɔdɔ",
+    "gloss": "love — Words of affection and relationships.",
+    "phonetic_bridge": {
+      "pronunciation": "ɔdɔ"
+    },
+    "example_sentences": [
+      "ɔdɔ, Medɔ wo, akoma."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about dating & love",
+    "explanation": "Key dating & love vocabulary: ɔdɔ (love), Medɔ wo (I love you), akoma (heart), aware (marriage), ware (to marry), mpena (sweetheart / lover).",
+    "patterns": [
+      "ɔdɔ = love",
+      "Medɔ wo = I love you",
+      "akoma = heart"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say 'love' in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔdɔ",
+        "anigyeɛ",
+        "Wobɛware me?",
+        "ware"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'Medɔ wo' mean?",
+      "type": "recall",
+      "options": [
+        "I love you",
+        "Will you marry me?",
+        "to marry",
+        "heart"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'heart' in Twi?",
+      "type": "recall",
+      "options": [
+        "akoma",
+        "Wobɛware me?",
+        "anigyeɛ",
+        "adamfo"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'aware' mean?",
+      "type": "recall",
+      "options": [
+        "marriage",
+        "heart",
+        "I love you",
+        "to marry"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to marry' in Twi?",
+      "type": "recall",
+      "options": [
+        "ware",
+        "mpena",
+        "akoma",
+        "ɔdɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'mpena' mean?",
+      "type": "recall",
+      "options": [
+        "sweetheart / lover",
+        "Will you marry me?",
+        "love",
+        "to marry"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'friend' in Twi?",
+      "type": "recall",
+      "options": [
+        "adamfo",
+        "fɛ",
+        "anigyeɛ",
+        "mpena"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'fɛ' mean?",
+      "type": "recall",
+      "options": [
+        "beautiful",
+        "heart",
+        "love",
+        "friend"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'joy' in Twi?",
+      "type": "recall",
+      "options": [
+        "anigyeɛ",
+        "Wobɛware me?",
+        "Medɔ wo",
+        "ɔdɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'Wobɛware me?' mean?",
+      "type": "recall",
+      "options": [
+        "Will you marry me?",
+        "love",
+        "marriage",
+        "I love you"
+      ],
+      "correct_index": 0
+    }
+  ]
+}

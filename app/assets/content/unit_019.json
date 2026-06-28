@@ -1,0 +1,136 @@
+{
+  "unit_id": "unit_019",
+  "unit_title": "Books",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "nwoma",
+    "gloss": "book — Reading and writing.",
+    "phonetic_bridge": {
+      "pronunciation": "nwoma"
+    },
+    "example_sentences": [
+      "nwoma, kenkan, kyerɛw."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about books",
+    "explanation": "Key books vocabulary: nwoma (book), kenkan (to read), kyerɛw (to write), krataa (paper), twerɛdua (pen), asɛmfua (word).",
+    "patterns": [
+      "nwoma = book",
+      "kenkan = to read",
+      "kyerɛw = to write"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say 'book' in Twi?",
+      "type": "recall",
+      "options": [
+        "nwoma",
+        "kyerɛw",
+        "din",
+        "kenkan"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'kenkan' mean?",
+      "type": "recall",
+      "options": [
+        "to read",
+        "to write",
+        "school",
+        "book"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to write' in Twi?",
+      "type": "recall",
+      "options": [
+        "kyerɛw",
+        "sukuu",
+        "asɛmfua",
+        "kenkan"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'krataa' mean?",
+      "type": "recall",
+      "options": [
+        "paper",
+        "name",
+        "word",
+        "pen"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'pen' in Twi?",
+      "type": "recall",
+      "options": [
+        "twerɛdua",
+        "sua",
+        "asɛmfua",
+        "sukuu"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'asɛmfua' mean?",
+      "type": "recall",
+      "options": [
+        "word",
+        "to write",
+        "to read",
+        "to learn"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'story' in Twi?",
+      "type": "recall",
+      "options": [
+        "anansesɛm",
+        "krataa",
+        "sua",
+        "twerɛdua"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'din' mean?",
+      "type": "recall",
+      "options": [
+        "name",
+        "to read",
+        "pen",
+        "school"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to learn' in Twi?",
+      "type": "recall",
+      "options": [
+        "sua",
+        "krataa",
+        "nwoma",
+        "din"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'sukuu' mean?",
+      "type": "recall",
+      "options": [
+        "school",
+        "pen",
+        "story",
+        "paper"
+      ],
+      "correct_index": 0
+    }
+  ]
+}

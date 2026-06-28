@@ -1,0 +1,136 @@
+{
+  "unit_id": "unit_017",
+  "unit_title": "Travel",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "akwantuo",
+    "gloss": "journey / travel — Getting around and going places.",
+    "phonetic_bridge": {
+      "pronunciation": "akwantuo"
+    },
+    "example_sentences": [
+      "akwantuo, ɛkwan, kaa."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about travel",
+    "explanation": "Key travel vocabulary: akwantuo (journey / travel), ɛkwan (road / way), kaa (car), kɔ (to go), bra (to come), Worekɔ he? (Where are you going?).",
+    "patterns": [
+      "akwantuo = journey / travel",
+      "ɛkwan = road / way",
+      "kaa = car"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say 'journey / travel' in Twi?",
+      "type": "recall",
+      "options": [
+        "akwantuo",
+        "kuro",
+        "bra",
+        "wimhyɛn"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'ɛkwan' mean?",
+      "type": "recall",
+      "options": [
+        "road / way",
+        "to go",
+        "market",
+        "aeroplane"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'car' in Twi?",
+      "type": "recall",
+      "options": [
+        "kaa",
+        "dwam",
+        "ɛkwan",
+        "bra"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'kɔ' mean?",
+      "type": "recall",
+      "options": [
+        "to go",
+        "market",
+        "to come",
+        "journey / travel"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to come' in Twi?",
+      "type": "recall",
+      "options": [
+        "bra",
+        "Worekɔ he?",
+        "kuro",
+        "akwantuo"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'Worekɔ he?' mean?",
+      "type": "recall",
+      "options": [
+        "Where are you going?",
+        "to go",
+        "car",
+        "town"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'aeroplane' in Twi?",
+      "type": "recall",
+      "options": [
+        "wimhyɛn",
+        "ɛkwan",
+        "akwantuo",
+        "kuro"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'dwam' mean?",
+      "type": "recall",
+      "options": [
+        "market",
+        "to go",
+        "home / house",
+        "car"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'home / house' in Twi?",
+      "type": "recall",
+      "options": [
+        "fie",
+        "akwantuo",
+        "Worekɔ he?",
+        "wimhyɛn"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'kuro' mean?",
+      "type": "recall",
+      "options": [
+        "town",
+        "to come",
+        "aeroplane",
+        "journey / travel"
+      ],
+      "correct_index": 0
+    }
+  ]
+}

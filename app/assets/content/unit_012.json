@@ -1,0 +1,136 @@
+{
+  "unit_id": "unit_012",
+  "unit_title": "Akontaabuo: Numbers 81–90",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "aduowɔtwe baako",
+    "gloss": "The number 81. This unit covers 81 through 90.",
+    "phonetic_bridge": {
+      "pronunciation": "aduowɔtwe baako"
+    },
+    "example_sentences": [
+      "aduowɔtwe baako, aduowɔtwe mmienu, aduowɔtwe mmiɛnsa."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Counting 81 to 90",
+    "explanation": "Tens are built on a base word (edu 10, aduonu 20, aduasa 30, aduanan 40, aduonum 50, aduosia 60, aduoson 70, aduowɔtwe 80, aduokron 90, ɔha 100). From 21 upward a number is the tens word plus the unit, e.g. 'aduonu baako' = 21.",
+    "patterns": [
+      "aduowɔtwe baako = 81",
+      "aduowɔtwe enum = 85",
+      "aduokron = 90"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say '81' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduowɔtwe baako",
+        "nson",
+        "dunan",
+        "baako"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '82' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduowɔtwe mmienu",
+        "aduoson mmiɛnsa",
+        "aduonu",
+        "aduosia nkron"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '83' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduowɔtwe mmiɛnsa",
+        "dumiɛnsa",
+        "aduanan nson",
+        "aduoson nkron"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '84' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduowɔtwe ɛnan",
+        "ɛnan",
+        "edu",
+        "aduonu nson"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '85' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduowɔtwe enum",
+        "aduoson nkron",
+        "aduanan nkron",
+        "aduonu"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '86' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduowɔtwe nsia",
+        "aduowɔtwe mmienu",
+        "aduasa mmiɛnsa",
+        "aduanan enum"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '87' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduowɔtwe nson",
+        "aduoson nwɔtwe",
+        "aduanan nson",
+        "aduosia baako"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '88' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduowɔtwe nwɔtwe",
+        "dunsia",
+        "dunum",
+        "aduosia mmiɛnsa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '89' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduowɔtwe nkron",
+        "aduosia",
+        "aduosia mmienu",
+        "aduanan"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '90' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduokron",
+        "dubaako",
+        "dunkron",
+        "dunan"
+      ],
+      "correct_index": 0
+    }
+  ]
+}

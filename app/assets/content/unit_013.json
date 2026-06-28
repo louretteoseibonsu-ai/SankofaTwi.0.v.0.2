@@ -1,0 +1,136 @@
+{
+  "unit_id": "unit_013",
+  "unit_title": "Akontaabuo: Numbers 91–100",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "aduokron baako",
+    "gloss": "The number 91. This unit covers 91 through 100.",
+    "phonetic_bridge": {
+      "pronunciation": "aduokron baako"
+    },
+    "example_sentences": [
+      "aduokron baako, aduokron mmienu, aduokron mmiɛnsa."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Counting 91 to 100",
+    "explanation": "Tens are built on a base word (edu 10, aduonu 20, aduasa 30, aduanan 40, aduonum 50, aduosia 60, aduoson 70, aduowɔtwe 80, aduokron 90, ɔha 100). From 21 upward a number is the tens word plus the unit, e.g. 'aduonu baako' = 21.",
+    "patterns": [
+      "aduokron baako = 91",
+      "aduokron enum = 95",
+      "ɔha = 100"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say '91' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduokron baako",
+        "aduokron nson",
+        "aduanan ɛnan",
+        "aduokron nsia"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '92' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduokron mmienu",
+        "aduasa ɛnan",
+        "aduosia mmienu",
+        "aduowɔtwe nkron"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '93' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduokron mmiɛnsa",
+        "aduonu baako",
+        "aduosia nson",
+        "mmiɛnsa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '94' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduokron ɛnan",
+        "aduonu nson",
+        "aduosia nwɔtwe",
+        "aduanan nson"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '95' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduokron enum",
+        "dunkron",
+        "aduowɔtwe nkron",
+        "aduoson"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '96' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduokron nsia",
+        "ɛnan",
+        "aduokron nkron",
+        "aduosia nwɔtwe"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '97' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduokron nson",
+        "aduasa nkron",
+        "aduowɔtwe mmiɛnsa",
+        "dumienu"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '98' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduokron nwɔtwe",
+        "aduokron",
+        "aduasa ɛnan",
+        "aduosia nson"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '99' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduokron nkron",
+        "aduanan nson",
+        "aduonu mmienu",
+        "aduanan nsia"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '100' in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔha",
+        "aduokron nkron",
+        "aduonu nkron",
+        "aduosia nkron"
+      ],
+      "correct_index": 0
+    }
+  ]
+}

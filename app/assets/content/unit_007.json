@@ -1,0 +1,136 @@
+{
+  "unit_id": "unit_007",
+  "unit_title": "Akontaabuo: Numbers 31–40",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "aduasa baako",
+    "gloss": "The number 31. This unit covers 31 through 40.",
+    "phonetic_bridge": {
+      "pronunciation": "aduasa baako"
+    },
+    "example_sentences": [
+      "aduasa baako, aduasa mmienu, aduasa mmiɛnsa."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Counting 31 to 40",
+    "explanation": "Tens are built on a base word (edu 10, aduonu 20, aduasa 30, aduanan 40, aduonum 50, aduosia 60, aduoson 70, aduowɔtwe 80, aduokron 90, ɔha 100). From 21 upward a number is the tens word plus the unit, e.g. 'aduonu baako' = 21.",
+    "patterns": [
+      "aduasa baako = 31",
+      "aduasa enum = 35",
+      "aduanan = 40"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say '31' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduasa baako",
+        "aduowɔtwe baako",
+        "aduonu nson",
+        "aduosia enum"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '32' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduasa mmienu",
+        "aduowɔtwe nkron",
+        "aduoson",
+        "aduonum nsia"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '33' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduasa mmiɛnsa",
+        "aduanan mmienu",
+        "aduosia baako",
+        "aduoson nsia"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '34' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduasa ɛnan",
+        "aduosia",
+        "aduanan nwɔtwe",
+        "aduanan"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '35' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduasa enum",
+        "aduasa mmienu",
+        "aduonu ɛnan",
+        "aduokron baako"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '36' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduasa nsia",
+        "aduasa mmienu",
+        "dubaako",
+        "aduoson enum"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '37' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduasa nson",
+        "aduanan",
+        "aduosia nkron",
+        "aduosia enum"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '38' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduasa nwɔtwe",
+        "aduanan enum",
+        "aduokron enum",
+        "aduonum nkron"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '39' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduasa nkron",
+        "aduasa nson",
+        "aduoson nkron",
+        "edu"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '40' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduanan",
+        "dunsia",
+        "aduosia nson",
+        "aduonum enum"
+      ],
+      "correct_index": 0
+    }
+  ]
+}

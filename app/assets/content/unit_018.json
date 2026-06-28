@@ -1,0 +1,136 @@
+{
+  "unit_id": "unit_018",
+  "unit_title": "Cinema",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "sini",
+    "gloss": "film / movie — Watching films and shows.",
+    "phonetic_bridge": {
+      "pronunciation": "sini"
+    },
+    "example_sentences": [
+      "sini, mfonin, hwɛ."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about cinema",
+    "explanation": "Key cinema vocabulary: sini (film / movie), mfonin (picture / image), hwɛ (to watch), serew (to laugh), anansesɛm (story), Momma yɛnhwɛ (Let's watch).",
+    "patterns": [
+      "sini = film / movie",
+      "mfonin = picture / image",
+      "hwɛ = to watch"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say 'film / movie' in Twi?",
+      "type": "recall",
+      "options": [
+        "sini",
+        "hwɛ",
+        "bra",
+        "akonnwa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'mfonin' mean?",
+      "type": "recall",
+      "options": [
+        "picture / image",
+        "story",
+        "film / movie",
+        "Let's watch"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to watch' in Twi?",
+      "type": "recall",
+      "options": [
+        "hwɛ",
+        "anadwo",
+        "bra",
+        "Momma yɛnhwɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'serew' mean?",
+      "type": "recall",
+      "options": [
+        "to laugh",
+        "seat / chair",
+        "to watch",
+        "Let's watch"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'story' in Twi?",
+      "type": "recall",
+      "options": [
+        "anansesɛm",
+        "akonnwa",
+        "hwɛ",
+        "anigyeɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'Momma yɛnhwɛ' mean?",
+      "type": "recall",
+      "options": [
+        "Let's watch",
+        "enjoyment",
+        "to watch",
+        "night"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'night' in Twi?",
+      "type": "recall",
+      "options": [
+        "anadwo",
+        "hwɛ",
+        "anansesɛm",
+        "mfonin"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'anigyeɛ' mean?",
+      "type": "recall",
+      "options": [
+        "enjoyment",
+        "to laugh",
+        "to come",
+        "picture / image"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'seat / chair' in Twi?",
+      "type": "recall",
+      "options": [
+        "akonnwa",
+        "bra",
+        "serew",
+        "Momma yɛnhwɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'bra' mean?",
+      "type": "recall",
+      "options": [
+        "to come",
+        "night",
+        "enjoyment",
+        "story"
+      ],
+      "correct_index": 0
+    }
+  ]
+}

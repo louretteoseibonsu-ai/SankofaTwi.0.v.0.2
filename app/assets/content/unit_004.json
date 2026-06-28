@@ -1,0 +1,35 @@
+{
+  "unit_id": "unit_004",
+  "unit_title": "Abusuafoɔ: Family Members",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "ɛna",
+    "gloss": "Mother — the centre of the Akan matrilineal household.",
+    "phonetic_bridge": { "pronunciation": "ɛ-na" },
+    "example_sentences": [
+      "Me na ne m'agya wɔ fie.",
+      "Onua baa baako wɔ me."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Naming members of the abusua (family)",
+    "explanation": "Core kinship terms include ɛna (mother), agya (father), ɔba (child), onua (sibling), and nana (grandparent / elder). Gender is added with barima (male) or baa (female), e.g. onua barima (brother).",
+    "patterns": [
+      "onua + barima → brother",
+      "onua + baa → sister",
+      "ɛna (mother) · agya (father)"
+    ]
+  },
+  "lineage_challenges": [
+    { "prompt": "How do you say 'mother'?", "type": "recall", "options": ["ɛna", "agya", "nana", "ɔba"], "correct_index": 0 },
+    { "prompt": "'agya' means:", "type": "concept_match", "options": ["father", "mother", "brother", "child"], "correct_index": 0 },
+    { "prompt": "'onua' means:", "type": "concept_match", "options": ["sibling", "cousin", "parent", "elder"], "correct_index": 0 },
+    { "prompt": "Which term is used for a grandparent or respected elder?", "type": "recall", "options": ["nana", "ɛna", "ɔba", "okunu"], "correct_index": 0 },
+    { "prompt": "'ɔba' means:", "type": "concept_match", "options": ["child", "father", "sister", "family"], "correct_index": 0 },
+    { "prompt": "The matrilineal family or clan is called:", "type": "recall", "options": ["abusua", "fie", "ahenfie", "nana"], "correct_index": 0 },
+    { "prompt": "'onua baa' means:", "type": "concept_match", "options": ["sister", "brother", "aunt", "mother"], "correct_index": 0 },
+    { "prompt": "'onua barima' means:", "type": "concept_match", "options": ["brother", "sister", "uncle", "father"], "correct_index": 0 },
+    { "prompt": "How do you say 'wife'?", "type": "recall", "options": ["ɔyere", "okunu", "ɛna", "nana"], "correct_index": 0 },
+    { "prompt": "How do you say 'husband'?", "type": "recall", "options": ["okunu", "ɔyere", "agya", "ɔba"], "correct_index": 0 }
+  ]
+}

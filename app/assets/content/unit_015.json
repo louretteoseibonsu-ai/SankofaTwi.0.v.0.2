@@ -1,0 +1,136 @@
+{
+  "unit_id": "unit_015",
+  "unit_title": "Hobbies",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "di agorɔ",
+    "gloss": "to play — Things you do for fun.",
+    "phonetic_bridge": {
+      "pronunciation": "di agorɔ"
+    },
+    "example_sentences": [
+      "di agorɔ, agorɔ, to dwom."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about hobbies",
+    "explanation": "Key hobbies vocabulary: di agorɔ (to play), agorɔ (game / play), to dwom (to sing), dwom (song), saw (to dance), kenkan (to read).",
+    "patterns": [
+      "di agorɔ = to play",
+      "agorɔ = game / play",
+      "to dwom = to sing"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say 'to play' in Twi?",
+      "type": "recall",
+      "options": [
+        "di agorɔ",
+        "agorɔ",
+        "guare",
+        "dwom"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'agorɔ' mean?",
+      "type": "recall",
+      "options": [
+        "game / play",
+        "to swim",
+        "to dance",
+        "to read"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to sing' in Twi?",
+      "type": "recall",
+      "options": [
+        "to dwom",
+        "saw",
+        "kenkan",
+        "anigyeɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'dwom' mean?",
+      "type": "recall",
+      "options": [
+        "song",
+        "to play",
+        "game / play",
+        "to dance"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to dance' in Twi?",
+      "type": "recall",
+      "options": [
+        "saw",
+        "kenkan",
+        "bɔɔlo",
+        "anigyeɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'kenkan' mean?",
+      "type": "recall",
+      "options": [
+        "to read",
+        "game / play",
+        "to dance",
+        "to sing"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to cook' in Twi?",
+      "type": "recall",
+      "options": [
+        "noa",
+        "dwom",
+        "saw",
+        "di agorɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'bɔɔlo' mean?",
+      "type": "recall",
+      "options": [
+        "football",
+        "game / play",
+        "enjoyment",
+        "song"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to swim' in Twi?",
+      "type": "recall",
+      "options": [
+        "guare",
+        "agorɔ",
+        "saw",
+        "dwom"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'anigyeɛ' mean?",
+      "type": "recall",
+      "options": [
+        "enjoyment",
+        "game / play",
+        "to play",
+        "to cook"
+      ],
+      "correct_index": 0
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "unit_id": "unit_016",
+  "unit_title": "Dining Out",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "aduane",
+    "gloss": "food — Food, drink, and eating out.",
+    "phonetic_bridge": {
+      "pronunciation": "aduane"
+    },
+    "example_sentences": [
+      "aduane, nsuo, didi."
+    ]
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about dining out",
+    "explanation": "Key dining out vocabulary: aduane (food), nsuo (water), didi (to eat), ɛkɔm de me (I am hungry), dɛ (delicious), ɛmo (rice).",
+    "patterns": [
+      "aduane = food",
+      "nsuo = water",
+      "didi = to eat"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say 'food' in Twi?",
+      "type": "recall",
+      "options": [
+        "aduane",
+        "nsuo",
+        "dɛ",
+        "didi"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'nsuo' mean?",
+      "type": "recall",
+      "options": [
+        "water",
+        "food",
+        "I want...",
+        "delicious"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to eat' in Twi?",
+      "type": "recall",
+      "options": [
+        "didi",
+        "nsuomnam",
+        "adidibea",
+        "aduane"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'ɛkɔm de me' mean?",
+      "type": "recall",
+      "options": [
+        "I am hungry",
+        "delicious",
+        "rice",
+        "to eat"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'delicious' in Twi?",
+      "type": "recall",
+      "options": [
+        "dɛ",
+        "nsuo",
+        "ɛmo",
+        "didi"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'ɛmo' mean?",
+      "type": "recall",
+      "options": [
+        "rice",
+        "food",
+        "fish",
+        "I want..."
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'meat' in Twi?",
+      "type": "recall",
+      "options": [
+        "nam",
+        "nsuo",
+        "didi",
+        "adidibea"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'nsuomnam' mean?",
+      "type": "recall",
+      "options": [
+        "fish",
+        "water",
+        "food",
+        "I want..."
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'I want...' in Twi?",
+      "type": "recall",
+      "options": [
+        "mepɛ",
+        "nsuomnam",
+        "adidibea",
+        "nsuo"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does 'adidibea' mean?",
+      "type": "recall",
+      "options": [
+        "place to eat",
+        "I want...",
+        "I am hungry",
+        "fish"
+      ],
+      "correct_index": 0
+    }
+  ]
+}
