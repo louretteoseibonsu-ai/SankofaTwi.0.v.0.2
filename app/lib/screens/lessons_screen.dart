@@ -167,7 +167,6 @@ class _CategoryBlock extends StatelessWidget {
       visible.add(l);
       if (!p.unlocked(l.id)) break;
     }
-    final hidden = category.lessons.length - visible.length;
     return FloatingCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -212,21 +211,6 @@ class _CategoryBlock extends StatelessWidget {
               best: p.best[l.id] ?? 0,
               passed: p.passed(l.id),
               onOpen: () => onOpen(l),
-            ),
-          if (hidden > 0)
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Row(
-                children: [
-                  const Icon(Icons.lock_outline, size: 15, color: silver),
-                  const SizedBox(width: 6),
-                  Text('$hidden more ${hidden == 1 ? 'lesson' : 'lessons'} to unlock',
-                      style: const TextStyle(
-                          color: slate,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600)),
-                ],
-              ),
             ),
         ],
       ),
