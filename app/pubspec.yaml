@@ -31,6 +31,7 @@ flutter:
   assets:
     - assets/content/unit_001.example.json
     - assets/sfx/
+    - assets/icon/app_icon.png
 
 # Run once after `flutter pub get`:  dart run flutter_launcher_icons
 flutter_launcher_icons:

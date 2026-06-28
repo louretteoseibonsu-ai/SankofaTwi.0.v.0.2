@@ -1,10 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../data/adinkra_symbols.dart';
 import '../services/auth_service.dart';
 import '../theme.dart';
-import '../widgets/adinkra_glyph.dart';
 
 /// Official multi-color Google "G" logo.
 const String _googleGLogo = r'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -118,7 +116,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final birdSvg = kAdinkraSymbols.firstWhere((s) => s.id == 'sankofa').svg;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 60,
@@ -138,15 +135,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Center(
-                    child: Container(
-                      width: 96,
-                      height: 96,
-                      padding: const EdgeInsets.all(14),
-                      decoration: BoxDecoration(
-                        color: glyphTile,
-                        borderRadius: BorderRadius.circular(28),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(24),
+                      child: Image.asset(
+                        'assets/icon/app_icon.png',
+                        width: 104,
+                        height: 104,
+                        fit: BoxFit.cover,
                       ),
-                      child: AdinkraGlyph(svg: birdSvg, size: 68),
                     ),
                   ),
                   const SizedBox(height: 20),
