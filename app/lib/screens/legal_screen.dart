@@ -29,7 +29,7 @@ class LegalScreen extends StatelessWidget {
 
 const String kPrivacyPolicy = '''
 Sankofa Twi — Privacy Policy
-Last updated: [DATE]
+Last updated: 28 June 2026
 
 Sankofa Twi ("we", "us") helps you learn the Akan/Twi language. This policy
 explains what we collect and how we use it.
@@ -78,7 +78,7 @@ Questions? Email sankofa@aparato.ai.
 
 const String kTermsAndConditions = '''
 Sankofa Twi — Terms & Conditions
-Last updated: [DATE]
+Last updated: 28 June 2026
 
 By using Sankofa Twi you agree to these terms.
 
@@ -118,7 +118,7 @@ at any time.
 
 8. Changes & governing law
 We may update these terms and will note the new date above. These terms are
-governed by the laws of [JURISDICTION].
+governed by the laws of Spain.
 
 9. Contact
 Email sankofa@aparato.ai.
