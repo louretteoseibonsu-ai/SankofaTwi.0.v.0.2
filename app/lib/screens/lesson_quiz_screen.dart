@@ -8,6 +8,7 @@ import '../services/progress_service.dart';
 import '../services/sound_service.dart';
 import '../services/twi_speech.dart';
 import '../theme.dart';
+import '../widgets/animations.dart';
 import '../widgets/continue_button.dart';
 import '../widgets/floating_card.dart';
 
@@ -86,6 +87,10 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
         SoundService.instance.tap();
       }
     });
+    // Celebrate a combo milestone with a confetti burst.
+    if (correct && _combo > 0 && _combo % 3 == 0) {
+      celebrateBurst(context);
+    }
     // Clear the flash banner shortly after.
     if (_flash != null) {
       Future.delayed(const Duration(milliseconds: 1400), () {
@@ -157,7 +162,7 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
                     style: const TextStyle(
                         fontWeight: FontWeight.w800, fontSize: 22, color: ink)),
                 const SizedBox(height: 14),
-                _VocabCard(u: u),
+                Reveal(child: _VocabCard(u: u)),
                 if (u.glossary.isNotEmpty) ...[
                   const SizedBox(height: 14),
                   _GlossaryCard(glossary: u.glossary),

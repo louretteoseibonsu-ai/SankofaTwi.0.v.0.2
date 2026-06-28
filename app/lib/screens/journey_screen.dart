@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/lesson_catalog.dart';
 import '../services/progress_service.dart';
 import '../theme.dart';
+import '../widgets/animations.dart';
 import '../widgets/app_avatar.dart';
 import 'lesson_quiz_screen.dart';
 
@@ -155,7 +156,8 @@ class _AvatarMarker extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Column(
+      child: AvatarBob(
+        child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
@@ -186,6 +188,7 @@ class _AvatarMarker extends StatelessWidget {
                 user: FirebaseAuth.instance.currentUser, radius: 24),
           ),
         ],
+        ),
       ),
     );
   }

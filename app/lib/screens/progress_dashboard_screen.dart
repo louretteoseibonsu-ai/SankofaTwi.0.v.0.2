@@ -4,6 +4,7 @@ import '../data/adinkra_symbols.dart';
 import '../data/lesson_catalog.dart';
 import '../services/progress_service.dart';
 import '../theme.dart';
+import '../widgets/animations.dart';
 import '../widgets/floating_card.dart';
 
 const Color _gold = Color(0xFFE3A92C);
@@ -204,7 +205,7 @@ class _StreakCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Text('🔥', style: TextStyle(fontSize: 26)),
+              const PulseEmoji('🔥', size: 26),
               const SizedBox(width: 10),
               Text('${s.streak}',
                   style: const TextStyle(
@@ -389,6 +390,7 @@ class _TreasureCardState extends State<_TreasureCard> {
     if (!mounted) return;
     setState(() => _busy = false);
     if (reward != null) {
+      celebrateBurst(context);
       await showDialog<void>(
         context: context,
         builder: (_) => AlertDialog(
