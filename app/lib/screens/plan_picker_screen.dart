@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
+import '../services/currency_service.dart';
 import '../theme.dart';
 import 'upgrade_screen.dart';
 
@@ -78,10 +79,12 @@ class PlanPickerScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 10),
-                  const Text(
+                  Text(
                       'Everything: all lessons, AI Translate + Twi audio, all '
-                      'symbols, no ads. €4.99/mo or €50/yr.',
-                      style: TextStyle(color: Color(0xFFC9CCD1), height: 1.45)),
+                      'symbols, no ads. ${CurrencyService.instance.format(4.99)}/mo '
+                      'or ${CurrencyService.instance.format(50)}/yr.',
+                      style: const TextStyle(
+                          color: Color(0xFFC9CCD1), height: 1.45)),
                   const SizedBox(height: 14),
                   SizedBox(
                     width: double.infinity,

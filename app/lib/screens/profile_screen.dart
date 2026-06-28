@@ -3,10 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
+import '../config.dart';
 import '../data/adinkra_symbols.dart';
+import '../data/special_avatars.dart';
 import '../services/auth_service.dart';
 import '../theme.dart';
 import '../widgets/floating_card.dart';
+import 'legal_screen.dart';
+import 'upgrade_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -48,6 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   DateTime? _dob;
   String _gender = '';
+  bool _premium = false;
   late final TextEditingController _selfDescribe;
 
   @override
@@ -74,6 +79,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final p = await _auth.loadProfile();
     if (!mounted) return;
     setState(() {
+      _premium = (p['premium'] as bool?) ?? false;
       final dobStr = p['dob'] as String?;
       if (dobStr != null) _dob = DateTime.tryParse(dobStr);
       final g = p['gender'] as String?;
@@ -167,6 +173,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  Future<void> _cancelSubscription() async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (_) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Text('Cancel subscription?'),
+        content: const Text(
+            'Subscriptions are managed by your app store. To cancel, open '
+            'Play Store → Subscriptions (Android), or App Store → your name → '
+            'Subscriptions (iPhone). Your Premium access stays active until the '
+            'end of the paid period.'),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('Keep Premium')),
+          FilledButton(
+              style: FilledButton.styleFrom(
+                  backgroundColor: const Color(0xFF9B2D2A)),
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Cancel now')),
+        ],
+      ),
+    );
+    if (confirm == true) {
+      await _auth.setPremium(false); // placeholder until real billing
+      if (!mounted) return;
+      setState(() => _premium = false);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+              'Premium cancelled. (Real cancellations process through your app store.)')));
+    }
+  }
+
+  void _openUpgrade() => Navigator.of(context)
+      .push(MaterialPageRoute(builder: (_) => const UpgradeScreen()))
+      .then((_) => _loadExtended());
+
   Widget _preview() {
     if (_mode == _AvatarMode.photo && _picked != null) {
       return CircleAvatar(radius: 48, backgroundImage: FileImage(_picked!));
@@ -174,18 +217,59 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (_mode == _AvatarMode.photo && _existingPhoto != null) {
       return CircleAvatar(radius: 48, backgroundImage: NetworkImage(_existingPhoto!));
     }
-    final sym = kAdinkraSymbols.firstWhere((s) => s.id == _glyph,
-        orElse: () => kAdinkraSymbols.first);
+    final svg = _glyph == kAnanseGlyphId
+        ? kAnanseSvg
+        : kAdinkraSymbols
+            .firstWhere((s) => s.id == _glyph,
+                orElse: () => kAdinkraSymbols.first)
+            .svg;
     return CircleAvatar(
       radius: 48,
       backgroundColor: _color,
       child: SizedBox(
         width: 60,
         height: 60,
-        child: SvgPicture.string(sym.svg,
+        child: SvgPicture.string(svg,
             colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn)),
       ),
     );
+  }
+
+  /// Premium gate + Anansesɛm reveal. Tapping "Subscribe" is a placeholder
+  /// for real billing (wire `in_app_purchase` here before shipping).
+  Future<void> _openAnanse() async {
+    if (_premium) {
+      setState(() {
+        _glyph = kAnanseGlyphId;
+        _mode = _AvatarMode.adinkra;
+        _picked = null;
+        _existingPhoto = null;
+      });
+      return;
+    }
+    final unlocked = await showModalBottomSheet<bool>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (ctx) => const _AnanseSheet(),
+    );
+    if (unlocked == true && kBillingEnabled) {
+      await _auth.setPremium(true);
+      if (!mounted) return;
+      setState(() {
+        _premium = true;
+        _glyph = kAnanseGlyphId;
+        _hex = 'E2725B';
+        _mode = _AvatarMode.adinkra;
+        _picked = null;
+        _existingPhoto = null;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Ananse unlocked — tap Save to keep him. Ayɛkoo!')));
+    }
   }
 
   @override
@@ -260,13 +344,54 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
           const SizedBox(height: 10),
           SizedBox(
-            height: 60,
+            height: 64,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemCount: kAdinkraSymbols.length,
+              itemCount: kAdinkraSymbols.length + 1, // +1 for premium Ananse
               separatorBuilder: (_, __) => const SizedBox(width: 10),
               itemBuilder: (_, i) {
-                final s = kAdinkraSymbols[i];
+                if (i == 0) {
+                  final selected =
+                      _mode == _AvatarMode.adinkra && _glyph == kAnanseGlyphId;
+                  return GestureDetector(
+                    onTap: _openAnanse,
+                    child: Container(
+                      width: 60,
+                      height: 60,
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF2B2B2D),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: selected
+                              ? terracotta
+                              : const Color(0xFFE3A92C),
+                          width: 2.5,
+                        ),
+                      ),
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          SvgPicture.string(kAnanseSvg,
+                              fit: BoxFit.contain,
+                              colorFilter: const ColorFilter.mode(
+                                  Color(0xFFE3A92C), BlendMode.srcIn)),
+                          Positioned(
+                            right: -8,
+                            top: -8,
+                            child: Icon(
+                                _premium
+                                    ? Icons.workspace_premium
+                                    : Icons.lock,
+                                size: 15,
+                                color: const Color(0xFFE3A92C)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+                final s = kAdinkraSymbols[i - 1];
                 final selected = _mode == _AvatarMode.adinkra && s.id == _glyph;
                 return GestureDetector(
                   onTap: () => setState(() {
@@ -355,7 +480,140 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
                 : const Text('Save profile'),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 22),
+
+          // ── Subscription ──
+          const Text('Subscription',
+              style: TextStyle(
+                  color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
+          const SizedBox(height: 8),
+          if (_premium)
+            FloatingCard(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Row(
+                    children: [
+                      Text('✦',
+                          style: TextStyle(color: Color(0xFFE3A92C), fontSize: 18)),
+                      SizedBox(width: 10),
+                      Text('Premium active',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800, color: ink)),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton(
+                            onPressed: _openUpgrade,
+                            child: const Text('Change plan')),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: OutlinedButton(
+                          onPressed: _cancelSubscription,
+                          style: OutlinedButton.styleFrom(
+                              foregroundColor: const Color(0xFF9B2D2A)),
+                          child: const Text('Cancel'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            )
+          else
+            FloatingCard(
+              onTap: _openUpgrade,
+              child: const Row(
+                children: [
+                  Text('✦',
+                      style: TextStyle(color: Color(0xFFE3A92C), fontSize: 18)),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Upgrade to Premium',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800, color: ink)),
+                        Text('7-day free trial · change plans anytime',
+                            style: TextStyle(color: slate, fontSize: 12)),
+                      ],
+                    ),
+                  ),
+                  Icon(Icons.chevron_right, color: Colors.black26),
+                ],
+              ),
+            ),
+          const SizedBox(height: 18),
+
+          // ── Help & support ──
+          const Text('Help & support',
+              style: TextStyle(
+                  color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
+          const SizedBox(height: 8),
+          const FloatingCard(
+            child: Row(
+              children: [
+                Icon(Icons.mail_outline, size: 20, color: charcoal),
+                SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Email us',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700, color: ink)),
+                      Text('sankofa@aparato.ai',
+                          style: TextStyle(color: slate, fontSize: 13)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 18),
+
+          // ── Legal ──
+          const Text('Legal',
+              style: TextStyle(
+                  color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
+          const SizedBox(height: 8),
+          FloatingCard(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => const LegalScreen(
+                    title: 'Privacy Policy', body: kPrivacyPolicy))),
+            child: const Row(
+              children: [
+                Icon(Icons.privacy_tip_outlined, size: 20, color: charcoal),
+                SizedBox(width: 12),
+                Expanded(
+                    child: Text('Privacy Policy',
+                        style: TextStyle(fontWeight: FontWeight.w600))),
+                Icon(Icons.chevron_right, color: Colors.black26),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
+          FloatingCard(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => const LegalScreen(
+                    title: 'Terms & Conditions', body: kTermsAndConditions))),
+            child: const Row(
+              children: [
+                Icon(Icons.description_outlined, size: 20, color: charcoal),
+                SizedBox(width: 12),
+                Expanded(
+                    child: Text('Terms & Conditions',
+                        style: TextStyle(fontWeight: FontWeight.w600))),
+                Icon(Icons.chevron_right, color: Colors.black26),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
           FloatingCard(
             onTap: () async {
               await _auth.signOut();
@@ -371,6 +629,92 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           const SizedBox(height: 24),
         ],
+      ),
+    );
+  }
+}
+
+/// The Anansesɛm reveal + premium gate. Pops `true` if the user subscribes.
+class _AnanseSheet extends StatelessWidget {
+  const _AnanseSheet();
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(24, 20, 24, 24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                width: 110,
+                height: 110,
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: charcoal,
+                  borderRadius: BorderRadius.circular(28),
+                  border: Border.all(color: const Color(0xFFE3A92C), width: 3),
+                ),
+                child: SvgPicture.string(kAnanseSvg,
+                    colorFilter: const ColorFilter.mode(
+                        Color(0xFFE3A92C), BlendMode.srcIn)),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                const Icon(Icons.workspace_premium,
+                    color: Color(0xFFE3A92C), size: 20),
+                const SizedBox(width: 8),
+                const Expanded(
+                  child: Text('Premium treasure',
+                      style: TextStyle(
+                          color: slate,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 12,
+                          letterSpacing: 0.5)),
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            const Text(kAnanseTitle,
+                style: TextStyle(
+                    fontWeight: FontWeight.w800, fontSize: 20, color: ink)),
+            const SizedBox(height: 12),
+            const Text(kAnanseBackstory,
+                style: TextStyle(height: 1.55, color: ink, fontSize: 14.5)),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton.icon(
+                onPressed: kBillingEnabled
+                    ? () => Navigator.of(context).pop(true)
+                    : null,
+                icon: Icon(
+                    kBillingEnabled ? Icons.lock_open : Icons.schedule,
+                    size: 18),
+                label: Text(kBillingEnabled
+                    ? 'Subscribe to unlock Ananse'
+                    : 'Subscriptions coming soon'),
+              ),
+            ),
+            if (!kBillingEnabled) ...[
+              const SizedBox(height: 8),
+              const Center(
+                child: Text('Paid plans launch soon — check back shortly.',
+                    style: TextStyle(color: slate, fontSize: 12)),
+              ),
+            ],
+            const SizedBox(height: 8),
+            Center(
+              child: TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text('Close'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

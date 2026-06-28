@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../config.dart';
 import '../services/auth_service.dart';
+import '../services/currency_service.dart';
 import '../theme.dart';
 
 const Color _gold = Color(0xFFE3A92C);
@@ -16,6 +17,14 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
   final _auth = AuthService();
   bool _annual = true;
   bool _busy = false;
+
+  @override
+  void initState() {
+    super.initState();
+    CurrencyService.instance.ensureLoaded().then((_) {
+      if (mounted) setState(() {});
+    });
+  }
 
   static const _perks = [
     'Every lesson & category — all 23+ units',
@@ -40,11 +49,12 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final price = _annual ? '€50' : '€4.99';
+    final cur = CurrencyService.instance;
+    final price = cur.format(_annual ? 50.0 : 4.99);
     final per = _annual ? '/year' : '/month';
     final sub = _annual
-        ? '≈ \$54  ·  €4.17 / month  ·  save ~16%'
-        : '≈ \$5.39';
+        ? 'save ~16%  ·  ${cur.format(50 / 12)} / month'
+        : 'billed monthly';
 
     return Scaffold(
       appBar: AppBar(title: const Text('Go Premium')),
@@ -200,10 +210,11 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
-              'After the 7-day trial, your subscription renews automatically '
-              'at the price shown until cancelled. Manage or cancel anytime in '
-              'your app-store account settings.',
+          Text(
+              'Prices shown for your region (${CurrencyService.instance.code}); '
+              'the final charge is made in your app-store currency. After the '
+              '7-day trial, your subscription renews automatically until '
+              'cancelled — manage anytime in your app-store account settings.',
               textAlign: TextAlign.center,
               style: TextStyle(color: slate, fontSize: 11, height: 1.4)),
           const SizedBox(height: 24),
