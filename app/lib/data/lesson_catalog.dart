@@ -88,7 +88,7 @@ const List<LessonCategory> kCategories = [
   ),
   LessonCategory(
     id: 'family',
-    emoji: '👪',
+    emoji: '👨🏾‍👩🏾‍👧🏾',
     name: 'Family',
     blurb: 'The people closest to you.',
     icon: Icons.family_restroom_outlined,
