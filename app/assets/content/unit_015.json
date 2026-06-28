@@ -10,7 +10,8 @@
     },
     "example_sentences": [
       "di agorɔ, agorɔ, to dwom."
-    ]
+    ],
+    "culture_note": "Chale, asking 'Wopɛ sɛn?' (what do you like?) is how friendships start here. Football — bɔɔlo — is the great icebreaker."
   },
   "grammar_mechanics": {
     "focus": "Talking about hobbies",
@@ -31,7 +32,8 @@
         "guare",
         "dwom"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "Gamers just say 'mereto game' — Twi borrows English words freely."
     },
     {
       "prompt": "What does 'agorɔ' mean?",
@@ -53,7 +55,8 @@
         "kenkan",
         "anigyeɛ"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "A vibe? 'Ɛyɛ dɛ' (recycled from Dining) works for music too."
     },
     {
       "prompt": "What does 'dwom' mean?",
@@ -75,7 +78,8 @@
         "bɔɔlo",
         "anigyeɛ"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "On the floor: 'saw bi!' = bust a move!"
     },
     {
       "prompt": "What does 'kenkan' mean?",

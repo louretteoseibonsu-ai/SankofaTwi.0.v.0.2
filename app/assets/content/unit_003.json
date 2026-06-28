@@ -11,7 +11,8 @@
     "example_sentences": [
       "Baako, mmienu, mmiɛnsa.",
       "Me wɔ nnipa baako."
-    ]
+    ],
+    "culture_note": "Chale, numbers are your survival kit — traders count fast in Twi when you haggle, and knowing 1–10 cold means you won't pay 'ɔbroni price' (the inflated foreigner rate)."
   },
   "grammar_mechanics": {
     "focus": "Counting from one to ten",
@@ -32,7 +33,8 @@
         "edu",
         "nsia"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "Counting people uses special forms (baako, baanu…), but for objects 'baako' is your go-to."
     },
     {
       "prompt": "'mmienu' means:",
@@ -76,7 +78,8 @@
         "edu",
         "nson"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "At the market: 'Mepɛ enum' = I want five — recycle this in Dining Out."
     },
     {
       "prompt": "'nsia' means:",

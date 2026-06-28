@@ -10,7 +10,8 @@
     },
     "example_sentences": [
       "nwoma, kenkan, kyerɛw."
-    ]
+    ],
+    "culture_note": "Chale, going from speaking to reading is the real glow-up. Start with children's Twi books and Bible passages — the spelling clicks fast once you know the sounds."
   },
   "grammar_mechanics": {
     "focus": "Talking about books",
@@ -53,7 +54,8 @@
         "asɛmfua",
         "kenkan"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "'Twerɛ' shows up in 'twerɛdua' (pen) — literally a 'writing stick'."
     },
     {
       "prompt": "What does 'krataa' mean?",

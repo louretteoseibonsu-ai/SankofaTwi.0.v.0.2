@@ -10,7 +10,8 @@
     },
     "example_sentences": [
       "aduane, nsuo, didi."
-    ]
+    ],
+    "culture_note": "Chale, greet the seller before you order (recycle Unit 1: open with 'Maaha') — it gets you better service, maybe extra shito. Then pair food with numbers: 'Mepɛ ɛmo mmienu' = I want two rice."
   },
   "grammar_mechanics": {
     "focus": "Talking about dining out",
@@ -75,7 +76,8 @@
         "ɛmo",
         "didi"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "Food slaps? 'Ɛyɛ dɛ paa!' — recycling 'paa' from greetings."
     },
     {
       "prompt": "What does 'ɛmo' mean?",
@@ -119,7 +121,8 @@
         "adidibea",
         "nsuo"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "Stack it with numbers you know: 'Mepɛ … mmienu' (… two)."
     },
     {
       "prompt": "What does 'adidibea' mean?",

@@ -10,7 +10,8 @@
     },
     "example_sentences": [
       "sini, mfonin, hwɛ."
-    ]
+    ],
+    "culture_note": "Chale, Kumawood and Nollywood are a goldmine for everyday Twi. Watch with subtitles, then flex the lines on your friends. Recycle Family: half the drama is about abusua (family) ties."
   },
   "grammar_mechanics": {
     "focus": "Talking about cinema",
@@ -53,7 +54,8 @@
         "bra",
         "Momma yɛnhwɛ"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "Inviting someone: 'Momma yɛnhwɛ sini' = let's watch a movie."
     },
     {
       "prompt": "What does 'serew' mean?",
@@ -75,7 +77,8 @@
         "hwɛ",
         "anigyeɛ"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "'Anansesɛm' (spider tales) are the classic stories — ask Ananse, our premium friend."
     },
     {
       "prompt": "What does 'Momma yɛnhwɛ' mean?",

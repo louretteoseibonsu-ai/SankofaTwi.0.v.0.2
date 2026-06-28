@@ -10,7 +10,8 @@
     },
     "example_sentences": [
       "akwantuo, ɛkwan, kaa."
-    ]
+    ],
+    "culture_note": "Chale, Ghana moves by trotro (shared minibus). Greet the 'mate' (conductor), and shout your landmark to get off. Recycle greetings before you ask directions."
   },
   "grammar_mechanics": {
     "focus": "Talking about travel",
@@ -53,7 +54,8 @@
         "ɛkwan",
         "bra"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "A shared minibus is a 'trotro' — the real way Ghana rolls."
     },
     {
       "prompt": "What does 'kɔ' mean?",

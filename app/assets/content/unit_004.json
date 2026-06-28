@@ -11,7 +11,8 @@
     "example_sentences": [
       "Me na ne m'agya wɔ fie.",
       "Onua baa baako wɔ me."
-    ]
+    ],
+    "culture_note": "Chale, family is everything in Akan culture — call any older woman 'ɛna' or 'maame' out of respect, even if she isn't your mother. Recycle Numbers: 'M'abusua mu nnipa edu' = there are ten people in my family."
   },
   "grammar_mechanics": {
     "focus": "Naming members of the abusua (family)",
@@ -32,7 +33,8 @@
         "nana",
         "ɔba"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "Warmly, people say 'maame' for mum — soft and everyday."
     },
     {
       "prompt": "'agya' means:",
@@ -65,7 +67,8 @@
         "ɔba",
         "okunu"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "'Nana' is also a royal title — call someone Nana and you're showing big respect."
     },
     {
       "prompt": "'ɔba' means:",
@@ -87,7 +90,8 @@
         "ahenfie",
         "nana"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "Your abusua is your matriclan — it decides who's truly 'family' in Akan thinking."
     },
     {
       "prompt": "'onua baa' means:",

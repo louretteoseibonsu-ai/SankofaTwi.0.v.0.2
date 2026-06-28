@@ -10,7 +10,8 @@
     },
     "example_sentences": [
       "ɔdɔ, Medɔ wo, akoma."
-    ]
+    ],
+    "culture_note": "Chale, romance moves with respect. 'Medɔ wo' (I love you) is heavy — don't drop it lightly. The serious step is meeting the 'abusua' (family) — recycle Unit: Family."
   },
   "grammar_mechanics": {
     "focus": "Talking about dating & love",
@@ -75,7 +76,8 @@
         "akoma",
         "ɔdɔ"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "Meeting the abusua (family) seals it — that's where Family vocab pays off."
     },
     {
       "prompt": "What does 'mpena' mean?",

@@ -10,7 +10,8 @@
     },
     "example_sentences": [
       "dwom, to dwom, twene."
-    ]
+    ],
+    "culture_note": "Chale, music is the heartbeat — from highlife to drill, Twi lyrics are everywhere. Catch the slang here and the rest of the language clicks faster."
   },
   "grammar_mechanics": {
     "focus": "Talking about music",
@@ -53,7 +54,8 @@
         "saw",
         "dwom"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "The talking drum (twene) literally 'speaks' proverbs — Twi has tone, so drums can mimic it."
     },
     {
       "prompt": "What does 'saw' mean?",
@@ -119,7 +121,8 @@
         "ɛnne",
         "twene"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "slang_hint": "The talking drum (twene) literally 'speaks' proverbs — Twi has tone, so drums can mimic it."
     },
     {
       "prompt": "What does 'dɛ' mean?",
