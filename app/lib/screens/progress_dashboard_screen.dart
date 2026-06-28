@@ -66,6 +66,9 @@ class _ProgressDashboardScreenState extends State<ProgressDashboardScreen> {
           _DailyQuests(s: _s),
           const SizedBox(height: 14),
 
+          _TreasureCard(keys: _s.keys, onChanged: _reload),
+          const SizedBox(height: 14),
+
           // ── Stats grid ──
           Row(children: [
             _Metric(label: 'Day streak', value: '${_s.streak}', icon: '🔥'),
@@ -361,6 +364,104 @@ class _DailyQuests extends StatelessWidget {
             const Text('All done — Ayɛkoo! Come back tomorrow.',
                 style: TextStyle(
                     color: _green, fontWeight: FontWeight.w700, fontSize: 12)),
+        ],
+      ),
+    );
+  }
+}
+
+// ── Treasure chest (wisdom keys from combos) ───────────────────────────────
+class _TreasureCard extends StatefulWidget {
+  final int keys;
+  final Future<void> Function() onChanged;
+  const _TreasureCard({required this.keys, required this.onChanged});
+
+  @override
+  State<_TreasureCard> createState() => _TreasureCardState();
+}
+
+class _TreasureCardState extends State<_TreasureCard> {
+  bool _busy = false;
+
+  Future<void> _open() async {
+    setState(() => _busy = true);
+    final reward = await ProgressService().openChest();
+    if (!mounted) return;
+    setState(() => _busy = false);
+    if (reward != null) {
+      await showDialog<void>(
+        context: context,
+        builder: (_) => AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20)),
+          title: const Text('Adaka! (Treasure)'),
+          content: Text(
+              'The chest opens with a drumroll — you found '
+              '$reward streak freeze${reward == 1 ? '' : 's'} ❄.\n\n'
+              'Use them to protect your streak on a busy day.'),
+          actions: [
+            FilledButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text('Ayɛkoo!')),
+          ],
+        ),
+      );
+      await widget.onChanged();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final ready = widget.keys >= 3;
+    return FloatingCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Text('🗝', style: TextStyle(fontSize: 22)),
+              const SizedBox(width: 10),
+              const Text('Wisdom keys',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w800, fontSize: 16, color: ink)),
+              const Spacer(),
+              Text('${widget.keys}',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 16,
+                      color: _gold)),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Text(
+              ready
+                  ? 'You have enough keys to open a treasure chest!'
+                  : 'Chain 3 correct answers in a lesson to earn a key. Collect 3 to open a chest.',
+              style: const TextStyle(color: slate, fontSize: 12.5, height: 1.4)),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              for (int i = 0; i < 3; i++)
+                Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: Text(i < widget.keys ? '🗝' : '▫️',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: i < widget.keys ? null : silver)),
+                ),
+              const Spacer(),
+              FilledButton.icon(
+                onPressed: ready && !_busy ? _open : null,
+                icon: _busy
+                    ? const SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2))
+                    : const Icon(Icons.lock_open, size: 18),
+                label: const Text('Open chest'),
+              ),
+            ],
+          ),
         ],
       ),
     );

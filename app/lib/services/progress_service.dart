@@ -40,6 +40,7 @@ class Stats {
   final int dailyLessons;
   final int dailyXp;
   final bool dailyPerfect;
+  final int keys; // wisdom keys earned from combos (3 open a chest)
   const Stats({
     required this.progress,
     required this.streak,
@@ -47,6 +48,7 @@ class Stats {
     required this.dailyLessons,
     required this.dailyXp,
     required this.dailyPerfect,
+    required this.keys,
   });
 
   static const empty = Stats(
@@ -56,6 +58,7 @@ class Stats {
     dailyLessons: 0,
     dailyXp: 0,
     dailyPerfect: false,
+    keys: 0,
   );
 
   int get lessonsCompleted =>
@@ -173,12 +176,30 @@ class ProgressService {
       dailyLessons: isToday ? (data['dailyLessons'] as num?)?.toInt() ?? 0 : 0,
       dailyXp: isToday ? (data['dailyXp'] as num?)?.toInt() ?? 0 : 0,
       dailyPerfect: isToday ? (data['dailyPerfect'] as bool?) ?? false : false,
+      keys: (data['keys'] as num?)?.toInt() ?? 0,
     );
+  }
+
+  /// Opens a treasure chest if the user has ≥3 wisdom keys. Spends 3 keys and
+  /// grants 1–2 streak freezes. Returns the reward, or null if not enough keys.
+  Future<int?> openChest() async {
+    final uid = _uid;
+    if (uid == null) return null;
+    final doc = await _db.collection('users').doc(uid).get();
+    final keys = (doc.data()?['keys'] as num?)?.toInt() ?? 0;
+    if (keys < 3) return null;
+    final reward = DateTime.now().millisecond % 10 < 3 ? 2 : 1; // 30% → 2
+    await _db.collection('users').doc(uid).set({
+      'keys': FieldValue.increment(-3),
+      'freezes': FieldValue.increment(reward),
+    }, SetOptions(merge: true));
+    return reward;
   }
 
   /// Records an attempt (keeps the best per lesson), updates XP, streak,
   /// daily quests, and the public leaderboards. Returns the updated progress.
-  Future<Progress> recordResult(String lessonId, int correct) async {
+  Future<Progress> recordResult(String lessonId, int correct,
+      {int keysEarned = 0}) async {
     final uid = _uid;
     if (uid == null) return Progress.empty;
     final doc = await _db.collection('users').doc(uid).get();
@@ -230,6 +251,7 @@ class ProgressService {
       'dailyLessons': dailyLessons,
       'dailyXp': dailyXp,
       'dailyPerfect': dailyPerfect,
+      'keys': FieldValue.increment(keysEarned),
       'updatedAt': FieldValue.serverTimestamp(),
     }, SetOptions(merge: true));
 

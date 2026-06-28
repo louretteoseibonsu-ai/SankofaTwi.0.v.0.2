@@ -29,6 +29,11 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
   final Map<int, int> _selected = {};
   bool _recorded = false;
 
+  int _combo = 0; // consecutive correct answers
+  int _bestCombo = 0;
+  int _keysEarned = 0; // 1 wisdom key per 3-in-a-row
+  String? _flash; // transient combo banner text
+
   @override
   void initState() {
     super.initState();
@@ -59,17 +64,38 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
 
   void _choose(int i, int opt) {
     if (_selected.containsKey(i)) return;
-    setState(() => _selected[i] = opt);
-    if (opt == _challenges[i].correctIndex) {
-      HapticFeedback.selectionClick();
-      SoundService.instance.correct();
-    } else {
-      HapticFeedback.heavyImpact();
-      SoundService.instance.tap();
+    final correct = opt == _challenges[i].correctIndex;
+    setState(() {
+      _selected[i] = opt;
+      if (correct) {
+        _combo += 1;
+        if (_combo > _bestCombo) _bestCombo = _combo;
+        // Every 3-in-a-row: a drum flourish + a wisdom key.
+        if (_combo % 3 == 0) {
+          _keysEarned += 1;
+          _flash = '🔥 ${_combo}x combo  ·  +1 🗝';
+          HapticFeedback.heavyImpact();
+          SoundService.instance.complete();
+        } else {
+          HapticFeedback.selectionClick();
+          SoundService.instance.correct();
+        }
+      } else {
+        _combo = 0; // broken
+        HapticFeedback.heavyImpact();
+        SoundService.instance.tap();
+      }
+    });
+    // Clear the flash banner shortly after.
+    if (_flash != null) {
+      Future.delayed(const Duration(milliseconds: 1400), () {
+        if (mounted) setState(() => _flash = null);
+      });
     }
     if (_allDone && !_recorded) {
       _recorded = true;
-      _progress.recordResult(widget.lesson.id, _correct);
+      _progress.recordResult(widget.lesson.id, _correct,
+          keysEarned: _keysEarned);
     }
   }
 
@@ -77,6 +103,10 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
     setState(() {
       _selected.clear();
       _recorded = false;
+      _combo = 0;
+      _bestCombo = 0;
+      _keysEarned = 0;
+      _flash = null;
       if (_unit != null) _challenges = _shuffle(_unit!.challenges);
     });
   }
@@ -138,13 +168,27 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
                 ],
                 const SizedBox(height: 20),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text('Challenges',
                         style: TextStyle(
                             fontWeight: FontWeight.w800,
                             fontSize: 16,
                             color: ink)),
+                    const SizedBox(width: 10),
+                    if (_combo >= 2)
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 9, vertical: 4),
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFFBEEEA),
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Text('🔥 ${_combo}x',
+                            style: const TextStyle(
+                                color: terracotta,
+                                fontWeight: FontWeight.w800,
+                                fontSize: 13)),
+                      ),
+                    const Spacer(),
                     Text('${_selected.length} / ${_challenges.length}',
                         style: const TextStyle(
                             color: slate,
@@ -152,6 +196,23 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
                             fontSize: 13)),
                   ],
                 ),
+                if (_flash != null) ...[
+                  const SizedBox(height: 8),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 14, vertical: 10),
+                    decoration: BoxDecoration(
+                        color: const Color(0xFF2B2B2D),
+                        borderRadius: BorderRadius.circular(14)),
+                    child: Text(_flash!,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Color(0xFFE3A92C),
+                            fontWeight: FontWeight.w800,
+                            fontSize: 14)),
+                  ),
+                ],
                 const SizedBox(height: 12),
                 for (int i = 0; i < _challenges.length; i++)
                   _ChallengeCard(
@@ -237,6 +298,10 @@ class _VocabCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(u.gloss, style: const TextStyle(height: 1.5, color: ink)),
+          if (u.cultureNote != null && u.cultureNote!.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            _ChaleTip(text: u.cultureNote!),
+          ],
           if (keySounds.isNotEmpty) ...[
             const SizedBox(height: 12),
             const Text('Key Twi sounds',
@@ -487,8 +552,53 @@ class _ChallengeCard extends StatelessWidget {
                             : _OptState.dimmed,
                 onTap: answered ? null : () => onChoose(o),
               ),
+            if (answered &&
+                challenge.slangHint != null &&
+                challenge.slangHint!.isNotEmpty) ...[
+              const SizedBox(height: 4),
+              _ChaleTip(text: challenge.slangHint!),
+            ],
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// A small terracotta "Chale tip" callout for modern slang / cultural context.
+class _ChaleTip extends StatelessWidget {
+  final String text;
+  const _ChaleTip({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFBEEEA),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('🗣', style: TextStyle(fontSize: 14)),
+          const SizedBox(width: 8),
+          Expanded(
+            child: RichText(
+              text: TextSpan(
+                style: const TextStyle(
+                    color: ink, fontSize: 12.5, height: 1.4),
+                children: [
+                  const TextSpan(
+                      text: 'Chale tip:  ',
+                      style: TextStyle(
+                          color: terracotta, fontWeight: FontWeight.w800)),
+                  TextSpan(text: text),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
