@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'services/auth_service.dart';
-import 'theme.dart';
+import 'package:flutter/services.dart';
+import 'widgets/app_avatar.dart';
+import 'widgets/kente_pattern.dart';
+import 'screens/profile_screen.dart';
 import 'screens/symbols_screen.dart';
 import 'screens/lessons_screen.dart';
 import 'screens/translate_screen.dart';
@@ -28,21 +31,40 @@ class _AppShellState extends State<AppShell> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 46,
-        backgroundColor: sand,
+        toolbarHeight: 60,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
         elevation: 0,
+        flexibleSpace: const KenteHeaderBackground(),
         actions: [
-          IconButton(
-            tooltip: 'Sign out',
-            icon: const Icon(Icons.logout, color: ink),
-            onPressed: () => AuthService().signOut(),
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: StreamBuilder<User?>(
+              stream: FirebaseAuth.instance.userChanges(),
+              builder: (context, snapshot) {
+                return GestureDetector(
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(builder: (_) => const ProfileScreen()),
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.all(2.5),
+                    decoration: const BoxDecoration(
+                        color: Colors.white, shape: BoxShape.circle),
+                    child: AppAvatar(user: FirebaseAuth.instance.currentUser, radius: 16),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),
       body: SafeArea(child: _screens[_index]),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _index,
-        onDestinationSelected: (i) => setState(() => _index = i),
+        onDestinationSelected: (i) {
+          HapticFeedback.selectionClick();
+          setState(() => _index = i);
+        },
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.auto_awesome_outlined),

@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 /// Thin wrapper around Firebase Auth: email/password + Google Sign-In.
@@ -22,6 +24,10 @@ class AuthService {
     );
   }
 
+  Future<void> sendPasswordReset(String email) {
+    return _auth.sendPasswordResetEmail(email: email.trim());
+  }
+
   Future<void> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
     if (googleUser == null) return; // user cancelled the chooser
@@ -31,6 +37,30 @@ class AuthService {
       idToken: googleAuth.idToken,
     );
     await _auth.signInWithCredential(credential);
+  }
+
+  // ── Profile / avatar ────────────────────────────────────────────────────
+  User? get _u => _auth.currentUser;
+
+  Future<void> updateDisplayName(String name) async {
+    await _u?.updateDisplayName(name.trim());
+    await _u?.reload();
+  }
+
+  /// Adinkra avatars are stored in photoURL as a token: adinkra://<glyphId>/<HEX>.
+  Future<void> setAdinkraAvatar(String glyphId, String hexColor) async {
+    await _u?.updatePhotoURL('adinkra://$glyphId/$hexColor');
+    await _u?.reload();
+  }
+
+  /// Uploads a photo to Firebase Storage and points photoURL at it.
+  Future<void> uploadPhotoAvatar(File file) async {
+    final uid = _u!.uid;
+    final ref = FirebaseStorage.instance.ref('avatars/$uid.jpg');
+    await ref.putFile(file);
+    final url = await ref.getDownloadURL();
+    await _u?.updatePhotoURL(url);
+    await _u?.reload();
   }
 
   Future<void> signOut() async {

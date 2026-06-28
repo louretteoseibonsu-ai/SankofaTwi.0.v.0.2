@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Required for translation + Twi audio (calls the Render backend). -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Optional camera capture for profile photo avatars. -->
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:label="Sankofa Twi"
         android:name="${applicationName}"

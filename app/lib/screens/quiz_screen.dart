@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../data/quiz_questions.dart';
+import '../services/sound_service.dart';
 import '../theme.dart';
 import '../widgets/continue_button.dart';
 import '../widgets/floating_card.dart';
@@ -19,9 +21,17 @@ class _QuizScreenState extends State<QuizScreen> {
 
   void _answer(String option) {
     if (_selected != null) return;
+    final correct = option == kQuizQuestions[_index].answer;
+    // Tactile + soft audio: a gentle confirm for right, just a haptic for wrong.
+    if (correct) {
+      HapticFeedback.lightImpact();
+      SoundService.instance.correct();
+    } else {
+      HapticFeedback.mediumImpact();
+    }
     setState(() {
       _selected = option;
-      if (option == kQuizQuestions[_index].answer) _score++;
+      if (correct) _score++;
     });
   }
 
@@ -32,6 +42,7 @@ class _QuizScreenState extends State<QuizScreen> {
         _selected = null;
       });
     } else {
+      SoundService.instance.complete();
       setState(() => _finished = true);
     }
   }
@@ -91,10 +102,10 @@ class _QuizScreenState extends State<QuizScreen> {
           Color bg = Colors.white;
           if (_selected != null) {
             if (opt == q.answer) {
-              border = plantainGreen;
-              bg = const Color(0xFFEFF7F1);
+              border = charcoal; // correct → strong neutral emphasis
+              bg = glyphTile;
             } else if (opt == _selected) {
-              border = accentCoral;
+              border = terracotta; // your wrong pick → accent draws the eye
               bg = const Color(0xFFFBEEEA);
             }
           }

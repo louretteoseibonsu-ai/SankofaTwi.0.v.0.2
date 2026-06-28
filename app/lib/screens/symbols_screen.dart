@@ -20,17 +20,17 @@ class SymbolsScreen extends StatelessWidget {
           ),
         ),
         const Padding(
-          padding: EdgeInsets.fromLTRB(20, 0, 20, 8),
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
           child: Text(
             'Ancestral wisdom in visual form.',
-            style: TextStyle(color: Colors.black54, fontSize: 14),
+            style: TextStyle(color: inkSoft, fontSize: 14.5),
           ),
         ),
         Expanded(
           child: ListView.separated(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
             itemCount: kAdinkraSymbols.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
+            separatorBuilder: (_, __) => const SizedBox(height: 14),
             itemBuilder: (context, i) {
               final s = kAdinkraSymbols[i];
               return FloatingCard(

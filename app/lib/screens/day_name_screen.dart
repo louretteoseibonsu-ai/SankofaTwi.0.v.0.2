@@ -47,7 +47,7 @@ class _DayNameScreenState extends State<DayNameScreen> {
             style: TextStyle(fontWeight: FontWeight.w800, fontSize: 26, color: ink)),
         const SizedBox(height: 4),
         const Text('Your name is given by the day you were born.',
-            style: TextStyle(color: Colors.black54, fontSize: 14)),
+            style: TextStyle(color: inkSoft, fontSize: 14.5)),
         const SizedBox(height: 16),
         FloatingCard(
           child: Column(

@@ -80,10 +80,7 @@ class _TranslateScreenState extends State<TranslateScreen> {
       children: [
         const Text('Deep Translation',
             style: TextStyle(fontWeight: FontWeight.w800, fontSize: 26, color: ink)),
-        const SizedBox(height: 4),
-        const Text('Powered by Khaya (GhanaNLP).',
-            style: TextStyle(color: Colors.black54, fontSize: 14)),
-        const SizedBox(height: 16),
+        const SizedBox(height: 18),
         SegmentedButton<bool>(
           segments: const [
             ButtonSegment(value: true, label: Text('English → Twi')),

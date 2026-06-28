@@ -5,6 +5,7 @@ import '../data/adinkra_symbols.dart';
 import '../services/auth_service.dart';
 import '../theme.dart';
 import '../widgets/adinkra_glyph.dart';
+import '../widgets/kente_pattern.dart';
 
 /// Official multi-color Google "G" logo.
 const String _googleGLogo = r'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -57,6 +58,32 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  Future<void> _forgotPassword() async {
+    final email = _email.text.trim();
+    if (email.isEmpty) {
+      setState(() => _error = 'Enter your email above first, then tap "Forgot password?".');
+      return;
+    }
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
+    try {
+      await _auth.sendPasswordReset(email);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Password reset link sent to $email')),
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      setState(() => _error = _friendly(e));
+    } catch (_) {
+      setState(() => _error = 'Could not send reset email. Please try again.');
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
+
   Future<void> _google() async {
     setState(() {
       _loading = true;
@@ -94,8 +121,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final birdSvg = kAdinkraSymbols.firstWhere((s) => s.id == 'sankofa').svg;
     return Scaffold(
-      body: SafeArea(
-        child: Center(
+      body: Column(
+        children: [
+          KenteStrip(height: MediaQuery.of(context).padding.top + 60),
+          Expanded(
+            child: SafeArea(
+              top: false,
+              child: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(24),
             child: ConstrainedBox(
@@ -148,6 +180,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       prefixIcon: Icon(Icons.lock_outline),
                     ),
                   ),
+                  if (!_isRegister)
+                    Align(
+                      alignment: Alignment.center,
+                      child: TextButton(
+                        onPressed: _loading ? null : _forgotPassword,
+                        child: const Text('Forgot password?'),
+                      ),
+                    ),
                   if (_error != null) ...[
                     const SizedBox(height: 12),
                     Text(_error!, style: const TextStyle(color: accentCoral)),
@@ -211,7 +251,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         ),
-      ),
-    );
+              ),
+            ),
+          ],
+        ),
+      );
   }
 }
