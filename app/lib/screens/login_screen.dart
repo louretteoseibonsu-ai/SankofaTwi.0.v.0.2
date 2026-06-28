@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,27 +24,64 @@ class _LoginScreenState extends State<LoginScreen> {
   final _auth = AuthService();
   final _email = TextEditingController();
   final _password = TextEditingController();
+  final _captcha = TextEditingController();
   bool _isRegister = false;
   bool _loading = false;
   String? _error;
+  int _capA = 0, _capB = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _newCaptcha();
+  }
+
+  void _newCaptcha() {
+    final r = Random();
+    _capA = 1 + r.nextInt(8);
+    _capB = 1 + r.nextInt(8);
+    _captcha.clear();
+  }
 
   @override
   void dispose() {
     _email.dispose();
     _password.dispose();
+    _captcha.dispose();
     super.dispose();
   }
 
+  static final _emailRe =
+      RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+$");
+
   Future<void> _submitEmail() async {
+    final email = _email.text.trim();
+    final pw = _password.text;
+    // Client-side validation before hitting Firebase.
+    if (!_emailRe.hasMatch(email)) {
+      setState(() => _error = 'Please enter a valid email address.');
+      return;
+    }
+    if (pw.length < 6) {
+      setState(() => _error = 'Password must be at least 6 characters.');
+      return;
+    }
+    if (_isRegister && int.tryParse(_captcha.text.trim()) != _capA + _capB) {
+      setState(() {
+        _error = 'Security check failed — please solve the sum.';
+        _newCaptcha();
+      });
+      return;
+    }
     setState(() {
       _loading = true;
       _error = null;
     });
     try {
       if (_isRegister) {
-        await _auth.registerWithEmail(_email.text, _password.text);
+        await _auth.registerWithEmail(email, pw);
       } else {
-        await _auth.signInWithEmail(_email.text, _password.text);
+        await _auth.signInWithEmail(email, pw);
       }
       // AuthGate will swap to the app automatically on success.
     } on FirebaseAuthException catch (e) {
@@ -200,6 +238,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       prefixIcon: Icon(Icons.lock_outline),
                     ),
                   ),
+                  if (_isRegister) ...[
+                    const SizedBox(height: 12),
+                    TextField(
+                      controller: _captcha,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        labelText: 'Security check:  $_capA + $_capB = ?',
+                        border: const OutlineInputBorder(),
+                        prefixIcon: const Icon(Icons.verified_user_outlined),
+                      ),
+                    ),
+                  ],
                   if (!_isRegister)
                     Align(
                       alignment: Alignment.center,

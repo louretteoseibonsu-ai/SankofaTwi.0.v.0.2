@@ -210,6 +210,54 @@ class _ProfileScreenState extends State<ProfileScreen> {
       .push(MaterialPageRoute(builder: (_) => const UpgradeScreen()))
       .then((_) => _loadExtended());
 
+  Future<void> _resendVerify() async {
+    await _auth.resendVerification();
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Verification email sent. Check your inbox.')));
+    }
+  }
+
+  Future<void> _deleteAccount() async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (_) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Text('Delete account?'),
+        content: const Text(
+            'This permanently deletes your account and all your data — '
+            'progress, streaks, pedis, and profile. This cannot be undone.'),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('Cancel')),
+          FilledButton(
+              style: FilledButton.styleFrom(
+                  backgroundColor: const Color(0xFF9B2D2A)),
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Delete forever')),
+        ],
+      ),
+    );
+    if (confirm != true) return;
+    try {
+      await _auth.deleteAccount();
+      // AuthGate will swap to the login screen automatically.
+    } on FirebaseAuthException catch (e) {
+      if (!mounted) return;
+      final msg = e.code == 'requires-recent-login'
+          ? 'For security, please sign out and sign in again, then delete.'
+          : (e.message ?? 'Could not delete account.');
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(msg)));
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('Could not delete account. Please try again.')));
+      }
+    }
+  }
+
   Widget _preview() {
     if (_mode == _AvatarMode.photo && _picked != null) {
       return CircleAvatar(radius: 48, backgroundImage: FileImage(_picked!));
@@ -281,6 +329,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
           Center(child: _preview()),
           const SizedBox(height: 20),
+          if (_auth.isPasswordUser && !_auth.isEmailVerified) ...[
+            FloatingCard(
+              child: Row(
+                children: [
+                  const Icon(Icons.mark_email_unread_outlined,
+                      color: terracotta, size: 20),
+                  const SizedBox(width: 12),
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Verify your email',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700, color: ink)),
+                        Text('We sent you a confirmation link.',
+                            style: TextStyle(color: slate, fontSize: 12)),
+                      ],
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: _resendVerify, child: const Text('Resend')),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+          ],
           const Text('Display name',
               style: TextStyle(
                   color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
@@ -624,6 +698,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Icon(Icons.logout, size: 18, color: charcoal),
                 SizedBox(width: 10),
                 Text('Sign out', style: TextStyle(fontWeight: FontWeight.w600)),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
+          FloatingCard(
+            onTap: _deleteAccount,
+            child: const Row(
+              children: [
+                Icon(Icons.delete_forever, size: 18, color: Color(0xFF9B2D2A)),
+                SizedBox(width: 10),
+                Text('Delete account',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600, color: Color(0xFF9B2D2A))),
               ],
             ),
           ),

@@ -18,12 +18,23 @@ class AuthService {
     );
   }
 
-  Future<void> registerWithEmail(String email, String password) {
-    return _auth.createUserWithEmailAndPassword(
+  Future<void> registerWithEmail(String email, String password) async {
+    final cred = await _auth.createUserWithEmailAndPassword(
       email: email.trim(),
       password: password,
     );
+    // Send a verification link to confirm the email is real.
+    await cred.user?.sendEmailVerification();
   }
+
+  /// Re-sends the verification email to the current user.
+  Future<void> resendVerification() => _u?.reload().then((_) {
+        if (_u != null && !_u!.emailVerified) _u!.sendEmailVerification();
+      });
+
+  bool get isEmailVerified => _u?.emailVerified ?? false;
+  bool get isPasswordUser =>
+      _u?.providerData.any((p) => p.providerId == 'password') ?? false;
 
   Future<void> sendPasswordReset(String email) {
     return _auth.sendPasswordResetEmail(email: email.trim());
@@ -123,6 +134,18 @@ class AuthService {
       'premium': value,
       'premiumSince': value ? FieldValue.serverTimestamp() : null,
     }, SetOptions(merge: true));
+  }
+
+  /// Permanently deletes the user's data and account. May throw
+  /// `requires-recent-login` if the session is old — the caller should then
+  /// ask the user to sign in again and retry.
+  Future<void> deleteAccount() async {
+    final uid = _u?.uid;
+    if (uid == null) return;
+    final db = FirebaseFirestore.instance;
+    await db.collection('users').doc(uid).delete().catchError((_) {});
+    await db.collection('leaderboard').doc(uid).delete().catchError((_) {});
+    await _u?.delete(); // deletes the Firebase Auth account
   }
 
   Future<void> signOut() async {
