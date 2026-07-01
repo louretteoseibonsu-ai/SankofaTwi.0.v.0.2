@@ -69,6 +69,15 @@
   <a class="cta" href="https://appdistribution.firebase.dev/i/9586b57458a2b3d2" target="_blank" rel="noopener">Get the app — Android</a>
   <a class="cta secondary" href="#features">See features</a>
   <div class="note">Free Android beta · one tap to install</div>
+
+  <div class="install-qr" style="margin:28px auto 0;display:inline-flex;align-items:center;gap:18px;padding:16px 20px;border:1px solid var(--silver);border-radius:18px">
+    <div id="qrcode" aria-hidden="true" style="width:132px;height:132px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center"></div>
+    <div style="text-align:left;max-width:210px">
+      <div style="font-weight:800;color:var(--charcoal);font-size:16px">Scan to install</div>
+      <div style="color:var(--slate);font-size:13px;margin:3px 0 10px">Point your Android camera at the code</div>
+      <a href="https://appdistribution.firebase.dev/i/9586b57458a2b3d2" target="_blank" rel="noopener" style="color:var(--terracotta-deep);font-weight:700;font-size:14px;text-decoration:none">or tap the install link →</a>
+    </div>
+  </div>
 </section>
 
 <section id="features" class="features">
@@ -107,5 +116,16 @@
     </div>
   </div>
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  (function () {
+    var el = document.getElementById("qrcode");
+    var url = "https://appdistribution.firebase.dev/i/9586b57458a2b3d2";
+    if (el && window.QRCode) {
+      new QRCode(el, { text: url, width: 132, height: 132,
+        colorDark: "#2B2B2D", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M });
+    }
+  })();
+</script>
 </body>
 </html>
