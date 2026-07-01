@@ -226,6 +226,18 @@ app.post("/api/tts", async (req, res) => {
   }
 });
 
+// ── Public web pages (landing + legal) ─────────────────────────────────────
+// Served from /web BEFORE the SPA static handler, so they replace the old web
+// UI without touching the API routes above.
+const WEB_DIR = path.join(process.cwd(), "web");
+app.get(["/", "/index.html"], (_req, res) =>
+  res.sendFile(path.join(WEB_DIR, "landing.html"))
+);
+app.get("/privacy", (_req, res) =>
+  res.sendFile(path.join(WEB_DIR, "privacy.html"))
+);
+app.get("/terms", (_req, res) => res.sendFile(path.join(WEB_DIR, "terms.html")));
+
 // Start Vite in dev mode, serve static files in production
 async function start() {
   if (process.env.NODE_ENV !== "production") {
