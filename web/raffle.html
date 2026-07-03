@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Sankofa Twi — Win a Heritage DNA Kit</title>
+<meta name="description" content="Find your roots and learn Twi. Answer a few quick questions to enter the raffle for a free heritage DNA kit and test the Sankofa Twi app." />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<style>
+  :root{
+    --charcoal:#2B2B2D; --slate:#5A5E63; --cream:#EDE4D3; --gold:#E3A92C;
+    --terracotta:#BE5235; --red:#9B2D2A; --green:#2E6B3B; --terra2:#E2725B; --silver:#3a3a3d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:var(--charcoal); color:var(--cream); min-height:100dvh;
+    display:flex; flex-direction:column; overflow-x:hidden;
+  }
+  .kente{height:8px;background:repeating-linear-gradient(90deg,var(--gold) 0 22px,var(--red) 22px 44px,var(--green) 44px 66px,var(--charcoal) 66px 88px,var(--terra2) 88px 110px);flex:0 0 auto}
+  header{display:flex;align-items:center;gap:10px;padding:14px 18px;flex:0 0 auto}
+  header .glyph{width:26px;height:26px}
+  header b{font-weight:800;font-size:16px;letter-spacing:.2px}
+  header b span{color:var(--gold)}
+  .progress{height:4px;background:var(--silver);flex:0 0 auto}
+  .progress > i{display:block;height:100%;width:0;background:var(--gold);transition:width .35s ease}
+  main{flex:1 1 auto;display:flex;align-items:center;justify-content:center;padding:24px 20px 34px}
+  .wrap{width:100%;max-width:520px}
+  .step{display:none;animation:fade .35s ease}
+  .step.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .eyebrow{color:var(--gold);font-weight:800;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+  h1{font-size:30px;font-weight:800;line-height:1.15;letter-spacing:-.3px}
+  h2{font-size:24px;font-weight:800;line-height:1.2;margin-bottom:6px}
+  p.sub{color:#c9c3b6;font-size:15px;line-height:1.5;margin-top:10px}
+  .opts{margin-top:22px;display:flex;flex-direction:column;gap:12px}
+  button.opt{
+    text-align:left;background:#333336;color:var(--cream);border:1.5px solid #45454a;
+    border-radius:16px;padding:18px 18px;font-size:16px;font-weight:600;cursor:pointer;
+    transition:transform .08s ease,border-color .15s ease,background .15s ease;
+  }
+  button.opt:hover{border-color:var(--gold)}
+  button.opt:active{transform:scale(.98)}
+  .cta{display:inline-block;width:100%;text-align:center;background:var(--terracotta);color:#fff;
+    border:none;border-radius:16px;padding:18px;font-size:17px;font-weight:800;cursor:pointer;text-decoration:none;transition:filter .15s}
+  .cta:active{filter:brightness(1.08)}
+  .ghost{background:transparent;border:1.5px solid #45454a;color:var(--cream);margin-top:12px}
+  .field{width:100%;background:#333336;border:1.5px solid #45454a;border-radius:14px;padding:16px;
+    color:var(--cream);font-size:16px;margin-top:12px}
+  .field:focus{outline:none;border-color:var(--gold)}
+  .back{background:none;border:none;color:var(--slate);font-size:14px;cursor:pointer;padding:8px 0;margin-bottom:4px;display:none}
+  .back.show{display:inline-block}
+  .note{color:var(--slate);font-size:12px;margin-top:16px;line-height:1.5}
+  .note a{color:var(--gold)}
+  .center{text-align:center}
+  .big-glyph{width:120px;height:120px;margin:6px auto 14px;display:block}
+  .pill-line{color:var(--gold);font-weight:800;margin-top:8px}
+  label.chk{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#c9c3b6;margin-top:14px;text-align:left}
+  label.chk input{margin-top:3px}
+</style>
+</head>
+<body>
+<div class="kente"></div>
+<header>
+  <svg class="glyph" viewBox="0 0 100 100" aria-hidden="true"><path fill="#E3A92C" fill-rule="evenodd" d="M50 88 C 22 70, 14 48, 30 34 C 40 25, 52 30, 52 42 C 52 30, 64 25, 74 34 C 90 48, 82 70, 50 88 Z M39 44 C 39 36, 51 36, 51 44 C 51 50, 44 50, 44 46 M61 44 C 61 36, 49 36, 49 44 C 49 50, 56 50, 56 46"/></svg>
+  <b>Sankofa <span>Twi</span></b>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<main><div class="wrap">
+  <button class="back" id="back">← Back</button>
+
+  <!-- INTRO -->
+  <section class="step active" data-step="intro">
+    <div class="eyebrow">🧬 Free heritage DNA kit</div>
+    <h1>Find your roots.<br>Then speak the language.</h1>
+    <p class="sub">Answer a few quick questions to enter the raffle for a free heritage DNA kit — and get early access to test Sankofa Twi. First 50 sign-ups qualify. Ends 31 July.</p>
+    <div class="opts"><button class="cta" data-go="q_heritage">Start — it takes 30 seconds →</button></div>
+    <p class="note">Android app · No purchase necessary · <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
+  </section>
+
+  <!-- Q1 heritage -->
+  <section class="step" data-step="q_heritage">
+    <div class="eyebrow">1 of 5</div>
+    <h2>Do you have African heritage?</h2>
+    <div class="opts">
+      <button class="opt" data-set="heritage=yes" data-go="q_roots">Yes</button>
+      <button class="opt" data-set="heritage=no" data-go="q_roots">No</button>
+      <button class="opt" data-set="heritage=unsure" data-go="q_roots">I'm not sure</button>
+    </div>
+  </section>
+
+  <!-- Q2 roots -->
+  <section class="step" data-step="q_roots">
+    <div class="eyebrow">2 of 5</div>
+    <h2>Do you know exactly where in Africa your roots are?</h2>
+    <div class="opts">
+      <button class="opt" data-set="roots=know" data-go="q_history">Yes, I know</button>
+      <button class="opt" data-set="roots=idea" data-go="q_history">I have an idea</button>
+      <button class="opt" data-set="roots=find" data-go="q_history">No — I'd love to find out</button>
+    </div>
+  </section>
+
+  <!-- Q3 history -->
+  <section class="step" data-step="q_history">
+    <div class="eyebrow">3 of 5</div>
+    <h2>Are you into African history &amp; culture?</h2>
+    <div class="opts">
+      <button class="opt" data-set="history=love" data-go="q_language">Love it</button>
+      <button class="opt" data-set="history=little" data-go="q_language">A little</button>
+      <button class="opt" data-set="history=no" data-go="q_language">Not really</button>
+    </div>
+  </section>
+
+  <!-- Q4 language (disqualifier) -->
+  <section class="step" data-step="q_language">
+    <div class="eyebrow">4 of 5</div>
+    <h2>Would you like to learn an African language, like Twi?</h2>
+    <div class="opts">
+      <button class="opt" data-set="language=yes" data-go="q_phone">Yes! 🔥</button>
+      <button class="opt" data-set="language=maybe" data-go="q_phone">Maybe</button>
+      <button class="opt" data-set="language=no" data-go="end_soft">Not really</button>
+    </div>
+  </section>
+
+  <!-- Q5 phone (disqualifier) -->
+  <section class="step" data-step="q_phone">
+    <div class="eyebrow">5 of 5</div>
+    <h2>What phone do you use?</h2>
+    <p class="sub">Sankofa Twi is on Android first.</p>
+    <div class="opts">
+      <button class="opt" data-set="phone=android" data-go="capture">🤖 Android</button>
+      <button class="opt" data-set="phone=ios" data-go="end_ios">🍏 iPhone (iOS)</button>
+    </div>
+  </section>
+
+  <!-- CAPTURE -->
+  <section class="step" data-step="capture">
+    <div class="eyebrow">Almost there 🎉</div>
+    <h2>You qualify! Enter the raffle 👇</h2>
+    <p class="sub" id="captureHook">Drop your details to enter and get your free tester invite.</p>
+    <form id="form" novalidate>
+      <input class="field" id="name" type="text" placeholder="First name" autocomplete="given-name" required />
+      <input class="field" id="email" type="email" placeholder="Email" autocomplete="email" required />
+      <label class="chk"><input type="checkbox" id="agree" required /><span>I agree to the <a href="/terms">raffle terms</a> &amp; <a href="/privacy">privacy policy</a>, and to be contacted about the beta.</span></label>
+      <button class="cta" type="submit" style="margin-top:16px" id="submitBtn">Enter &amp; get the app →</button>
+    </form>
+  </section>
+
+  <!-- END: qualified -->
+  <section class="step" data-step="end_ok">
+    <div class="center">
+      <svg class="big-glyph" viewBox="0 0 100 100" aria-hidden="true"><path fill="#E3A92C" fill-rule="evenodd" d="M50 88 C 22 70, 14 48, 30 34 C 40 25, 52 30, 52 42 C 52 30, 64 25, 74 34 C 90 48, 82 70, 50 88 Z M39 44 C 39 36, 51 36, 51 44 C 51 50, 44 50, 44 46 M61 44 C 61 36, 49 36, 49 44 C 49 50, 56 50, 56 46"/></svg>
+      <h2>You're in! 🎉</h2>
+      <p class="sub" id="okMsg">Install the app now — you're entered to win the heritage DNA kit. First 50 sign-ups qualify. Winner announced after 31 July.</p>
+      <div class="opts">
+        <a class="cta" id="installBtn" href="https://appdistribution.firebase.dev/i/9586b57458a2b3d2" target="_blank" rel="noopener">📲 Get the app (Android)</a>
+      </div>
+      <p class="pill-line">Medaase! Yɛbɛhyia bio. 🇬🇭</p>
+    </div>
+  </section>
+
+  <!-- END: iOS waitlist -->
+  <section class="step" data-step="end_ios">
+    <h2>iPhone? You're early. 🍏</h2>
+    <p class="sub">Sankofa Twi is Android-only for now — the iOS version is coming. Drop your email and you'll be first in line (and eligible for a future raffle).</p>
+    <form id="iosForm" novalidate>
+      <input class="field" id="iosEmail" type="email" placeholder="Email for the iOS waitlist" autocomplete="email" required />
+      <button class="cta" type="submit" style="margin-top:14px">Join the iOS waitlist</button>
+    </form>
+    <p class="note" id="iosDone" style="display:none">Medaase! You're on the list. Follow <a href="https://www.instagram.com/sankofatwi/" target="_blank" rel="noopener">@sankofatwi</a> for updates.</p>
+  </section>
+
+  <!-- END: soft exit -->
+  <section class="step" data-step="end_soft">
+    <h2>No worries — thanks for stopping by! 🇬🇭</h2>
+    <p class="sub">If you're ever curious about Ghana &amp; Akan culture, follow along for a word a day.</p>
+    <div class="opts"><a class="cta" href="https://www.instagram.com/sankofatwi/" target="_blank" rel="noopener">Follow @sankofatwi</a></div>
+  </section>
+
+</div></main>
+
+<script>
+  // Entries save into your own Firestore via the backend (no third-party, no
+  // submission cap). Requires FIREBASE_SERVICE_ACCOUNT set on the server.
+  var ENDPOINT = "/api/raffle";
+  var INSTALL = "https://appdistribution.firebase.dev/i/9586b57458a2b3d2";
+
+  var answers = {};
+  var mainFlow = ["intro","q_heritage","q_roots","q_history","q_language","q_phone","capture"];
+  var history = ["intro"];
+  var bar = document.getElementById("bar");
+  var backBtn = document.getElementById("back");
+
+  function show(id){
+    document.querySelectorAll(".step").forEach(function(s){ s.classList.toggle("active", s.dataset.step===id); });
+    var idx = mainFlow.indexOf(id);
+    bar.style.width = (idx>=0 ? (idx/(mainFlow.length-1))*100 : 100) + "%";
+    backBtn.classList.toggle("show", history.length>1 && ["end_ok"].indexOf(id)<0);
+    window.scrollTo(0,0);
+  }
+  function go(id){ history.push(id); show(id); }
+  backBtn.onclick = function(){ if(history.length>1){ history.pop(); show(history[history.length-1]); } };
+
+  document.querySelectorAll("[data-go]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var set = b.getAttribute("data-set");
+      if(set){ var kv=set.split("="); answers[kv[0]]=kv[1]; }
+      go(b.getAttribute("data-go"));
+    });
+  });
+
+  function save(payload){
+    if(ENDPOINT.indexOf("REPLACE_ME")>-1) return Promise.resolve();
+    return fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
+  }
+
+  // Personalise the qualified screen for the "find out" segment
+  document.getElementById("form").addEventListener("submit", function(e){
+    e.preventDefault();
+    var name=document.getElementById("name").value.trim();
+    var email=document.getElementById("email").value.trim();
+    var agree=document.getElementById("agree").checked;
+    if(!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !agree){ alert("Please add your name, a valid email, and agree to the terms."); return; }
+    document.getElementById("submitBtn").textContent="One sec…";
+    save(Object.assign({type:"raffle_entry",name:name,email:email},answers)).then(function(){
+      if(answers.roots==="find"){ document.getElementById("okMsg").textContent="Install the app now — you're entered to win the heritage DNA kit that could reveal exactly where your roots are. First 50 qualify · winner after 31 July."; }
+      go("end_ok");
+    });
+  });
+
+  document.getElementById("iosForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var email=document.getElementById("iosEmail").value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert("Please enter a valid email."); return; }
+    save({type:"ios_waitlist",email:email}).then(function(){
+      document.getElementById("iosForm").style.display="none";
+      document.getElementById("iosDone").style.display="block";
+    });
+  });
+</script>
+</body>
+</html>

@@ -2,9 +2,29 @@ import express from "express";
 import path from "path";
 import fs from "fs";
 import { GoogleGenAI } from "@google/genai";
+import admin from "firebase-admin";
 import dotenv from "dotenv";
 
 dotenv.config();
+
+// Firebase Admin — used to store raffle / lead-funnel entries in Firestore.
+// Set FIREBASE_SERVICE_ACCOUNT on Render to the full service-account JSON
+// (Firebase Console → Project settings → Service accounts → Generate new
+// private key). Without it, /api/raffle returns 503 and the funnel still works
+// (it just won't persist — the install link still shows).
+let raffleDb: admin.firestore.Firestore | null = null;
+try {
+  const svc = process.env.FIREBASE_SERVICE_ACCOUNT;
+  if (svc) {
+    admin.initializeApp({ credential: admin.credential.cert(JSON.parse(svc)) });
+    raffleDb = admin.firestore();
+    console.log("Firebase Admin initialized — raffle entries will be saved.");
+  } else {
+    console.warn("FIREBASE_SERVICE_ACCOUNT not set — /api/raffle disabled.");
+  }
+} catch (e) {
+  console.error("Firebase Admin init failed:", e);
+}
 
 // Support knowledge base — the SINGLE source of truth for the in-app support
 // chatbot. Loaded once at startup from docs/support_kb.md. To update the bot's
@@ -226,6 +246,43 @@ app.post("/api/tts", async (req, res) => {
   }
 });
 
+// Raffle / lead-funnel capture → Firestore "raffleEntries" (admin, no public writes).
+app.post("/api/raffle", async (req, res) => {
+  try {
+    if (!raffleDb) {
+      return res.status(503).json({ error: "Storage not configured." });
+    }
+    const b = (req.body ?? {}) as Record<string, unknown>;
+    const email = String(b.email ?? "").trim().toLowerCase();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      return res.status(400).json({ error: "A valid email is required." });
+    }
+    const type = b.type === "ios_waitlist" ? "ios_waitlist" : "raffle_entry";
+    const s = (v: unknown, n = 40) => String(v ?? "").slice(0, n);
+    const entry = {
+      type,
+      email,
+      name: s(b.name, 80),
+      country: s(b.country, 60),
+      phone: s(b.phone),
+      heritage: s(b.heritage),
+      roots: s(b.roots),
+      history: s(b.history),
+      language: s(b.language),
+      source: "raffle_funnel",
+      userAgent: s(req.headers["user-agent"], 200),
+      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+    };
+    // One doc per email+type (idempotent — a retry won't duplicate).
+    const id = `${type}_${email}`.replace(/[^a-z0-9_@.\-]/g, "_");
+    await raffleDb.collection("raffleEntries").doc(id).set(entry, { merge: true });
+    res.json({ ok: true });
+  } catch (error: any) {
+    console.error("Error in /api/raffle:", error);
+    res.status(500).json({ error: "Failed to save entry." });
+  }
+});
+
 // ── Public web pages (landing + legal) ─────────────────────────────────────
 // Served from /web BEFORE the SPA static handler, so they replace the old web
 // UI without touching the API routes above.
@@ -237,6 +294,7 @@ app.get("/privacy", (_req, res) =>
   res.sendFile(path.join(WEB_DIR, "privacy.html"))
 );
 app.get("/terms", (_req, res) => res.sendFile(path.join(WEB_DIR, "terms.html")));
+app.get("/raffle", (_req, res) => res.sendFile(path.join(WEB_DIR, "raffle.html")));
 // Serve static assets from /web (favicon, images, etc.).
 app.use(express.static(WEB_DIR));
 
