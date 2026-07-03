@@ -26,6 +26,34 @@ try {
   console.error("Firebase Admin init failed:", e);
 }
 
+// Adds an email to a Firebase App Distribution tester GROUP (creating the tester
+// if needed), so raffle entrants become testers automatically. Uses the same
+// service-account credential to mint an access token.
+// Requires env: FAD_PROJECT_NUMBER (Console → Project settings → Project number)
+// and FAD_GROUP (the group alias you create in App Distribution → Testers &
+// Groups). The service account needs the "Firebase App Distribution Admin" role.
+async function addTesterToGroup(email: string): Promise<void> {
+  const proj = process.env.FAD_PROJECT_NUMBER;
+  const group = process.env.FAD_GROUP;
+  const cred = admin.app().options.credential;
+  if (!proj || !group || !cred) return; // not configured — skip silently
+  const tok = await cred.getAccessToken();
+  const url =
+    `https://firebaseappdistribution.googleapis.com/v1/projects/${proj}` +
+    `/groups/${group}:batchJoin`;
+  const r = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${tok.access_token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ emails: [email], createMissingTesters: true }),
+  });
+  if (!r.ok) {
+    throw new Error(`App Distribution join ${r.status}: ${await r.text()}`);
+  }
+}
+
 // Support knowledge base — the SINGLE source of truth for the in-app support
 // chatbot. Loaded once at startup from docs/support_kb.md. To update the bot's
 // answers, edit that file and redeploy the server.
@@ -276,6 +304,15 @@ app.post("/api/raffle", async (req, res) => {
     // One doc per email+type (idempotent — a retry won't duplicate).
     const id = `${type}_${email}`.replace(/[^a-z0-9_@.\-]/g, "_");
     await raffleDb.collection("raffleEntries").doc(id).set(entry, { merge: true });
+
+    // Qualified Android entrants → add to the App Distribution tester group.
+    // Fire-and-forget: never let a tester-API hiccup break the sign-up flow.
+    if (type === "raffle_entry" && entry.phone === "android") {
+      addTesterToGroup(email).catch((e) =>
+        console.error("addTesterToGroup failed:", e?.message || e)
+      );
+    }
+
     res.json({ ok: true });
   } catch (error: any) {
     console.error("Error in /api/raffle:", error);
