@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>Sankofa Twi — Win a Heritage DNA Kit</title>
-<meta name="description" content="Find your roots and learn Twi. Answer a few quick questions to enter the raffle for a free heritage DNA kit and test the Sankofa Twi app." />
+<title>Sankofa Twi — Learn to Speak Twi (Free Android Beta)</title>
+<meta name="description" content="Learn to speak Twi — the language your parents speak. Free Android beta with real Ghanaian audio. Plus: enter to win a free heritage DNA kit." />
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <style>
   :root{
@@ -73,11 +73,14 @@
 
   <!-- INTRO -->
   <section class="step active" data-step="intro">
-    <div class="eyebrow">🧬 Free heritage DNA kit</div>
-    <h1>Find your roots.<br>Then speak the language.</h1>
-    <p class="sub">Answer a few quick questions to enter the raffle for a free heritage DNA kit — and get early access to test Sankofa Twi. First 50 sign-ups qualify. Ends 31 July.</p>
-    <div class="opts"><button class="cta" data-go="q_heritage">Start — it takes 30 seconds →</button></div>
-    <p class="note">Android app · No purchase necessary · <a href="/raffle-terms">Raffle terms</a> · <a href="/privacy">Privacy</a></p>
+    <div class="eyebrow">🇬🇭 Learn Twi · Free Android beta</div>
+    <h1>Speak the language<br>your parents speak.</h1>
+    <p class="sub">Sankofa Twi teaches you to actually speak Twi — real Ghanaian audio, a few minutes a day. Free to test on Android right now.</p>
+    <div class="opts">
+      <a class="cta" id="introInstall" href="https://appdistribution.firebase.dev/i/9586b57458a2b3d2" target="_blank" rel="noopener">📲 Get the app free →</a>
+      <button class="cta ghost" data-go="q_heritage">🧬 Or enter to win a free DNA kit →</button>
+    </div>
+    <p class="note">Android · Free to test · No purchase necessary · <a href="/raffle-terms">Raffle terms</a> · <a href="/privacy">Privacy</a></p>
   </section>
 
   <!-- Q1 heritage -->
@@ -216,6 +219,10 @@
     if(ENDPOINT.indexOf("REPLACE_ME")>-1) return Promise.resolve();
     return fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
   }
+
+  // App-first path: log direct-install clicks so you can compare app-first vs raffle in Firestore.
+  var introInstall = document.getElementById("introInstall");
+  if(introInstall){ introInstall.addEventListener("click", function(){ save({type:"app_click",source:"intro"}); }); }
 
   // Personalise the qualified screen for the "find out" segment
   document.getElementById("form").addEventListener("submit", function(e){

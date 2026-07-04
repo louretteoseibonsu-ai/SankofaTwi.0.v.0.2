@@ -281,6 +281,18 @@ app.post("/api/raffle", async (req, res) => {
       return res.status(503).json({ error: "Storage not configured." });
     }
     const b = (req.body ?? {}) as Record<string, unknown>;
+
+    // Lightweight analytics beacon (no email) — e.g. app-first "Get the app" clicks.
+    if (b.type === "app_click") {
+      await raffleDb.collection("raffleEvents").add({
+        type: "app_click",
+        source: String(b.source ?? "").slice(0, 40),
+        userAgent: String(req.headers["user-agent"] ?? "").slice(0, 200),
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+      return res.json({ ok: true });
+    }
+
     const email = String(b.email ?? "").trim().toLowerCase();
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
       return res.status(400).json({ error: "A valid email is required." });
