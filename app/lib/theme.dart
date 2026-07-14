@@ -7,7 +7,10 @@ const Color charcoal = Color(0xFF2B2B2D); // primary text / strong structure
 const Color slate = Color(0xFF5A5E63); // secondary text / muted accents
 const Color silver = Color(0xFFC9CCD1); // borders, Kente mid-tone
 const Color silverLight = Color(0xFFE7E9EC); // hairlines, faint Kente
-const Color terracotta = Color(0xFFE2725B); // THE accent — CTA buttons only
+const Color terracotta = Color(0xFFE2725B); // THE accent — illustration/icons
+// Deeper terracotta for FILLED CTA backgrounds: white text on this is ~4.7:1,
+// clearing WCAG AA (the lighter terracotta is only ~3.1:1 and fails on buttons).
+const Color terracottaDeep = Color(0xFFBE5235);
 
 // ── Legacy aliases (remapped to the grayscale system so screens compile) ──
 const Color ink = charcoal;
@@ -61,10 +64,10 @@ ThemeData buildTheme() {
       titleTextStyle:
           GoogleFonts.inter(fontWeight: FontWeight.w700, fontSize: 18, color: charcoal),
     ),
-    // Primary CTA — the ONLY place terracotta appears.
+    // Primary CTA — deeper terracotta so white label meets WCAG AA contrast.
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
-        backgroundColor: terracotta,
+        backgroundColor: terracottaDeep,
         foregroundColor: Colors.white,
         elevation: 0,
         shape: kButtonShape,

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../data/adinkra_symbols.dart';
+import '../data/special_avatars.dart';
 import '../services/progress_service.dart';
 import '../theme.dart';
 
@@ -56,29 +57,32 @@ class LeaderboardView extends StatefulWidget {
 
 class _LeaderboardViewState extends State<LeaderboardView> {
   final _service = ProgressService();
-  bool _weekly = true;
 
   @override
   Widget build(BuildContext context) {
     final me = FirebaseAuth.instance.currentUser?.uid;
     return Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-            child: SegmentedButton<bool>(
-              segments: const [
-                ButtonSegment(value: true, label: Text('This week')),
-                ButtonSegment(value: false, label: Text('All time')),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(16, 14, 16, 8),
+            child: Row(
+              children: [
+                Icon(Icons.emoji_events_outlined, size: 18, color: terracotta),
+                SizedBox(width: 8),
+                Text('This week',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 15,
+                        color: ink)),
+                Spacer(),
+                Text('Resets every Monday',
+                    style: TextStyle(color: slate, fontSize: 12)),
               ],
-              selected: {_weekly},
-              onSelectionChanged: (s) => setState(() => _weekly = s.first),
             ),
           ),
           Expanded(
             child: StreamBuilder<List<LeaderboardEntry>>(
-              stream: _weekly
-                  ? _service.weeklyTop(limit: 50)
-                  : _service.leaderboard(),
+              stream: _service.weeklyTop(limit: 50),
               builder: (context, snap) {
           if (snap.hasError) {
             return const _Message(
@@ -222,15 +226,19 @@ class _LbAvatar extends StatelessWidget {
       final hex = parts.length > 1 ? parts[1] : '2B2B2D';
       final value = int.tryParse('FF${hex.replaceAll('#', '')}', radix: 16) ??
           0xFF5A5E63;
-      final sym = kAdinkraSymbols.firstWhere((s) => s.id == glyphId,
-          orElse: () => kAdinkraSymbols.first);
+      final svg = glyphId == kAnanseGlyphId
+          ? kAnanseSvg
+          : kAdinkraSymbols
+              .firstWhere((s) => s.id == glyphId,
+                  orElse: () => kAdinkraSymbols.first)
+              .svg;
       return CircleAvatar(
         radius: radius,
         backgroundColor: Color(value),
         child: SizedBox(
           width: radius * 1.2,
           height: radius * 1.2,
-          child: SvgPicture.string(sym.svg,
+          child: SvgPicture.string(svg,
               fit: BoxFit.contain,
               colorFilter:
                   const ColorFilter.mode(Colors.white, BlendMode.srcIn)),

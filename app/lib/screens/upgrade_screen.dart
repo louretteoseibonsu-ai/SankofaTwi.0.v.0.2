@@ -29,9 +29,9 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
   static const _perks = [
     'Every lesson & category — all 23+ units',
     'All 62 Adinkra symbols + detail sheets',
-    'AI Translate + Twi text-to-speech (unlimited)',
+    '400 AI credits / month — translate, Lens scans & audio',
+    'Top up anytime with pedis',
     'Unlimited quizzes & hearts',
-    'Offline / downloaded lessons',
     'League seasons & full leaderboard',
     'Premium Ananse avatar + rare skins',
     'No ads',
@@ -50,10 +50,10 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
   @override
   Widget build(BuildContext context) {
     final cur = CurrencyService.instance;
-    final price = cur.format(_annual ? 50.0 : 4.99);
+    final price = cur.format(_annual ? 59.99 : 6.99);
     final per = _annual ? '/year' : '/month';
     final sub = _annual
-        ? 'save ~16%  ·  ${cur.format(50 / 12)} / month'
+        ? 'save ~28%  ·  ${cur.format(59.99 / 12)} / month'
         : 'billed monthly';
 
     return Scaffold(

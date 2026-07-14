@@ -2,8 +2,14 @@ import 'dart:convert';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:http/http.dart' as http;
 import '../config.dart';
+import 'audio_bundle.dart';
+import 'audio_cache.dart';
 
-/// Speaks Twi text aloud using the backend Khaya TTS endpoint.
+/// Speaks Twi text aloud. Resolution order (cheapest first):
+///   1. A pre-generated clip bundled in the app  → zero API calls.
+///   2. An in-memory cached clip from this session → zero API calls.
+///   3. Live Khaya TTS via the backend            → uses API quota.
+/// Lesson vocabulary should be covered by (1), so it never costs quota.
 class TwiSpeech {
   TwiSpeech._();
   static final TwiSpeech instance = TwiSpeech._();
@@ -14,6 +20,30 @@ class TwiSpeech {
   Future<bool> speak(String text) async {
     final t = text.trim();
     if (t.isEmpty) return false;
+
+    // 1) Bundled clip (free).
+    final asset = await AudioBundle.instance.assetPathFor(t);
+    if (asset != null) {
+      try {
+        await _player.stop();
+        await _player.play(AssetSource(asset));
+        return true;
+      } catch (_) {/* fall through to cache/live */}
+    }
+
+    // 2) Cached clip → play for free, no API call.
+    final key = TtsCache.instance.key(t);
+    final cached = TtsCache.instance.get(key);
+    if (cached != null) {
+      try {
+        await _player.stop();
+        await _player.play(BytesSource(cached));
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
     try {
       final res = await http.post(
         Uri.parse('$kBackendBaseUrl/api/tts'),
@@ -21,6 +51,7 @@ class TwiSpeech {
         body: jsonEncode({'text': t, 'lang': 'tw'}),
       );
       if (res.statusCode != 200) return false;
+      TtsCache.instance.put(key, res.bodyBytes);
       await _player.stop();
       await _player.play(BytesSource(res.bodyBytes));
       return true;

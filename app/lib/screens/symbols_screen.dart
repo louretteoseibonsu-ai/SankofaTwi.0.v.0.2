@@ -1,3 +1,4 @@
+import 'dart:ui' show ImageFilter;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../data/adinkra_symbols.dart';
@@ -95,17 +96,28 @@ class _SymbolsScreenState extends State<SymbolsScreen> {
                 onTap: locked ? _openUpgrade : () => _showDetail(context, s),
                 child: Row(
                   children: [
-                    Opacity(
-                      opacity: locked ? 0.45 : 1,
-                      child: Container(
-                        width: 64,
-                        height: 64,
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: glyphTile,
-                          borderRadius: BorderRadius.circular(18),
-                        ),
-                        child: AdinkraGlyph(svg: s.svg, size: 48),
+                    Container(
+                      width: 64,
+                      height: 64,
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: glyphTile,
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        // Locked symbols are blurred + faded so they read as a
+                        // teaser, not a freebie.
+                        child: locked
+                            ? ImageFiltered(
+                                imageFilter: ImageFilter.blur(
+                                    sigmaX: 6, sigmaY: 6),
+                                child: Opacity(
+                                  opacity: 0.5,
+                                  child: AdinkraGlyph(svg: s.svg, size: 48),
+                                ),
+                              )
+                            : AdinkraGlyph(svg: s.svg, size: 48),
                       ),
                     ),
                     const SizedBox(width: 16),
@@ -114,7 +126,8 @@ class _SymbolsScreenState extends State<SymbolsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            s.name,
+                            // Hide the real name behind the paywall.
+                            locked ? 'Premium symbol' : s.name,
                             style: TextStyle(
                                 fontWeight: FontWeight.w800,
                                 fontSize: 17,
@@ -122,7 +135,7 @@ class _SymbolsScreenState extends State<SymbolsScreen> {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            locked ? 'Premium' : s.value,
+                            locked ? 'Unlock with Premium' : s.value,
                             style: const TextStyle(
                                 color: plantainGreen, fontWeight: FontWeight.w600, fontSize: 12),
                           ),
@@ -149,36 +162,49 @@ class _SymbolsScreenState extends State<SymbolsScreen> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      builder: (_) => Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Container(
-                width: 120,
-                height: 120,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: glyphTile,
-                  borderRadius: BorderRadius.circular(24),
+      // Cap the sheet so long descriptions scroll instead of pushing content
+      // off-screen on small phones.
+      constraints: BoxConstraints(
+        maxHeight: MediaQuery.of(context).size.height * 0.85,
+      ),
+      builder: (ctx) => SafeArea(
+        // Adds the device's bottom inset so the last line clears the gesture /
+        // navigation bar.
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 120,
+                  height: 120,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: glyphTile,
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  child: AdinkraGlyph(svg: s.svg, size: 88),
                 ),
-                child: AdinkraGlyph(svg: s.svg, size: 88),
               ),
-            ),
-            const SizedBox(height: 16),
-            Text(s.name,
-                style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 22, color: ink)),
-            Text('"${s.literal}"',
-                style: const TextStyle(fontStyle: FontStyle.italic, color: Colors.black54)),
-            const SizedBox(height: 8),
-            Text(s.value,
-                style: const TextStyle(color: plantainGreen, fontWeight: FontWeight.w700)),
-            const SizedBox(height: 12),
-            Text(s.description, style: const TextStyle(height: 1.5, color: ink)),
-            const SizedBox(height: 8),
-          ],
+              const SizedBox(height: 16),
+              Text(s.name,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w800, fontSize: 22, color: ink)),
+              Text('"${s.literal}"',
+                  style: const TextStyle(
+                      fontStyle: FontStyle.italic, color: Colors.black54)),
+              const SizedBox(height: 8),
+              Text(s.value,
+                  style: const TextStyle(
+                      color: plantainGreen, fontWeight: FontWeight.w700)),
+              const SizedBox(height: 12),
+              Text(s.description,
+                  style: const TextStyle(height: 1.5, color: ink)),
+              const SizedBox(height: 8),
+            ],
+          ),
         ),
       ),
     );

@@ -205,6 +205,31 @@ class ProgressService {
     return true;
   }
 
+  /// Passages the learner has passed comprehension on (unlocks the next).
+  Future<Set<String>> loadReadingPassed() async {
+    final uid = _uid;
+    if (uid == null) return {};
+    final doc = await _db.collection('users').doc(uid).get();
+    final list = (doc.data()?['readingPassed'] as List?)?.cast<String>() ?? [];
+    return list.toSet();
+  }
+
+  /// Marks a reading passage as passed. Returns true the first time (and grants
+  /// a small pedi reward); false if it was already passed.
+  Future<bool> markReadingPassed(String id) async {
+    final uid = _uid;
+    if (uid == null) return false;
+    final ref = _db.collection('users').doc(uid);
+    final doc = await ref.get();
+    final list = (doc.data()?['readingPassed'] as List?)?.cast<String>() ?? [];
+    if (list.contains(id)) return false;
+    await ref.set({
+      'readingPassed': FieldValue.arrayUnion([id]),
+      'pedis': FieldValue.increment(5),
+    }, SetOptions(merge: true));
+    return true;
+  }
+
   /// Credits pedis (used by the consumable IAP "buy pedis" flow — stub).
   Future<void> addPedis(int amount) async {
     final uid = _uid;

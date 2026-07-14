@@ -28,9 +28,11 @@ class AuthService {
   }
 
   /// Re-sends the verification email to the current user.
-  Future<void> resendVerification() => _u?.reload().then((_) {
-        if (_u != null && !_u!.emailVerified) _u!.sendEmailVerification();
-      });
+  Future<void> resendVerification() async {
+    await _u?.reload();
+    final u = _u;
+    if (u != null && !u.emailVerified) await u.sendEmailVerification();
+  }
 
   bool get isEmailVerified => _u?.emailVerified ?? false;
   bool get isPasswordUser =>
@@ -100,6 +102,54 @@ class AuthService {
   /// Marks the account as premium. NOTE: placeholder for real billing —
   /// replace the call site with a verified `in_app_purchase` receipt before
   /// shipping. This only flips a Firestore flag.
+  /// Mirrors basic account info into users/{uid} so the admin panel can list
+  /// sign-ups (email/name aren't in Firestore otherwise). Sets createdAt once.
+  Future<void> syncUserDoc() async {
+    final u = _u;
+    if (u == null) return;
+    final ref = FirebaseFirestore.instance.collection('users').doc(u.uid);
+    final snap = await ref.get();
+    final data = <String, dynamic>{
+      'email': u.email,
+      'name': u.displayName,
+      'lastSeen': FieldValue.serverTimestamp(),
+    };
+    if (!snap.exists || snap.data()?['createdAt'] == null) {
+      data['createdAt'] = FieldValue.serverTimestamp();
+    }
+    await ref.set(data, SetOptions(merge: true));
+  }
+
+  /// True if there is an admins/{uid} doc for the current user.
+  Future<bool> isAdmin() async {
+    final uid = _u?.uid;
+    if (uid == null) return false;
+    final doc =
+        await FirebaseFirestore.instance.collection('admins').doc(uid).get();
+    return doc.exists;
+  }
+
+  /// True if an admin has suspended this account.
+  Future<bool> isDisabled() async {
+    final uid = _u?.uid;
+    if (uid == null) return false;
+    final doc =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    return (doc.data()?['disabled'] as bool?) ?? false;
+  }
+
+  /// Records that the user accepted the Terms & Privacy Policy at sign-up,
+  /// with the policy version and a server timestamp — proof of consent for
+  /// GDPR. Stored on the user doc; safe to call right after registration.
+  Future<void> recordConsent(String version) async {
+    final uid = _u?.uid;
+    if (uid == null) return;
+    await FirebaseFirestore.instance.collection('users').doc(uid).set({
+      'termsAcceptedVersion': version,
+      'termsAcceptedAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+  }
+
   /// True until the user has seen the Free/Premium plan picker after sign-up.
   Future<bool> needsPlanChoice() async {
     final uid = _u?.uid;
@@ -136,16 +186,62 @@ class AuthService {
     }, SetOptions(merge: true));
   }
 
-  /// Permanently deletes the user's data and account. May throw
-  /// `requires-recent-login` if the session is old — the caller should then
-  /// ask the user to sign in again and retry.
-  Future<void> deleteAccount() async {
-    final uid = _u?.uid;
-    if (uid == null) return;
+  /// Permanently deletes the user's data and Auth account. Firebase requires a
+  /// recent login to delete; if the session is old we re-authenticate first
+  /// (with [password] for email users, or a fresh Google sign-in) and retry.
+  Future<void> deleteAccount({String? password}) async {
+    var u = _u;
+    if (u == null) return;
+    try {
+      await _wipeAndDelete(u);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'requires-recent-login') {
+        await _reauthenticate(password: password);
+        u = _u;
+        if (u == null) return;
+        await _wipeAndDelete(u);
+      } else {
+        rethrow;
+      }
+    }
+  }
+
+  Future<void> _wipeAndDelete(User u) async {
     final db = FirebaseFirestore.instance;
-    await db.collection('users').doc(uid).delete().catchError((_) {});
-    await db.collection('leaderboard').doc(uid).delete().catchError((_) {});
-    await _u?.delete(); // deletes the Firebase Auth account
+    // Remove app data while still authenticated, then the Auth account.
+    await db.collection('users').doc(u.uid).delete().catchError((_) {});
+    await db.collection('leaderboard').doc(u.uid).delete().catchError((_) {});
+    await u.delete();
+  }
+
+  /// Re-confirms the user's identity so a sensitive action (delete) can proceed.
+  Future<void> _reauthenticate({String? password}) async {
+    final u = _u;
+    if (u == null) return;
+    if (isPasswordUser) {
+      final email = u.email;
+      if (email == null || password == null || password.isEmpty) {
+        throw FirebaseAuthException(
+            code: 'password-required',
+            message: 'Your password is required to confirm.');
+      }
+      final cred =
+          EmailAuthProvider.credential(email: email, password: password);
+      await u.reauthenticateWithCredential(cred);
+    } else {
+      // Google (or other provider) — re-run sign-in for a fresh credential.
+      final googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) {
+        throw FirebaseAuthException(
+            code: 'reauth-cancelled', message: 'Sign-in was cancelled.');
+      }
+      final googleAuth = await googleUser.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      await u.reauthenticateWithCredential(credential);
+    }
   }
 
   Future<void> signOut() async {

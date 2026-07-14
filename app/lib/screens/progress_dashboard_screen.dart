@@ -6,6 +6,7 @@ import '../services/progress_service.dart';
 import '../theme.dart';
 import '../widgets/animations.dart';
 import '../widgets/floating_card.dart';
+import '../widgets/pedis_store.dart';
 import 'upgrade_screen.dart';
 
 const Color _gold = Color(0xFFE3A92C);
@@ -472,7 +473,8 @@ class _WalletCardState extends State<_WalletCard> {
           ),
           const SizedBox(height: 6),
           const Text(
-              'Earn pedis as you learn. Spend them on streak freezes, skins, and retries.',
+              'Earn pedis as you learn. Spend them on AI Translate & Lens '
+              'top-ups, streak freezes, and avatars.',
               style: TextStyle(color: slate, fontSize: 12.5, height: 1.4)),
           const SizedBox(height: 12),
           Row(
@@ -487,9 +489,11 @@ class _WalletCardState extends State<_WalletCard> {
               const SizedBox(width: 10),
               Expanded(
                 child: FilledButton.icon(
-                  onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                          content: Text('Pedis packs launch with payments soon.'))),
+                  onPressed: () async {
+                    final bought = await showPedisStore(context,
+                        currentPedis: widget.pedis);
+                    if (bought > 0) await widget.onChanged();
+                  },
                   icon: const Icon(Icons.add, size: 18),
                   label: const Text('Get more'),
                 ),

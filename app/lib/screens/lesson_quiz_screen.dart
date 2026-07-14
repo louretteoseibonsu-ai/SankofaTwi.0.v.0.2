@@ -34,6 +34,7 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
   int _bestCombo = 0;
   int _keysEarned = 0; // 1 wisdom key per 3-in-a-row
   String? _flash; // transient combo banner text
+  bool _showLearn = true; // collapse the teach cards to focus on practice
 
   @override
   void initState() {
@@ -142,11 +143,59 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
     }
   }
 
+  /// The sticky bottom action adapts to state: a failed-but-finished quiz shows
+  /// a primary "Try again" (no more dead-end Continue that just shows a toast).
+  Widget _bottomCta() {
+    if (_allDone && _correct < kPassScore) {
+      return SizedBox(
+        width: double.infinity,
+        child: FilledButton.icon(
+          onPressed: () {
+            HapticFeedback.lightImpact();
+            SoundService.instance.tap();
+            _restart();
+          },
+          icon: const Icon(Icons.refresh, size: 18),
+          label: const Text('Try again'),
+        ),
+      );
+    }
+    return ContinueButton(onPressed: _onContinue);
+  }
+
   @override
   Widget build(BuildContext context) {
     final u = _unit;
+    final total = _challenges.length;
+    final progress = total == 0 ? 0.0 : _selected.length / total;
     return Scaffold(
-      appBar: AppBar(title: Text(widget.lesson.title)),
+      appBar: AppBar(
+        title: Text(widget.lesson.title),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(4),
+          child: LinearProgressIndicator(
+            value: progress,
+            minHeight: 4,
+            backgroundColor: silverLight,
+            valueColor: const AlwaysStoppedAnimation(terracotta),
+          ),
+        ),
+      ),
+      bottomNavigationBar: u == null
+          ? null
+          : Container(
+              decoration: const BoxDecoration(
+                color: canvas,
+                border: Border(top: BorderSide(color: silverLight, width: 1)),
+              ),
+              child: SafeArea(
+                top: false,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  child: _bottomCta(),
+                ),
+              ),
+            ),
       body: u == null
           ? const Center(child: CircularProgressIndicator())
           : ListView(
@@ -162,19 +211,41 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
                     style: const TextStyle(
                         fontWeight: FontWeight.w800, fontSize: 22, color: ink)),
                 const SizedBox(height: 14),
-                Reveal(child: _VocabCard(u: u)),
-                if (u.glossary.isNotEmpty) ...[
-                  const SizedBox(height: 14),
-                  _GlossaryCard(glossary: u.glossary),
-                ],
-                if (u.grammar != null) ...[
-                  const SizedBox(height: 14),
-                  _GrammarCard(grammar: u.grammar!),
+                // ── Learn section (collapsible to reduce cognitive load) ──
+                Row(
+                  children: [
+                    const Text('Learn the words',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 16,
+                            color: ink)),
+                    const Spacer(),
+                    TextButton.icon(
+                      onPressed: () =>
+                          setState(() => _showLearn = !_showLearn),
+                      icon: Icon(
+                          _showLearn ? Icons.expand_less : Icons.expand_more,
+                          size: 18),
+                      label: Text(_showLearn ? 'Hide' : 'Show'),
+                    ),
+                  ],
+                ),
+                if (_showLearn) ...[
+                  const SizedBox(height: 4),
+                  Reveal(child: _VocabCard(u: u)),
+                  if (u.glossary.isNotEmpty) ...[
+                    const SizedBox(height: 14),
+                    _GlossaryCard(glossary: u.glossary),
+                  ],
+                  if (u.grammar != null) ...[
+                    const SizedBox(height: 14),
+                    _GrammarCard(grammar: u.grammar!),
+                  ],
                 ],
                 const SizedBox(height: 20),
                 Row(
                   children: [
-                    const Text('Challenges',
+                    const Text('Practice',
                         style: TextStyle(
                             fontWeight: FontWeight.w800,
                             fontSize: 16,
@@ -237,15 +308,17 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
                             fontSize: 16,
                             color: ink)),
                   ),
-                  const SizedBox(height: 12),
-                  if (_correct < kPassScore)
-                    OutlinedButton(
-                        onPressed: _restart,
-                        child: const Text('Try again')),
+                  if (_correct < kPassScore) ...[
+                    const SizedBox(height: 6),
+                    Center(
+                      child: Text(
+                          'Score $kPassScore+ to unlock the next lesson.',
+                          style: const TextStyle(color: slate, fontSize: 12.5)),
+                    ),
+                  ],
                   const SizedBox(height: 8),
                 ],
-                ContinueButton(onPressed: _onContinue),
-                const SizedBox(height: 24),
+                const SizedBox(height: 8),
               ],
             ),
     );
@@ -281,7 +354,7 @@ class _VocabCard extends StatelessWidget {
                         fontSize: 24,
                         color: ink)),
               ),
-              _SpeakButton(text: u.headword, size: 26),
+              _SpeakButton(text: u.headwordAudio ?? u.headword, size: 26),
             ],
           ),
           Row(
@@ -386,18 +459,23 @@ class _SpeakButtonState extends State<_SpeakButton> {
 
   @override
   Widget build(BuildContext context) {
-    return InkResponse(
-      onTap: _busy ? null : _go,
-      radius: 22,
-      child: Padding(
-        padding: const EdgeInsets.all(4),
-        child: _busy
-            ? SizedBox(
-                width: widget.size,
-                height: widget.size,
-                child: const CircularProgressIndicator(strokeWidth: 2))
-            : Icon(Icons.volume_up_rounded,
-                size: widget.size, color: terracotta),
+    // Guarantee a ≥48dp tap target around the icon (pronunciation is a primary
+    // learning action and must be easy to hit).
+    return SizedBox(
+      width: 48,
+      height: 48,
+      child: InkResponse(
+        onTap: _busy ? null : _go,
+        radius: 26,
+        child: Center(
+          child: _busy
+              ? SizedBox(
+                  width: widget.size,
+                  height: widget.size,
+                  child: const CircularProgressIndicator(strokeWidth: 2))
+              : Icon(Icons.volume_up_rounded,
+                  size: widget.size, color: terracotta),
+        ),
       ),
     );
   }
@@ -489,7 +567,7 @@ class _GlossaryCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                _SpeakButton(text: glossary[i].twi, size: 22),
+                _SpeakButton(text: glossary[i].audio ?? glossary[i].twi, size: 22),
               ],
             ),
           ],
@@ -653,7 +731,8 @@ class _OptionTile extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(14),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+            constraints: const BoxConstraints(minHeight: 48),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),
               border: Border.all(color: border, width: 1.4),

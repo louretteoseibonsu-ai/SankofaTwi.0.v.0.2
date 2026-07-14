@@ -80,9 +80,10 @@ class PlanPickerScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                      'Everything: all lessons, AI Translate + Twi audio, all '
-                      'symbols, no ads. ${CurrencyService.instance.format(4.99)}/mo '
-                      'or ${CurrencyService.instance.format(50)}/yr.',
+                      'Everything: all lessons, 400 AI credits monthly '
+                      '(translate, Lens scans & audio — top up with pedis), all '
+                      'symbols, no ads. ${CurrencyService.instance.format(6.99)}'
+                      '/mo or ${CurrencyService.instance.format(59.99)}/yr.',
                       style: const TextStyle(
                           color: Color(0xFFC9CCD1), height: 1.45)),
                   const SizedBox(height: 14),

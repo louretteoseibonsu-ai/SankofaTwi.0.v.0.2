@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui' show ImageFilter;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,7 +10,12 @@ import '../data/special_avatars.dart';
 import '../services/auth_service.dart';
 import '../theme.dart';
 import '../widgets/floating_card.dart';
+import '../widgets/pedis_store.dart';
+import 'admin_screen.dart';
+import 'help_screen.dart';
+import 'invite_friends_screen.dart';
 import 'legal_screen.dart';
+import 'symbols_screen.dart' show kFreeSymbols;
 import 'upgrade_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -53,6 +59,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   DateTime? _dob;
   String _gender = '';
   bool _premium = false;
+  bool _isAdmin = false;
+  int _pedis = 0;
   late final TextEditingController _selfDescribe;
 
   @override
@@ -77,8 +85,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> _loadExtended() async {
     final p = await _auth.loadProfile();
+    final admin = await _auth.isAdmin();
     if (!mounted) return;
     setState(() {
+      _isAdmin = admin;
+      _pedis = (p['pedis'] as num?)?.toInt() ?? 0;
       _premium = (p['premium'] as bool?) ?? false;
       final dobStr = p['dob'] as String?;
       if (dobStr != null) _dob = DateTime.tryParse(dobStr);
@@ -210,6 +221,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       .push(MaterialPageRoute(builder: (_) => const UpgradeScreen()))
       .then((_) => _loadExtended());
 
+  Future<void> _openPedisStore() async {
+    final bought = await showPedisStore(context, currentPedis: _pedis);
+    if (bought > 0 && mounted) _loadExtended();
+  }
+
   Future<void> _resendVerify() async {
     await _auth.resendVerification();
     if (mounted) {
@@ -219,42 +235,87 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future<void> _deleteAccount() async {
-    final confirm = await showDialog<bool>(
-      context: context,
-      builder: (_) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text('Delete account?'),
-        content: const Text(
-            'This permanently deletes your account and all your data — '
-            'progress, streaks, pedis, and profile. This cannot be undone.'),
-        actions: [
-          TextButton(
-              onPressed: () => Navigator.pop(context, false),
-              child: const Text('Cancel')),
-          FilledButton(
-              style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFF9B2D2A)),
-              onPressed: () => Navigator.pop(context, true),
-              child: const Text('Delete forever')),
-        ],
-      ),
-    );
-    if (confirm != true) return;
+    final isPw = _auth.isPasswordUser;
+    final pwCtrl = TextEditingController();
     try {
-      await _auth.deleteAccount();
-      // AuthGate will swap to the login screen automatically.
-    } on FirebaseAuthException catch (e) {
-      if (!mounted) return;
-      final msg = e.code == 'requires-recent-login'
-          ? 'For security, please sign out and sign in again, then delete.'
-          : (e.message ?? 'Could not delete account.');
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(msg)));
-    } catch (_) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text('Could not delete account. Please try again.')));
+      final confirm = await showDialog<bool>(
+        context: context,
+        builder: (_) => AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          title: const Text('Delete account?'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                  'This permanently deletes your account and all your data — '
+                  'progress, streaks, pedis, and profile. This cannot be undone.'),
+              if (isPw) ...[
+                const SizedBox(height: 14),
+                const Text('Enter your password to confirm:',
+                    style: TextStyle(fontSize: 12.5, color: slate)),
+                const SizedBox(height: 6),
+                TextField(
+                  controller: pwCtrl,
+                  obscureText: true,
+                  autofocus: true,
+                  decoration: const InputDecoration(hintText: 'Password'),
+                ),
+              ] else ...[
+                const SizedBox(height: 10),
+                const Text("You'll be asked to confirm with Google.",
+                    style: TextStyle(fontSize: 12.5, color: slate)),
+              ],
+            ],
+          ),
+          actions: [
+            TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: const Text('Cancel')),
+            FilledButton(
+                style: FilledButton.styleFrom(
+                    backgroundColor: const Color(0xFF9B2D2A)),
+                onPressed: () => Navigator.pop(context, true),
+                child: const Text('Delete forever')),
+          ],
+        ),
+      );
+      if (confirm != true) return;
+      if (isPw && pwCtrl.text.isEmpty) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Please enter your password to confirm.')));
+        }
+        return;
       }
+      try {
+        await _auth.deleteAccount(password: isPw ? pwCtrl.text : null);
+        // AuthGate will swap to the login screen automatically on success.
+      } on FirebaseAuthException catch (e) {
+        if (!mounted) return;
+        String msg;
+        if (e.code == 'wrong-password' ||
+            e.code == 'invalid-credential' ||
+            e.code == 'password-required') {
+          msg = 'Incorrect password. Please try again.';
+        } else if (e.code == 'reauth-cancelled') {
+          msg = 'Deletion cancelled.';
+        } else if (e.code == 'requires-recent-login') {
+          msg = 'Please sign out and back in, then try again.';
+        } else {
+          msg = e.message ?? 'Could not delete account.';
+        }
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(msg)));
+      } catch (_) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Could not delete account. Please try again.')));
+        }
+      }
+    } finally {
+      pwCtrl.dispose();
     }
   }
 
@@ -466,12 +527,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   );
                 }
                 final s = kAdinkraSymbols[i - 1];
+                final locked = !_premium && (i - 1) >= kFreeSymbols;
                 final selected = _mode == _AvatarMode.adinkra && s.id == _glyph;
+                final glyph = SvgPicture.string(s.svg, fit: BoxFit.contain);
                 return GestureDetector(
-                  onTap: () => setState(() {
-                    _glyph = s.id;
-                    _mode = _AvatarMode.adinkra;
-                  }),
+                  onTap: locked
+                      ? _openUpgrade
+                      : () => setState(() {
+                            _glyph = s.id;
+                            _mode = _AvatarMode.adinkra;
+                          }),
                   child: Container(
                     width: 60,
                     height: 60,
@@ -484,7 +549,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         width: 2.5,
                       ),
                     ),
-                    child: SvgPicture.string(s.svg, fit: BoxFit.contain),
+                    // Premium symbols are blurred + lock-badged until unlocked,
+                    // matching the Symbols gallery teaser style.
+                    child: locked
+                        ? Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: ImageFiltered(
+                                  imageFilter:
+                                      ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                                  child: Opacity(opacity: 0.5, child: glyph),
+                                ),
+                              ),
+                              const Positioned(
+                                right: -6,
+                                top: -6,
+                                child: Icon(Icons.lock,
+                                    size: 14, color: Color(0xFFE3A92C)),
+                              ),
+                            ],
+                          )
+                        : glyph,
                   ),
                 );
               },
@@ -624,28 +711,132 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           const SizedBox(height: 18),
 
+          // ── Pedis wallet ──
+          const Text('Pedis',
+              style: TextStyle(
+                  color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
+          const SizedBox(height: 8),
+          FloatingCard(
+            onTap: _openPedisStore,
+            child: Row(
+              children: [
+                const Icon(Icons.spa, color: plantainGreen, size: 22),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('$_pedis pedis',
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                              color: ink)),
+                      const Text(
+                          'Top up Translate & Lens credits, freezes, avatars',
+                          style: TextStyle(color: slate, fontSize: 12)),
+                    ],
+                  ),
+                ),
+                OutlinedButton(
+                  onPressed: _openPedisStore,
+                  child: const Text('Get pedis'),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 18),
+
+          // ── Invite friends ──
+          const Text('Invite friends',
+              style: TextStyle(
+                  color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
+          const SizedBox(height: 8),
+          FloatingCard(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => const InviteFriendsScreen())),
+            child: Row(
+              children: [
+                const Icon(Icons.group_add_outlined,
+                    color: terracotta, size: 22),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Invite friends & earn pedis',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800, color: ink)),
+                      Text(
+                          'You both get $kInviteRewardPedis pedis · learn '
+                          'together on a friends leaderboard',
+                          style: const TextStyle(color: slate, fontSize: 12)),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.chevron_right, color: Colors.black26),
+              ],
+            ),
+          ),
+          const SizedBox(height: 18),
+
+          // ── Admin (team only) ──
+          if (_isAdmin) ...[
+            const Text('Team',
+                style: TextStyle(
+                    color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
+            const SizedBox(height: 8),
+            FloatingCard(
+              onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const AdminScreen())),
+              child: const Row(
+                children: [
+                  Icon(Icons.admin_panel_settings_outlined,
+                      size: 20, color: charcoal),
+                  SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Admin panel',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800, color: ink)),
+                        Text('Manage sign-ups, premium & suspensions',
+                            style: TextStyle(color: slate, fontSize: 12)),
+                      ],
+                    ),
+                  ),
+                  Icon(Icons.chevron_right, color: Colors.black26),
+                ],
+              ),
+            ),
+            const SizedBox(height: 18),
+          ],
+
           // ── Help & support ──
           const Text('Help & support',
               style: TextStyle(
                   color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
           const SizedBox(height: 8),
-          const FloatingCard(
-            child: Row(
+          FloatingCard(
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const HelpScreen())),
+            child: const Row(
               children: [
-                Icon(Icons.mail_outline, size: 20, color: charcoal),
+                Icon(Icons.help_outline, size: 20, color: charcoal),
                 SizedBox(width: 12),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Email us',
+                      Text('Help center & support chat',
                           style: TextStyle(
                               fontWeight: FontWeight.w700, color: ink)),
-                      Text('sankofa@aparato.ai',
+                      Text('FAQs, AI chat, and sankofa@aparato.ai',
                           style: TextStyle(color: slate, fontSize: 13)),
                     ],
                   ),
                 ),
+                Icon(Icons.chevron_right, color: Colors.black26),
               ],
             ),
           ),

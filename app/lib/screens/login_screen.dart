@@ -1,9 +1,11 @@
 import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../services/auth_service.dart';
 import '../theme.dart';
+import 'legal_screen.dart';
 
 /// Official multi-color Google "G" logo.
 const String _googleGLogo = r'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -28,12 +30,25 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isRegister = false;
   bool _loading = false;
   String? _error;
+  bool _emailTaken = false; // show a "Sign in instead" shortcut
+  bool _acceptedTerms = false; // GDPR: explicit opt-in at sign-up
   int _capA = 0, _capB = 0;
+  late final TapGestureRecognizer _tapPrivacy;
+  late final TapGestureRecognizer _tapTerms;
 
   @override
   void initState() {
     super.initState();
     _newCaptcha();
+    _tapPrivacy = TapGestureRecognizer()
+      ..onTap = () => _openLegal('Privacy Policy', kPrivacyPolicy);
+    _tapTerms = TapGestureRecognizer()
+      ..onTap = () => _openLegal('Terms & Conditions', kTermsAndConditions);
+  }
+
+  void _openLegal(String title, String body) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (_) => LegalScreen(title: title, body: body)));
   }
 
   void _newCaptcha() {
@@ -48,6 +63,8 @@ class _LoginScreenState extends State<LoginScreen> {
     _email.dispose();
     _password.dispose();
     _captcha.dispose();
+    _tapPrivacy.dispose();
+    _tapTerms.dispose();
     super.dispose();
   }
 
@@ -73,19 +90,34 @@ class _LoginScreenState extends State<LoginScreen> {
       });
       return;
     }
+    if (_isRegister && !_acceptedTerms) {
+      setState(() => _error =
+          'Please accept the Terms & Privacy Policy to create an account.');
+      return;
+    }
     setState(() {
       _loading = true;
       _error = null;
+      _emailTaken = false;
     });
     try {
       if (_isRegister) {
         await _auth.registerWithEmail(email, pw);
+        // Record proof of consent (policy version + timestamp) for GDPR.
+        await _auth.recordConsent(kLegalVersion);
       } else {
         await _auth.signInWithEmail(email, pw);
       }
       // AuthGate will swap to the app automatically on success.
     } on FirebaseAuthException catch (e) {
-      setState(() => _error = _friendly(e));
+      setState(() {
+        _error = _friendly(e);
+        // Duplicate email on sign-up (or email registered via Google) — offer
+        // a one-tap switch to Sign in instead of letting them retry forever.
+        _emailTaken = _isRegister &&
+            (e.code == 'email-already-in-use' ||
+                e.code == 'account-exists-with-different-credential');
+      });
     } catch (_) {
       setState(() => _error = 'Something went wrong. Please try again.');
     } finally {
@@ -144,7 +176,8 @@ class _LoginScreenState extends State<LoginScreen> {
       case 'invalid-credential':
         return 'Incorrect email or password.';
       case 'email-already-in-use':
-        return 'An account already exists for that email.';
+      case 'account-exists-with-different-credential':
+        return 'An account already exists for that email. Sign in instead?';
       case 'weak-password':
         return 'Password should be at least 6 characters.';
       default:
@@ -214,6 +247,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           : (s) => setState(() {
                                 _isRegister = s.first;
                                 _error = null;
+                                _emailTaken = false;
                               }),
                     ),
                   ),
@@ -249,6 +283,56 @@ class _LoginScreenState extends State<LoginScreen> {
                         prefixIcon: const Icon(Icons.verified_user_outlined),
                       ),
                     ),
+                    const SizedBox(height: 8),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 36,
+                          height: 36,
+                          child: Checkbox(
+                            value: _acceptedTerms,
+                            onChanged: _loading
+                                ? null
+                                : (v) => setState(() {
+                                      _acceptedTerms = v ?? false;
+                                      if (_acceptedTerms) _error = null;
+                                    }),
+                          ),
+                        ),
+                        const SizedBox(width: 6),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Text.rich(
+                              TextSpan(
+                                style: const TextStyle(
+                                    color: Colors.black87, fontSize: 13, height: 1.4),
+                                children: [
+                                  const TextSpan(text: 'I have read and agree to the '),
+                                  TextSpan(
+                                    text: 'Terms & Conditions',
+                                    style: const TextStyle(
+                                        color: terracotta,
+                                        fontWeight: FontWeight.w700),
+                                    recognizer: _tapTerms,
+                                  ),
+                                  const TextSpan(text: ' and '),
+                                  TextSpan(
+                                    text: 'Privacy Policy',
+                                    style: const TextStyle(
+                                        color: terracotta,
+                                        fontWeight: FontWeight.w700),
+                                    recognizer: _tapPrivacy,
+                                  ),
+                                  const TextSpan(text: '.'),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                   if (!_isRegister)
                     Align(
@@ -261,6 +345,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   if (_error != null) ...[
                     const SizedBox(height: 12),
                     Text(_error!, style: const TextStyle(color: accentCoral)),
+                  ],
+                  if (_emailTaken) ...[
+                    const SizedBox(height: 4),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextButton.icon(
+                        icon: const Icon(Icons.login, size: 18),
+                        label: const Text('Sign in with this email'),
+                        onPressed: _loading
+                            ? null
+                            : () => setState(() {
+                                  _isRegister = false;
+                                  _error = null;
+                                  _emailTaken = false;
+                                  // Keep the email they typed; clear password.
+                                  _password.clear();
+                                }),
+                      ),
+                    ),
                   ],
                   const SizedBox(height: 16),
                   FilledButton(
@@ -311,6 +414,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         : () => setState(() {
                               _isRegister = !_isRegister;
                               _error = null;
+                              _emailTaken = false;
                             }),
                     child: Text(_isRegister
                         ? 'Already have an account? Sign in'

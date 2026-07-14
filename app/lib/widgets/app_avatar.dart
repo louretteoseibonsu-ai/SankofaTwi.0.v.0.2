@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../data/adinkra_symbols.dart';
+import '../data/special_avatars.dart';
 import '../theme.dart';
 
 /// Renders a user's avatar from their Firebase profile:
@@ -24,10 +25,12 @@ class AppAvatar extends StatelessWidget {
       final glyphId = parts.isNotEmpty ? parts[0] : 'gyenyame';
       final hex = parts.length > 1 ? parts[1] : '2B2B2D';
       final bg = _parseHex(hex);
-      final sym = kAdinkraSymbols.firstWhere(
-        (s) => s.id == glyphId,
-        orElse: () => kAdinkraSymbols.first,
-      );
+      final svg = glyphId == kAnanseGlyphId
+          ? kAnanseSvg
+          : kAdinkraSymbols
+              .firstWhere((s) => s.id == glyphId,
+                  orElse: () => kAdinkraSymbols.first)
+              .svg;
       return CircleAvatar(
         radius: radius,
         backgroundColor: bg,
@@ -35,7 +38,7 @@ class AppAvatar extends StatelessWidget {
           width: radius * 1.2,
           height: radius * 1.2,
           child: SvgPicture.string(
-            sym.svg,
+            svg,
             fit: BoxFit.contain,
             colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
           ),
