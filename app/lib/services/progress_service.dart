@@ -73,6 +73,7 @@ class Stats {
   final int pedis; // soft currency
   final int shards; // Golden Kente shards — mastery currency for cosmetics
   final bool practicedToday; // has the user studied today? (fuel topped up)
+  final Set<String> mastered; // lesson ids cleared at Mastery (perfect run)
   const Stats({
     required this.progress,
     required this.streak,
@@ -85,6 +86,7 @@ class Stats {
     required this.pedis,
     this.shards = 0,
     this.practicedToday = false,
+    this.mastered = const {},
   });
 
   /// The streak exists but today's fuel hasn't been topped up yet — a gentle
@@ -223,7 +225,29 @@ class ProgressService {
       pedis: (data['pedis'] as num?)?.toInt() ?? 0,
       shards: (data['shards'] as num?)?.toInt() ?? 0,
       practicedToday: lastActive == today,
+      mastered: ((data['masteredLessons'] as List?)?.cast<String>() ?? const [])
+          .toSet(),
     );
+  }
+
+  /// Bonus shards for mastering a lesson (a perfect Mastery Challenge run).
+  static const int kMasteryBonusShards = 5;
+
+  /// Records a first-time Mastery of a lesson and grants bonus shards.
+  /// Returns the shards awarded (0 if it was already mastered).
+  Future<int> markMastered(String lessonId) async {
+    final uid = _uid;
+    if (uid == null) return 0;
+    final ref = _db.collection('users').doc(uid);
+    final doc = await ref.get();
+    final list =
+        (doc.data()?['masteredLessons'] as List?)?.cast<String>() ?? const [];
+    if (list.contains(lessonId)) return 0;
+    await ref.set({
+      'masteredLessons': FieldValue.arrayUnion([lessonId]),
+      'shards': FieldValue.increment(kMasteryBonusShards),
+    }, SetOptions(merge: true));
+    return kMasteryBonusShards;
   }
 
   /// Cost in pedis to buy one streak freeze.

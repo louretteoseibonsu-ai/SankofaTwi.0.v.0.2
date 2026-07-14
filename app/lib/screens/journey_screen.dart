@@ -94,10 +94,67 @@ class _JourneyScreenState extends State<JourneyScreen> {
   }
 
   Future<void> _open(Lesson l) async {
-    // Boss stops (last lesson of a region) launch the Dialogue Boss Battle;
-    // everything else uses the standard lesson screen.
+    // A cleared, non-boss stop has "evolved" — offer Replay or Mastery.
+    if (!_bossIds.contains(l.id) && _p.passed(l.id)) {
+      await _openClearedSheet(l);
+      return;
+    }
+    // Boss stops launch the Dialogue Boss Battle; everything else the lesson.
     final Widget dest = _bossIds.contains(l.id)
         ? DialogueBossScreen(lesson: l)
+        : LessonQuizScreen(lesson: l);
+    await Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => dest));
+    _reload();
+  }
+
+  Future<void> _openClearedSheet(Lesson l) async {
+    final mastered = _stats.mastered.contains(l.id);
+    final choice = await showModalBottomSheet<String>(
+      context: context,
+      builder: (ctx) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 16, 20, 4),
+              child: Row(children: [
+                Expanded(
+                  child: Text(l.title,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 16,
+                          color: ink)),
+                ),
+                if (mastered)
+                  const Icon(Icons.workspace_premium_rounded,
+                      color: _roadGold, size: 22),
+              ]),
+            ),
+            ListTile(
+              leading: const Icon(Icons.replay_rounded, color: slate),
+              title: const Text('Replay lesson'),
+              subtitle: const Text('Practise again — improve your stars.'),
+              onTap: () => Navigator.of(ctx).pop('replay'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.workspace_premium_rounded,
+                  color: _roadGold),
+              title: Text(
+                  mastered ? 'Mastery Challenge · mastered' : 'Mastery Challenge'),
+              subtitle: Text(mastered
+                  ? 'Run it again for the thrill.'
+                  : 'A perfect timed run earns bonus shards.'),
+              onTap: () => Navigator.of(ctx).pop('mastery'),
+            ),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ),
+    );
+    if (!mounted || choice == null) return;
+    final Widget dest = choice == 'mastery'
+        ? TimeAttackScreen(lesson: l, mastery: true)
         : LessonQuizScreen(lesson: l);
     await Navigator.of(context)
         .push(MaterialPageRoute(builder: (_) => dest));
@@ -213,6 +270,18 @@ class _JourneyScreenState extends State<JourneyScreen> {
                             top: points[i].dy -
                                 (_bossIds.contains(lessons[i].id) ? 52 : 46),
                             child: _StarRow(_p.stars(lessons[i].id)),
+                          ),
+                      // Mastery crown on mastered stops
+                      for (int i = 0; i < n; i++)
+                        if (i != _displayIndex &&
+                            _stats.mastered.contains(lessons[i].id))
+                          Positioned(
+                            left: points[i].dx +
+                                (_bossIds.contains(lessons[i].id) ? 20 : 14),
+                            top: points[i].dy -
+                                (_bossIds.contains(lessons[i].id) ? 34 : 30),
+                            child: const Icon(Icons.workspace_premium_rounded,
+                                color: _roadGold, size: 20),
                           ),
                       // Stops (hide the one under the tro tro)
                       for (int i = 0; i < n; i++)

@@ -16,7 +16,13 @@ const Color _gold = Color(0xFFE3A92C);
 /// alive. Same content and scoring as a normal lesson — just faster and louder.
 class TimeAttackScreen extends StatefulWidget {
   final Lesson lesson;
-  const TimeAttackScreen({super.key, required this.lesson});
+
+  /// Mastery Challenge: a shorter clock, and a perfect run earns a one-time
+  /// mastery badge + bonus shards. Used to replay cleared stops.
+  final bool mastery;
+
+  const TimeAttackScreen(
+      {super.key, required this.lesson, this.mastery = false});
 
   @override
   State<TimeAttackScreen> createState() => _TimeAttackScreenState();
@@ -24,7 +30,7 @@ class TimeAttackScreen extends StatefulWidget {
 
 class _TimeAttackScreenState extends State<TimeAttackScreen>
     with SingleTickerProviderStateMixin {
-  static const _perQuestion = Duration(seconds: 8);
+  Duration get _perQuestion => Duration(seconds: widget.mastery ? 6 : 8);
   final _progress = ProgressService();
   late final AnimationController _timer;
 
@@ -39,6 +45,8 @@ class _TimeAttackScreenState extends State<TimeAttackScreen>
   int _keysEarned = 0;
   bool _done = false;
   bool _recorded = false;
+  int _masteryAward = 0;
+  bool _masteryPerfect = false;
 
   @override
   void initState() {
@@ -128,14 +136,24 @@ class _TimeAttackScreenState extends State<TimeAttackScreen>
     });
   }
 
-  void _finish() {
+  Future<void> _finish() async {
     _timer.stop();
     if (!_recorded) {
       _recorded = true;
       _progress.recordResult(widget.lesson.id, _correct,
           keysEarned: _keysEarned);
     }
-    setState(() => _done = true);
+    final perfect = _correct == _challenges.length;
+    int award = 0;
+    if (widget.mastery && perfect) {
+      award = await _progress.markMastered(widget.lesson.id);
+    }
+    if (!mounted) return;
+    setState(() {
+      _done = true;
+      _masteryPerfect = perfect;
+      _masteryAward = award;
+    });
   }
 
   void _restart() {
@@ -148,6 +166,8 @@ class _TimeAttackScreenState extends State<TimeAttackScreen>
       _keysEarned = 0;
       _done = false;
       _recorded = false;
+      _masteryAward = 0;
+      _masteryPerfect = false;
       if (_unit != null) {
         _challenges = [for (final c in _unit!.challenges) c.shuffledOptions(r)]
           ..shuffle(r);
@@ -160,7 +180,9 @@ class _TimeAttackScreenState extends State<TimeAttackScreen>
   Widget build(BuildContext context) {
     final u = _unit;
     return Scaffold(
-      appBar: AppBar(title: Text('Time-Attack · ${widget.lesson.title}')),
+      appBar: AppBar(
+          title: Text(
+              '${widget.mastery ? 'Mastery' : 'Time-Attack'} · ${widget.lesson.title}')),
       body: u == null
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -261,8 +283,29 @@ class _TimeAttackScreenState extends State<TimeAttackScreen>
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.bolt_rounded, color: _gold, size: 64),
+          Icon(widget.mastery ? Icons.workspace_premium_rounded : Icons.bolt_rounded,
+              color: _gold, size: 64),
           const SizedBox(height: 12),
+          if (widget.mastery) ...[
+            Text(
+                _masteryPerfect
+                    ? (_masteryAward > 0 ? 'Mastered!' : 'Already mastered')
+                    : 'Not yet mastered',
+                style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 22,
+                    color: _masteryPerfect ? _green : ink)),
+            const SizedBox(height: 4),
+            Text(
+                _masteryPerfect
+                    ? (_masteryAward > 0
+                        ? '+$_masteryAward kente shards'
+                        : 'You already mastered this stop.')
+                    : 'A perfect run (${_challenges.length}/${_challenges.length}) masters this stop.',
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: slate, fontSize: 13)),
+            const SizedBox(height: 12),
+          ],
           Text('$_correct / ${_challenges.length}',
               style: const TextStyle(
                   fontWeight: FontWeight.w800, fontSize: 32, color: ink)),
