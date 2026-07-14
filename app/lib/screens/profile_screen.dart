@@ -643,8 +643,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           const SizedBox(height: 22),
 
-          // ── Subscription ──
-          const Text('Subscription',
+          _ProfileGroup(
+            title: 'Account & settings',
+            children: [
+              // ── Subscription ──
+              const Text('Subscription',
               style: TextStyle(
                   color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
           const SizedBox(height: 8),
@@ -878,6 +881,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
           ),
+            ],
+          ),
           const SizedBox(height: 16),
           FloatingCard(
             onTap: () async {
@@ -907,6 +912,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           const SizedBox(height: 24),
         ],
+      ),
+    );
+  }
+}
+
+/// A collapsible group so the profile's account/settings tail stays tidy.
+class _ProfileGroup extends StatelessWidget {
+  final String title;
+  final List<Widget> children;
+  const _ProfileGroup({required this.title, required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        title: Text(title,
+            style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 15,
+                color: Theme.of(context).colorScheme.onSurface)),
+        tilePadding: EdgeInsets.zero,
+        childrenPadding: const EdgeInsets.only(bottom: 8),
+        expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
+        shape: const Border(),
+        collapsedShape: const Border(),
+        children: children,
       ),
     );
   }

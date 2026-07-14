@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'theme.dart';
 import 'widgets/app_avatar.dart';
+import 'widgets/greeting.dart';
 import 'widgets/kente_pattern.dart';
 import 'screens/profile_screen.dart';
 import 'screens/journey_screen.dart';
@@ -60,11 +61,14 @@ class _AppShellState extends State<AppShell> {
         elevation: 0,
         titleSpacing: 16,
         flexibleSpace: const KenteHeaderBackground(),
-        title: Text(
-          _dest[_index].label,
-          style: const TextStyle(
-              fontWeight: FontWeight.w800, fontSize: 20, color: charcoal),
-        ),
+        // Home (Journey) greets the user by name; other tabs show their label.
+        title: _index == 0
+            ? const GreetingTitle()
+            : Text(
+                _dest[_index].label,
+                style: const TextStyle(
+                    fontWeight: FontWeight.w800, fontSize: 20, color: charcoal),
+              ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),

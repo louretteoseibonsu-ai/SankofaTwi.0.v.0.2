@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../data/lesson_catalog.dart';
@@ -5,6 +6,7 @@ import '../services/progress_service.dart';
 import '../services/sound_service.dart';
 import '../theme.dart';
 import '../widgets/composable_trotro.dart';
+import '../widgets/greeting.dart';
 import '../widgets/trotro_mascot.dart';
 import 'dialogue_boss_screen.dart';
 import 'lesson_quiz_screen.dart';
@@ -346,7 +348,9 @@ class _JourneyScreenState extends State<JourneyScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${_bossIds.contains(lessons[current].id) ? 'BOSS STOP' : 'STOP ${current + 1}'} · ${regionName.toUpperCase()}',
+                          _stats.streak > 0
+                              ? '🔥 Day ${_stats.streak} · ${regionName.toUpperCase()}'
+                              : '${_bossIds.contains(lessons[current].id) ? 'BOSS STOP' : 'STOP ${current + 1}'} · ${regionName.toUpperCase()}',
                           style: const TextStyle(
                               color: _roadActive,
                               fontSize: 11,
@@ -359,6 +363,11 @@ class _JourneyScreenState extends State<JourneyScreen> {
                                 color: ink,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700)),
+                        const SizedBox(height: 1),
+                        Text(
+                          'Continue, ${firstNameOf(FirebaseAuth.instance.currentUser)}',
+                          style: const TextStyle(color: slate, fontSize: 12),
+                        ),
                       ],
                     ),
                   ),
