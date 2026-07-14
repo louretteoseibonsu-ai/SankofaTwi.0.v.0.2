@@ -1,4 +1,5 @@
 /// Premium / special avatars that live outside the 62 Adinkra symbols.
+library;
 
 const String kAnanseGlyphId = 'ananse';
 

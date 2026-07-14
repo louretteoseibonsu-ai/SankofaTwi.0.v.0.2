@@ -374,8 +374,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         : Text(_isRegister ? 'Create account' : 'Sign in'),
                   ),
                   const SizedBox(height: 12),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Expanded(child: Divider()),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 12),

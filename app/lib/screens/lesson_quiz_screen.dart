@@ -128,7 +128,7 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
     final passed = _correct >= kPassScore;
     final next = nextLessonAfter(widget.lesson.id);
     if (!passed) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
               'Score $kPassScore+ to unlock the next lesson — try again!')));
       return;
@@ -310,10 +310,10 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
                   ),
                   if (_correct < kPassScore) ...[
                     const SizedBox(height: 6),
-                    Center(
+                    const Center(
                       child: Text(
                           'Score $kPassScore+ to unlock the next lesson.',
-                          style: const TextStyle(color: slate, fontSize: 12.5)),
+                          style: TextStyle(color: slate, fontSize: 12.5)),
                     ),
                   ],
                   const SizedBox(height: 8),

@@ -128,11 +128,11 @@ class _GoPremiumBanner extends StatelessWidget {
             borderRadius: BorderRadius.circular(18),
             border: Border.all(color: _gold, width: 1.5),
           ),
-          child: Row(
+          child: const Row(
             children: [
-              const Text('✦', style: TextStyle(color: _gold, fontSize: 22)),
-              const SizedBox(width: 12),
-              const Expanded(
+              Text('✦', style: TextStyle(color: _gold, fontSize: 22)),
+              SizedBox(width: 12),
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -146,7 +146,7 @@ class _GoPremiumBanner extends StatelessWidget {
                   ],
                 ),
               ),
-              const Icon(Icons.chevron_right, color: _gold),
+              Icon(Icons.chevron_right, color: _gold),
             ],
           ),
         ),
@@ -483,7 +483,7 @@ class _WalletCardState extends State<_WalletCard> {
                 child: OutlinedButton.icon(
                   onPressed: (canBuy && !_busy) ? _buyFreeze : null,
                   icon: const Icon(Icons.ac_unit, size: 16),
-                  label: Text('Freeze · ${ProgressService.kFreezeCost}'),
+                  label: const Text('Freeze · ${ProgressService.kFreezeCost}'),
                 ),
               ),
               const SizedBox(width: 10),

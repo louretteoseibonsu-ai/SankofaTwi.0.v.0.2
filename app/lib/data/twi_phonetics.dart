@@ -3,6 +3,7 @@
 /// Twi spelling hides a few sounds that trip up English speakers:
 ///  ky → "ch", gy → "j", hy → "sh", dw → "jw", tw → "chw",
 ///  ɛ → the "e" in "bed", ɔ → the "aw" in "law".
+library;
 
 /// A rough "sounds-like" respelling using English approximations.
 String twiApproximate(String word) {

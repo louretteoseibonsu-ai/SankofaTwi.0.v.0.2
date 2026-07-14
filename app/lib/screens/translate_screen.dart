@@ -75,11 +75,11 @@ class _TranslateScreenState extends State<TranslateScreen> {
                           fontSize: 18,
                           color: ink)),
                   const SizedBox(height: 6),
-                  Text(
+                  const Text(
                       'AI credits cover translations, Lens scans and audio. They '
                       'reset next month. Top up now with $kAiCreditPackSize '
                       'credits for $kAiCreditPackPedis pedis.',
-                      style: const TextStyle(color: slate, height: 1.45)),
+                      style: TextStyle(color: slate, height: 1.45)),
                   const SizedBox(height: 12),
                   Row(
                     children: [
@@ -101,7 +101,7 @@ class _TranslateScreenState extends State<TranslateScreen> {
                           if (context.mounted) Navigator.pop(ctx, ok);
                         },
                         icon: const Icon(Icons.add_circle_outline, size: 18),
-                        label: Text('Buy $kAiCreditPackSize credits · '
+                        label: const Text('Buy $kAiCreditPackSize credits · '
                             '$kAiCreditPackPedis pedis'),
                       ),
                     )

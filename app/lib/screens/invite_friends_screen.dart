@@ -101,20 +101,20 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(color: const Color(0xFFE3A92C), width: 2),
               ),
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('🎁 Learn together, earn together',
+                  Text('🎁 Learn together, earn together',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w800,
                           fontSize: 18)),
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6),
                   Text(
                       'You and your friend each get $kInviteRewardPedis pedis '
                       'once they join with your code and finish their first '
                       'lesson.',
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: Color(0xFFC9CCD1), height: 1.45)),
                 ],
               ),

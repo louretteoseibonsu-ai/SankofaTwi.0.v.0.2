@@ -242,12 +242,12 @@ class _WeeklyTop3Strip extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    const Row(
                       children: [
-                        const Icon(Icons.emoji_events_outlined,
+                        Icon(Icons.emoji_events_outlined,
                             size: 18, color: terracotta),
-                        const SizedBox(width: 8),
-                        const Expanded(
+                        SizedBox(width: 8),
+                        Expanded(
                           child: Text('Top 3 this week',
                               style: TextStyle(
                                   fontWeight: FontWeight.w800,
@@ -255,7 +255,7 @@ class _WeeklyTop3Strip extends StatelessWidget {
                                   color: ink)),
                         ),
                         Row(
-                          children: const [
+                          children: [
                             Text('Leaderboard',
                                 style: TextStyle(color: slate, fontSize: 12)),
                             Icon(Icons.chevron_right,

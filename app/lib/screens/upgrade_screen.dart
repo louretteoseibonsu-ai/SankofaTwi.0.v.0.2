@@ -190,7 +190,7 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                       width: 18,
                       height: 18,
                       child: CircularProgressIndicator(strokeWidth: 2))
-                  : Text(kBillingEnabled
+                  : const Text(kBillingEnabled
                       ? 'Start 7-day free trial'
                       : 'Subscriptions coming soon'),
             ),
@@ -216,7 +216,7 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
               '7-day trial, your subscription renews automatically until '
               'cancelled — manage anytime in your app-store account settings.',
               textAlign: TextAlign.center,
-              style: TextStyle(color: slate, fontSize: 11, height: 1.4)),
+              style: const TextStyle(color: slate, fontSize: 11, height: 1.4)),
           const SizedBox(height: 24),
         ],
       ),

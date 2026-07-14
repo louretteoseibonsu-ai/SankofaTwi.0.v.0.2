@@ -452,7 +452,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
           const SizedBox(height: 6),
           DropdownButtonFormField<String>(
-            value: _gender.isEmpty ? null : _gender,
+            initialValue: _gender.isEmpty ? null : _gender,
             isExpanded: true,
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.wc_outlined),
@@ -754,26 +754,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
           FloatingCard(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => const InviteFriendsScreen())),
-            child: Row(
+            child: const Row(
               children: [
-                const Icon(Icons.group_add_outlined,
+                Icon(Icons.group_add_outlined,
                     color: terracotta, size: 22),
-                const SizedBox(width: 12),
+                SizedBox(width: 12),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Invite friends & earn pedis',
+                      Text('Invite friends & earn pedis',
                           style: TextStyle(
                               fontWeight: FontWeight.w800, color: ink)),
                       Text(
                           'You both get $kInviteRewardPedis pedis · learn '
                           'together on a friends leaderboard',
-                          style: const TextStyle(color: slate, fontSize: 12)),
+                          style: TextStyle(color: slate, fontSize: 12)),
                     ],
                   ),
                 ),
-                const Icon(Icons.chevron_right, color: Colors.black26),
+                Icon(Icons.chevron_right, color: Colors.black26),
               ],
             ),
           ),
@@ -940,12 +940,12 @@ class _AnanseSheet extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            Row(
+            const Row(
               children: [
-                const Icon(Icons.workspace_premium,
+                Icon(Icons.workspace_premium,
                     color: Color(0xFFE3A92C), size: 20),
-                const SizedBox(width: 8),
-                const Expanded(
+                SizedBox(width: 8),
+                Expanded(
                   child: Text('Premium treasure',
                       style: TextStyle(
                           color: slate,
@@ -969,10 +969,10 @@ class _AnanseSheet extends StatelessWidget {
                 onPressed: kBillingEnabled
                     ? () => Navigator.of(context).pop(true)
                     : null,
-                icon: Icon(
+                icon: const Icon(
                     kBillingEnabled ? Icons.lock_open : Icons.schedule,
                     size: 18),
-                label: Text(kBillingEnabled
+                label: const Text(kBillingEnabled
                     ? 'Subscribe to unlock Ananse'
                     : 'Subscriptions coming soon'),
               ),

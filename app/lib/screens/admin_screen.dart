@@ -65,7 +65,7 @@ class _AdminScreenState extends State<AdminScreen> {
               stream: _admin.usersStream(),
               builder: (context, snap) {
                 if (snap.hasError) {
-                  return _Message(
+                  return const _Message(
                     icon: Icons.lock_outline,
                     title: 'Access denied',
                     body:
@@ -274,7 +274,7 @@ class _Chip extends StatelessWidget {
       margin: const EdgeInsets.only(left: 6),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.12),
+        color: color.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(label,

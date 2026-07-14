@@ -1,18 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../data/lesson_catalog.dart';
 import '../services/progress_service.dart';
+import '../services/sound_service.dart';
 import '../theme.dart';
-import '../widgets/animations.dart';
-import '../widgets/app_avatar.dart';
+import '../widgets/trotro_mascot.dart';
 import 'lesson_quiz_screen.dart';
 
 const Color _roadGold = Color(0xFFE3A92C);
 const Color _roadGoldDeep = Color(0xFFC68A1E);
 const Color _doneGreen = Color(0xFF2E6B3B);
 
-/// The learning path — "how it started → how it's going" — with the user's
-/// avatar travelling down a winding yellow-brick road of lessons.
+/// The learning path — "how it started → how it's going" — with the Sankofa
+/// tro tro driving the learner down a winding road of lessons, stop by stop.
 class JourneyScreen extends StatefulWidget {
   const JourneyScreen({super.key});
 
@@ -25,6 +25,13 @@ class _JourneyScreenState extends State<JourneyScreen> {
   Progress _p = Progress.empty;
   bool _loading = true;
 
+  // Where the tro tro is drawn. Decoupled from the "true" current index so it
+  // can animate (drive) from the old stop to the new one when a lesson unlocks
+  // the next, rather than teleporting.
+  int _displayIndex = 0;
+  TroTroState _troState = TroTroState.idle;
+  bool _firstLoad = true;
+
   @override
   void initState() {
     super.initState();
@@ -34,10 +41,37 @@ class _JourneyScreenState extends State<JourneyScreen> {
   Future<void> _reload() async {
     final p = await _service.load();
     if (!mounted) return;
+    final newCurrent = _currentIndexFor(p);
+    final prev = _displayIndex;
     setState(() {
       _p = p;
       _loading = false;
     });
+
+    // First open: just park at the current stop, no drive animation.
+    if (_firstLoad) {
+      _firstLoad = false;
+      setState(() => _displayIndex = newCurrent);
+      return;
+    }
+
+    if (newCurrent > prev) {
+      // Progressed: drive up the road to the newly unlocked stop.
+      setState(() {
+        _troState = TroTroState.drive;
+        _displayIndex = newCurrent; // AnimatedPositioned slides it there
+      });
+      await Future.delayed(const Duration(milliseconds: 950));
+      if (!mounted) return;
+      setState(() => _troState = TroTroState.arrive);
+      SoundService.instance.complete();
+      HapticFeedback.mediumImpact();
+      await Future.delayed(const Duration(milliseconds: 800));
+      if (!mounted) return;
+      setState(() => _troState = TroTroState.idle);
+    } else {
+      setState(() => _displayIndex = newCurrent);
+    }
   }
 
   Future<void> _open(Lesson l) async {
@@ -46,12 +80,14 @@ class _JourneyScreenState extends State<JourneyScreen> {
     _reload();
   }
 
-  int get _currentIndex {
+  static int _currentIndexFor(Progress p) {
     final i =
-        kLessonsFlat.indexWhere((l) => _p.unlocked(l.id) && !_p.passed(l.id));
+        kLessonsFlat.indexWhere((l) => p.unlocked(l.id) && !p.passed(l.id));
     if (i != -1) return i;
     return kLessonsFlat.isEmpty ? 0 : kLessonsFlat.length - 1;
   }
+
+  int get _currentIndex => _currentIndexFor(_p);
 
   @override
   Widget build(BuildContext context) {
@@ -112,9 +148,9 @@ class _JourneyScreenState extends State<JourneyScreen> {
                         child: const Icon(Icons.emoji_events,
                             color: _roadGold, size: 36),
                       ),
-                      // Nodes
+                      // Nodes (the stop under the tro tro is hidden)
                       for (int i = 0; i < n; i++)
-                        if (i != current)
+                        if (i != _displayIndex)
                           Positioned(
                             left: points[i].dx - 26,
                             top: points[i].dy - 26,
@@ -127,13 +163,22 @@ class _JourneyScreenState extends State<JourneyScreen> {
                                   : null,
                             ),
                           ),
-                      // Avatar on the current step (drawn last = on top)
+                      // The tro tro on the current stop (drawn last = on top).
+                      // AnimatedPositioned makes it drive between stops.
                       if (n > 0)
-                        Positioned(
-                          left: points[current].dx - 30,
-                          top: points[current].dy - 38,
-                          child: _AvatarMarker(
+                        AnimatedPositioned(
+                          duration: const Duration(milliseconds: 900),
+                          curve: Curves.easeInOut,
+                          left: points[_displayIndex].dx - 54,
+                          top: points[_displayIndex].dy - 46,
+                          width: 108,
+                          height: 108 * 250 / 380,
+                          child: GestureDetector(
                             onTap: () => _open(lessons[current]),
+                            child: TroTroMascot(
+                              state: _troState,
+                              width: 108,
+                            ),
                           ),
                         ),
                     ],
@@ -144,52 +189,6 @@ class _JourneyScreenState extends State<JourneyScreen> {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _AvatarMarker extends StatelessWidget {
-  final VoidCallback onTap;
-  const _AvatarMarker({required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AvatarBob(
-        child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-            decoration: BoxDecoration(
-                color: charcoal, borderRadius: BorderRadius.circular(8)),
-            child: const Text('YOU',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 9,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 0.5)),
-          ),
-          const SizedBox(height: 2),
-          Container(
-            padding: const EdgeInsets.all(3),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-              boxShadow: const [
-                BoxShadow(
-                    color: Color(0x33000000),
-                    blurRadius: 8,
-                    offset: Offset(0, 3)),
-              ],
-            ),
-            child: AppAvatar(
-                user: FirebaseAuth.instance.currentUser, radius: 24),
-          ),
-        ],
-        ),
-      ),
     );
   }
 }

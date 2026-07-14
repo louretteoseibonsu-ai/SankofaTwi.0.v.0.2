@@ -52,24 +52,24 @@ class AlphabetScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(20),
-      children: [
-        const Text('The Twi Alphabet',
+      children: const [
+        Text('The Twi Alphabet',
             style: TextStyle(
                 fontWeight: FontWeight.w800, fontSize: 26, color: ink)),
-        const SizedBox(height: 4),
-        const Text('Tap any example to hear the sound. Twi drops c, j, q, v, x, z '
+        SizedBox(height: 4),
+        Text('Tap any example to hear the sound. Twi drops c, j, q, v, x, z '
             'and adds two special vowels: ɛ and ɔ.',
             style: TextStyle(color: slate, fontSize: 13.5, height: 1.5)),
-        const SizedBox(height: 18),
+        SizedBox(height: 18),
         _Section(title: 'Vowels', subtitle: 'Seven in total — master ɛ and ɔ.', rows: _vowels),
-        const SizedBox(height: 16),
+        SizedBox(height: 16),
         _Section(title: 'Consonants', rows: _consonants),
-        const SizedBox(height: 16),
+        SizedBox(height: 16),
         _Section(
             title: 'Digraphs',
             subtitle: 'Two letters, one sound — the ones English speakers miss.',
             rows: _digraphs),
-        const SizedBox(height: 24),
+        SizedBox(height: 24),
       ],
     );
   }
