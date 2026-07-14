@@ -5,6 +5,7 @@ import '../services/progress_service.dart';
 import '../services/sound_service.dart';
 import '../theme.dart';
 import '../widgets/trotro_mascot.dart';
+import 'dialogue_boss_screen.dart';
 import 'lesson_quiz_screen.dart';
 
 // Road / map palette.
@@ -88,8 +89,13 @@ class _JourneyScreenState extends State<JourneyScreen> {
   }
 
   Future<void> _open(Lesson l) async {
+    // Boss stops (last lesson of a region) launch the Dialogue Boss Battle;
+    // everything else uses the standard lesson screen.
+    final Widget dest = _bossIds.contains(l.id)
+        ? DialogueBossScreen(lesson: l)
+        : LessonQuizScreen(lesson: l);
     await Navigator.of(context)
-        .push(MaterialPageRoute(builder: (_) => LessonQuizScreen(lesson: l)));
+        .push(MaterialPageRoute(builder: (_) => dest));
     _reload();
   }
 

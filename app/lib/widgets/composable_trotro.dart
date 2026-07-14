@@ -137,7 +137,7 @@ class _TroTroPainter extends CustomPainter {
 
     // Roof cap + kente
     canvas.drawRRect(rr(46, 63, 350, 80, 9), fill(_terraDeep));
-    const roofXs = [58.0, 82, 106, 252, 276, 300, 324];
+    const List<double> roofXs = [58, 82, 106, 252, 276, 300, 324];
     for (int i = 0; i < roofXs.length; i++) {
       sq(roofXs[i], 67, k[i % k.length]);
     }
@@ -155,7 +155,7 @@ class _TroTroPainter extends CustomPainter {
 
     // Bumper + kente
     canvas.drawRRect(rr(50, 176, 346, 189, 6), fill(_char));
-    const bumpXs = [58.0, 68, 78, 88, 298, 308, 318];
+    const List<double> bumpXs = [58, 68, 78, 88, 298, 308, 318];
     for (int i = 0; i < bumpXs.length; i++) {
       sq(bumpXs[i], 177, k[i % k.length]);
     }

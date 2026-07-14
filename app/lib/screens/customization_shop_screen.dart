@@ -5,7 +5,6 @@ import '../services/sound_service.dart';
 import '../theme.dart';
 import '../widgets/composable_trotro.dart';
 
-const Color _gold = Color(0xFFE3A92C);
 const Color _terra = Color(0xFFBE5235);
 
 /// "The Garage" — spend Golden Kente shards to customise the tro tro.
