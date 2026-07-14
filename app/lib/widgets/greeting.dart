@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../data/akan_day_names.dart';
-import '../theme.dart';
 
 /// Time-aware Akan greeting.
 String akanGreeting() {
@@ -74,16 +73,27 @@ class _GreetingTitleState extends State<GreetingTitle> {
       builder: (context, snap) {
         final u = snap.data ?? FirebaseAuth.instance.currentUser;
         final first = firstNameOf(u);
-        final label = _dayName == null
-            ? '${akanGreeting()}, $first'
-            : '${akanGreeting()}, $first $_dayName';
+        // Don't repeat the day-name if the display name already is it
+        // (e.g. someone whose name is "Akua" born on Wednesday → not "Akua Akua").
+        final showDay =
+            _dayName != null && _dayName!.toLowerCase() != first.toLowerCase();
+        final label = showDay
+            ? '${akanGreeting()}, $first $_dayName'
+            : '${akanGreeting()}, $first';
         return Text(
           label,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
-              fontWeight: FontWeight.w800,
-              fontSize: widget.fontSize,
-              color: charcoal),
+            fontWeight: FontWeight.w800,
+            fontSize: widget.fontSize,
+            color: Colors.white,
+            shadows: const [
+              Shadow(
+                  color: Color(0x99000000),
+                  blurRadius: 4,
+                  offset: Offset(0, 1)),
+            ],
+          ),
         );
       },
     );

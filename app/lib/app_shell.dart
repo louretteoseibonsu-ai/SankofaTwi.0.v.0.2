@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'theme.dart';
 import 'widgets/app_avatar.dart';
 import 'widgets/greeting.dart';
 import 'widgets/kente_pattern.dart';
@@ -67,7 +66,16 @@ class _AppShellState extends State<AppShell> {
             : Text(
                 _dest[_index].label,
                 style: const TextStyle(
-                    fontWeight: FontWeight.w800, fontSize: 20, color: charcoal),
+                  fontWeight: FontWeight.w800,
+                  fontSize: 20,
+                  color: Colors.white,
+                  shadows: [
+                    Shadow(
+                        color: Color(0x99000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 1)),
+                  ],
+                ),
               ),
         actions: [
           Padding(

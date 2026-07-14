@@ -173,10 +173,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
             .showSnackBar(const SnackBar(content: Text('Profile saved')));
         Navigator.of(context).pop();
       }
-    } catch (_) {
+    } catch (e, s) {
+      debugPrint('Profile save/upload failed: $e\n$s');
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Could not save. Photo uploads need Firebase Storage enabled.'),
+        final msg = e.toString();
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+              'Could not save: ${msg.length > 140 ? '${msg.substring(0, 140)}…' : msg}'),
         ));
       }
     } finally {
