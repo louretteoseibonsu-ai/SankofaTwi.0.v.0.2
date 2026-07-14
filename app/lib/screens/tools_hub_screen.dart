@@ -9,7 +9,6 @@ import 'reading_screen.dart';
 import 'review_quiz_screen.dart';
 import 'leaderboard_screen.dart';
 import 'symbols_screen.dart';
-import 'translate_screen.dart';
 
 /// "Tools" tab — a hub for the secondary destinations that don't belong in the
 /// daily learn → practice loop. Each opens as its own page with a back button.
@@ -74,13 +73,6 @@ class ToolsHubScreen extends StatelessWidget {
           title: 'Adinkra Symbols',
           subtitle: 'Meanings & wisdom of the glyphs',
           onTap: () => _openWrapped(context, 'Symbols', const SymbolsScreen()),
-        ),
-        _ToolRow(
-          icon: Icons.translate,
-          title: 'AI Translate',
-          subtitle: 'English ⇆ Twi with native audio',
-          onTap: () =>
-              _openWrapped(context, 'AI Translate', const TranslateScreen()),
         ),
         _ToolRow(
           icon: Icons.calendar_today_outlined,

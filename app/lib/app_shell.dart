@@ -7,7 +7,7 @@ import 'widgets/greeting.dart';
 import 'widgets/kente_pattern.dart';
 import 'screens/profile_screen.dart';
 import 'screens/journey_screen.dart';
-import 'screens/lessons_screen.dart';
+import 'screens/translate_screen.dart';
 import 'screens/lens_screen.dart';
 import 'screens/progress_dashboard_screen.dart';
 import 'screens/tools_hub_screen.dart';
@@ -31,7 +31,7 @@ class _AppShellState extends State<AppShell> {
 
   static const _dest = [
     _Dest('Journey', Icons.route_outlined, Icons.route),
-    _Dest('Learn', Icons.menu_book_outlined, Icons.menu_book),
+    _Dest('Translate', Icons.translate, Icons.translate),
     _Dest('Lens', Icons.center_focus_strong_outlined,
         Icons.center_focus_strong),
     _Dest('Progress', Icons.insights_outlined, Icons.insights),
@@ -40,7 +40,7 @@ class _AppShellState extends State<AppShell> {
 
   static const _screens = [
     JourneyScreen(),
-    LessonsScreen(),
+    TranslateScreen(),
     LensScreen(),
     ProgressDashboardScreen(),
     ToolsHubScreen(),
