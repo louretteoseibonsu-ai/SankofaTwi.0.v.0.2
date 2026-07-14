@@ -4,11 +4,11 @@ import '../widgets/floating_card.dart';
 import 'alphabet_screen.dart';
 import 'courses_screen.dart';
 import 'day_name_screen.dart';
-import 'journey_screen.dart';
+import 'quiz_screen.dart';
 import 'reading_screen.dart';
 import 'review_quiz_screen.dart';
 import 'leaderboard_screen.dart';
-import 'lens_screen.dart';
+import 'symbols_screen.dart';
 import 'translate_screen.dart';
 
 /// "Tools" tab — a hub for the secondary destinations that don't belong in the
@@ -36,13 +36,6 @@ class ToolsHubScreen extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(20),
       children: [
-        const Text('Tools',
-            style:
-                TextStyle(fontWeight: FontWeight.w800, fontSize: 26, color: ink)),
-        const SizedBox(height: 4),
-        const Text('Translate, scan, and explore.',
-            style: TextStyle(color: slate, fontSize: 13.5)),
-        const SizedBox(height: 16),
         _ToolRow(
           icon: Icons.school_outlined,
           title: 'Courses',
@@ -71,6 +64,18 @@ class ToolsHubScreen extends StatelessWidget {
               context, 'Review', const ReviewPickerScreen()),
         ),
         _ToolRow(
+          icon: Icons.bolt_outlined,
+          title: 'Quick Practice',
+          subtitle: 'A fast mixed quiz',
+          onTap: () => _openWrapped(context, 'Practice', const QuizScreen()),
+        ),
+        _ToolRow(
+          icon: Icons.auto_awesome_outlined,
+          title: 'Adinkra Symbols',
+          subtitle: 'Meanings & wisdom of the glyphs',
+          onTap: () => _openWrapped(context, 'Symbols', const SymbolsScreen()),
+        ),
+        _ToolRow(
           icon: Icons.translate,
           title: 'AI Translate',
           subtitle: 'English ⇆ Twi with native audio',
@@ -78,22 +83,10 @@ class ToolsHubScreen extends StatelessWidget {
               _openWrapped(context, 'AI Translate', const TranslateScreen()),
         ),
         _ToolRow(
-          icon: Icons.center_focus_strong_outlined,
-          title: 'Sankofa Lens',
-          subtitle: 'Point, learn & speak it out loud',
-          onTap: () => _openWrapped(context, 'Sankofa Lens', const LensScreen()),
-        ),
-        _ToolRow(
           icon: Icons.calendar_today_outlined,
           title: 'Day Name',
           subtitle: 'Your Akan soul name (kra din)',
           onTap: () => _openWrapped(context, 'Day Name', const DayNameScreen()),
-        ),
-        _ToolRow(
-          icon: Icons.route_outlined,
-          title: 'Journey',
-          subtitle: 'Your learning path',
-          onTap: () => _openWrapped(context, 'Journey', const JourneyScreen()),
         ),
         _ToolRow(
           icon: Icons.emoji_events_outlined,

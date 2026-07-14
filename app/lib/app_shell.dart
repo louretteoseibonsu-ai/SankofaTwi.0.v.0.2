@@ -5,10 +5,10 @@ import 'theme.dart';
 import 'widgets/app_avatar.dart';
 import 'widgets/kente_pattern.dart';
 import 'screens/profile_screen.dart';
-import 'screens/progress_dashboard_screen.dart';
-import 'screens/symbols_screen.dart';
+import 'screens/journey_screen.dart';
 import 'screens/lessons_screen.dart';
-import 'screens/quiz_screen.dart';
+import 'screens/lens_screen.dart';
+import 'screens/progress_dashboard_screen.dart';
 import 'screens/tools_hub_screen.dart';
 
 class _Dest {
@@ -26,22 +26,23 @@ class AppShell extends StatefulWidget {
 }
 
 class _AppShellState extends State<AppShell> {
-  int _index = 0; // land on Learn — the core daily loop
+  int _index = 0; // land on the Journey — the gamified daily hub
 
   static const _dest = [
+    _Dest('Journey', Icons.route_outlined, Icons.route),
     _Dest('Learn', Icons.menu_book_outlined, Icons.menu_book),
-    _Dest('Practice', Icons.quiz_outlined, Icons.quiz),
-    _Dest('Symbols', Icons.auto_awesome_outlined, Icons.auto_awesome),
-    _Dest('Tools', Icons.apps_outlined, Icons.apps),
+    _Dest('Lens', Icons.center_focus_strong_outlined,
+        Icons.center_focus_strong),
     _Dest('Progress', Icons.insights_outlined, Icons.insights),
+    _Dest('Tools', Icons.apps_outlined, Icons.apps),
   ];
 
   static const _screens = [
+    JourneyScreen(),
     LessonsScreen(),
-    QuizScreen(),
-    SymbolsScreen(),
-    ToolsHubScreen(),
+    LensScreen(),
     ProgressDashboardScreen(),
+    ToolsHubScreen(),
   ];
 
   void _select(int i) {

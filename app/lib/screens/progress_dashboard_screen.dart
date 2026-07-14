@@ -55,15 +55,12 @@ class _ProgressDashboardScreenState extends State<ProgressDashboardScreen> {
       child: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          const Text('Your Progress',
-              style: TextStyle(
-                  fontWeight: FontWeight.w800, fontSize: 26, color: ink)),
-          const SizedBox(height: 2),
-          const Text('How you’re doing, all in one place.',
-              style: TextStyle(color: slate, fontSize: 13.5)),
-          const SizedBox(height: 16),
+          if (!_s.premium) ...[
+            _GoPremiumBanner(),
+            const SizedBox(height: 14),
+          ],
 
-          // Tro tro dashboard HUD — speedometer (journey progress) + fuel (streak).
+          // Tro tro dashboard HUD — at-a-glance speedometer + fuel.
           TroTroDashboard(
             progress:
                 totalLessons == 0 ? 0 : _s.lessonsCompleted / totalLessons,
@@ -113,53 +110,73 @@ class _ProgressDashboardScreenState extends State<ProgressDashboardScreen> {
           ),
           const SizedBox(height: 14),
 
-          if (!_s.premium) ...[
-            _GoPremiumBanner(),
-            const SizedBox(height: 14),
-          ],
-
           _LevelHero(p: p),
-          const SizedBox(height: 14),
-
-          _StreakCard(s: _s),
-          const SizedBox(height: 14),
-
-          _DailyQuests(s: _s),
-          const SizedBox(height: 14),
-
-          _TreasureCard(keys: _s.keys, onChanged: _reload),
-          const SizedBox(height: 14),
-
-          _WalletCard(pedis: _s.pedis, onChanged: _reload),
-          const SizedBox(height: 14),
-
-          // ── Stats grid ──
-          Row(children: [
-            _Metric(label: 'Day streak', value: '${_s.streak}', icon: '🔥'),
-            const SizedBox(width: 10),
-            _Metric(label: 'Total XP', value: '${p.totalXp}', icon: '⭐'),
-          ]),
-          const SizedBox(height: 10),
-          Row(children: [
-            _Metric(
-                label: 'Lessons',
-                value: '${_s.lessonsCompleted}/$totalLessons',
-                icon: '📘'),
-            const SizedBox(width: 10),
-            _Metric(label: 'Words', value: '${_s.wordsLearned}', icon: '🗣'),
-          ]),
-          const SizedBox(height: 22),
-
-          const _SectionTitle('Mastery by subject'),
           const SizedBox(height: 8),
-          for (final c in kCategories) _MasteryRow(category: c, p: p),
-          const SizedBox(height: 18),
 
-          const _SectionTitle('Adinkra badges'),
-          const SizedBox(height: 10),
-          _BadgeGrid(s: _s),
+          _Section('Today', initiallyExpanded: true, children: [
+            _StreakCard(s: _s),
+            const SizedBox(height: 12),
+            _DailyQuests(s: _s),
+          ]),
+          _Section('Rewards', children: [
+            _TreasureCard(keys: _s.keys, onChanged: _reload),
+            const SizedBox(height: 12),
+            _WalletCard(pedis: _s.pedis, onChanged: _reload),
+          ]),
+          _Section('Stats & mastery', children: [
+            Row(children: [
+              _Metric(label: 'Day streak', value: '${_s.streak}', icon: '🔥'),
+              const SizedBox(width: 10),
+              _Metric(label: 'Total XP', value: '${p.totalXp}', icon: '⭐'),
+            ]),
+            const SizedBox(height: 10),
+            Row(children: [
+              _Metric(
+                  label: 'Lessons',
+                  value: '${_s.lessonsCompleted}/$totalLessons',
+                  icon: '📘'),
+              const SizedBox(width: 10),
+              _Metric(label: 'Words', value: '${_s.wordsLearned}', icon: '🗣'),
+            ]),
+            const SizedBox(height: 16),
+            const _SectionTitle('Mastery by subject'),
+            const SizedBox(height: 8),
+            for (final c in kCategories) _MasteryRow(category: c, p: p),
+            const SizedBox(height: 14),
+            const _SectionTitle('Adinkra badges'),
+            const SizedBox(height: 10),
+            _BadgeGrid(s: _s),
+          ]),
           const SizedBox(height: 28),
         ],
+      ),
+    );
+  }
+}
+
+/// A collapsible section — groups related cards so the tab scans at a glance.
+class _Section extends StatelessWidget {
+  final String title;
+  final bool initiallyExpanded;
+  final List<Widget> children;
+  const _Section(this.title,
+      {this.initiallyExpanded = false, required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        title: Text(title,
+            style: const TextStyle(
+                fontWeight: FontWeight.w800, fontSize: 16, color: ink)),
+        initiallyExpanded: initiallyExpanded,
+        tilePadding: EdgeInsets.zero,
+        childrenPadding: const EdgeInsets.only(bottom: 8),
+        expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
+        shape: const Border(),
+        collapsedShape: const Border(),
+        children: children,
       ),
     );
   }

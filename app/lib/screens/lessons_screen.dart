@@ -4,7 +4,6 @@ import '../services/progress_service.dart';
 import '../theme.dart';
 import '../widgets/floating_card.dart';
 import 'lesson_quiz_screen.dart';
-import 'leaderboard_screen.dart';
 
 class LessonsScreen extends StatefulWidget {
   const LessonsScreen({super.key});
@@ -48,21 +47,6 @@ class _LessonsScreenState extends State<LessonsScreen> {
       child: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('Lessons',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w800, fontSize: 26, color: ink)),
-              IconButton(
-                tooltip: 'Leaderboard',
-                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => const LeaderboardScreen())),
-                icon: const Icon(Icons.emoji_events_outlined, color: charcoal),
-              ),
-            ],
-          ),
-          const SizedBox(height: 4),
           _LevelCard(p: _p),
           const SizedBox(height: 22),
           const Text('Explore Interactive Twi Lessons',
