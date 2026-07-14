@@ -9,6 +9,7 @@ import '../services/sound_service.dart';
 import '../services/twi_speech.dart';
 import '../theme.dart';
 import '../widgets/animations.dart';
+import '../widgets/celebration.dart';
 import '../widgets/continue_button.dart';
 import '../widgets/floating_card.dart';
 
@@ -100,8 +101,21 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
     }
     if (_allDone && !_recorded) {
       _recorded = true;
-      _progress.recordResult(widget.lesson.id, _correct,
-          keysEarned: _keysEarned);
+      _recordAndCelebrate();
+    }
+  }
+
+  Future<void> _recordAndCelebrate() async {
+    final o = await _progress.recordResult(widget.lesson.id, _correct,
+        keysEarned: _keysEarned);
+    if (!mounted) return;
+    if (o.leveledUp) {
+      celebrateMilestone(context,
+          headline: 'Level up!', subline: 'You reached level ${o.level}');
+    } else if (o.starsGained > 0 && o.stars == 3) {
+      celebrateMilestone(context,
+          headline: 'Perfect — 3 stars!',
+          subline: 'Mastered ${widget.lesson.title}');
     }
   }
 

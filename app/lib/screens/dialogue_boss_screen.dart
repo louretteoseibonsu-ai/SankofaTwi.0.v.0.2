@@ -6,6 +6,7 @@ import '../data/lesson_content.dart';
 import '../services/progress_service.dart';
 import '../services/sound_service.dart';
 import '../theme.dart';
+import '../widgets/celebration.dart';
 import '../widgets/composable_trotro.dart';
 
 const Color _green = Color(0xFF2E6B3B);
@@ -91,16 +92,25 @@ class _DialogueBossScreenState extends State<DialogueBossScreen> {
   void _next() {
     if (_i >= _challenges.length - 1) {
       setState(() => _done = true);
-      if (!_recorded) {
-        _recorded = true;
-        _progress.recordResult(widget.lesson.id, _correct,
-            keysEarned: _keysEarned);
-      }
+      _recordAndCelebrate();
     } else {
       setState(() {
         _i += 1;
         _picked = null;
       });
+    }
+  }
+
+  Future<void> _recordAndCelebrate() async {
+    if (_recorded) return;
+    _recorded = true;
+    final o = await _progress.recordResult(widget.lesson.id, _correct,
+        keysEarned: _keysEarned);
+    if (!mounted) return;
+    if (_correct >= kPassScore) {
+      celebrateMilestone(context,
+          headline: 'Boss defeated!',
+          subline: o.leveledUp ? 'Level ${o.level} reached' : 'Region cleared');
     }
   }
 

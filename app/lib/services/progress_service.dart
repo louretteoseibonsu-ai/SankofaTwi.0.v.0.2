@@ -52,6 +52,30 @@ class Progress {
 /// Fraction of a region that must be mastered to unlock the next one.
 const double kSectionUnlockThreshold = 0.8;
 
+/// Milestone summary returned by [ProgressService.recordResult], so the UI can
+/// fire a celebration for a level-up or a first-time 3-star.
+class RecordOutcome {
+  final Progress progress;
+  final int level;
+  final bool leveledUp;
+  final int stars; // stars for this lesson now (0..3)
+  final int starsGained; // newly earned stars this attempt
+  const RecordOutcome({
+    required this.progress,
+    required this.level,
+    required this.leveledUp,
+    required this.stars,
+    required this.starsGained,
+  });
+
+  static const empty = RecordOutcome(
+      progress: Progress.empty,
+      level: 1,
+      leveledUp: false,
+      stars: 0,
+      starsGained: 0);
+}
+
 /// Star rating (0–3) for a lesson's best score.
 int _starsFor(int score) {
   if (score >= 10) return 3;
@@ -365,17 +389,18 @@ class ProgressService {
   }
 
   /// Records an attempt (keeps the best per lesson), updates XP, streak,
-  /// daily quests, and the public leaderboards. Returns the updated progress.
-  Future<Progress> recordResult(String lessonId, int correct,
+  /// daily quests, and the public leaderboards. Returns a milestone summary.
+  Future<RecordOutcome> recordResult(String lessonId, int correct,
       {int keysEarned = 0}) async {
     final uid = _uid;
-    if (uid == null) return Progress.empty;
+    if (uid == null) return RecordOutcome.empty;
     final doc = await _db.collection('users').doc(uid).get();
     final data = doc.data() ?? {};
     final raw = (data['lessonBest'] as Map?)?.cast<String, dynamic>() ?? {};
     final best = raw.map((k, v) => MapEntry(k, (v as num).toInt()));
     final oldScore = best[lessonId] ?? 0;
     final oldXp = Progress(best).totalXp;
+    final oldLevel = Progress(best).level;
     if (correct > oldScore) best[lessonId] = correct;
     final newScore = best[lessonId] ?? 0;
     final updated = Progress(best);
@@ -461,7 +486,13 @@ class ProgressService {
       }, SetOptions(merge: true));
     }
 
-    return updated;
+    return RecordOutcome(
+      progress: updated,
+      level: updated.level,
+      leveledUp: updated.level > oldLevel,
+      stars: newStars,
+      starsGained: (newStars - oldStars).clamp(0, 3).toInt(),
+    );
   }
 
   /// ISO-8601 week key, e.g. "2026-W26".
