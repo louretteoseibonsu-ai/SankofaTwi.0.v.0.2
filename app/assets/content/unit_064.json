@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_064",
+  "unit_title": "Social Media",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "intanɛt",
+    "gloss": "social media — sharing online with friends.",
+    "phonetic_bridge": {
+      "pronunciation": "in-ta-nɛt"
+    },
+    "example_sentences": [
+      "intanɛt, fɔn, nkra."
+    ],
+    "culture_note": "Share a photo: ‘Kyɛ mfoni no.’ Loanwords are common here."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about social media",
+    "explanation": "Key vocabulary: intanɛt (internet), fɔn (phone), nkra (message), mfoni (photo), kyɛ (to share), hwɛ (to view), adamfoɔ (friend / follower), kasa (to chat), amanneɛbɔ (news), berɛ (time).",
+    "patterns": [
+      "intanɛt = internet",
+      "fɔn = phone",
+      "nkra = message"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘internet’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kyɛ",
+        "adamfoɔ",
+        "nkra",
+        "intanɛt"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘fɔn’ mean?",
+      "type": "recall",
+      "options": [
+        "news",
+        "to view",
+        "phone",
+        "to chat"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘message’ in Twi?",
+      "type": "recall",
+      "options": [
+        "mfoni",
+        "kyɛ",
+        "kasa",
+        "nkra"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘mfoni’ mean?",
+      "type": "recall",
+      "options": [
+        "internet",
+        "message",
+        "to chat",
+        "photo"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘to share’ in Twi?",
+      "type": "recall",
+      "options": [
+        "mfoni",
+        "adamfoɔ",
+        "kyɛ",
+        "nkra"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘hwɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "internet",
+        "to view",
+        "friend / follower",
+        "photo"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘friend / follower’ in Twi?",
+      "type": "recall",
+      "options": [
+        "hwɛ",
+        "adamfoɔ",
+        "nkra",
+        "berɛ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘kasa’ mean?",
+      "type": "recall",
+      "options": [
+        "to chat",
+        "time",
+        "phone",
+        "photo"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘news’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kyɛ",
+        "hwɛ",
+        "amanneɛbɔ",
+        "nkra"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘berɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "to share",
+        "time",
+        "news",
+        "to view"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "intanɛt",
+      "en": "internet"
+    },
+    {
+      "twi": "fɔn",
+      "en": "phone"
+    },
+    {
+      "twi": "nkra",
+      "en": "message"
+    },
+    {
+      "twi": "mfoni",
+      "en": "photo"
+    },
+    {
+      "twi": "kyɛ",
+      "en": "to share"
+    },
+    {
+      "twi": "hwɛ",
+      "en": "to view"
+    },
+    {
+      "twi": "adamfoɔ",
+      "en": "friend / follower"
+    },
+    {
+      "twi": "kasa",
+      "en": "to chat"
+    },
+    {
+      "twi": "amanneɛbɔ",
+      "en": "news"
+    },
+    {
+      "twi": "berɛ",
+      "en": "time"
+    }
+  ]
+}

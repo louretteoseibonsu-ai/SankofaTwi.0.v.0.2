@@ -1,0 +1,188 @@
+{
+  "unit_id": "unit_028",
+  "unit_title": "Basic Grammar: Everyday Verbs",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "pɛ",
+    "gloss": "To want / to like — one of the most useful verbs you'll say every day.",
+    "phonetic_bridge": {
+      "pronunciation": "pɛ"
+    },
+    "example_sentences": [
+      "Me pɛ nsuo.",
+      "Me didi.",
+      "Bra ha.",
+      "Me nom nsuo."
+    ],
+    "culture_note": "Chale, a handful of verbs unlock most daily talk. Stack them with what you already know: 'Me pɛ nsuo' = I want water (me + pɛ + nsuo). Add a tense marker and you're flying — 'Me bɛba' = I will come."
+  },
+  "grammar_mechanics": {
+    "focus": "High-frequency everyday verbs",
+    "explanation": "These verbs come up constantly. Build sentences as subject + verb (+ object): 'Me pɛ nsuo' = I want water. Then add the tense markers you learned: 're-' for now (Me redidi = I am eating), 'bɛ-' for the future (Me bɛba = I will come), and the n-/m- nasal for negatives (Me mpɛ = I don't want).",
+    "patterns": [
+      "kɔ (go) · ba (come) · didi (eat) · nom (drink)",
+      "pɛ (want) · hunu (see) · te (hear) · ka (say)",
+      "Me pɛ nsuo = I want water",
+      "Me bɛba = I will come"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "'pɛ' means:",
+      "type": "concept_match",
+      "options": [
+        "to want / to like",
+        "to go",
+        "to eat",
+        "to see"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'ba' means:",
+      "type": "concept_match",
+      "options": [
+        "to come",
+        "to go",
+        "to drink",
+        "to do"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'didi' means:",
+      "type": "concept_match",
+      "options": [
+        "to eat",
+        "to drink",
+        "to sleep",
+        "to walk"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Me pɛ nsuo' means: (nsuo = water)",
+      "type": "concept_match",
+      "options": [
+        "I want water",
+        "I drink water",
+        "I see water",
+        "I have water"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'nom' means:",
+      "type": "concept_match",
+      "options": [
+        "to drink",
+        "to eat",
+        "to come",
+        "to want"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'hunu' means:",
+      "type": "concept_match",
+      "options": [
+        "to see",
+        "to hear",
+        "to go",
+        "to get"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'ka' means:",
+      "type": "concept_match",
+      "options": [
+        "to say / to speak",
+        "to eat",
+        "to come",
+        "to want"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'to go'?",
+      "type": "recall",
+      "options": [
+        "kɔ",
+        "ba",
+        "pɛ",
+        "yɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'yɛ' means:",
+      "type": "concept_match",
+      "options": [
+        "to do / to make",
+        "to see",
+        "to come",
+        "to drink"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Me bɛba' means: (bɛ = future marker)",
+      "type": "concept_match",
+      "options": [
+        "I will come",
+        "I came",
+        "I come",
+        "I am coming"
+      ],
+      "correct_index": 0,
+      "slang_hint": "Same recipe as the Tenses lesson: 'bɛ' + verb = the future."
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "kɔ",
+      "en": "to go"
+    },
+    {
+      "twi": "ba",
+      "en": "to come"
+    },
+    {
+      "twi": "didi",
+      "en": "to eat"
+    },
+    {
+      "twi": "nom",
+      "en": "to drink"
+    },
+    {
+      "twi": "pɛ",
+      "en": "to want / to like"
+    },
+    {
+      "twi": "hunu",
+      "en": "to see"
+    },
+    {
+      "twi": "te",
+      "en": "to hear / understand"
+    },
+    {
+      "twi": "ka",
+      "en": "to say / to speak"
+    },
+    {
+      "twi": "yɛ",
+      "en": "to do / to make"
+    },
+    {
+      "twi": "nya",
+      "en": "to get / to receive"
+    },
+    {
+      "twi": "nsuo",
+      "en": "water"
+    }
+  ]
+}

@@ -4,9 +4,11 @@ import '../data/lesson_catalog.dart';
 import '../services/progress_service.dart';
 import '../services/sound_service.dart';
 import '../theme.dart';
+import '../widgets/composable_trotro.dart';
 import '../widgets/trotro_mascot.dart';
 import 'dialogue_boss_screen.dart';
 import 'lesson_quiz_screen.dart';
+import 'time_attack_screen.dart';
 
 // Road / map palette.
 const Color _roadActive = Color(0xFFBE5235); // travelled — vibrant terracotta
@@ -34,6 +36,7 @@ class _JourneyScreenState extends State<JourneyScreen> {
 
   int _displayIndex = 0;
   TroTroState _troState = TroTroState.idle;
+  TroTroSkin _skin = const TroTroSkin();
   bool _firstLoad = true;
 
   // Boss = last stop of each region; region name keyed by category id.
@@ -53,6 +56,7 @@ class _JourneyScreenState extends State<JourneyScreen> {
 
   Future<void> _reload() async {
     final stats = await _service.loadStats();
+    final cos = await _service.loadCosmetics();
     if (!mounted) return;
     final p = stats.progress;
     final newCurrent = _currentIndexFor(p);
@@ -60,6 +64,7 @@ class _JourneyScreenState extends State<JourneyScreen> {
     setState(() {
       _p = p;
       _stats = stats;
+      _skin = TroTroSkin.fromEquipped(cos.equipped);
       _loading = false;
     });
 
@@ -78,7 +83,7 @@ class _JourneyScreenState extends State<JourneyScreen> {
       await Future.delayed(const Duration(milliseconds: 950));
       if (!mounted) return;
       setState(() => _troState = TroTroState.arrive);
-      SoundService.instance.complete();
+      SoundService.instance.horn(_skin.horn); // equipped horn honks on arrival
       HapticFeedback.mediumImpact();
       await Future.delayed(const Duration(milliseconds: 800));
       if (!mounted) return;
@@ -237,8 +242,13 @@ class _JourneyScreenState extends State<JourneyScreen> {
                           height: 108 * 250 / 380,
                           child: GestureDetector(
                             onTap: () => _open(lessons[current]),
-                            child:
-                                TroTroMascot(state: _troState, width: 108),
+                            // Parked = the user's customised (composable) bus;
+                            // drive/arrive use the animated PNG frames.
+                            child: _troState == TroTroState.idle
+                                ? Center(
+                                    child: ComposableTroTro(
+                                        skin: _skin, width: 104))
+                                : TroTroMascot(state: _troState, width: 108),
                           ),
                         ),
                     ],
@@ -283,7 +293,19 @@ class _JourneyScreenState extends State<JourneyScreen> {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  if (!_bossIds.contains(lessons[current].id))
+                    IconButton(
+                      onPressed: () async {
+                        await Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) =>
+                                TimeAttackScreen(lesson: lessons[current])));
+                        _reload();
+                      },
+                      icon: const Icon(Icons.bolt_rounded),
+                      color: _roadGold,
+                      tooltip: 'Time-Attack',
+                    ),
+                  const SizedBox(width: 6),
                   ElevatedButton(
                     onPressed: () => _open(lessons[current]),
                     style: ElevatedButton.styleFrom(

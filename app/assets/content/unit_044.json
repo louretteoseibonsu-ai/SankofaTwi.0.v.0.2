@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_044",
+  "unit_title": "Emotions & Feelings",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "anigyeɛ",
+    "gloss": "feelings — joy, sadness, and the body’s needs.",
+    "phonetic_bridge": {
+      "pronunciation": "a-ni-gye-ɛ"
+    },
+    "example_sentences": [
+      "anigyeɛ, awerɛhoɔ, abufuo."
+    ],
+    "culture_note": "Say how you feel: ‘M’ani agye’ = I am happy. ‘Ɛkɔm de me’ = I’m hungry."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about emotions & feelings",
+    "explanation": "Key vocabulary: anigyeɛ (joy / happiness), awerɛhoɔ (sadness), abufuo (anger), suro (fear), dɔ (love), ahotɔ (peace / calm), ɛkɔm (hunger), sukɔm (thirst), brɛ (tiredness), yareɛ (sickness).",
+    "patterns": [
+      "anigyeɛ = joy / happiness",
+      "awerɛhoɔ = sadness",
+      "abufuo = anger"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘joy / happiness’ in Twi?",
+      "type": "recall",
+      "options": [
+        "awerɛhoɔ",
+        "yareɛ",
+        "dɔ",
+        "anigyeɛ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘awerɛhoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "fear",
+        "sadness",
+        "love",
+        "tiredness"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘anger’ in Twi?",
+      "type": "recall",
+      "options": [
+        "suro",
+        "sukɔm",
+        "ɛkɔm",
+        "abufuo"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘suro’ mean?",
+      "type": "recall",
+      "options": [
+        "sadness",
+        "fear",
+        "thirst",
+        "love"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘love’ in Twi?",
+      "type": "recall",
+      "options": [
+        "anigyeɛ",
+        "ahotɔ",
+        "dɔ",
+        "sukɔm"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘ahotɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "joy / happiness",
+        "fear",
+        "sadness",
+        "peace / calm"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘hunger’ in Twi?",
+      "type": "recall",
+      "options": [
+        "awerɛhoɔ",
+        "ɛkɔm",
+        "anigyeɛ",
+        "yareɛ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘sukɔm’ mean?",
+      "type": "recall",
+      "options": [
+        "tiredness",
+        "love",
+        "thirst",
+        "joy / happiness"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘tiredness’ in Twi?",
+      "type": "recall",
+      "options": [
+        "brɛ",
+        "dɔ",
+        "ɛkɔm",
+        "anigyeɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘yareɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "sadness",
+        "sickness",
+        "fear",
+        "love"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "anigyeɛ",
+      "en": "joy / happiness"
+    },
+    {
+      "twi": "awerɛhoɔ",
+      "en": "sadness"
+    },
+    {
+      "twi": "abufuo",
+      "en": "anger"
+    },
+    {
+      "twi": "suro",
+      "en": "fear"
+    },
+    {
+      "twi": "dɔ",
+      "en": "love"
+    },
+    {
+      "twi": "ahotɔ",
+      "en": "peace / calm"
+    },
+    {
+      "twi": "ɛkɔm",
+      "en": "hunger"
+    },
+    {
+      "twi": "sukɔm",
+      "en": "thirst"
+    },
+    {
+      "twi": "brɛ",
+      "en": "tiredness"
+    },
+    {
+      "twi": "yareɛ",
+      "en": "sickness"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_031",
+  "unit_title": "Cooking",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "noa",
+    "gloss": "cooking — the fire, pot, and staples of the kitchen.",
+    "phonetic_bridge": {
+      "pronunciation": "no-a"
+    },
+    "example_sentences": [
+      "noa, ogya, dadesɛn."
+    ],
+    "culture_note": "Kitchen verbs pair with food words you know: ‘noa nkwan’ = cook soup."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about cooking",
+    "explanation": "Key vocabulary: noa (to cook), ogya (fire), dadesɛn (cooking pot), ngo (cooking oil), nkyene (salt), mako (pepper), nkwan (soup), aburoo (maize), esiam (flour), yam (to grind).",
+    "patterns": [
+      "noa = to cook",
+      "ogya = fire",
+      "dadesɛn = cooking pot"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘to cook’ in Twi?",
+      "type": "recall",
+      "options": [
+        "noa",
+        "mako",
+        "esiam",
+        "nkwan"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘ogya’ mean?",
+      "type": "recall",
+      "options": [
+        "to cook",
+        "pepper",
+        "soup",
+        "fire"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘cooking pot’ in Twi?",
+      "type": "recall",
+      "options": [
+        "mako",
+        "aburoo",
+        "dadesɛn",
+        "nkwan"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘ngo’ mean?",
+      "type": "recall",
+      "options": [
+        "to cook",
+        "cooking oil",
+        "flour",
+        "cooking pot"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘salt’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ogya",
+        "nkyene",
+        "esiam",
+        "noa"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘mako’ mean?",
+      "type": "recall",
+      "options": [
+        "salt",
+        "pepper",
+        "cooking pot",
+        "soup"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘soup’ in Twi?",
+      "type": "recall",
+      "options": [
+        "aburoo",
+        "yam",
+        "esiam",
+        "nkwan"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘aburoo’ mean?",
+      "type": "recall",
+      "options": [
+        "fire",
+        "cooking pot",
+        "cooking oil",
+        "maize"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘flour’ in Twi?",
+      "type": "recall",
+      "options": [
+        "yam",
+        "nkyene",
+        "ogya",
+        "esiam"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘yam’ mean?",
+      "type": "recall",
+      "options": [
+        "flour",
+        "salt",
+        "pepper",
+        "to grind"
+      ],
+      "correct_index": 3
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "noa",
+      "en": "to cook"
+    },
+    {
+      "twi": "ogya",
+      "en": "fire"
+    },
+    {
+      "twi": "dadesɛn",
+      "en": "cooking pot"
+    },
+    {
+      "twi": "ngo",
+      "en": "cooking oil"
+    },
+    {
+      "twi": "nkyene",
+      "en": "salt"
+    },
+    {
+      "twi": "mako",
+      "en": "pepper"
+    },
+    {
+      "twi": "nkwan",
+      "en": "soup"
+    },
+    {
+      "twi": "aburoo",
+      "en": "maize"
+    },
+    {
+      "twi": "esiam",
+      "en": "flour"
+    },
+    {
+      "twi": "yam",
+      "en": "to grind"
+    }
+  ]
+}

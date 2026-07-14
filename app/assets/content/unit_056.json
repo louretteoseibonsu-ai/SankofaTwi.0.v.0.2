@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_056",
+  "unit_title": "Poetry",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "anwonsɛm",
+    "gloss": "poetry — praise poems (apae) and the beauty of words.",
+    "phonetic_bridge": {
+      "pronunciation": "a-nwon-sɛm"
+    },
+    "example_sentences": [
+      "anwonsɛm, apae, nnwom."
+    ],
+    "culture_note": "Court poets recite apae (appellations) to honour a chief."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about poetry",
+    "explanation": "Key vocabulary: anwonsɛm (poetry), apae (praise poetry), nnwom (songs), kasakoa (figurative speech), twerɛ (to write), kenkan (to read), nsɛm (words), nyansa (wisdom), ɛbɛ (proverb), kasa (speech).",
+    "patterns": [
+      "anwonsɛm = poetry",
+      "apae = praise poetry",
+      "nnwom = songs"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘poetry’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kasakoa",
+        "ɛbɛ",
+        "anwonsɛm",
+        "nyansa"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘apae’ mean?",
+      "type": "recall",
+      "options": [
+        "praise poetry",
+        "songs",
+        "proverb",
+        "to write"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘songs’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nsɛm",
+        "apae",
+        "kasakoa",
+        "nnwom"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘kasakoa’ mean?",
+      "type": "recall",
+      "options": [
+        "words",
+        "proverb",
+        "figurative speech",
+        "to read"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘to write’ in Twi?",
+      "type": "recall",
+      "options": [
+        "anwonsɛm",
+        "kenkan",
+        "twerɛ",
+        "nnwom"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘kenkan’ mean?",
+      "type": "recall",
+      "options": [
+        "to read",
+        "praise poetry",
+        "figurative speech",
+        "proverb"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘words’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nsɛm",
+        "nnwom",
+        "kasa",
+        "kasakoa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘nyansa’ mean?",
+      "type": "recall",
+      "options": [
+        "wisdom",
+        "speech",
+        "praise poetry",
+        "words"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘proverb’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nsɛm",
+        "ɛbɛ",
+        "anwonsɛm",
+        "kenkan"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘kasa’ mean?",
+      "type": "recall",
+      "options": [
+        "speech",
+        "to read",
+        "figurative speech",
+        "to write"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "anwonsɛm",
+      "en": "poetry"
+    },
+    {
+      "twi": "apae",
+      "en": "praise poetry"
+    },
+    {
+      "twi": "nnwom",
+      "en": "songs"
+    },
+    {
+      "twi": "kasakoa",
+      "en": "figurative speech"
+    },
+    {
+      "twi": "twerɛ",
+      "en": "to write"
+    },
+    {
+      "twi": "kenkan",
+      "en": "to read"
+    },
+    {
+      "twi": "nsɛm",
+      "en": "words"
+    },
+    {
+      "twi": "nyansa",
+      "en": "wisdom"
+    },
+    {
+      "twi": "ɛbɛ",
+      "en": "proverb"
+    },
+    {
+      "twi": "kasa",
+      "en": "speech"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_033",
+  "unit_title": "Shopping",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "sotɔ",
+    "gloss": "shopping — the shop, goods, and choosing.",
+    "phonetic_bridge": {
+      "pronunciation": "so-tɔ"
+    },
+    "example_sentences": [
+      "sotɔ, tɔ, boɔ."
+    ],
+    "culture_note": "New or old? ‘foforɔ’ vs ‘dada’. Cheap? ‘Ne boɔ nyɛ den.’"
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about shopping",
+    "explanation": "Key vocabulary: sotɔ (shop / store), tɔ (to buy), boɔ (price), sika (money), ɛyɛ sɛn (how much is it?), nneɛma (goods / things), foforɔ (new), dada (old), pii (plenty / many), kakra (a little).",
+    "patterns": [
+      "sotɔ = shop / store",
+      "tɔ = to buy",
+      "boɔ = price"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘shop / store’ in Twi?",
+      "type": "recall",
+      "options": [
+        "boɔ",
+        "sotɔ",
+        "tɔ",
+        "nneɛma"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘tɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "to buy",
+        "a little",
+        "price",
+        "money"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘price’ in Twi?",
+      "type": "recall",
+      "options": [
+        "tɔ",
+        "ɛyɛ sɛn",
+        "nneɛma",
+        "boɔ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘sika’ mean?",
+      "type": "recall",
+      "options": [
+        "price",
+        "goods / things",
+        "money",
+        "a little"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘how much is it?’ in Twi?",
+      "type": "recall",
+      "options": [
+        "pii",
+        "tɔ",
+        "sotɔ",
+        "ɛyɛ sɛn"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘nneɛma’ mean?",
+      "type": "recall",
+      "options": [
+        "plenty / many",
+        "a little",
+        "goods / things",
+        "money"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘new’ in Twi?",
+      "type": "recall",
+      "options": [
+        "tɔ",
+        "boɔ",
+        "foforɔ",
+        "sotɔ"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘dada’ mean?",
+      "type": "recall",
+      "options": [
+        "how much is it?",
+        "old",
+        "plenty / many",
+        "new"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘plenty / many’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kakra",
+        "sotɔ",
+        "pii",
+        "tɔ"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘kakra’ mean?",
+      "type": "recall",
+      "options": [
+        "price",
+        "shop / store",
+        "a little",
+        "new"
+      ],
+      "correct_index": 2
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "sotɔ",
+      "en": "shop / store"
+    },
+    {
+      "twi": "tɔ",
+      "en": "to buy"
+    },
+    {
+      "twi": "boɔ",
+      "en": "price"
+    },
+    {
+      "twi": "sika",
+      "en": "money"
+    },
+    {
+      "twi": "ɛyɛ sɛn",
+      "en": "how much is it?"
+    },
+    {
+      "twi": "nneɛma",
+      "en": "goods / things"
+    },
+    {
+      "twi": "foforɔ",
+      "en": "new"
+    },
+    {
+      "twi": "dada",
+      "en": "old"
+    },
+    {
+      "twi": "pii",
+      "en": "plenty / many"
+    },
+    {
+      "twi": "kakra",
+      "en": "a little"
+    }
+  ]
+}

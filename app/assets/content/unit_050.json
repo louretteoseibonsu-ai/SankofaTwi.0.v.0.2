@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_050",
+  "unit_title": "Chieftaincy",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "ɔhene",
+    "gloss": "chieftaincy — chiefs, stools, and royal custom.",
+    "phonetic_bridge": {
+      "pronunciation": "ɔ-he-ne"
+    },
+    "example_sentences": [
+      "ɔhene, ɔhemmaa, ahennwa."
+    ],
+    "culture_note": "The chief (ɔhene) sits on the ancestral stool (ahennwa); the ɔkyeame speaks for him."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about chieftaincy",
+    "explanation": "Key vocabulary: ɔhene (chief / king), ɔhemmaa (queen mother), ahennwa (royal stool), ɔkyeame (linguist / spokesperson), ahemfie (palace), adehyeɛ (royalty), abusuapanyin (family head), amanhene (paramount chief), akofena (state sword), atumpan (talking drums).",
+    "patterns": [
+      "ɔhene = chief / king",
+      "ɔhemmaa = queen mother",
+      "ahennwa = royal stool"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘chief / king’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ahemfie",
+        "ɔhene",
+        "akofena",
+        "ɔkyeame"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘ɔhemmaa’ mean?",
+      "type": "recall",
+      "options": [
+        "queen mother",
+        "chief / king",
+        "state sword",
+        "royalty"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘royal stool’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔkyeame",
+        "ahemfie",
+        "ahennwa",
+        "atumpan"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘ɔkyeame’ mean?",
+      "type": "recall",
+      "options": [
+        "talking drums",
+        "linguist / spokesperson",
+        "royal stool",
+        "palace"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘palace’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔhemmaa",
+        "amanhene",
+        "abusuapanyin",
+        "ahemfie"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘adehyeɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "royal stool",
+        "royalty",
+        "state sword",
+        "linguist / spokesperson"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘family head’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔhene",
+        "amanhene",
+        "abusuapanyin",
+        "ahemfie"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘amanhene’ mean?",
+      "type": "recall",
+      "options": [
+        "state sword",
+        "paramount chief",
+        "royalty",
+        "talking drums"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘state sword’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔhemmaa",
+        "akofena",
+        "atumpan",
+        "amanhene"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘atumpan’ mean?",
+      "type": "recall",
+      "options": [
+        "family head",
+        "queen mother",
+        "talking drums",
+        "royal stool"
+      ],
+      "correct_index": 2
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "ɔhene",
+      "en": "chief / king"
+    },
+    {
+      "twi": "ɔhemmaa",
+      "en": "queen mother"
+    },
+    {
+      "twi": "ahennwa",
+      "en": "royal stool"
+    },
+    {
+      "twi": "ɔkyeame",
+      "en": "linguist / spokesperson"
+    },
+    {
+      "twi": "ahemfie",
+      "en": "palace"
+    },
+    {
+      "twi": "adehyeɛ",
+      "en": "royalty"
+    },
+    {
+      "twi": "abusuapanyin",
+      "en": "family head"
+    },
+    {
+      "twi": "amanhene",
+      "en": "paramount chief"
+    },
+    {
+      "twi": "akofena",
+      "en": "state sword"
+    },
+    {
+      "twi": "atumpan",
+      "en": "talking drums"
+    }
+  ]
+}

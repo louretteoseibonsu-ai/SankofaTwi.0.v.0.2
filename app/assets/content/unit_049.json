@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_049",
+  "unit_title": "Naming & Day Names",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "kra din",
+    "gloss": "Akan day names — your soul name from the day you were born.",
+    "phonetic_bridge": {
+      "pronunciation": "kra-din"
+    },
+    "example_sentences": [
+      "Kwadwo, Adwoa, Kwaku."
+    ],
+    "culture_note": "Everyone has a kra din. Born on Friday? Kofi (m) or Afua (f)."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about naming & day names",
+    "explanation": "Key vocabulary: Kwadwo (a boy born on Monday), Adwoa (a girl born on Monday), Kwaku (a boy born on Wednesday), Akua (a girl born on Wednesday), Yaw (a boy born on Thursday), Yaa (a girl born on Thursday), Kofi (a boy born on Friday), Afua (a girl born on Friday), Kwame (a boy born on Saturday), Ama (a girl born on Saturday).",
+    "patterns": [
+      "Kwadwo = a boy born on Monday",
+      "Adwoa = a girl born on Monday",
+      "Kwaku = a boy born on Wednesday"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘a boy born on Monday’ in Twi?",
+      "type": "recall",
+      "options": [
+        "Yaa",
+        "Akua",
+        "Adwoa",
+        "Kwadwo"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘Adwoa’ mean?",
+      "type": "recall",
+      "options": [
+        "a boy born on Saturday",
+        "a girl born on Thursday",
+        "a boy born on Wednesday",
+        "a girl born on Monday"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘a boy born on Wednesday’ in Twi?",
+      "type": "recall",
+      "options": [
+        "Afua",
+        "Kwame",
+        "Kwaku",
+        "Kofi"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘Akua’ mean?",
+      "type": "recall",
+      "options": [
+        "a girl born on Wednesday",
+        "a boy born on Saturday",
+        "a boy born on Friday",
+        "a boy born on Monday"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘a boy born on Thursday’ in Twi?",
+      "type": "recall",
+      "options": [
+        "Yaa",
+        "Kwadwo",
+        "Yaw",
+        "Kofi"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘Yaa’ mean?",
+      "type": "recall",
+      "options": [
+        "a girl born on Thursday",
+        "a boy born on Friday",
+        "a boy born on Thursday",
+        "a girl born on Saturday"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘a boy born on Friday’ in Twi?",
+      "type": "recall",
+      "options": [
+        "Kwaku",
+        "Kofi",
+        "Afua",
+        "Akua"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘Afua’ mean?",
+      "type": "recall",
+      "options": [
+        "a boy born on Monday",
+        "a girl born on Friday",
+        "a boy born on Thursday",
+        "a girl born on Monday"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘a boy born on Saturday’ in Twi?",
+      "type": "recall",
+      "options": [
+        "Kwame",
+        "Kwadwo",
+        "Adwoa",
+        "Akua"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘Ama’ mean?",
+      "type": "recall",
+      "options": [
+        "a boy born on Saturday",
+        "a girl born on Saturday",
+        "a girl born on Thursday",
+        "a boy born on Monday"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "Kwadwo",
+      "en": "a boy born on Monday"
+    },
+    {
+      "twi": "Adwoa",
+      "en": "a girl born on Monday"
+    },
+    {
+      "twi": "Kwaku",
+      "en": "a boy born on Wednesday"
+    },
+    {
+      "twi": "Akua",
+      "en": "a girl born on Wednesday"
+    },
+    {
+      "twi": "Yaw",
+      "en": "a boy born on Thursday"
+    },
+    {
+      "twi": "Yaa",
+      "en": "a girl born on Thursday"
+    },
+    {
+      "twi": "Kofi",
+      "en": "a boy born on Friday"
+    },
+    {
+      "twi": "Afua",
+      "en": "a girl born on Friday"
+    },
+    {
+      "twi": "Kwame",
+      "en": "a boy born on Saturday"
+    },
+    {
+      "twi": "Ama",
+      "en": "a girl born on Saturday"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_058",
+  "unit_title": "Television",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "tiivii",
+    "gloss": "television — watching shows and the news.",
+    "phonetic_bridge": {
+      "pronunciation": "tii-vii"
+    },
+    "example_sentences": [
+      "tiivii, hwɛ, sini."
+    ],
+    "culture_note": "‘Merehwɛ tiivii’ = I’m watching TV."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about television",
+    "explanation": "Key vocabulary: tiivii (television), hwɛ (to watch), sini (film / show), amanneɛbɔ (news), agorɔ (programme), nnwom (music), ɔhwɛfoɔ (viewers), anigyeɛ (entertainment), berɛ (time), nsɛm (topics).",
+    "patterns": [
+      "tiivii = television",
+      "hwɛ = to watch",
+      "sini = film / show"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘television’ in Twi?",
+      "type": "recall",
+      "options": [
+        "tiivii",
+        "berɛ",
+        "ɔhwɛfoɔ",
+        "agorɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘hwɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "topics",
+        "to watch",
+        "entertainment",
+        "television"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘film / show’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nnwom",
+        "agorɔ",
+        "tiivii",
+        "sini"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘amanneɛbɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "entertainment",
+        "news",
+        "film / show",
+        "viewers"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘programme’ in Twi?",
+      "type": "recall",
+      "options": [
+        "sini",
+        "berɛ",
+        "hwɛ",
+        "agorɔ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘nnwom’ mean?",
+      "type": "recall",
+      "options": [
+        "to watch",
+        "programme",
+        "entertainment",
+        "music"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘viewers’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔhwɛfoɔ",
+        "berɛ",
+        "hwɛ",
+        "agorɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘anigyeɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "news",
+        "entertainment",
+        "to watch",
+        "film / show"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘time’ in Twi?",
+      "type": "recall",
+      "options": [
+        "anigyeɛ",
+        "sini",
+        "nnwom",
+        "berɛ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘nsɛm’ mean?",
+      "type": "recall",
+      "options": [
+        "topics",
+        "programme",
+        "entertainment",
+        "news"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "tiivii",
+      "en": "television"
+    },
+    {
+      "twi": "hwɛ",
+      "en": "to watch"
+    },
+    {
+      "twi": "sini",
+      "en": "film / show"
+    },
+    {
+      "twi": "amanneɛbɔ",
+      "en": "news"
+    },
+    {
+      "twi": "agorɔ",
+      "en": "programme"
+    },
+    {
+      "twi": "nnwom",
+      "en": "music"
+    },
+    {
+      "twi": "ɔhwɛfoɔ",
+      "en": "viewers"
+    },
+    {
+      "twi": "anigyeɛ",
+      "en": "entertainment"
+    },
+    {
+      "twi": "berɛ",
+      "en": "time"
+    },
+    {
+      "twi": "nsɛm",
+      "en": "topics"
+    }
+  ]
+}

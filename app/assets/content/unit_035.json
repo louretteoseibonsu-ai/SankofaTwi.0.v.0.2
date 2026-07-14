@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_035",
+  "unit_title": "Clothing",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "ntoma",
+    "gloss": "clothing — cloth, dress, and what to wear.",
+    "phonetic_bridge": {
+      "pronunciation": "n-to-ma"
+    },
+    "example_sentences": [
+      "ntoma, atadeɛ, mpaboa."
+    ],
+    "culture_note": "Kente is worn for big occasions; the batakari (smock) is a northern classic."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about clothing",
+    "explanation": "Key vocabulary: ntoma (cloth), atadeɛ (clothes / dress), mpaboa (footwear), ekyɛ (hat / cap), kente (kente cloth), batakari (smock), kaba (kaba (blouse)), hyɛ (to wear), fitaa (white), tuntum (black).",
+    "patterns": [
+      "ntoma = cloth",
+      "atadeɛ = clothes / dress",
+      "mpaboa = footwear"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘cloth’ in Twi?",
+      "type": "recall",
+      "options": [
+        "atadeɛ",
+        "fitaa",
+        "ntoma",
+        "kaba"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘atadeɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "footwear",
+        "clothes / dress",
+        "black",
+        "kente cloth"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘footwear’ in Twi?",
+      "type": "recall",
+      "options": [
+        "fitaa",
+        "ekyɛ",
+        "mpaboa",
+        "kente"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘ekyɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "clothes / dress",
+        "to wear",
+        "kente cloth",
+        "hat / cap"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘kente cloth’ in Twi?",
+      "type": "recall",
+      "options": [
+        "atadeɛ",
+        "kente",
+        "mpaboa",
+        "tuntum"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘batakari’ mean?",
+      "type": "recall",
+      "options": [
+        "cloth",
+        "footwear",
+        "kente cloth",
+        "smock"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘kaba (blouse)’ in Twi?",
+      "type": "recall",
+      "options": [
+        "mpaboa",
+        "fitaa",
+        "kaba",
+        "batakari"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘hyɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "to wear",
+        "footwear",
+        "black",
+        "cloth"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘white’ in Twi?",
+      "type": "recall",
+      "options": [
+        "atadeɛ",
+        "fitaa",
+        "mpaboa",
+        "ekyɛ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘tuntum’ mean?",
+      "type": "recall",
+      "options": [
+        "hat / cap",
+        "black",
+        "cloth",
+        "footwear"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "ntoma",
+      "en": "cloth"
+    },
+    {
+      "twi": "atadeɛ",
+      "en": "clothes / dress"
+    },
+    {
+      "twi": "mpaboa",
+      "en": "footwear"
+    },
+    {
+      "twi": "ekyɛ",
+      "en": "hat / cap"
+    },
+    {
+      "twi": "kente",
+      "en": "kente cloth"
+    },
+    {
+      "twi": "batakari",
+      "en": "smock"
+    },
+    {
+      "twi": "kaba",
+      "en": "kaba (blouse)"
+    },
+    {
+      "twi": "hyɛ",
+      "en": "to wear"
+    },
+    {
+      "twi": "fitaa",
+      "en": "white"
+    },
+    {
+      "twi": "tuntum",
+      "en": "black"
+    }
+  ]
+}

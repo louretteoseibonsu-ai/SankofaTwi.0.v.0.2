@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_034",
+  "unit_title": "Money & Prices",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "sika",
+    "gloss": "money — cedis, pesewas, and paying.",
+    "phonetic_bridge": {
+      "pronunciation": "si-ka"
+    },
+    "example_sentences": [
+      "sika, sidi, pesewa."
+    ],
+    "culture_note": "Ghana’s money is the cedi (sidi). Paying: ‘Mɛtua.’"
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about money & prices",
+    "explanation": "Key vocabulary: sika (money), sidi (cedi), pesewa (pesewa), boɔ (price), tua (to pay), ka (debt / bill), kakra (a little), pii (plenty), te so (reduce), ɛyɛ sɛn (how much is it?).",
+    "patterns": [
+      "sika = money",
+      "sidi = cedi",
+      "pesewa = pesewa"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘money’ in Twi?",
+      "type": "recall",
+      "options": [
+        "pesewa",
+        "ka",
+        "sika",
+        "te so"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘sidi’ mean?",
+      "type": "recall",
+      "options": [
+        "price",
+        "cedi",
+        "a little",
+        "plenty"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘pesewa’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɛyɛ sɛn",
+        "pesewa",
+        "kakra",
+        "te so"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘boɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "to pay",
+        "how much is it?",
+        "plenty",
+        "price"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘to pay’ in Twi?",
+      "type": "recall",
+      "options": [
+        "boɔ",
+        "ɛyɛ sɛn",
+        "ka",
+        "tua"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘ka’ mean?",
+      "type": "recall",
+      "options": [
+        "a little",
+        "money",
+        "debt / bill",
+        "reduce"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘a little’ in Twi?",
+      "type": "recall",
+      "options": [
+        "te so",
+        "tua",
+        "kakra",
+        "sidi"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘pii’ mean?",
+      "type": "recall",
+      "options": [
+        "plenty",
+        "reduce",
+        "debt / bill",
+        "pesewa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘reduce’ in Twi?",
+      "type": "recall",
+      "options": [
+        "boɔ",
+        "sidi",
+        "pii",
+        "te so"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘ɛyɛ sɛn’ mean?",
+      "type": "recall",
+      "options": [
+        "price",
+        "debt / bill",
+        "cedi",
+        "how much is it?"
+      ],
+      "correct_index": 3
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "sika",
+      "en": "money"
+    },
+    {
+      "twi": "sidi",
+      "en": "cedi"
+    },
+    {
+      "twi": "pesewa",
+      "en": "pesewa"
+    },
+    {
+      "twi": "boɔ",
+      "en": "price"
+    },
+    {
+      "twi": "tua",
+      "en": "to pay"
+    },
+    {
+      "twi": "ka",
+      "en": "debt / bill"
+    },
+    {
+      "twi": "kakra",
+      "en": "a little"
+    },
+    {
+      "twi": "pii",
+      "en": "plenty"
+    },
+    {
+      "twi": "te so",
+      "en": "reduce"
+    },
+    {
+      "twi": "ɛyɛ sɛn",
+      "en": "how much is it?"
+    }
+  ]
+}

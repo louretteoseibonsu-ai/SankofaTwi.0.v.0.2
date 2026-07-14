@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_054",
+  "unit_title": "Dance",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "asaw",
+    "gloss": "dance — Adowa, Kete, and modern Azonto.",
+    "phonetic_bridge": {
+      "pronunciation": "a-saw"
+    },
+    "example_sentences": [
+      "asaw, saw, adowa."
+    ],
+    "culture_note": "Adowa is a graceful royal dance; Azonto is the modern street favourite."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about dance",
+    "explanation": "Key vocabulary: asaw (dance), saw (to dance), adowa (Adowa (traditional dance)), kete (Kete (royal dance)), azonto (Azonto (modern dance)), agorɔ (performance), nnwom (music), huruw (to jump), nan (leg / foot), anigyeɛ (fun).",
+    "patterns": [
+      "asaw = dance",
+      "saw = to dance",
+      "adowa = Adowa (traditional dance)"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘dance’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nan",
+        "anigyeɛ",
+        "asaw",
+        "kete"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘saw’ mean?",
+      "type": "recall",
+      "options": [
+        "dance",
+        "Adowa (traditional dance)",
+        "to dance",
+        "leg / foot"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘Adowa (traditional dance)’ in Twi?",
+      "type": "recall",
+      "options": [
+        "adowa",
+        "huruw",
+        "saw",
+        "azonto"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘kete’ mean?",
+      "type": "recall",
+      "options": [
+        "Kete (royal dance)",
+        "leg / foot",
+        "fun",
+        "music"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘Azonto (modern dance)’ in Twi?",
+      "type": "recall",
+      "options": [
+        "adowa",
+        "huruw",
+        "azonto",
+        "nnwom"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘agorɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "to dance",
+        "performance",
+        "fun",
+        "leg / foot"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘music’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nnwom",
+        "huruw",
+        "azonto",
+        "kete"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘huruw’ mean?",
+      "type": "recall",
+      "options": [
+        "to jump",
+        "Kete (royal dance)",
+        "leg / foot",
+        "performance"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘leg / foot’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nnwom",
+        "adowa",
+        "asaw",
+        "nan"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘anigyeɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "Azonto (modern dance)",
+        "dance",
+        "fun",
+        "leg / foot"
+      ],
+      "correct_index": 2
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "asaw",
+      "en": "dance"
+    },
+    {
+      "twi": "saw",
+      "en": "to dance"
+    },
+    {
+      "twi": "adowa",
+      "en": "Adowa (traditional dance)"
+    },
+    {
+      "twi": "kete",
+      "en": "Kete (royal dance)"
+    },
+    {
+      "twi": "azonto",
+      "en": "Azonto (modern dance)"
+    },
+    {
+      "twi": "agorɔ",
+      "en": "performance"
+    },
+    {
+      "twi": "nnwom",
+      "en": "music"
+    },
+    {
+      "twi": "huruw",
+      "en": "to jump"
+    },
+    {
+      "twi": "nan",
+      "en": "leg / foot"
+    },
+    {
+      "twi": "anigyeɛ",
+      "en": "fun"
+    }
+  ]
+}

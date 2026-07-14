@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_048",
+  "unit_title": "Adinkra Meanings",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "adinkra",
+    "gloss": "Adinkra — the meanings behind Ghana’s iconic symbols.",
+    "phonetic_bridge": {
+      "pronunciation": "a-din-kra"
+    },
+    "example_sentences": [
+      "Sankofa, Gye Nyame, Dwennimmen."
+    ],
+    "culture_note": "Adinkra symbols carry proverbs. Sankofa: go back and fetch it."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about adinkra meanings",
+    "explanation": "Key vocabulary: Sankofa (go back and fetch it), Gye Nyame (except God), Dwennimmen (humility and strength), Akoma (patience and love), Nkyinkyim (life’s twists and turns), Adinkrahene (leadership), Fihankra (security and brotherhood), Aya (endurance), Nyame Dua (God’s presence), Akofena (courage).",
+    "patterns": [
+      "Sankofa = go back and fetch it",
+      "Gye Nyame = except God",
+      "Dwennimmen = humility and strength"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘go back and fetch it’ in Twi?",
+      "type": "recall",
+      "options": [
+        "Sankofa",
+        "Adinkrahene",
+        "Dwennimmen",
+        "Nkyinkyim"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘Gye Nyame’ mean?",
+      "type": "recall",
+      "options": [
+        "life’s twists and turns",
+        "humility and strength",
+        "courage",
+        "except God"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘humility and strength’ in Twi?",
+      "type": "recall",
+      "options": [
+        "Adinkrahene",
+        "Sankofa",
+        "Dwennimmen",
+        "Akoma"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘Akoma’ mean?",
+      "type": "recall",
+      "options": [
+        "humility and strength",
+        "patience and love",
+        "life’s twists and turns",
+        "leadership"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘life’s twists and turns’ in Twi?",
+      "type": "recall",
+      "options": [
+        "Fihankra",
+        "Nkyinkyim",
+        "Nyame Dua",
+        "Akoma"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘Adinkrahene’ mean?",
+      "type": "recall",
+      "options": [
+        "security and brotherhood",
+        "endurance",
+        "leadership",
+        "courage"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘security and brotherhood’ in Twi?",
+      "type": "recall",
+      "options": [
+        "Akoma",
+        "Fihankra",
+        "Aya",
+        "Nyame Dua"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘Aya’ mean?",
+      "type": "recall",
+      "options": [
+        "patience and love",
+        "security and brotherhood",
+        "endurance",
+        "except God"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘God’s presence’ in Twi?",
+      "type": "recall",
+      "options": [
+        "Akoma",
+        "Dwennimmen",
+        "Gye Nyame",
+        "Nyame Dua"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘Akofena’ mean?",
+      "type": "recall",
+      "options": [
+        "courage",
+        "leadership",
+        "go back and fetch it",
+        "God’s presence"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "Sankofa",
+      "en": "go back and fetch it"
+    },
+    {
+      "twi": "Gye Nyame",
+      "en": "except God"
+    },
+    {
+      "twi": "Dwennimmen",
+      "en": "humility and strength"
+    },
+    {
+      "twi": "Akoma",
+      "en": "patience and love"
+    },
+    {
+      "twi": "Nkyinkyim",
+      "en": "life’s twists and turns"
+    },
+    {
+      "twi": "Adinkrahene",
+      "en": "leadership"
+    },
+    {
+      "twi": "Fihankra",
+      "en": "security and brotherhood"
+    },
+    {
+      "twi": "Aya",
+      "en": "endurance"
+    },
+    {
+      "twi": "Nyame Dua",
+      "en": "God’s presence"
+    },
+    {
+      "twi": "Akofena",
+      "en": "courage"
+    }
+  ]
+}

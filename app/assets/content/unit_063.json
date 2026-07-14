@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_063",
+  "unit_title": "Visual Art",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "adwinneɛ",
+    "gloss": "visual art — craft, carving, and colour.",
+    "phonetic_bridge": {
+      "pronunciation": "a-dwin-neɛ"
+    },
+    "example_sentences": [
+      "adwinneɛ, ɔdwumfoɔ, mfoni."
+    ],
+    "culture_note": "The ‘ɔdwumfoɔ’ (artisan) works wood, metal, and cloth into art."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about visual art",
+    "explanation": "Key vocabulary: adwinneɛ (art / craft), ɔdwumfoɔ (artisan), mfoni (picture), ahoɔfɛ (beauty), adwene (design / idea), dua (wood), dadeɛ (metal), ntoma (cloth), kɔkɔɔ (red), tuntum (black).",
+    "patterns": [
+      "adwinneɛ = art / craft",
+      "ɔdwumfoɔ = artisan",
+      "mfoni = picture"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘art / craft’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔdwumfoɔ",
+        "dua",
+        "adwinneɛ",
+        "tuntum"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘ɔdwumfoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "black",
+        "metal",
+        "artisan",
+        "design / idea"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘picture’ in Twi?",
+      "type": "recall",
+      "options": [
+        "tuntum",
+        "ntoma",
+        "adwene",
+        "mfoni"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘ahoɔfɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "red",
+        "artisan",
+        "beauty",
+        "art / craft"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘design / idea’ in Twi?",
+      "type": "recall",
+      "options": [
+        "dadeɛ",
+        "mfoni",
+        "adwene",
+        "ɔdwumfoɔ"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘dua’ mean?",
+      "type": "recall",
+      "options": [
+        "picture",
+        "metal",
+        "black",
+        "wood"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘metal’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kɔkɔɔ",
+        "dua",
+        "dadeɛ",
+        "ɔdwumfoɔ"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘ntoma’ mean?",
+      "type": "recall",
+      "options": [
+        "wood",
+        "art / craft",
+        "beauty",
+        "cloth"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘red’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kɔkɔɔ",
+        "adwene",
+        "ɔdwumfoɔ",
+        "ahoɔfɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘tuntum’ mean?",
+      "type": "recall",
+      "options": [
+        "wood",
+        "black",
+        "cloth",
+        "art / craft"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "adwinneɛ",
+      "en": "art / craft"
+    },
+    {
+      "twi": "ɔdwumfoɔ",
+      "en": "artisan"
+    },
+    {
+      "twi": "mfoni",
+      "en": "picture"
+    },
+    {
+      "twi": "ahoɔfɛ",
+      "en": "beauty"
+    },
+    {
+      "twi": "adwene",
+      "en": "design / idea"
+    },
+    {
+      "twi": "dua",
+      "en": "wood"
+    },
+    {
+      "twi": "dadeɛ",
+      "en": "metal"
+    },
+    {
+      "twi": "ntoma",
+      "en": "cloth"
+    },
+    {
+      "twi": "kɔkɔɔ",
+      "en": "red"
+    },
+    {
+      "twi": "tuntum",
+      "en": "black"
+    }
+  ]
+}

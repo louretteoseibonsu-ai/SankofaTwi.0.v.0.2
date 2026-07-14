@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_038",
+  "unit_title": "Directions",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "ɔkwan",
+    "gloss": "directions — left, right, and finding the way.",
+    "phonetic_bridge": {
+      "pronunciation": "ɔ-kwan"
+    },
+    "example_sentences": [
+      "benkum, nifa, kɔ animu."
+    ],
+    "culture_note": "Lost? ‘Ɛwɔ he?’ = Where is it? Point with the whole hand, not one finger."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about directions",
+    "explanation": "Key vocabulary: benkum (left), nifa (right), kɔ animu (go straight / forward), dane (to turn), akyi (behind), animu (front), soro (up / top), ase (down / under), ɔkwan (road / path), ɛwɔ he (where is it?).",
+    "patterns": [
+      "benkum = left",
+      "nifa = right",
+      "kɔ animu = go straight / forward"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘left’ in Twi?",
+      "type": "recall",
+      "options": [
+        "akyi",
+        "kɔ animu",
+        "ɛwɔ he",
+        "benkum"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘nifa’ mean?",
+      "type": "recall",
+      "options": [
+        "to turn",
+        "behind",
+        "go straight / forward",
+        "right"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘go straight / forward’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɛwɔ he",
+        "ase",
+        "dane",
+        "kɔ animu"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘dane’ mean?",
+      "type": "recall",
+      "options": [
+        "to turn",
+        "behind",
+        "up / top",
+        "go straight / forward"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘behind’ in Twi?",
+      "type": "recall",
+      "options": [
+        "soro",
+        "benkum",
+        "kɔ animu",
+        "akyi"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘animu’ mean?",
+      "type": "recall",
+      "options": [
+        "road / path",
+        "left",
+        "front",
+        "to turn"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘up / top’ in Twi?",
+      "type": "recall",
+      "options": [
+        "soro",
+        "ɛwɔ he",
+        "akyi",
+        "ɔkwan"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘ase’ mean?",
+      "type": "recall",
+      "options": [
+        "down / under",
+        "right",
+        "to turn",
+        "left"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘road / path’ in Twi?",
+      "type": "recall",
+      "options": [
+        "akyi",
+        "ɔkwan",
+        "ɛwɔ he",
+        "benkum"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘ɛwɔ he’ mean?",
+      "type": "recall",
+      "options": [
+        "behind",
+        "go straight / forward",
+        "up / top",
+        "where is it?"
+      ],
+      "correct_index": 3
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "benkum",
+      "en": "left"
+    },
+    {
+      "twi": "nifa",
+      "en": "right"
+    },
+    {
+      "twi": "kɔ animu",
+      "en": "go straight / forward"
+    },
+    {
+      "twi": "dane",
+      "en": "to turn"
+    },
+    {
+      "twi": "akyi",
+      "en": "behind"
+    },
+    {
+      "twi": "animu",
+      "en": "front"
+    },
+    {
+      "twi": "soro",
+      "en": "up / top"
+    },
+    {
+      "twi": "ase",
+      "en": "down / under"
+    },
+    {
+      "twi": "ɔkwan",
+      "en": "road / path"
+    },
+    {
+      "twi": "ɛwɔ he",
+      "en": "where is it?"
+    }
+  ]
+}

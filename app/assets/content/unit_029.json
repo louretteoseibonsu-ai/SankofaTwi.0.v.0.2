@@ -1,0 +1,181 @@
+{
+  "unit_id": "unit_029",
+  "unit_title": "Food & Ingredients",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "nnuane",
+    "gloss": "foods — staples and ingredients you’ll meet every day.",
+    "phonetic_bridge": {
+      "pronunciation": "n-nu-a-ne"
+    },
+    "example_sentences": [
+      "ɛmo, bankye, borɔdeɛ."
+    ],
+    "culture_note": "Chale — greet the seller first (open with ‘Maaha’), then name what you want. Stack it with numbers: ‘Mepɛ ɛmo mmienu.’"
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about food & ingredients",
+    "explanation": "Key vocabulary: ɛmo (rice), bankye (cassava), borɔdeɛ (plantain), nkwan (soup / stew), mako (pepper), nkateɛ (groundnut), kwadu (banana), nam (meat), nkyene (salt), aburoo (maize / corn).",
+    "patterns": [
+      "ɛmo = rice",
+      "bankye = cassava",
+      "borɔdeɛ = plantain"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘rice’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɛmo",
+        "kwadu",
+        "nkwan",
+        "mako"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘bankye’ mean?",
+      "type": "recall",
+      "options": [
+        "cassava",
+        "plantain",
+        "maize / corn",
+        "soup / stew"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘plantain’ in Twi?",
+      "type": "recall",
+      "options": [
+        "borɔdeɛ",
+        "aburoo",
+        "mako",
+        "ɛmo"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘nkwan’ mean?",
+      "type": "recall",
+      "options": [
+        "meat",
+        "soup / stew",
+        "maize / corn",
+        "rice"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘pepper’ in Twi?",
+      "type": "recall",
+      "options": [
+        "mako",
+        "bankye",
+        "nam",
+        "ɛmo"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘nkateɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "soup / stew",
+        "rice",
+        "pepper",
+        "groundnut"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘banana’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɛmo",
+        "kwadu",
+        "nkwan",
+        "aburoo"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘nam’ mean?",
+      "type": "recall",
+      "options": [
+        "meat",
+        "pepper",
+        "banana",
+        "cassava"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘salt’ in Twi?",
+      "type": "recall",
+      "options": [
+        "mako",
+        "nkyene",
+        "borɔdeɛ",
+        "ɛmo"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘aburoo’ mean?",
+      "type": "recall",
+      "options": [
+        "maize / corn",
+        "groundnut",
+        "cassava",
+        "pepper"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "ɛmo",
+      "en": "rice"
+    },
+    {
+      "twi": "bankye",
+      "en": "cassava"
+    },
+    {
+      "twi": "borɔdeɛ",
+      "en": "plantain"
+    },
+    {
+      "twi": "nkwan",
+      "en": "soup / stew"
+    },
+    {
+      "twi": "mako",
+      "en": "pepper"
+    },
+    {
+      "twi": "nkateɛ",
+      "en": "groundnut",
+      "audio": "Mepɛ nkateɛ."
+    },
+    {
+      "twi": "kwadu",
+      "en": "banana"
+    },
+    {
+      "twi": "nam",
+      "en": "meat"
+    },
+    {
+      "twi": "nkyene",
+      "en": "salt"
+    },
+    {
+      "twi": "aburoo",
+      "en": "maize / corn"
+    }
+  ]
+}

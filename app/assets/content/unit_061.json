@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_061",
+  "unit_title": "Photography",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "mfoni",
+    "gloss": "photography — taking pictures and keeping memories.",
+    "phonetic_bridge": {
+      "pronunciation": "m-fo-ni"
+    },
+    "example_sentences": [
+      "mfoni, kamera, twa mfoni."
+    ],
+    "culture_note": "‘Twa me mfoni’ = take my photo."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about photography",
+    "explanation": "Key vocabulary: mfoni (photo / picture), kamera (camera), twa mfoni (to take a photo), mfonitwafoɔ (photographer), hann (light), animu (face), kae (keepsake / memory), baabi (location), ahoɔfɛ (beauty), adeɛ (the subject).",
+    "patterns": [
+      "mfoni = photo / picture",
+      "kamera = camera",
+      "twa mfoni = to take a photo"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘photo / picture’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kae",
+        "mfoni",
+        "mfonitwafoɔ",
+        "adeɛ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘kamera’ mean?",
+      "type": "recall",
+      "options": [
+        "photo / picture",
+        "the subject",
+        "camera",
+        "keepsake / memory"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘to take a photo’ in Twi?",
+      "type": "recall",
+      "options": [
+        "animu",
+        "twa mfoni",
+        "baabi",
+        "hann"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘mfonitwafoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "the subject",
+        "camera",
+        "keepsake / memory",
+        "photographer"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘light’ in Twi?",
+      "type": "recall",
+      "options": [
+        "adeɛ",
+        "mfoni",
+        "baabi",
+        "hann"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘animu’ mean?",
+      "type": "recall",
+      "options": [
+        "light",
+        "the subject",
+        "location",
+        "face"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘keepsake / memory’ in Twi?",
+      "type": "recall",
+      "options": [
+        "baabi",
+        "animu",
+        "mfoni",
+        "kae"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘baabi’ mean?",
+      "type": "recall",
+      "options": [
+        "location",
+        "to take a photo",
+        "keepsake / memory",
+        "camera"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘beauty’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ahoɔfɛ",
+        "kae",
+        "mfonitwafoɔ",
+        "kamera"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘adeɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "camera",
+        "the subject",
+        "face",
+        "location"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "mfoni",
+      "en": "photo / picture"
+    },
+    {
+      "twi": "kamera",
+      "en": "camera"
+    },
+    {
+      "twi": "twa mfoni",
+      "en": "to take a photo"
+    },
+    {
+      "twi": "mfonitwafoɔ",
+      "en": "photographer"
+    },
+    {
+      "twi": "hann",
+      "en": "light"
+    },
+    {
+      "twi": "animu",
+      "en": "face"
+    },
+    {
+      "twi": "kae",
+      "en": "keepsake / memory"
+    },
+    {
+      "twi": "baabi",
+      "en": "location"
+    },
+    {
+      "twi": "ahoɔfɛ",
+      "en": "beauty"
+    },
+    {
+      "twi": "adeɛ",
+      "en": "the subject"
+    }
+  ]
+}

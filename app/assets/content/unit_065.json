@@ -1,0 +1,190 @@
+{
+  "unit_id": "unit_065",
+  "unit_title": "The Twi Alphabet & Sounds",
+  "review_required": true,
+  "review_note": "Phonetics lesson — verify sound descriptions with a native speaker.",
+  "vocabulary_spotlight": {
+    "headword": "a e ɛ i o ɔ u",
+    "gloss": "the Twi alphabet — its vowels and the sounds English misses.",
+    "phonetic_bridge": {
+      "pronunciation": "ah, eh, eh (open), ee, oh, aw (open), oo"
+    },
+    "example_sentences": [
+      "ɛ, ɔ — the two vowels English forgets."
+    ],
+    "culture_note": "Twi uses the Latin alphabet minus c, j, q, v, x, z — plus two special vowels: ɛ (the ‘e’ in ‘bed’) and ɔ (the ‘aw’ in ‘law’). Master these two and Twi spelling suddenly makes sense. The digraphs ky, gy, hy soften to ‘ch’, ‘j’, ‘sh’."
+  },
+  "grammar_mechanics": {
+    "focus": "The Twi alphabet & sounds",
+    "explanation": "Twi has 7 vowels (a e ɛ i o ɔ u) and key consonant digraphs: ky (ch), gy (j), hy (sh), tw, dw, ny, kw, nw. The letters c, j, q, v, x, z are not used.",
+    "patterns": [
+      "ɛ = the ‘e’ in ‘bed’",
+      "ɔ = the ‘aw’ in ‘law’",
+      "ky = the ‘ch’ in ‘church’"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "Which vowel sounds like the ‘e’ in ‘bed’?",
+      "type": "recall",
+      "options": [
+        "ɔ",
+        "ɛ",
+        "e",
+        "a"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Which vowel sounds like the ‘aw’ in ‘law’?",
+      "type": "recall",
+      "options": [
+        "ɔ",
+        "ɛ",
+        "o",
+        "u"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "In Twi, ‘ky’ sounds like…",
+      "type": "recall",
+      "options": [
+        "‘k’ as in kite",
+        "‘ch’ as in church",
+        "‘s’ as in sun",
+        "‘sh’ as in ship"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "The digraph ‘gy’ sounds like…",
+      "type": "recall",
+      "options": [
+        "‘g’ as in go",
+        "‘y’ as in yes",
+        "‘j’ as in joy",
+        "‘ch’ as in church"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "The digraph ‘hy’ sounds like…",
+      "type": "recall",
+      "options": [
+        "‘sh’ as in ship",
+        "‘h’ as in hat",
+        "‘y’ as in yes",
+        "‘ch’ as in church"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Which digraph sounds like the ‘ny’ in ‘canyon’?",
+      "type": "recall",
+      "options": [
+        "ky",
+        "ny",
+        "tw",
+        "hy"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "The word ‘kyɛ’ (to share) begins with which sound?",
+      "type": "recall",
+      "options": [
+        "‘k’ as in kite",
+        "‘ch’ as in church",
+        "‘s’ as in sun",
+        "‘t’ as in top"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Which letters are NOT used in the Twi alphabet?",
+      "type": "recall",
+      "options": [
+        "a, e, i",
+        "c, j, q, v",
+        "k, s, t",
+        "b, d, m"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How many vowels does Twi have?",
+      "type": "recall",
+      "options": [
+        "5 (a e i o u)",
+        "7 (a e ɛ i o ɔ u)",
+        "6",
+        "8"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "The special vowel in ‘ɔkɔ’ (to go) is…",
+      "type": "recall",
+      "options": [
+        "ɛ",
+        "o",
+        "ɔ",
+        "a"
+      ],
+      "correct_index": 2
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "ɛ",
+      "en": "vowel — the ‘e’ in ‘bed’ (e.g. ɛmo)",
+      "audio": "ɛmo"
+    },
+    {
+      "twi": "ɔ",
+      "en": "vowel — the ‘aw’ in ‘law’ (e.g. ɔdɔ)",
+      "audio": "ɔdɔ"
+    },
+    {
+      "twi": "ky",
+      "en": "sounds like ‘ch’ in ‘church’ (e.g. kyerɛw)",
+      "audio": "kyerɛw"
+    },
+    {
+      "twi": "gy",
+      "en": "sounds like ‘j’ in ‘joy’ (e.g. gyina)",
+      "audio": "gyina"
+    },
+    {
+      "twi": "hy",
+      "en": "sounds like ‘sh’ in ‘ship’ (e.g. hyɛ)",
+      "audio": "hyɛ"
+    },
+    {
+      "twi": "tw",
+      "en": "a rounded ‘chw’ sound (e.g. twene)",
+      "audio": "twene"
+    },
+    {
+      "twi": "dw",
+      "en": "a rounded ‘jw’ sound (e.g. dwom)",
+      "audio": "dwom"
+    },
+    {
+      "twi": "ny",
+      "en": "sounds like ‘ny’ in ‘canyon’ (e.g. nyansa)",
+      "audio": "nyansa"
+    },
+    {
+      "twi": "kw",
+      "en": "sounds like ‘qu’ in ‘queen’ (e.g. kwadu)",
+      "audio": "kwadu"
+    },
+    {
+      "twi": "nw",
+      "en": "a rounded ‘nw’ sound (e.g. nwoma)",
+      "audio": "nwoma"
+    }
+  ]
+}

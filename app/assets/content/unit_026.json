@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_026",
+  "unit_title": "Basic Grammar: Asking Questions",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "Dɛn",
+    "gloss": "What? — plus the other question words you need to ask anything.",
+    "phonetic_bridge": {
+      "pronunciation": "dɛn"
+    },
+    "example_sentences": [
+      "Wo din de sɛn?",
+      "Wo firi he?",
+      "Hwan ni?",
+      "Ɛyɛ sɛn?"
+    ],
+    "culture_note": "Chale, questions are how you make friends fast in Ghana. Learn the question words and you can ask anyone anything — their name, where they're from, how much something costs. Add 'anaa?' to any sentence to turn it into a yes/no question."
+  },
+  "grammar_mechanics": {
+    "focus": "Asking questions with question words",
+    "explanation": "Key Twi question words: Dɛn / Ɛdeɛn (what), Hwan (who), He (where), Da bɛn (when), Adɛn (why), Sɛn (how / how much). They usually sit where the answer would go. For a simple yes/no question, add 'anaa?' (literally 'or?') to the end of a statement: 'Wo kɔ anaa?' = 'Are you going?'",
+    "patterns": [
+      "Dɛn? (what) · Hwan? (who) · He? (where)",
+      "Da bɛn? (when) · Adɛn? (why) · Sɛn? (how)",
+      "Yes/no: …anaa?  (Wo kɔ anaa? = Are you going?)",
+      "Wo din de sɛn? = What's your name?"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "'Hwan?' means:",
+      "type": "concept_match",
+      "options": [
+        "Who?",
+        "What?",
+        "Where?",
+        "When?"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you ask 'Where?'",
+      "type": "recall",
+      "options": [
+        "He?",
+        "Dɛn?",
+        "Hwan?",
+        "Sɛn?"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Wo din de sɛn?' means:",
+      "type": "concept_match",
+      "options": [
+        "What is your name?",
+        "Where are you from?",
+        "How are you?",
+        "Who are you?"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Dɛn?' (or 'Ɛdeɛn?') means:",
+      "type": "concept_match",
+      "options": [
+        "What?",
+        "Who?",
+        "Why?",
+        "When?"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "To turn a statement into a yes/no question, add this to the end:",
+      "type": "recall",
+      "options": [
+        "anaa?",
+        "daabi?",
+        "aane?",
+        "medaase?"
+      ],
+      "correct_index": 0,
+      "slang_hint": "'anaa' literally means 'or?' — tack it on and you've asked a yes/no question."
+    },
+    {
+      "prompt": "'Adɛn?' means:",
+      "type": "concept_match",
+      "options": [
+        "Why?",
+        "How?",
+        "Who?",
+        "Where?"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Wo firi he?' means:",
+      "type": "concept_match",
+      "options": [
+        "Where are you from?",
+        "What's your name?",
+        "How old are you?",
+        "Who are you?"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Sɛn?' can mean:",
+      "type": "concept_match",
+      "options": [
+        "How? / How much?",
+        "Who?",
+        "What?",
+        "When?"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you ask 'When?'",
+      "type": "recall",
+      "options": [
+        "Da bɛn?",
+        "Hwan?",
+        "Dɛn?",
+        "He?"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Wo kɔ anaa?' means:",
+      "type": "concept_match",
+      "options": [
+        "Are you going?",
+        "You are going.",
+        "You went.",
+        "You will go."
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "Dɛn?",
+      "en": "what?"
+    },
+    {
+      "twi": "Hwan?",
+      "en": "who?"
+    },
+    {
+      "twi": "He?",
+      "en": "where?"
+    },
+    {
+      "twi": "Da bɛn?",
+      "en": "when?"
+    },
+    {
+      "twi": "Adɛn?",
+      "en": "why?"
+    },
+    {
+      "twi": "Sɛn?",
+      "en": "how? / how much?"
+    },
+    {
+      "twi": "anaa?",
+      "en": "(turns a statement into a yes/no question) …or?"
+    },
+    {
+      "twi": "Wo din de sɛn?",
+      "en": "what's your name?"
+    },
+    {
+      "twi": "Wo firi he?",
+      "en": "where are you from?"
+    }
+  ]
+}

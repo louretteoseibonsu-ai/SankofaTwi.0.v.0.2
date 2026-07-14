@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_051",
+  "unit_title": "Spirituality",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "Onyame",
+    "gloss": "spirituality — God, ancestors, and the soul.",
+    "phonetic_bridge": {
+      "pronunciation": "o-nya-me"
+    },
+    "example_sentences": [
+      "Onyame, Onyankopɔn, ɔbosom."
+    ],
+    "culture_note": "Onyame is God; the kra is the soul you receive at birth (your day name)."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about spirituality",
+    "explanation": "Key vocabulary: Onyame (God), Onyankopɔn (the Supreme God), ɔbosom (deity), nsamanfoɔ (ancestors), honhom (spirit), ɔkɔmfoɔ (traditional priest), mpaeɛ (prayer), afɔreɛ (offering / sacrifice), kra (soul), sunsum (spirit / personality).",
+    "patterns": [
+      "Onyame = God",
+      "Onyankopɔn = the Supreme God",
+      "ɔbosom = deity"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘God’ in Twi?",
+      "type": "recall",
+      "options": [
+        "Onyame",
+        "ɔkɔmfoɔ",
+        "Onyankopɔn",
+        "nsamanfoɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘Onyankopɔn’ mean?",
+      "type": "recall",
+      "options": [
+        "God",
+        "soul",
+        "ancestors",
+        "the Supreme God"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘deity’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔkɔmfoɔ",
+        "ɔbosom",
+        "kra",
+        "Onyame"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘nsamanfoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "ancestors",
+        "the Supreme God",
+        "offering / sacrifice",
+        "soul"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘spirit’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔbosom",
+        "honhom",
+        "mpaeɛ",
+        "kra"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘ɔkɔmfoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "soul",
+        "deity",
+        "spirit",
+        "traditional priest"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘prayer’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kra",
+        "mpaeɛ",
+        "Onyankopɔn",
+        "afɔreɛ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘afɔreɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "soul",
+        "offering / sacrifice",
+        "spirit",
+        "prayer"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘soul’ in Twi?",
+      "type": "recall",
+      "options": [
+        "sunsum",
+        "honhom",
+        "ɔbosom",
+        "kra"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘sunsum’ mean?",
+      "type": "recall",
+      "options": [
+        "ancestors",
+        "spirit / personality",
+        "spirit",
+        "prayer"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "Onyame",
+      "en": "God"
+    },
+    {
+      "twi": "Onyankopɔn",
+      "en": "the Supreme God"
+    },
+    {
+      "twi": "ɔbosom",
+      "en": "deity"
+    },
+    {
+      "twi": "nsamanfoɔ",
+      "en": "ancestors"
+    },
+    {
+      "twi": "honhom",
+      "en": "spirit"
+    },
+    {
+      "twi": "ɔkɔmfoɔ",
+      "en": "traditional priest"
+    },
+    {
+      "twi": "mpaeɛ",
+      "en": "prayer"
+    },
+    {
+      "twi": "afɔreɛ",
+      "en": "offering / sacrifice"
+    },
+    {
+      "twi": "kra",
+      "en": "soul"
+    },
+    {
+      "twi": "sunsum",
+      "en": "spirit / personality"
+    }
+  ]
+}

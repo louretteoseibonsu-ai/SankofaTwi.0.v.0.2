@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_059",
+  "unit_title": "Radio",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "radio",
+    "gloss": "radio — listening in for news and music.",
+    "phonetic_bridge": {
+      "pronunciation": "ra-dio"
+    },
+    "example_sentences": [
+      "radio, tie, amanneɛbɔ."
+    ],
+    "culture_note": "Local FM stations mix highlife, news, and lively call-ins."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about radio",
+    "explanation": "Key vocabulary: radio (radio), tie (to listen), amanneɛbɔ (news), nnwom (songs), kasa (to speak), ɔkasafoɔ (presenter), ɔtiefoɔ (listeners), berɛ (time), nsɛm (topics), anigyeɛ (entertainment).",
+    "patterns": [
+      "radio = radio",
+      "tie = to listen",
+      "amanneɛbɔ = news"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘radio’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nnwom",
+        "amanneɛbɔ",
+        "nsɛm",
+        "radio"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘tie’ mean?",
+      "type": "recall",
+      "options": [
+        "radio",
+        "presenter",
+        "topics",
+        "to listen"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘news’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔtiefoɔ",
+        "amanneɛbɔ",
+        "kasa",
+        "nnwom"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘nnwom’ mean?",
+      "type": "recall",
+      "options": [
+        "songs",
+        "to listen",
+        "presenter",
+        "radio"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘to speak’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kasa",
+        "tie",
+        "radio",
+        "ɔtiefoɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘ɔkasafoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "presenter",
+        "entertainment",
+        "topics",
+        "radio"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘listeners’ in Twi?",
+      "type": "recall",
+      "options": [
+        "tie",
+        "berɛ",
+        "ɔkasafoɔ",
+        "ɔtiefoɔ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘berɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "to speak",
+        "presenter",
+        "time",
+        "news"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘topics’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nsɛm",
+        "amanneɛbɔ",
+        "tie",
+        "kasa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘anigyeɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "entertainment",
+        "radio",
+        "presenter",
+        "to listen"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "radio",
+      "en": "radio"
+    },
+    {
+      "twi": "tie",
+      "en": "to listen"
+    },
+    {
+      "twi": "amanneɛbɔ",
+      "en": "news"
+    },
+    {
+      "twi": "nnwom",
+      "en": "songs"
+    },
+    {
+      "twi": "kasa",
+      "en": "to speak"
+    },
+    {
+      "twi": "ɔkasafoɔ",
+      "en": "presenter"
+    },
+    {
+      "twi": "ɔtiefoɔ",
+      "en": "listeners"
+    },
+    {
+      "twi": "berɛ",
+      "en": "time"
+    },
+    {
+      "twi": "nsɛm",
+      "en": "topics"
+    },
+    {
+      "twi": "anigyeɛ",
+      "en": "entertainment"
+    }
+  ]
+}

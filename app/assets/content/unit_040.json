@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_040",
+  "unit_title": "Weather",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "ewiem",
+    "gloss": "weather — sun, rain, and wind.",
+    "phonetic_bridge": {
+      "pronunciation": "e-wi-em"
+    },
+    "example_sentences": [
+      "ewiem, osuo, awia."
+    ],
+    "culture_note": "Two seasons rule: the rains (osutɔberɛ) and the dry Harmattan wind."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about weather",
+    "explanation": "Key vocabulary: ewiem (weather / sky), osuo (rain), awia (sunshine), mframa (wind), awɔ (cold), ahuhuro (heat), mununkum (cloud), anyinam (lightning), aprannaa (thunder), osu tɔ (it is raining).",
+    "patterns": [
+      "ewiem = weather / sky",
+      "osuo = rain",
+      "awia = sunshine"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘weather / sky’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ahuhuro",
+        "ewiem",
+        "aprannaa",
+        "osu tɔ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘osuo’ mean?",
+      "type": "recall",
+      "options": [
+        "rain",
+        "heat",
+        "cloud",
+        "lightning"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘sunshine’ in Twi?",
+      "type": "recall",
+      "options": [
+        "awia",
+        "ahuhuro",
+        "ewiem",
+        "aprannaa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘mframa’ mean?",
+      "type": "recall",
+      "options": [
+        "it is raining",
+        "cold",
+        "heat",
+        "wind"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘cold’ in Twi?",
+      "type": "recall",
+      "options": [
+        "mframa",
+        "aprannaa",
+        "ewiem",
+        "awɔ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘ahuhuro’ mean?",
+      "type": "recall",
+      "options": [
+        "thunder",
+        "lightning",
+        "heat",
+        "cold"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘cloud’ in Twi?",
+      "type": "recall",
+      "options": [
+        "mframa",
+        "mununkum",
+        "osu tɔ",
+        "awia"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘anyinam’ mean?",
+      "type": "recall",
+      "options": [
+        "lightning",
+        "sunshine",
+        "cloud",
+        "it is raining"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘thunder’ in Twi?",
+      "type": "recall",
+      "options": [
+        "awia",
+        "ewiem",
+        "aprannaa",
+        "anyinam"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘osu tɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "it is raining",
+        "cloud",
+        "sunshine",
+        "weather / sky"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "ewiem",
+      "en": "weather / sky"
+    },
+    {
+      "twi": "osuo",
+      "en": "rain"
+    },
+    {
+      "twi": "awia",
+      "en": "sunshine"
+    },
+    {
+      "twi": "mframa",
+      "en": "wind"
+    },
+    {
+      "twi": "awɔ",
+      "en": "cold"
+    },
+    {
+      "twi": "ahuhuro",
+      "en": "heat"
+    },
+    {
+      "twi": "mununkum",
+      "en": "cloud"
+    },
+    {
+      "twi": "anyinam",
+      "en": "lightning"
+    },
+    {
+      "twi": "aprannaa",
+      "en": "thunder"
+    },
+    {
+      "twi": "osu tɔ",
+      "en": "it is raining"
+    }
+  ]
+}

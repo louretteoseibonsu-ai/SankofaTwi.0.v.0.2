@@ -1,0 +1,191 @@
+{
+  "unit_id": "unit_024",
+  "unit_title": "Basic Grammar: Tenses & Conjugation",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "kɔ",
+    "gloss": "To go — a core verb we'll move through the present, past and future.",
+    "phonetic_bridge": {
+      "pronunciation": "kɔ"
+    },
+    "example_sentences": [
+      "Me kɔ.",
+      "Me rekɔ.",
+      "Me kɔɔ.",
+      "Me bɛkɔ."
+    ],
+    "culture_note": "Chale, Twi keeps it simple — you don't change the whole verb like in English. You just add a tiny marker: 're' for right now (-ing), 'bɛ' for the future (will), and you stretch the vowel for the past. Master 'kɔ' and you can swap in any verb."
+  },
+  "grammar_mechanics": {
+    "focus": "Present, past & future tense with subject conjugation",
+    "explanation": "Akan verbs stay mostly the same — the subject pronoun and a small marker do the work. Subjects: me (I), wo (you), ɔ (he/she), yɛn (we), mo (you all), wɔn (they). The bare verb is the everyday/habitual present: 'Me kɔ' = I go. Add 're-' for the present continuous: 'Me rekɔ' = I am going. Lengthen the vowel for the past: kɔ → kɔɔ, so 'Me kɔɔ' = I went. Add 'bɛ-' for the future: 'Me bɛkɔ' = I will go.",
+    "patterns": [
+      "Present: Me kɔ (I go) · Me rekɔ (I am going)",
+      "Past: Me kɔɔ (I went)",
+      "Future: Me bɛkɔ (I will go)",
+      "Subjects: me · wo · ɔ · yɛn · mo · wɔn"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "'Me bɛkɔ' means:",
+      "type": "concept_match",
+      "options": [
+        "I will go",
+        "I went",
+        "I am going",
+        "I go"
+      ],
+      "correct_index": 0,
+      "slang_hint": "'bɛ' points to the future — think 'bɛ' = 'be (about to)'."
+    },
+    {
+      "prompt": "Which sentence is in the PAST tense?",
+      "type": "recall",
+      "options": [
+        "Me kɔɔ",
+        "Me rekɔ",
+        "Me bɛkɔ",
+        "Me kɔ"
+      ],
+      "correct_index": 0,
+      "slang_hint": "Past tense stretches the vowel: kɔ → kɔɔ."
+    },
+    {
+      "prompt": "Which marker makes the present continuous ('am …-ing')?",
+      "type": "recall",
+      "options": [
+        "re-",
+        "bɛ-",
+        "n-",
+        "a-"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Me rekɔ' means:",
+      "type": "concept_match",
+      "options": [
+        "I am going",
+        "I will go",
+        "I went",
+        "I go"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Which marker shows the FUTURE tense ('will')?",
+      "type": "recall",
+      "options": [
+        "bɛ-",
+        "re-",
+        "ɔ-",
+        "wo-"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Wo kɔ' means:",
+      "type": "concept_match",
+      "options": [
+        "You go",
+        "I go",
+        "They go",
+        "He goes"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Ɔ kɔ' means:",
+      "type": "concept_match",
+      "options": [
+        "He / she goes",
+        "We go",
+        "You go",
+        "I go"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'We go'?",
+      "type": "recall",
+      "options": [
+        "Yɛn kɔ",
+        "Mo kɔ",
+        "Wɔn kɔ",
+        "Me kɔ"
+      ],
+      "correct_index": 0,
+      "slang_hint": "'yɛn' is the 'we' subject — it shows up everywhere, so lock it in."
+    },
+    {
+      "prompt": "'Me kɔɔ' means:",
+      "type": "concept_match",
+      "options": [
+        "I went",
+        "I will go",
+        "I go",
+        "I am going"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Using 'didi' (to eat), how do you say 'I will eat'?",
+      "type": "recall",
+      "options": [
+        "Me bɛdidi",
+        "Me redidi",
+        "Me didiiɛ",
+        "Me didi"
+      ],
+      "correct_index": 0,
+      "slang_hint": "Same recipe as 'kɔ': add 'bɛ' for the future — Me bɛdidi."
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "kɔ",
+      "en": "to go"
+    },
+    {
+      "twi": "me",
+      "en": "I"
+    },
+    {
+      "twi": "wo",
+      "en": "you (singular)"
+    },
+    {
+      "twi": "ɔ",
+      "en": "he / she"
+    },
+    {
+      "twi": "yɛn",
+      "en": "we"
+    },
+    {
+      "twi": "mo",
+      "en": "you (plural)"
+    },
+    {
+      "twi": "wɔn",
+      "en": "they"
+    },
+    {
+      "twi": "Me kɔ",
+      "en": "I go (present)"
+    },
+    {
+      "twi": "Me rekɔ",
+      "en": "I am going (present continuous)"
+    },
+    {
+      "twi": "Me kɔɔ",
+      "en": "I went (past)"
+    },
+    {
+      "twi": "Me bɛkɔ",
+      "en": "I will go (future)"
+    }
+  ]
+}

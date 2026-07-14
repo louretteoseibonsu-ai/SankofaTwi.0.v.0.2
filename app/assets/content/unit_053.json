@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_053",
+  "unit_title": "Drumming",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "twene",
+    "gloss": "drumming — the heartbeat of every celebration.",
+    "phonetic_bridge": {
+      "pronunciation": "twe-ne"
+    },
+    "example_sentences": [
+      "twene, bɔ twene, atumpan."
+    ],
+    "culture_note": "The master drummer (ɔkyerɛma) leads; the drums ‘speak’ proverbs."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about drumming",
+    "explanation": "Key vocabulary: twene (drum), bɔ twene (to drum), atumpan (talking drums), ɔkyerɛma (master drummer), nnwom (songs), asaw (dance), agorɔ (performance), dawuro (gong), dɔnnɔ (hourglass drum), anigyeɛ (joy).",
+    "patterns": [
+      "twene = drum",
+      "bɔ twene = to drum",
+      "atumpan = talking drums"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘drum’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nnwom",
+        "twene",
+        "atumpan",
+        "dawuro"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘bɔ twene’ mean?",
+      "type": "recall",
+      "options": [
+        "gong",
+        "to drum",
+        "songs",
+        "talking drums"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘talking drums’ in Twi?",
+      "type": "recall",
+      "options": [
+        "dɔnnɔ",
+        "bɔ twene",
+        "asaw",
+        "atumpan"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘ɔkyerɛma’ mean?",
+      "type": "recall",
+      "options": [
+        "master drummer",
+        "drum",
+        "hourglass drum",
+        "songs"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘songs’ in Twi?",
+      "type": "recall",
+      "options": [
+        "anigyeɛ",
+        "dɔnnɔ",
+        "dawuro",
+        "nnwom"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘asaw’ mean?",
+      "type": "recall",
+      "options": [
+        "performance",
+        "dance",
+        "gong",
+        "songs"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘performance’ in Twi?",
+      "type": "recall",
+      "options": [
+        "agorɔ",
+        "twene",
+        "ɔkyerɛma",
+        "anigyeɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘dawuro’ mean?",
+      "type": "recall",
+      "options": [
+        "gong",
+        "hourglass drum",
+        "performance",
+        "master drummer"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘hourglass drum’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nnwom",
+        "atumpan",
+        "dɔnnɔ",
+        "ɔkyerɛma"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘anigyeɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "gong",
+        "joy",
+        "performance",
+        "talking drums"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "twene",
+      "en": "drum"
+    },
+    {
+      "twi": "bɔ twene",
+      "en": "to drum"
+    },
+    {
+      "twi": "atumpan",
+      "en": "talking drums"
+    },
+    {
+      "twi": "ɔkyerɛma",
+      "en": "master drummer"
+    },
+    {
+      "twi": "nnwom",
+      "en": "songs"
+    },
+    {
+      "twi": "asaw",
+      "en": "dance"
+    },
+    {
+      "twi": "agorɔ",
+      "en": "performance"
+    },
+    {
+      "twi": "dawuro",
+      "en": "gong"
+    },
+    {
+      "twi": "dɔnnɔ",
+      "en": "hourglass drum"
+    },
+    {
+      "twi": "anigyeɛ",
+      "en": "joy"
+    }
+  ]
+}

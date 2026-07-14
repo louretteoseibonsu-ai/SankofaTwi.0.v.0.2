@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_037",
+  "unit_title": "Games",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "agorɔ",
+    "gloss": "games — play, win, and enjoy with friends.",
+    "phonetic_bridge": {
+      "pronunciation": "a-go-rɔ"
+    },
+    "example_sentences": [
+      "agorɔ, oware, di agorɔ."
+    ],
+    "culture_note": "Oware is the classic Akan board game — play it with a friend (onua)."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about games",
+    "explanation": "Key vocabulary: agorɔ (game / play), oware (oware (board game)), di agorɔ (to play), nkonimdie (winning / victory), nkogudie (losing / defeat), ludo (ludo), ahosɛpɛ (enjoyment), nnamfoɔ (friends), akansie (contest), anigyeɛ (fun).",
+    "patterns": [
+      "agorɔ = game / play",
+      "oware = oware (board game)",
+      "di agorɔ = to play"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘game / play’ in Twi?",
+      "type": "recall",
+      "options": [
+        "agorɔ",
+        "anigyeɛ",
+        "akansie",
+        "ludo"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘oware’ mean?",
+      "type": "recall",
+      "options": [
+        "to play",
+        "oware (board game)",
+        "contest",
+        "winning / victory"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘to play’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ludo",
+        "akansie",
+        "anigyeɛ",
+        "di agorɔ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘nkonimdie’ mean?",
+      "type": "recall",
+      "options": [
+        "fun",
+        "losing / defeat",
+        "winning / victory",
+        "enjoyment"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘losing / defeat’ in Twi?",
+      "type": "recall",
+      "options": [
+        "anigyeɛ",
+        "nkonimdie",
+        "nnamfoɔ",
+        "nkogudie"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘ludo’ mean?",
+      "type": "recall",
+      "options": [
+        "to play",
+        "friends",
+        "game / play",
+        "ludo"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘enjoyment’ in Twi?",
+      "type": "recall",
+      "options": [
+        "akansie",
+        "ahosɛpɛ",
+        "ludo",
+        "agorɔ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘nnamfoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "enjoyment",
+        "oware (board game)",
+        "friends",
+        "contest"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘contest’ in Twi?",
+      "type": "recall",
+      "options": [
+        "oware",
+        "di agorɔ",
+        "akansie",
+        "ludo"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘anigyeɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "to play",
+        "losing / defeat",
+        "oware (board game)",
+        "fun"
+      ],
+      "correct_index": 3
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "agorɔ",
+      "en": "game / play"
+    },
+    {
+      "twi": "oware",
+      "en": "oware (board game)"
+    },
+    {
+      "twi": "di agorɔ",
+      "en": "to play"
+    },
+    {
+      "twi": "nkonimdie",
+      "en": "winning / victory"
+    },
+    {
+      "twi": "nkogudie",
+      "en": "losing / defeat"
+    },
+    {
+      "twi": "ludo",
+      "en": "ludo"
+    },
+    {
+      "twi": "ahosɛpɛ",
+      "en": "enjoyment"
+    },
+    {
+      "twi": "nnamfoɔ",
+      "en": "friends"
+    },
+    {
+      "twi": "akansie",
+      "en": "contest"
+    },
+    {
+      "twi": "anigyeɛ",
+      "en": "fun"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_062",
+  "unit_title": "Kente & Cloth",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "kente",
+    "gloss": "kente — Ghana’s woven cloth, and its colours.",
+    "phonetic_bridge": {
+      "pronunciation": "ken-te"
+    },
+    "example_sentences": [
+      "kente, ntoma, nwene."
+    ],
+    "culture_note": "Each kente colour carries meaning: gold for royalty, green for growth."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about kente & cloth",
+    "explanation": "Key vocabulary: kente (kente cloth), ntoma (cloth), nwene (to weave), ɔnwenfoɔ (weaver), adwinneɛ (design / craft), asaawa (thread), kɔkɔɔ (red), sikakɔkɔɔ (gold), tuntum (black), fitaa (white).",
+    "patterns": [
+      "kente = kente cloth",
+      "ntoma = cloth",
+      "nwene = to weave"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘kente cloth’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kente",
+        "tuntum",
+        "sikakɔkɔɔ",
+        "ɔnwenfoɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘ntoma’ mean?",
+      "type": "recall",
+      "options": [
+        "white",
+        "cloth",
+        "black",
+        "kente cloth"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘to weave’ in Twi?",
+      "type": "recall",
+      "options": [
+        "fitaa",
+        "kente",
+        "kɔkɔɔ",
+        "nwene"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘ɔnwenfoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "to weave",
+        "red",
+        "design / craft",
+        "weaver"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘design / craft’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nwene",
+        "asaawa",
+        "adwinneɛ",
+        "ntoma"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘asaawa’ mean?",
+      "type": "recall",
+      "options": [
+        "red",
+        "design / craft",
+        "black",
+        "thread"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘red’ in Twi?",
+      "type": "recall",
+      "options": [
+        "sikakɔkɔɔ",
+        "adwinneɛ",
+        "tuntum",
+        "kɔkɔɔ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘sikakɔkɔɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "red",
+        "gold",
+        "kente cloth",
+        "white"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘black’ in Twi?",
+      "type": "recall",
+      "options": [
+        "fitaa",
+        "tuntum",
+        "ɔnwenfoɔ",
+        "nwene"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘fitaa’ mean?",
+      "type": "recall",
+      "options": [
+        "weaver",
+        "white",
+        "kente cloth",
+        "red"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "kente",
+      "en": "kente cloth"
+    },
+    {
+      "twi": "ntoma",
+      "en": "cloth"
+    },
+    {
+      "twi": "nwene",
+      "en": "to weave"
+    },
+    {
+      "twi": "ɔnwenfoɔ",
+      "en": "weaver"
+    },
+    {
+      "twi": "adwinneɛ",
+      "en": "design / craft"
+    },
+    {
+      "twi": "asaawa",
+      "en": "thread"
+    },
+    {
+      "twi": "kɔkɔɔ",
+      "en": "red"
+    },
+    {
+      "twi": "sikakɔkɔɔ",
+      "en": "gold"
+    },
+    {
+      "twi": "tuntum",
+      "en": "black"
+    },
+    {
+      "twi": "fitaa",
+      "en": "white"
+    }
+  ]
+}

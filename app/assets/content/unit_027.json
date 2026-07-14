@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_027",
+  "unit_title": "Basic Grammar: Possessives",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "fie",
+    "gloss": "Home / house — and how to say 'my', 'your', 'their' home.",
+    "phonetic_bridge": {
+      "pronunciation": "fi-e"
+    },
+    "example_sentences": [
+      "Me fie.",
+      "Wo fie.",
+      "Ne fie.",
+      "Yɛn fie."
+    ],
+    "culture_note": "Chale, possessives are easy in Twi — the little word for 'my' or 'your' just sits in front of the thing you own. 'fie' is house, 'me fie' is my house. No endings to change, no stress."
+  },
+  "grammar_mechanics": {
+    "focus": "Possessives — my, your, his/her, our, their",
+    "explanation": "A possessive sits BEFORE the noun: me (my), wo (your), ne (his/her/its), yɛn (our), mo (your, plural), wɔn (their). So 'fie' (house) gives me fie (my house), wo fie (your house), ne fie (his/her house). When the noun starts with a vowel, 'me' often shortens with an apostrophe: me + agya → m'agya (my father).",
+    "patterns": [
+      "me (my) · wo (your) · ne (his/her)",
+      "yɛn (our) · mo (your, pl) · wɔn (their)",
+      "fie → me fie (my house)",
+      "me + agya → m'agya (my father)"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "'me fie' means:",
+      "type": "concept_match",
+      "options": [
+        "my house",
+        "your house",
+        "his house",
+        "our house"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'your name'? (din = name)",
+      "type": "recall",
+      "options": [
+        "wo din",
+        "me din",
+        "ne din",
+        "yɛn din"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "As a possessive, 'ne' means:",
+      "type": "concept_match",
+      "options": [
+        "his / her",
+        "my",
+        "your",
+        "their"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "A possessive word comes ___ the noun.",
+      "type": "recall",
+      "options": [
+        "before",
+        "after",
+        "inside",
+        "it doesn't matter"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'our house'?",
+      "type": "recall",
+      "options": [
+        "yɛn fie",
+        "wɔn fie",
+        "mo fie",
+        "me fie"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'wɔn' means:",
+      "type": "concept_match",
+      "options": [
+        "their",
+        "our",
+        "your",
+        "his"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'me + agya' (my father) becomes:",
+      "type": "recall",
+      "options": [
+        "m'agya",
+        "agya me",
+        "me na",
+        "agya wo"
+      ],
+      "correct_index": 0,
+      "slang_hint": "Before a vowel, 'me' squeezes to m' — m'agya rolls off the tongue."
+    },
+    {
+      "prompt": "'wo fie' means:",
+      "type": "concept_match",
+      "options": [
+        "your house",
+        "my house",
+        "their house",
+        "his house"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'my mother'? (na = mother)",
+      "type": "recall",
+      "options": [
+        "me na",
+        "wo na",
+        "ne na",
+        "yɛn na"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'yɛn' means:",
+      "type": "concept_match",
+      "options": [
+        "our",
+        "their",
+        "my",
+        "your"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "me",
+      "en": "my"
+    },
+    {
+      "twi": "wo",
+      "en": "your (singular)"
+    },
+    {
+      "twi": "ne",
+      "en": "his / her / its"
+    },
+    {
+      "twi": "yɛn",
+      "en": "our"
+    },
+    {
+      "twi": "mo",
+      "en": "your (plural)"
+    },
+    {
+      "twi": "wɔn",
+      "en": "their"
+    },
+    {
+      "twi": "fie",
+      "en": "house / home"
+    },
+    {
+      "twi": "me fie",
+      "en": "my house"
+    },
+    {
+      "twi": "m'agya",
+      "en": "my father"
+    }
+  ]
+}

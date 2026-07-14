@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_030",
+  "unit_title": "Drinks",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "nsã",
+    "gloss": "drinks — what to sip, hot or cold.",
+    "phonetic_bridge": {
+      "pronunciation": "n-saa"
+    },
+    "example_sentences": [
+      "nsuo, nufusuo, asikyire."
+    ],
+    "culture_note": "Ask for water anywhere: ‘Mepɛ nsuo.’ Add ‘a ɛyɛ nwunu’ for cold."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about drinks",
+    "explanation": "Key vocabulary: nsuo (water), nufusuo (milk), asikyire (sugar), tii (tea), kɔfe (coffee), nsã (palm wine / liquor), nom (to drink), nsãnom (a drink / beverage), nwunu (cold), hye (hot).",
+    "patterns": [
+      "nsuo = water",
+      "nufusuo = milk",
+      "asikyire = sugar"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘water’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nufusuo",
+        "kɔfe",
+        "nwunu",
+        "nsuo"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘nufusuo’ mean?",
+      "type": "recall",
+      "options": [
+        "to drink",
+        "cold",
+        "palm wine / liquor",
+        "milk"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘sugar’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nom",
+        "asikyire",
+        "nsã",
+        "nufusuo"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘tii’ mean?",
+      "type": "recall",
+      "options": [
+        "coffee",
+        "milk",
+        "tea",
+        "palm wine / liquor"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘coffee’ in Twi?",
+      "type": "recall",
+      "options": [
+        "hye",
+        "nwunu",
+        "asikyire",
+        "kɔfe"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘nsã’ mean?",
+      "type": "recall",
+      "options": [
+        "coffee",
+        "milk",
+        "water",
+        "palm wine / liquor"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘to drink’ in Twi?",
+      "type": "recall",
+      "options": [
+        "asikyire",
+        "nsã",
+        "nufusuo",
+        "nom"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘nsãnom’ mean?",
+      "type": "recall",
+      "options": [
+        "a drink / beverage",
+        "to drink",
+        "water",
+        "palm wine / liquor"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘cold’ in Twi?",
+      "type": "recall",
+      "options": [
+        "hye",
+        "nsã",
+        "nwunu",
+        "asikyire"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘hye’ mean?",
+      "type": "recall",
+      "options": [
+        "hot",
+        "a drink / beverage",
+        "cold",
+        "water"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "nsuo",
+      "en": "water"
+    },
+    {
+      "twi": "nufusuo",
+      "en": "milk"
+    },
+    {
+      "twi": "asikyire",
+      "en": "sugar"
+    },
+    {
+      "twi": "tii",
+      "en": "tea"
+    },
+    {
+      "twi": "kɔfe",
+      "en": "coffee"
+    },
+    {
+      "twi": "nsã",
+      "en": "palm wine / liquor"
+    },
+    {
+      "twi": "nom",
+      "en": "to drink"
+    },
+    {
+      "twi": "nsãnom",
+      "en": "a drink / beverage"
+    },
+    {
+      "twi": "nwunu",
+      "en": "cold"
+    },
+    {
+      "twi": "hye",
+      "en": "hot"
+    }
+  ]
+}

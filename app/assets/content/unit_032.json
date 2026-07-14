@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_032",
+  "unit_title": "At the Market",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "gua",
+    "gloss": "the market — buying, selling, and bargaining.",
+    "phonetic_bridge": {
+      "pronunciation": "gu-a"
+    },
+    "example_sentences": [
+      "gua, tɔn, tɔ."
+    ],
+    "culture_note": "Bargaining is expected. Ask ‘Ɛyɛ sɛn?’ then smile and say ‘Te so kakra.’"
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about at the market",
+    "explanation": "Key vocabulary: gua (market), tɔn (to sell), tɔ (to buy), boɔ (price), sika (money), adetɔnfoɔ (trader / seller), kɛntɛn (basket), adwadie (trade / business), te so (reduce the price), ɛyɛ sɛn (how much is it?).",
+    "patterns": [
+      "gua = market",
+      "tɔn = to sell",
+      "tɔ = to buy"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘market’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kɛntɛn",
+        "gua",
+        "adwadie",
+        "tɔ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘tɔn’ mean?",
+      "type": "recall",
+      "options": [
+        "to buy",
+        "to sell",
+        "price",
+        "how much is it?"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘to buy’ in Twi?",
+      "type": "recall",
+      "options": [
+        "sika",
+        "tɔ",
+        "gua",
+        "ɛyɛ sɛn"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘boɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "trader / seller",
+        "price",
+        "how much is it?",
+        "market"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘money’ in Twi?",
+      "type": "recall",
+      "options": [
+        "adwadie",
+        "kɛntɛn",
+        "sika",
+        "adetɔnfoɔ"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘adetɔnfoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "to buy",
+        "market",
+        "price",
+        "trader / seller"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘basket’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kɛntɛn",
+        "adwadie",
+        "ɛyɛ sɛn",
+        "boɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘adwadie’ mean?",
+      "type": "recall",
+      "options": [
+        "reduce the price",
+        "trade / business",
+        "basket",
+        "market"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘reduce the price’ in Twi?",
+      "type": "recall",
+      "options": [
+        "tɔn",
+        "te so",
+        "boɔ",
+        "adwadie"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘ɛyɛ sɛn’ mean?",
+      "type": "recall",
+      "options": [
+        "how much is it?",
+        "to sell",
+        "trader / seller",
+        "money"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "gua",
+      "en": "market"
+    },
+    {
+      "twi": "tɔn",
+      "en": "to sell"
+    },
+    {
+      "twi": "tɔ",
+      "en": "to buy"
+    },
+    {
+      "twi": "boɔ",
+      "en": "price"
+    },
+    {
+      "twi": "sika",
+      "en": "money"
+    },
+    {
+      "twi": "adetɔnfoɔ",
+      "en": "trader / seller"
+    },
+    {
+      "twi": "kɛntɛn",
+      "en": "basket"
+    },
+    {
+      "twi": "adwadie",
+      "en": "trade / business"
+    },
+    {
+      "twi": "te so",
+      "en": "reduce the price"
+    },
+    {
+      "twi": "ɛyɛ sɛn",
+      "en": "how much is it?"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_039",
+  "unit_title": "Transport (Trotro)",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "trɔtrɔ",
+    "gloss": "getting around — the trotro, the road, and the fare.",
+    "phonetic_bridge": {
+      "pronunciation": "trɔ-trɔ"
+    },
+    "example_sentences": [
+      "trɔtrɔ, kaa, ɔkwan."
+    ],
+    "culture_note": "The trotro is Ghana’s shared minibus. Call your stop clearly: ‘Mesi ha!’"
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about transport (trotro)",
+    "explanation": "Key vocabulary: trɔtrɔ (trotro (minibus)), kaa (car), ɔkwan (road), kɔ (to go), ba (to come), gyina (to stop), si (to get down / alight), ntɛm (quickly / fast), akwantuo (journey / travel), sika (fare / money).",
+    "patterns": [
+      "trɔtrɔ = trotro (minibus)",
+      "kaa = car",
+      "ɔkwan = road"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘trotro (minibus)’ in Twi?",
+      "type": "recall",
+      "options": [
+        "gyina",
+        "ntɛm",
+        "ɔkwan",
+        "trɔtrɔ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘kaa’ mean?",
+      "type": "recall",
+      "options": [
+        "car",
+        "to get down / alight",
+        "road",
+        "to go"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘road’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kɔ",
+        "ntɛm",
+        "ɔkwan",
+        "trɔtrɔ"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘kɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "trotro (minibus)",
+        "car",
+        "to go",
+        "quickly / fast"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘to come’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kaa",
+        "kɔ",
+        "ba",
+        "trɔtrɔ"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘gyina’ mean?",
+      "type": "recall",
+      "options": [
+        "car",
+        "journey / travel",
+        "to stop",
+        "trotro (minibus)"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘to get down / alight’ in Twi?",
+      "type": "recall",
+      "options": [
+        "sika",
+        "si",
+        "ntɛm",
+        "ɔkwan"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘ntɛm’ mean?",
+      "type": "recall",
+      "options": [
+        "trotro (minibus)",
+        "quickly / fast",
+        "to go",
+        "fare / money"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘journey / travel’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ba",
+        "akwantuo",
+        "trɔtrɔ",
+        "kaa"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘sika’ mean?",
+      "type": "recall",
+      "options": [
+        "to come",
+        "fare / money",
+        "journey / travel",
+        "quickly / fast"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "trɔtrɔ",
+      "en": "trotro (minibus)"
+    },
+    {
+      "twi": "kaa",
+      "en": "car"
+    },
+    {
+      "twi": "ɔkwan",
+      "en": "road"
+    },
+    {
+      "twi": "kɔ",
+      "en": "to go"
+    },
+    {
+      "twi": "ba",
+      "en": "to come"
+    },
+    {
+      "twi": "gyina",
+      "en": "to stop"
+    },
+    {
+      "twi": "si",
+      "en": "to get down / alight"
+    },
+    {
+      "twi": "ntɛm",
+      "en": "quickly / fast"
+    },
+    {
+      "twi": "akwantuo",
+      "en": "journey / travel"
+    },
+    {
+      "twi": "sika",
+      "en": "fare / money"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_042",
+  "unit_title": "Extended Family",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "abusua",
+    "gloss": "the wider family — grandparents, uncles, aunts, and clan.",
+    "phonetic_bridge": {
+      "pronunciation": "a-bu-si-a"
+    },
+    "example_sentences": [
+      "abusua, nana, nana barima."
+    ],
+    "culture_note": "The Akan family is matrilineal (abusua): your mother’s brother (wɔfa) is a key elder."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about extended family",
+    "explanation": "Key vocabulary: abusua (family / clan), nana (grandparent), nana barima (grandfather), nana baa (grandmother), wɔfa (maternal uncle), sewaa (aunt), wɔfaase (nephew / niece), nua (sibling), mma (children), ba (child).",
+    "patterns": [
+      "abusua = family / clan",
+      "nana = grandparent",
+      "nana barima = grandfather"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘family / clan’ in Twi?",
+      "type": "recall",
+      "options": [
+        "mma",
+        "abusua",
+        "ba",
+        "wɔfa"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘nana’ mean?",
+      "type": "recall",
+      "options": [
+        "grandmother",
+        "grandparent",
+        "children",
+        "nephew / niece"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘grandfather’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nana",
+        "nana barima",
+        "mma",
+        "nana baa"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘nana baa’ mean?",
+      "type": "recall",
+      "options": [
+        "grandparent",
+        "family / clan",
+        "aunt",
+        "grandmother"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘maternal uncle’ in Twi?",
+      "type": "recall",
+      "options": [
+        "wɔfa",
+        "mma",
+        "nana barima",
+        "sewaa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘sewaa’ mean?",
+      "type": "recall",
+      "options": [
+        "aunt",
+        "child",
+        "grandparent",
+        "family / clan"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘nephew / niece’ in Twi?",
+      "type": "recall",
+      "options": [
+        "wɔfaase",
+        "nana baa",
+        "ba",
+        "wɔfa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘nua’ mean?",
+      "type": "recall",
+      "options": [
+        "children",
+        "sibling",
+        "aunt",
+        "grandmother"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘children’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ba",
+        "nana baa",
+        "mma",
+        "sewaa"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘ba’ mean?",
+      "type": "recall",
+      "options": [
+        "child",
+        "sibling",
+        "family / clan",
+        "aunt"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "abusua",
+      "en": "family / clan"
+    },
+    {
+      "twi": "nana",
+      "en": "grandparent"
+    },
+    {
+      "twi": "nana barima",
+      "en": "grandfather"
+    },
+    {
+      "twi": "nana baa",
+      "en": "grandmother"
+    },
+    {
+      "twi": "wɔfa",
+      "en": "maternal uncle"
+    },
+    {
+      "twi": "sewaa",
+      "en": "aunt"
+    },
+    {
+      "twi": "wɔfaase",
+      "en": "nephew / niece"
+    },
+    {
+      "twi": "nua",
+      "en": "sibling"
+    },
+    {
+      "twi": "mma",
+      "en": "children"
+    },
+    {
+      "twi": "ba",
+      "en": "child"
+    }
+  ]
+}

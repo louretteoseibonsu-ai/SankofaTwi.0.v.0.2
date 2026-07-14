@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_036",
+  "unit_title": "Sports",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "bɔɔlo",
+    "gloss": "sport — the ball, the race, the win.",
+    "phonetic_bridge": {
+      "pronunciation": "bɔɔ-lo"
+    },
+    "example_sentences": [
+      "bɔɔlo, mmirika, akansie."
+    ],
+    "culture_note": "Football is king. ‘Yɛbɛdi nkonim!’ = We will win!"
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about sports",
+    "explanation": "Key vocabulary: bɔɔlo (football / ball), mmirika (running / race), akansie (competition / match), di nkonim (to win), tu mmirika (to run), bɔ bɔɔlo (to play football), ekuo (team / group), agodibea (playing field), anigyeɛ (fun / enjoyment), agorɔ (play).",
+    "patterns": [
+      "bɔɔlo = football / ball",
+      "mmirika = running / race",
+      "akansie = competition / match"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘football / ball’ in Twi?",
+      "type": "recall",
+      "options": [
+        "bɔ bɔɔlo",
+        "tu mmirika",
+        "bɔɔlo",
+        "agodibea"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘mmirika’ mean?",
+      "type": "recall",
+      "options": [
+        "to play football",
+        "running / race",
+        "playing field",
+        "fun / enjoyment"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘competition / match’ in Twi?",
+      "type": "recall",
+      "options": [
+        "bɔɔlo",
+        "ekuo",
+        "tu mmirika",
+        "akansie"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘di nkonim’ mean?",
+      "type": "recall",
+      "options": [
+        "play",
+        "to win",
+        "competition / match",
+        "to play football"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘to run’ in Twi?",
+      "type": "recall",
+      "options": [
+        "agorɔ",
+        "bɔɔlo",
+        "agodibea",
+        "tu mmirika"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘bɔ bɔɔlo’ mean?",
+      "type": "recall",
+      "options": [
+        "competition / match",
+        "to play football",
+        "football / ball",
+        "playing field"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘team / group’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ekuo",
+        "akansie",
+        "agorɔ",
+        "di nkonim"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘agodibea’ mean?",
+      "type": "recall",
+      "options": [
+        "play",
+        "football / ball",
+        "competition / match",
+        "playing field"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘fun / enjoyment’ in Twi?",
+      "type": "recall",
+      "options": [
+        "mmirika",
+        "anigyeɛ",
+        "bɔɔlo",
+        "agorɔ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘agorɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "play",
+        "to run",
+        "football / ball",
+        "team / group"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "bɔɔlo",
+      "en": "football / ball"
+    },
+    {
+      "twi": "mmirika",
+      "en": "running / race"
+    },
+    {
+      "twi": "akansie",
+      "en": "competition / match"
+    },
+    {
+      "twi": "di nkonim",
+      "en": "to win"
+    },
+    {
+      "twi": "tu mmirika",
+      "en": "to run"
+    },
+    {
+      "twi": "bɔ bɔɔlo",
+      "en": "to play football"
+    },
+    {
+      "twi": "ekuo",
+      "en": "team / group"
+    },
+    {
+      "twi": "agodibea",
+      "en": "playing field"
+    },
+    {
+      "twi": "anigyeɛ",
+      "en": "fun / enjoyment"
+    },
+    {
+      "twi": "agorɔ",
+      "en": "play"
+    }
+  ]
+}

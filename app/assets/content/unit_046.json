@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_046",
+  "unit_title": "Respect & Elders",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "ɔpanyin",
+    "gloss": "respect — elders, honour, and manners.",
+    "phonetic_bridge": {
+      "pronunciation": "ɔ-pa-nyin"
+    },
+    "example_sentences": [
+      "ɔpanyin, mpanyimfoɔ, obuo."
+    ],
+    "culture_note": "Greet elders first and with both hands; never with the left hand alone."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about respect & elders",
+    "explanation": "Key vocabulary: ɔpanyin (elder), mpanyimfoɔ (elders), obuo (respect), di ni (to honour), kotow (to bow), amammerɛ (tradition / custom), suban (character), tie (to obey / listen), nana (elder / grandparent), animuonyam (honour).",
+    "patterns": [
+      "ɔpanyin = elder",
+      "mpanyimfoɔ = elders",
+      "obuo = respect"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘elder’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔpanyin",
+        "di ni",
+        "kotow",
+        "nana"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘mpanyimfoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "elders",
+        "tradition / custom",
+        "to bow",
+        "respect"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘respect’ in Twi?",
+      "type": "recall",
+      "options": [
+        "mpanyimfoɔ",
+        "amammerɛ",
+        "kotow",
+        "obuo"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘di ni’ mean?",
+      "type": "recall",
+      "options": [
+        "to bow",
+        "to honour",
+        "elder",
+        "elder / grandparent"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘to bow’ in Twi?",
+      "type": "recall",
+      "options": [
+        "amammerɛ",
+        "kotow",
+        "suban",
+        "animuonyam"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘amammerɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "elders",
+        "character",
+        "honour",
+        "tradition / custom"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘character’ in Twi?",
+      "type": "recall",
+      "options": [
+        "suban",
+        "amammerɛ",
+        "obuo",
+        "kotow"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘tie’ mean?",
+      "type": "recall",
+      "options": [
+        "elder",
+        "elder / grandparent",
+        "to obey / listen",
+        "respect"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘elder / grandparent’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nana",
+        "ɔpanyin",
+        "animuonyam",
+        "kotow"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘animuonyam’ mean?",
+      "type": "recall",
+      "options": [
+        "to obey / listen",
+        "elders",
+        "honour",
+        "tradition / custom"
+      ],
+      "correct_index": 2
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "ɔpanyin",
+      "en": "elder"
+    },
+    {
+      "twi": "mpanyimfoɔ",
+      "en": "elders"
+    },
+    {
+      "twi": "obuo",
+      "en": "respect"
+    },
+    {
+      "twi": "di ni",
+      "en": "to honour"
+    },
+    {
+      "twi": "kotow",
+      "en": "to bow"
+    },
+    {
+      "twi": "amammerɛ",
+      "en": "tradition / custom"
+    },
+    {
+      "twi": "suban",
+      "en": "character"
+    },
+    {
+      "twi": "tie",
+      "en": "to obey / listen"
+    },
+    {
+      "twi": "nana",
+      "en": "elder / grandparent"
+    },
+    {
+      "twi": "animuonyam",
+      "en": "honour"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_041",
+  "unit_title": "Daily Routine & Time",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "da",
+    "gloss": "daily routine — from waking to sleeping.",
+    "phonetic_bridge": {
+      "pronunciation": "da"
+    },
+    "example_sentences": [
+      "anɔpa, awia, anwummerɛ."
+    ],
+    "culture_note": "Greet by the clock: ‘Maakye’ (morning), ‘Maaha’ (afternoon), ‘Maadwo’ (evening)."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about daily routine & time",
+    "explanation": "Key vocabulary: anɔpa (morning), awia (afternoon / daytime), anwummerɛ (evening), anadwo (night), sɔre (to get up), da (to sleep), adidi (to eat (a meal)), adwuma (work), berɛ (time), ɛnnɛ (today).",
+    "patterns": [
+      "anɔpa = morning",
+      "awia = afternoon / daytime",
+      "anwummerɛ = evening"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘morning’ in Twi?",
+      "type": "recall",
+      "options": [
+        "adwuma",
+        "anɔpa",
+        "da",
+        "berɛ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘awia’ mean?",
+      "type": "recall",
+      "options": [
+        "to sleep",
+        "afternoon / daytime",
+        "morning",
+        "to get up"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘evening’ in Twi?",
+      "type": "recall",
+      "options": [
+        "anwummerɛ",
+        "anadwo",
+        "da",
+        "sɔre"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘anadwo’ mean?",
+      "type": "recall",
+      "options": [
+        "to sleep",
+        "to eat (a meal)",
+        "night",
+        "evening"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘to get up’ in Twi?",
+      "type": "recall",
+      "options": [
+        "anadwo",
+        "sɔre",
+        "anɔpa",
+        "anwummerɛ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘da’ mean?",
+      "type": "recall",
+      "options": [
+        "to eat (a meal)",
+        "evening",
+        "to sleep",
+        "morning"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘to eat (a meal)’ in Twi?",
+      "type": "recall",
+      "options": [
+        "adwuma",
+        "awia",
+        "adidi",
+        "anadwo"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘adwuma’ mean?",
+      "type": "recall",
+      "options": [
+        "work",
+        "today",
+        "night",
+        "afternoon / daytime"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘time’ in Twi?",
+      "type": "recall",
+      "options": [
+        "berɛ",
+        "awia",
+        "sɔre",
+        "adidi"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘ɛnnɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "today",
+        "evening",
+        "to eat (a meal)",
+        "to get up"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "anɔpa",
+      "en": "morning"
+    },
+    {
+      "twi": "awia",
+      "en": "afternoon / daytime"
+    },
+    {
+      "twi": "anwummerɛ",
+      "en": "evening"
+    },
+    {
+      "twi": "anadwo",
+      "en": "night"
+    },
+    {
+      "twi": "sɔre",
+      "en": "to get up"
+    },
+    {
+      "twi": "da",
+      "en": "to sleep"
+    },
+    {
+      "twi": "adidi",
+      "en": "to eat (a meal)"
+    },
+    {
+      "twi": "adwuma",
+      "en": "work"
+    },
+    {
+      "twi": "berɛ",
+      "en": "time"
+    },
+    {
+      "twi": "ɛnnɛ",
+      "en": "today"
+    }
+  ]
+}

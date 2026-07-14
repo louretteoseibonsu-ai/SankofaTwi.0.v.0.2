@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_047",
+  "unit_title": "Proverbs & Wisdom",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "ɛbɛ",
+    "gloss": "proverbs (mmɛ) — the language of Akan wisdom.",
+    "phonetic_bridge": {
+      "pronunciation": "ɛ-bɛ"
+    },
+    "example_sentences": [
+      "ɛbɛ, mmɛ, anansesɛm."
+    ],
+    "culture_note": "Elders speak in proverbs. ‘Ɛbɛ’ = a proverb; wisdom (nyansa) is prized."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about proverbs & wisdom",
+    "explanation": "Key vocabulary: ɛbɛ (proverb), mmɛ (proverbs), anansesɛm (folktale (Ananse story)), abakɔsɛm (history), nyansa (wisdom), kɔkɔbɔ (advice / warning), kasakoa (idiom / figurative speech), kyerɛ (to teach / show), tete (ancient / of old), asɛm (a matter / word).",
+    "patterns": [
+      "ɛbɛ = proverb",
+      "mmɛ = proverbs",
+      "anansesɛm = folktale (Ananse story)"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘proverb’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɛbɛ",
+        "kasakoa",
+        "abakɔsɛm",
+        "mmɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘mmɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "proverbs",
+        "ancient / of old",
+        "idiom / figurative speech",
+        "a matter / word"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘folktale (Ananse story)’ in Twi?",
+      "type": "recall",
+      "options": [
+        "anansesɛm",
+        "abakɔsɛm",
+        "kasakoa",
+        "asɛm"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘abakɔsɛm’ mean?",
+      "type": "recall",
+      "options": [
+        "ancient / of old",
+        "proverbs",
+        "to teach / show",
+        "history"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘wisdom’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nyansa",
+        "ɛbɛ",
+        "tete",
+        "kɔkɔbɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘kɔkɔbɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "advice / warning",
+        "to teach / show",
+        "a matter / word",
+        "wisdom"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘idiom / figurative speech’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kasakoa",
+        "mmɛ",
+        "asɛm",
+        "ɛbɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘kyerɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "wisdom",
+        "idiom / figurative speech",
+        "to teach / show",
+        "advice / warning"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘ancient / of old’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kasakoa",
+        "kyerɛ",
+        "abakɔsɛm",
+        "tete"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘asɛm’ mean?",
+      "type": "recall",
+      "options": [
+        "a matter / word",
+        "ancient / of old",
+        "proverbs",
+        "wisdom"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "ɛbɛ",
+      "en": "proverb"
+    },
+    {
+      "twi": "mmɛ",
+      "en": "proverbs"
+    },
+    {
+      "twi": "anansesɛm",
+      "en": "folktale (Ananse story)"
+    },
+    {
+      "twi": "abakɔsɛm",
+      "en": "history"
+    },
+    {
+      "twi": "nyansa",
+      "en": "wisdom"
+    },
+    {
+      "twi": "kɔkɔbɔ",
+      "en": "advice / warning"
+    },
+    {
+      "twi": "kasakoa",
+      "en": "idiom / figurative speech"
+    },
+    {
+      "twi": "kyerɛ",
+      "en": "to teach / show"
+    },
+    {
+      "twi": "tete",
+      "en": "ancient / of old"
+    },
+    {
+      "twi": "asɛm",
+      "en": "a matter / word"
+    }
+  ]
+}

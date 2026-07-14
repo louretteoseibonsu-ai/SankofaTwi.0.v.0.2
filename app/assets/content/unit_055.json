@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_055",
+  "unit_title": "Storytelling",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "anansesɛm",
+    "gloss": "storytelling — the tales of Kwaku Ananse the spider.",
+    "phonetic_bridge": {
+      "pronunciation": "a-nan-se-sɛm"
+    },
+    "example_sentences": [
+      "anansesɛm, Ananse, asɛm."
+    ],
+    "culture_note": "A teller calls ‘Agoo!’ and the audience replies ‘Amee!’ before the tale begins."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about storytelling",
+    "explanation": "Key vocabulary: anansesɛm (folktale), Ananse (Ananse the spider), asɛm (story / matter), abakɔsɛm (history), nyansa (wisdom), tete (ancient / of old), kyerɛ (to teach), tie (to listen), agoo (call to start a tale), amee (the reply).",
+    "patterns": [
+      "anansesɛm = folktale",
+      "Ananse = Ananse the spider",
+      "asɛm = story / matter"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘folktale’ in Twi?",
+      "type": "recall",
+      "options": [
+        "tete",
+        "nyansa",
+        "anansesɛm",
+        "abakɔsɛm"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘Ananse’ mean?",
+      "type": "recall",
+      "options": [
+        "folktale",
+        "the reply",
+        "Ananse the spider",
+        "to listen"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘story / matter’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nyansa",
+        "Ananse",
+        "asɛm",
+        "agoo"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘abakɔsɛm’ mean?",
+      "type": "recall",
+      "options": [
+        "the reply",
+        "history",
+        "call to start a tale",
+        "to listen"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘wisdom’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kyerɛ",
+        "tete",
+        "nyansa",
+        "agoo"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘tete’ mean?",
+      "type": "recall",
+      "options": [
+        "the reply",
+        "wisdom",
+        "to teach",
+        "ancient / of old"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘to teach’ in Twi?",
+      "type": "recall",
+      "options": [
+        "agoo",
+        "kyerɛ",
+        "anansesɛm",
+        "tie"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘tie’ mean?",
+      "type": "recall",
+      "options": [
+        "to listen",
+        "story / matter",
+        "folktale",
+        "history"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘call to start a tale’ in Twi?",
+      "type": "recall",
+      "options": [
+        "amee",
+        "Ananse",
+        "asɛm",
+        "agoo"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘amee’ mean?",
+      "type": "recall",
+      "options": [
+        "to teach",
+        "ancient / of old",
+        "the reply",
+        "story / matter"
+      ],
+      "correct_index": 2
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "anansesɛm",
+      "en": "folktale"
+    },
+    {
+      "twi": "Ananse",
+      "en": "Ananse the spider"
+    },
+    {
+      "twi": "asɛm",
+      "en": "story / matter"
+    },
+    {
+      "twi": "abakɔsɛm",
+      "en": "history"
+    },
+    {
+      "twi": "nyansa",
+      "en": "wisdom"
+    },
+    {
+      "twi": "tete",
+      "en": "ancient / of old"
+    },
+    {
+      "twi": "kyerɛ",
+      "en": "to teach"
+    },
+    {
+      "twi": "tie",
+      "en": "to listen"
+    },
+    {
+      "twi": "agoo",
+      "en": "call to start a tale"
+    },
+    {
+      "twi": "amee",
+      "en": "the reply"
+    }
+  ]
+}

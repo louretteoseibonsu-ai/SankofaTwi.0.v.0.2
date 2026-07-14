@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_043",
+  "unit_title": "Describing People",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "onipa",
+    "gloss": "describing people — looks and simple traits.",
+    "phonetic_bridge": {
+      "pronunciation": "o-ni-pa"
+    },
+    "example_sentences": [
+      "onipa, barima, ɔbaa."
+    ],
+    "culture_note": "Pair with greetings: ‘Ɔyɛ onipa papa’ = He/she is a good person."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about describing people",
+    "explanation": "Key vocabulary: onipa (person), barima (man), ɔbaa (woman), abɔfra (child), tenten (tall), tiaa (short), kɛseɛ (big), ketewa (small), fɛfɛ (beautiful), papa (good / kind).",
+    "patterns": [
+      "onipa = person",
+      "barima = man",
+      "ɔbaa = woman"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘person’ in Twi?",
+      "type": "recall",
+      "options": [
+        "onipa",
+        "fɛfɛ",
+        "tiaa",
+        "tenten"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘barima’ mean?",
+      "type": "recall",
+      "options": [
+        "short",
+        "man",
+        "big",
+        "small"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘woman’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔbaa",
+        "papa",
+        "tiaa",
+        "onipa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘abɔfra’ mean?",
+      "type": "recall",
+      "options": [
+        "man",
+        "small",
+        "child",
+        "person"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘tall’ in Twi?",
+      "type": "recall",
+      "options": [
+        "tenten",
+        "ketewa",
+        "barima",
+        "onipa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘tiaa’ mean?",
+      "type": "recall",
+      "options": [
+        "child",
+        "good / kind",
+        "person",
+        "short"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘big’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kɛseɛ",
+        "ketewa",
+        "papa",
+        "abɔfra"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘ketewa’ mean?",
+      "type": "recall",
+      "options": [
+        "small",
+        "child",
+        "tall",
+        "woman"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘beautiful’ in Twi?",
+      "type": "recall",
+      "options": [
+        "tenten",
+        "tiaa",
+        "onipa",
+        "fɛfɛ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘papa’ mean?",
+      "type": "recall",
+      "options": [
+        "good / kind",
+        "man",
+        "woman",
+        "beautiful"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "onipa",
+      "en": "person"
+    },
+    {
+      "twi": "barima",
+      "en": "man"
+    },
+    {
+      "twi": "ɔbaa",
+      "en": "woman"
+    },
+    {
+      "twi": "abɔfra",
+      "en": "child"
+    },
+    {
+      "twi": "tenten",
+      "en": "tall"
+    },
+    {
+      "twi": "tiaa",
+      "en": "short"
+    },
+    {
+      "twi": "kɛseɛ",
+      "en": "big"
+    },
+    {
+      "twi": "ketewa",
+      "en": "small"
+    },
+    {
+      "twi": "fɛfɛ",
+      "en": "beautiful"
+    },
+    {
+      "twi": "papa",
+      "en": "good / kind"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_060",
+  "unit_title": "News",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "amanneɛbɔ",
+    "gloss": "news — reports, the paper, and the truth.",
+    "phonetic_bridge": {
+      "pronunciation": "a-man-neɛ-bɔ"
+    },
+    "example_sentences": [
+      "amanneɛbɔ, kaseɛbɔ, asɛm."
+    ],
+    "culture_note": "‘Amanneɛbɔ’ is the announcing of news and matters of the nation."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about news",
+    "explanation": "Key vocabulary: amanneɛbɔ (news), kaseɛbɔ (report), asɛm (story / matter), nsɛm (matters), nokorɛ (truth), krataa (newspaper), kenkan (to read), tie (to hear), berɛ (time), ɔman (nation).",
+    "patterns": [
+      "amanneɛbɔ = news",
+      "kaseɛbɔ = report",
+      "asɛm = story / matter"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘news’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kenkan",
+        "berɛ",
+        "amanneɛbɔ",
+        "nsɛm"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘kaseɛbɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "time",
+        "report",
+        "story / matter",
+        "newspaper"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘story / matter’ in Twi?",
+      "type": "recall",
+      "options": [
+        "amanneɛbɔ",
+        "nsɛm",
+        "berɛ",
+        "asɛm"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘nsɛm’ mean?",
+      "type": "recall",
+      "options": [
+        "to read",
+        "news",
+        "report",
+        "matters"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘truth’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kaseɛbɔ",
+        "amanneɛbɔ",
+        "kenkan",
+        "nokorɛ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘krataa’ mean?",
+      "type": "recall",
+      "options": [
+        "matters",
+        "newspaper",
+        "story / matter",
+        "report"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘to read’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kenkan",
+        "tie",
+        "asɛm",
+        "krataa"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘tie’ mean?",
+      "type": "recall",
+      "options": [
+        "matters",
+        "to hear",
+        "truth",
+        "news"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘time’ in Twi?",
+      "type": "recall",
+      "options": [
+        "berɛ",
+        "tie",
+        "kenkan",
+        "kaseɛbɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘ɔman’ mean?",
+      "type": "recall",
+      "options": [
+        "time",
+        "nation",
+        "to read",
+        "story / matter"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "amanneɛbɔ",
+      "en": "news"
+    },
+    {
+      "twi": "kaseɛbɔ",
+      "en": "report"
+    },
+    {
+      "twi": "asɛm",
+      "en": "story / matter"
+    },
+    {
+      "twi": "nsɛm",
+      "en": "matters"
+    },
+    {
+      "twi": "nokorɛ",
+      "en": "truth"
+    },
+    {
+      "twi": "krataa",
+      "en": "newspaper"
+    },
+    {
+      "twi": "kenkan",
+      "en": "to read"
+    },
+    {
+      "twi": "tie",
+      "en": "to hear"
+    },
+    {
+      "twi": "berɛ",
+      "en": "time"
+    },
+    {
+      "twi": "ɔman",
+      "en": "nation"
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "unit_id": "unit_045",
+  "unit_title": "Friendship",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "adamfoɔ",
+    "gloss": "friendship — sharing, helping, and trust.",
+    "phonetic_bridge": {
+      "pronunciation": "a-dam-fo-ɔ"
+    },
+    "example_sentences": [
+      "adamfoɔ, nnamfoɔ, boa."
+    ],
+    "culture_note": "Call a friend warmly: ‘Me adamfo pa’ = my good friend."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about friendship",
+    "explanation": "Key vocabulary: adamfoɔ (friend), nnamfoɔ (friends), boa (to help), kyɛ (to share), tie (to listen), dɔ (love), hyia (to meet), nokorɛ (truth), gye di (to trust / believe), ka (to say / tell).",
+    "patterns": [
+      "adamfoɔ = friend",
+      "nnamfoɔ = friends",
+      "boa = to help"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘friend’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nnamfoɔ",
+        "hyia",
+        "kyɛ",
+        "adamfoɔ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘nnamfoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "to share",
+        "friends",
+        "to trust / believe",
+        "truth"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘to help’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nokorɛ",
+        "boa",
+        "kyɛ",
+        "hyia"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘kyɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "love",
+        "to share",
+        "to listen",
+        "truth"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘to listen’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kyɛ",
+        "tie",
+        "boa",
+        "hyia"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘dɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "love",
+        "truth",
+        "to trust / believe",
+        "to listen"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘to meet’ in Twi?",
+      "type": "recall",
+      "options": [
+        "hyia",
+        "nokorɛ",
+        "adamfoɔ",
+        "gye di"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘nokorɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "friend",
+        "to listen",
+        "friends",
+        "truth"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘to trust / believe’ in Twi?",
+      "type": "recall",
+      "options": [
+        "tie",
+        "hyia",
+        "nokorɛ",
+        "gye di"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘ka’ mean?",
+      "type": "recall",
+      "options": [
+        "to say / tell",
+        "to listen",
+        "to help",
+        "love"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "adamfoɔ",
+      "en": "friend"
+    },
+    {
+      "twi": "nnamfoɔ",
+      "en": "friends"
+    },
+    {
+      "twi": "boa",
+      "en": "to help"
+    },
+    {
+      "twi": "kyɛ",
+      "en": "to share",
+      "audio": "Me kyɛ."
+    },
+    {
+      "twi": "tie",
+      "en": "to listen"
+    },
+    {
+      "twi": "dɔ",
+      "en": "love"
+    },
+    {
+      "twi": "hyia",
+      "en": "to meet"
+    },
+    {
+      "twi": "nokorɛ",
+      "en": "truth"
+    },
+    {
+      "twi": "gye di",
+      "en": "to trust / believe"
+    },
+    {
+      "twi": "ka",
+      "en": "to say / tell"
+    }
+  ]
+}

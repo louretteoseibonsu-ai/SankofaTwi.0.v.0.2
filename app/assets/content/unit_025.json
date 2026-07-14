@@ -1,0 +1,174 @@
+{
+  "unit_id": "unit_025",
+  "unit_title": "Basic Grammar: Negatives",
+  "review_required": true,
+  "vocabulary_spotlight": {
+    "headword": "Daabi",
+    "gloss": "No — and how to say 'not' or 'don't' inside any sentence.",
+    "phonetic_bridge": {
+      "pronunciation": "daa-bi"
+    },
+    "example_sentences": [
+      "Me nkɔ.",
+      "Me mpɛ.",
+      "Ɔnkɔ.",
+      "Me ankɔ."
+    ],
+    "culture_note": "Chale, to say 'not' you don't add a whole word — you just nudge a little nasal sound onto the front of the verb. 'Me kɔ' (I go) becomes 'Me nkɔ' (I don't go). Quick and clean, just like Twi likes it."
+  },
+  "grammar_mechanics": {
+    "focus": "Making a sentence negative (not / don't)",
+    "explanation": "To make a verb negative, add a nasal sound to the front of it: usually 'n-' (Me kɔ → Me nkɔ, 'I don't go'), but 'm-' before p, b or f (Me pɛ → Me mpɛ, 'I don't want'). For the past, use 'an-' (Me ankɔ = I didn't go). For the future, use 'ren-' (Me renkɔ = I won't go). The standalone word for 'no' is 'Daabi'.",
+    "patterns": [
+      "Present: Me kɔ → Me nkɔ (I don't go)",
+      "Before p/b/f use m-: Me pɛ → Me mpɛ",
+      "Past: Me ankɔ (I didn't go)",
+      "Future: Me renkɔ (I won't go)"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "'Me nkɔ' means:",
+      "type": "concept_match",
+      "options": [
+        "I don't go",
+        "I go",
+        "I will go",
+        "I went"
+      ],
+      "correct_index": 0,
+      "slang_hint": "The little 'n' on the verb flips it to negative: kɔ → nkɔ."
+    },
+    {
+      "prompt": "How do you make a verb negative in the present?",
+      "type": "recall",
+      "options": [
+        "Add an n- / m- sound to the verb",
+        "Add 'bɛ' to the verb",
+        "Add 're' to the verb",
+        "Lengthen the vowel"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Me mpɛ' means:",
+      "type": "concept_match",
+      "options": [
+        "I don't want / I don't like",
+        "I like it",
+        "I will like it",
+        "They like it"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "The negative of 'Me kɔ' (I go) is:",
+      "type": "recall",
+      "options": [
+        "Me nkɔ",
+        "Me bɛkɔ",
+        "Me rekɔ",
+        "Me kɔɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Before p, b or f, the negative sound becomes:",
+      "type": "recall",
+      "options": [
+        "m-",
+        "s-",
+        "t-",
+        "w-"
+      ],
+      "correct_index": 0,
+      "slang_hint": "Say 'm-pɛ' out loud — 'm' is just easier before p/b/f."
+    },
+    {
+      "prompt": "'Ɔnkɔ' means:",
+      "type": "concept_match",
+      "options": [
+        "He / she doesn't go",
+        "We don't go",
+        "You don't go",
+        "I don't go"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say 'I didn't go' (past negative)?",
+      "type": "recall",
+      "options": [
+        "Me ankɔ",
+        "Me nkɔ",
+        "Me kɔɔ",
+        "Me renkɔ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Me renkɔ' means:",
+      "type": "concept_match",
+      "options": [
+        "I won't go",
+        "I don't go",
+        "I didn't go",
+        "I am going"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Using 'pɛ' (to like), how do you say 'I don't like'?",
+      "type": "recall",
+      "options": [
+        "Me mpɛ",
+        "Me pɛ",
+        "Me bɛpɛ",
+        "Me repɛ"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Which word means 'no' on its own?",
+      "type": "recall",
+      "options": [
+        "Daabi",
+        "Aane",
+        "Yoo",
+        "Medaase"
+      ],
+      "correct_index": 0,
+      "slang_hint": "You met 'Daabi' back in Greetings — it's your everyday 'no'."
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "Daabi",
+      "en": "no"
+    },
+    {
+      "twi": "Me nkɔ",
+      "en": "I don't go"
+    },
+    {
+      "twi": "Me mpɛ",
+      "en": "I don't want / I don't like"
+    },
+    {
+      "twi": "Ɔnkɔ",
+      "en": "he / she doesn't go"
+    },
+    {
+      "twi": "Me ankɔ",
+      "en": "I didn't go (past)"
+    },
+    {
+      "twi": "Me renkɔ",
+      "en": "I won't go (future)"
+    },
+    {
+      "twi": "pɛ",
+      "en": "to like / to want"
+    }
+  ]
+}

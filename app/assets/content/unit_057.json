@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_057",
+  "unit_title": "Theatre",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "agorɔ",
+    "gloss": "theatre — from ‘concert party’ to the modern stage.",
+    "phonetic_bridge": {
+      "pronunciation": "a-go-rɔ"
+    },
+    "example_sentences": [
+      "agorɔ, concert, agorɔdifoɔ."
+    ],
+    "culture_note": "‘Concert party’ is Ghana’s classic travelling comic theatre."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about theatre",
+    "explanation": "Key vocabulary: agorɔ (drama / play), concert (concert party), agorɔdifoɔ (actors), ɔhwɛfoɔ (audience), nnwom (songs), asaw (dance), kasa (dialogue), anigyeɛ (entertainment), sini (show / film), baabi (venue).",
+    "patterns": [
+      "agorɔ = drama / play",
+      "concert = concert party",
+      "agorɔdifoɔ = actors"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘drama / play’ in Twi?",
+      "type": "recall",
+      "options": [
+        "asaw",
+        "agorɔ",
+        "nnwom",
+        "agorɔdifoɔ"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘concert’ mean?",
+      "type": "recall",
+      "options": [
+        "dance",
+        "actors",
+        "venue",
+        "concert party"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘actors’ in Twi?",
+      "type": "recall",
+      "options": [
+        "ɔhwɛfoɔ",
+        "concert",
+        "kasa",
+        "agorɔdifoɔ"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘ɔhwɛfoɔ’ mean?",
+      "type": "recall",
+      "options": [
+        "dance",
+        "audience",
+        "entertainment",
+        "venue"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "How do you say ‘songs’ in Twi?",
+      "type": "recall",
+      "options": [
+        "kasa",
+        "nnwom",
+        "concert",
+        "baabi"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘asaw’ mean?",
+      "type": "recall",
+      "options": [
+        "songs",
+        "actors",
+        "show / film",
+        "dance"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘dialogue’ in Twi?",
+      "type": "recall",
+      "options": [
+        "baabi",
+        "ɔhwɛfoɔ",
+        "nnwom",
+        "kasa"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "What does ‘anigyeɛ’ mean?",
+      "type": "recall",
+      "options": [
+        "songs",
+        "drama / play",
+        "venue",
+        "entertainment"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘show / film’ in Twi?",
+      "type": "recall",
+      "options": [
+        "sini",
+        "concert",
+        "ɔhwɛfoɔ",
+        "nnwom"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘baabi’ mean?",
+      "type": "recall",
+      "options": [
+        "entertainment",
+        "actors",
+        "venue",
+        "audience"
+      ],
+      "correct_index": 2
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "agorɔ",
+      "en": "drama / play"
+    },
+    {
+      "twi": "concert",
+      "en": "concert party"
+    },
+    {
+      "twi": "agorɔdifoɔ",
+      "en": "actors"
+    },
+    {
+      "twi": "ɔhwɛfoɔ",
+      "en": "audience"
+    },
+    {
+      "twi": "nnwom",
+      "en": "songs"
+    },
+    {
+      "twi": "asaw",
+      "en": "dance"
+    },
+    {
+      "twi": "kasa",
+      "en": "dialogue"
+    },
+    {
+      "twi": "anigyeɛ",
+      "en": "entertainment"
+    },
+    {
+      "twi": "sini",
+      "en": "show / film"
+    },
+    {
+      "twi": "baabi",
+      "en": "venue"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "unit_id": "unit_052",
+  "unit_title": "Instruments",
+  "review_required": true,
+  "review_note": "AI-drafted vocabulary (some modern loanwords) — verify Twi with a native speaker before release.",
+  "vocabulary_spotlight": {
+    "headword": "twene",
+    "gloss": "instruments — the drums, flutes, and strings of Akan music.",
+    "phonetic_bridge": {
+      "pronunciation": "twe-ne"
+    },
+    "example_sentences": [
+      "atumpan, fɔntɔmfrɔm, dɔnnɔ."
+    ],
+    "culture_note": "The atumpan ‘talking drums’ can imitate speech and send messages."
+  },
+  "grammar_mechanics": {
+    "focus": "Talking about instruments",
+    "explanation": "Key vocabulary: atumpan (talking drums), fɔntɔmfrɔm (big drum), dɔnnɔ (hourglass drum), seperewa (harp-lute), atɛntɛbɛn (bamboo flute), dawuro (gong), nnawuta (twin bells), firikyiwa (castanet), twene (drum), sankuo (lute / guitar).",
+    "patterns": [
+      "atumpan = talking drums",
+      "fɔntɔmfrɔm = big drum",
+      "dɔnnɔ = hourglass drum"
+    ]
+  },
+  "lineage_challenges": [
+    {
+      "prompt": "How do you say ‘talking drums’ in Twi?",
+      "type": "recall",
+      "options": [
+        "fɔntɔmfrɔm",
+        "atumpan",
+        "dɔnnɔ",
+        "dawuro"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘fɔntɔmfrɔm’ mean?",
+      "type": "recall",
+      "options": [
+        "castanet",
+        "twin bells",
+        "big drum",
+        "gong"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "How do you say ‘hourglass drum’ in Twi?",
+      "type": "recall",
+      "options": [
+        "seperewa",
+        "dawuro",
+        "dɔnnɔ",
+        "atumpan"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘seperewa’ mean?",
+      "type": "recall",
+      "options": [
+        "harp-lute",
+        "castanet",
+        "twin bells",
+        "hourglass drum"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say ‘bamboo flute’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nnawuta",
+        "atɛntɛbɛn",
+        "dawuro",
+        "atumpan"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "What does ‘dawuro’ mean?",
+      "type": "recall",
+      "options": [
+        "big drum",
+        "harp-lute",
+        "talking drums",
+        "gong"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘twin bells’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nnawuta",
+        "firikyiwa",
+        "fɔntɔmfrɔm",
+        "sankuo"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What does ‘firikyiwa’ mean?",
+      "type": "recall",
+      "options": [
+        "twin bells",
+        "talking drums",
+        "drum",
+        "castanet"
+      ],
+      "correct_index": 3
+    },
+    {
+      "prompt": "How do you say ‘drum’ in Twi?",
+      "type": "recall",
+      "options": [
+        "nnawuta",
+        "firikyiwa",
+        "twene",
+        "dawuro"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "What does ‘sankuo’ mean?",
+      "type": "recall",
+      "options": [
+        "drum",
+        "hourglass drum",
+        "twin bells",
+        "lute / guitar"
+      ],
+      "correct_index": 3
+    }
+  ],
+  "glossary": [
+    {
+      "twi": "atumpan",
+      "en": "talking drums"
+    },
+    {
+      "twi": "fɔntɔmfrɔm",
+      "en": "big drum"
+    },
+    {
+      "twi": "dɔnnɔ",
+      "en": "hourglass drum"
+    },
+    {
+      "twi": "seperewa",
+      "en": "harp-lute"
+    },
+    {
+      "twi": "atɛntɛbɛn",
+      "en": "bamboo flute"
+    },
+    {
+      "twi": "dawuro",
+      "en": "gong"
+    },
+    {
+      "twi": "nnawuta",
+      "en": "twin bells"
+    },
+    {
+      "twi": "firikyiwa",
+      "en": "castanet"
+    },
+    {
+      "twi": "twene",
+      "en": "drum"
+    },
+    {
+      "twi": "sankuo",
+      "en": "lute / guitar"
+    }
+  ]
+}
