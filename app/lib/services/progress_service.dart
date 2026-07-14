@@ -24,12 +24,39 @@ class Progress {
     return passed(kLessonsFlat[i - 1].id);
   }
 
+  /// 0–3 star rating for a stop, from the best score (Mario-style mastery).
+  /// 0 = not yet cleared, 1 = passed, 2 = strong, 3 = perfect.
+  int stars(String id) => _starsFor(best[id] ?? 0);
+
+  /// Total stars earned across all lessons (0..3 each).
+  int get totalStars =>
+      best.keys.fold(0, (a, id) => a + _starsFor(best[id] ?? 0));
+
   /// 0..1 mastery for a category (average best across its lessons).
   double categoryMastery(LessonCategory c) {
     if (c.lessons.isEmpty) return 0;
     final got = c.lessons.fold<int>(0, (a, l) => a + (best[l.id] ?? 0));
     return got / (c.lessons.length * 10);
   }
+
+  /// A map region (category) opens when the previous region reaches the
+  /// mastery threshold — the "boss unlocks the next world" gate.
+  bool sectionUnlocked(int categoryIndex) {
+    if (categoryIndex <= 0) return true; // first region always open
+    return categoryMastery(kCategories[categoryIndex - 1]) >=
+        kSectionUnlockThreshold;
+  }
+}
+
+/// Fraction of a region that must be mastered to unlock the next one.
+const double kSectionUnlockThreshold = 0.8;
+
+/// Star rating (0–3) for a lesson's best score.
+int _starsFor(int score) {
+  if (score >= 10) return 3;
+  if (score >= 8) return 2;
+  if (score >= kPassScore) return 1;
+  return 0;
 }
 
 /// Full gamification snapshot for the Progress dashboard.
@@ -43,6 +70,7 @@ class Stats {
   final int keys; // wisdom keys earned from combos (3 open a chest)
   final bool premium;
   final int pedis; // soft currency
+  final int shards; // Golden Kente shards — mastery currency for cosmetics
   const Stats({
     required this.progress,
     required this.streak,
@@ -53,6 +81,7 @@ class Stats {
     required this.keys,
     required this.premium,
     required this.pedis,
+    this.shards = 0,
   });
 
   static const empty = Stats(
@@ -185,6 +214,7 @@ class ProgressService {
       keys: (data['keys'] as num?)?.toInt() ?? 0,
       premium: (data['premium'] as bool?) ?? false,
       pedis: (data['pedis'] as num?)?.toInt() ?? 0,
+      shards: (data['shards'] as num?)?.toInt() ?? 0,
     );
   }
 
@@ -264,10 +294,19 @@ class ProgressService {
     final data = doc.data() ?? {};
     final raw = (data['lessonBest'] as Map?)?.cast<String, dynamic>() ?? {};
     final best = raw.map((k, v) => MapEntry(k, (v as num).toInt()));
+    final oldScore = best[lessonId] ?? 0;
     final oldXp = Progress(best).totalXp;
-    if (correct > (best[lessonId] ?? 0)) best[lessonId] = correct;
+    if (correct > oldScore) best[lessonId] = correct;
+    final newScore = best[lessonId] ?? 0;
     final updated = Progress(best);
     final delta = updated.totalXp - oldXp; // XP newly earned now
+
+    // Golden Kente shards: awarded only for NEW stars (not farmable by
+    // replay), with a bonus for a first-time 3-star (perfect) clear.
+    final oldStars = _starsFor(oldScore);
+    final newStars = _starsFor(newScore);
+    int shardsEarned = (newStars - oldStars).clamp(0, 3).toInt();
+    if (newStars == 3 && oldStars < 3) shardsEarned += 2;
 
     final user = _auth.currentUser;
     final name = user?.displayName?.trim().isNotEmpty == true
@@ -312,6 +351,7 @@ class ProgressService {
       'keys': FieldValue.increment(keysEarned),
       // Earn pedis: 5 per lesson + 5 per combo key bonus.
       'pedis': FieldValue.increment(5 + keysEarned * 5),
+      'shards': FieldValue.increment(shardsEarned),
       'updatedAt': FieldValue.serverTimestamp(),
     }, SetOptions(merge: true));
 

@@ -7,6 +7,7 @@ import '../theme.dart';
 import '../widgets/animations.dart';
 import '../widgets/floating_card.dart';
 import '../widgets/pedis_store.dart';
+import '../widgets/trotro_dashboard.dart';
 import 'upgrade_screen.dart';
 
 const Color _gold = Color(0xFFE3A92C);
@@ -59,6 +60,16 @@ class _ProgressDashboardScreenState extends State<ProgressDashboardScreen> {
           const Text('How you’re doing, all in one place.',
               style: TextStyle(color: slate, fontSize: 13.5)),
           const SizedBox(height: 16),
+
+          // Tro tro dashboard HUD — speedometer (journey progress) + fuel (streak).
+          TroTroDashboard(
+            progress:
+                totalLessons == 0 ? 0 : _s.lessonsCompleted / totalLessons,
+            streak: _s.streak,
+            tokens: _s.pedis,
+            shards: _s.shards,
+          ),
+          const SizedBox(height: 14),
 
           if (!_s.premium) ...[
             _GoPremiumBanner(),
