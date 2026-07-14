@@ -168,6 +168,27 @@ class AuthService {
         .set({'planChosen': true}, SetOptions(merge: true));
   }
 
+  /// True until the learner completes the one-time "why Twi?" onboarding.
+  Future<bool> needsOnboarding() async {
+    final uid = _u?.uid;
+    if (uid == null) return false;
+    final doc =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    return !((doc.data()?['onboarded'] as bool?) ?? false);
+  }
+
+  /// Stores the learner's motivation + region and marks onboarding complete.
+  Future<void> saveOnboarding(
+      {required String intent, required String region}) async {
+    final uid = _u?.uid;
+    if (uid == null) return;
+    await FirebaseFirestore.instance.collection('users').doc(uid).set({
+      'onboarded': true,
+      'onboardingIntent': intent,
+      'onboardingRegion': region,
+    }, SetOptions(merge: true));
+  }
+
   /// True if the account currently has premium entitlement.
   Future<bool> isPremium() async {
     final uid = _u?.uid;

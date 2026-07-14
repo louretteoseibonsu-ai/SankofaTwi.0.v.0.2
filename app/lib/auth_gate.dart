@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'app_shell.dart';
 import 'screens/login_screen.dart';
+import 'screens/onboarding_screen.dart';
 import 'screens/plan_picker_screen.dart';
 import 'services/auth_service.dart';
 import 'theme.dart';
@@ -37,6 +38,7 @@ class _SignedInRouter extends StatefulWidget {
 
 class _SignedInRouterState extends State<_SignedInRouter> {
   bool? _needsPlan;
+  bool _needsOnboarding = false;
   bool _disabled = false;
   bool _ready = false;
 
@@ -52,10 +54,12 @@ class _SignedInRouterState extends State<_SignedInRouter> {
     await auth.syncUserDoc();
     final disabled = await auth.isDisabled();
     final needsPlan = disabled ? false : await auth.needsPlanChoice();
+    final needsOnboarding = disabled ? false : await auth.needsOnboarding();
     if (!mounted) return;
     setState(() {
       _disabled = disabled;
       _needsPlan = needsPlan;
+      _needsOnboarding = needsOnboarding;
       _ready = true;
     });
   }
@@ -69,6 +73,11 @@ class _SignedInRouterState extends State<_SignedInRouter> {
     if (_needsPlan == true) {
       return PlanPickerScreen(
         onDone: () => setState(() => _needsPlan = false),
+      );
+    }
+    if (_needsOnboarding) {
+      return OnboardingScreen(
+        onDone: () => setState(() => _needsOnboarding = false),
       );
     }
     return const AppShell();
