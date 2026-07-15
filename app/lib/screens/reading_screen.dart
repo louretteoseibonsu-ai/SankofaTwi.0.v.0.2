@@ -218,6 +218,62 @@ class _ReadingDetailScreenState extends State<ReadingDetailScreen> {
                     fontSize: 15, height: 1.6, color: slate)),
           ),
         ],
+        // ── Folklore framework: cultural note + key words ──
+        if (p.culturalContext.isNotEmpty) ...[
+          const SizedBox(height: 18),
+          const Text('CULTURAL NOTE',
+              style: TextStyle(
+                  color: terracotta,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 12,
+                  letterSpacing: 1.2)),
+          const SizedBox(height: 6),
+          FloatingCard(
+            child: Text(p.culturalContext,
+                style: const TextStyle(fontSize: 14, height: 1.55, color: ink)),
+          ),
+        ],
+        if (p.vocab.isNotEmpty) ...[
+          const SizedBox(height: 18),
+          const Text('KEY WORDS',
+              style: TextStyle(
+                  color: terracotta,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 12,
+                  letterSpacing: 1.2)),
+          const SizedBox(height: 6),
+          FloatingCard(
+            child: Column(
+              children: [
+                for (int i = 0; i < p.vocab.length; i++) ...[
+                  if (i > 0) const Divider(height: 14, color: silverLight),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            style: const TextStyle(
+                                fontSize: 14, color: ink, height: 1.4),
+                            children: [
+                              TextSpan(
+                                  text: p.vocab[i].key,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w800, color: ink)),
+                              TextSpan(
+                                  text: '  —  ${p.vocab[i].value}',
+                                  style: const TextStyle(color: slate)),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SpeakButton(text: p.vocab[i].key, size: 20),
+                    ],
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
         const SizedBox(height: 16),
         _PassLegend(passMark: p.passMark, total: p.questions.length),
         const SizedBox(height: 16),

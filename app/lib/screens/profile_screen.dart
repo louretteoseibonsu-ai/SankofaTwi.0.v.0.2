@@ -347,43 +347,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  /// Premium gate + Anansesɛm reveal. Tapping "Subscribe" is a placeholder
-  /// for real billing (wire `in_app_purchase` here before shipping).
-  Future<void> _openAnanse() async {
-    if (_premium) {
-      setState(() {
-        _glyph = kAnanseGlyphId;
-        _mode = _AvatarMode.adinkra;
-        _picked = null;
-        _existingPhoto = null;
-      });
-      return;
-    }
-    final unlocked = await showModalBottomSheet<bool>(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      builder: (ctx) => const _AnanseSheet(),
-    );
-    if (unlocked == true && kBillingEnabled) {
-      await _auth.setPremium(true);
-      if (!mounted) return;
-      setState(() {
-        _premium = true;
-        _glyph = kAnanseGlyphId;
-        _hex = 'E2725B';
-        _mode = _AvatarMode.adinkra;
-        _picked = null;
-        _existingPhoto = null;
-      });
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Ananse unlocked — tap Save to keep him. Ayɛkoo!')));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -485,52 +448,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             height: 64,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemCount: kAdinkraSymbols.length + 1, // +1 for premium Ananse
+              itemCount: kAdinkraSymbols.length,
               separatorBuilder: (_, __) => const SizedBox(width: 10),
               itemBuilder: (_, i) {
-                if (i == 0) {
-                  final selected =
-                      _mode == _AvatarMode.adinkra && _glyph == kAnanseGlyphId;
-                  return GestureDetector(
-                    onTap: _openAnanse,
-                    child: Container(
-                      width: 60,
-                      height: 60,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF2B2B2D),
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(
-                          color: selected
-                              ? terracotta
-                              : const Color(0xFFE3A92C),
-                          width: 2.5,
-                        ),
-                      ),
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          SvgPicture.string(kAnanseSvg,
-                              fit: BoxFit.contain,
-                              colorFilter: const ColorFilter.mode(
-                                  Color(0xFFE3A92C), BlendMode.srcIn)),
-                          Positioned(
-                            right: -8,
-                            top: -8,
-                            child: Icon(
-                                _premium
-                                    ? Icons.workspace_premium
-                                    : Icons.lock,
-                                size: 15,
-                                color: const Color(0xFFE3A92C)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                }
-                final s = kAdinkraSymbols[i - 1];
-                final locked = !_premium && (i - 1) >= kFreeSymbols;
+                final s = kAdinkraSymbols[i];
+                final locked = !_premium && i >= kFreeSymbols;
                 final selected = _mode == _AvatarMode.adinkra && s.id == _glyph;
                 final glyph = SvgPicture.string(s.svg, fit: BoxFit.contain);
                 return GestureDetector(
@@ -948,87 +870,3 @@ class _ProfileGroup extends StatelessWidget {
 }
 
 /// The Anansesɛm reveal + premium gate. Pops `true` if the user subscribes.
-class _AnanseSheet extends StatelessWidget {
-  const _AnanseSheet();
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(24, 20, 24, 24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Container(
-                width: 110,
-                height: 110,
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: charcoal,
-                  borderRadius: BorderRadius.circular(28),
-                  border: Border.all(color: const Color(0xFFE3A92C), width: 3),
-                ),
-                child: SvgPicture.string(kAnanseSvg,
-                    colorFilter: const ColorFilter.mode(
-                        Color(0xFFE3A92C), BlendMode.srcIn)),
-              ),
-            ),
-            const SizedBox(height: 16),
-            const Row(
-              children: [
-                Icon(Icons.workspace_premium,
-                    color: Color(0xFFE3A92C), size: 20),
-                SizedBox(width: 8),
-                Expanded(
-                  child: Text('Premium treasure',
-                      style: TextStyle(
-                          color: slate,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 12,
-                          letterSpacing: 0.5)),
-                ),
-              ],
-            ),
-            const SizedBox(height: 4),
-            const Text(kAnanseTitle,
-                style: TextStyle(
-                    fontWeight: FontWeight.w800, fontSize: 20, color: ink)),
-            const SizedBox(height: 12),
-            const Text(kAnanseBackstory,
-                style: TextStyle(height: 1.55, color: ink, fontSize: 14.5)),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton.icon(
-                onPressed: kBillingEnabled
-                    ? () => Navigator.of(context).pop(true)
-                    : null,
-                icon: const Icon(
-                    kBillingEnabled ? Icons.lock_open : Icons.schedule,
-                    size: 18),
-                label: const Text(kBillingEnabled
-                    ? 'Subscribe to unlock Ananse'
-                    : 'Subscriptions coming soon'),
-              ),
-            ),
-            if (!kBillingEnabled) ...[
-              const SizedBox(height: 8),
-              const Center(
-                child: Text('Paid plans launch soon — check back shortly.',
-                    style: TextStyle(color: slate, fontSize: 12)),
-              ),
-            ],
-            const SizedBox(height: 8),
-            Center(
-              child: TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: const Text('Close'),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

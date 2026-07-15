@@ -11,6 +11,12 @@ class ReadingPassage {
   final List<String> lines;
   final String english;
   final List<Challenge> questions;
+
+  /// Folklore framework extras (optional): a short "why this matters" note and
+  /// the key words to pre-teach. Empty for the plain everyday passages.
+  final String culturalContext;
+  final List<MapEntry<String, String>> vocab; // twi → English gloss
+
   const ReadingPassage({
     required this.id,
     required this.title,
@@ -18,6 +24,8 @@ class ReadingPassage {
     required this.lines,
     required this.english,
     required this.questions,
+    this.culturalContext = '',
+    this.vocab = const [],
   });
 
   /// Correct answers needed to pass (60%, rounded up).
@@ -159,6 +167,82 @@ const List<ReadingPassage> kReadingPassages = [
       Challenge(
         '“Aane” means…',
         ['Yes', 'No', 'Maybe', 'Please'],
+        0,
+      ),
+    ],
+  ),
+  // ── Folklore Reading Module — Anansesɛm ─────────────────────────────────
+  ReadingPassage(
+    id: 'read_ananse_wisdom_pot',
+    title: 'Ananse ne Nyansa Kuku',
+    level: 'Folklore',
+    lines: [
+      'Ananse pɛ sɛ ɔfa nyansa nyinaa.',
+      'Ɔde nyansa no guu kuku mu.',
+      'Ɔpɛ sɛ ɔforo dua no de sie.',
+      'Ne ba Ntikuma kyerɛɛ no ɔkwan pa.',
+      'Ananse bo fuiɛ, na kuku no bɔeɛ.',
+      'Nyansa petee wiase nyinaa mu.',
+    ],
+    english:
+        'Long ago, Kwaku Ananse the spider decided to gather all the wisdom in '
+        'the world and keep it for himself. He collected it into a clay pot and '
+        'set out to hide it at the top of a tall tree. He tied the pot to his '
+        'front and tried to climb — but the pot kept getting in the way, and he '
+        'slipped again and again. His small son, Ntikuma, watching from below, '
+        'said, “Father, tie the pot on your back — then you can climb.” Ananse '
+        'was astonished that a child knew something he, the keeper of all '
+        'wisdom, did not. In his frustration he let the pot fall. It smashed, '
+        'and the wisdom scattered on the wind to every corner of the world. '
+        'That is why no one person holds all wisdom — a little belongs to '
+        'everyone.',
+    culturalContext:
+        'Kwaku Ananse the spider is the trickster hero of Akan folktales — so '
+        'central that all folktales are called Anansesɛm, “Spider tales.” '
+        'Elders tell them in the evening to pass on wisdom through humour. This '
+        'story explains a proverb Ghanaians still say: nyansa nyinaa nni onipa '
+        'baako tirim — “all wisdom is not in one person’s head.”',
+    vocab: [
+      MapEntry('Ananse', 'the spider — trickster hero of the tales'),
+      MapEntry('nyansa', 'wisdom'),
+      MapEntry('kuku', 'a clay pot'),
+      MapEntry('Ntikuma', "Ananse's son"),
+      MapEntry('Anansesɛm', 'folktales (“spider tales”)'),
+    ],
+    questions: [
+      Challenge(
+        'What did Ananse want to do with all the wisdom?',
+        [
+          'Keep it for himself',
+          'Share it with everyone',
+          'Sell it at the market',
+          'Give it to Nyame'
+        ],
+        0,
+      ),
+      Challenge(
+        'Where did he put the wisdom?',
+        [
+          'In a clay pot (kuku)',
+          'In a golden box',
+          'In a basket',
+          'Under a tree'
+        ],
+        0,
+      ),
+      Challenge(
+        'Who gave Ananse the clever advice?',
+        ['His son Ntikuma', 'Nyame the Sky God', 'His wife', 'A leopard'],
+        0,
+      ),
+      Challenge(
+        'What does the story teach?',
+        [
+          'No one person holds all wisdom',
+          'Spiders can climb trees',
+          'Always obey your elders',
+          'Pots break easily'
+        ],
         0,
       ),
     ],
