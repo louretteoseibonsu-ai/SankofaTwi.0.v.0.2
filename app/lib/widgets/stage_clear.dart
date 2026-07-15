@@ -234,7 +234,7 @@ class _StageClearViewState extends State<_StageClearView>
         children: [
           // Dim scrim so the frozen lesson reads as "paused".
           Positioned.fill(
-            child: Container(color: _ink.withOpacity(0.30 * fade)),
+            child: Container(color: _ink.withValues(alpha: 0.30 * fade)),
           ),
           // Banner + collectable stars.
           Positioned(
@@ -278,7 +278,7 @@ class _StageClearViewState extends State<_StageClearView>
                                 size: 34,
                                 color: i < _collected
                                     ? _gold
-                                    : Colors.white.withOpacity(0.5)),
+                                    : Colors.white.withValues(alpha: 0.5)),
                           ),
                         ),
                     ],
@@ -429,7 +429,8 @@ class _TroTroCharacterPainter extends CustomPainter {
     // ── Dust wake + speed streaks (behind the bus) ──
     for (final puff in puffs) {
       final paint = Paint()
-        ..color = (puff.gold ? _gold : _kenteGrey).withOpacity(puff.life * 0.8);
+        ..color =
+            (puff.gold ? _gold : _kenteGrey).withValues(alpha: puff.life * 0.8);
       canvas.drawCircle(
         Offset(size.width * puff.xf, baseY + puff.dy),
         puff.size * puff.life,
@@ -438,7 +439,7 @@ class _TroTroCharacterPainter extends CustomPainter {
     }
     if (sp > 0.35) {
       final streak = Paint()
-        ..color = _ink.withOpacity(0.20)
+        ..color = _ink.withValues(alpha: 0.20)
         ..strokeWidth = 2;
       final r = math.Random(p.hashCode);
       for (var k = 0; k < 4; k++) {
