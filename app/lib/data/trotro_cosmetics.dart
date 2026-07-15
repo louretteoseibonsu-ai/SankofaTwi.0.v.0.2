@@ -22,8 +22,9 @@ const Set<String> kDefaultOwned = {
   'horn_vroom',
 };
 
-/// Ordered category keys and their display labels.
-const List<String> kCosmeticCategories = ['rim', 'kente', 'roof', 'horn'];
+/// Ordered category keys and their display labels. Rim/roof are retired for the
+/// gameplay bus (its cartoon wheels are baked in), so only trim + horn show.
+const List<String> kCosmeticCategories = ['kente', 'horn'];
 const Map<String, String> kCategoryLabel = {
   'rim': 'Rims',
   'kente': 'Kente trim',
@@ -45,7 +46,7 @@ const List<ShopItem> kCosmetics = [
       id: 'rim_charcoal', category: 'rim', name: 'Charcoal', costShards: 6),
   // Kente trim
   ShopItem(
-      id: 'kente_classic', category: 'kente', name: 'Classic', costShards: 0),
+      id: 'kente_classic', category: 'kente', name: 'None', costShards: 0),
   ShopItem(
       id: 'kente_goldgreen',
       category: 'kente',

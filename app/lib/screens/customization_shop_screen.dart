@@ -226,7 +226,7 @@ class _ItemCard extends StatelessWidget {
       ]);
     }
 
-    final width = (MediaQuery.of(context).size.width - 16 * 2 - 10) / 2;
+    final width = MediaQuery.of(context).size.width - 16 * 2;
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -243,6 +243,8 @@ class _ItemCard extends StatelessWidget {
           children: [
             Expanded(
               child: Text(item.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                       fontSize: 14, fontWeight: FontWeight.w700, color: ink)),
             ),
