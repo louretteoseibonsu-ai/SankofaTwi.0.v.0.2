@@ -26,13 +26,38 @@ Color _busColorFor(String uid) =>
 /// "Tro Tro Rally" — the weekly leaderboard as a race track. Each learner is a
 /// tro tro positioned by their weekly XP; yours is highlighted. Built on the
 /// existing weekly board, so no new backend.
-class TroTroRallyScreen extends StatelessWidget {
+class TroTroRallyScreen extends StatefulWidget {
   const TroTroRallyScreen({super.key});
 
   @override
+  State<TroTroRallyScreen> createState() => _TroTroRallyScreenState();
+}
+
+class _TroTroRallyScreenState extends State<TroTroRallyScreen> {
+  final ProgressService service = ProgressService();
+  String? _myUid;
+  Color _myColor = kTroTroBodyColors.first; // equipped Garage body colour
+  Map<String, String> _myEquipped = const {}; // equipped cosmetics (kente…)
+
+  @override
+  void initState() {
+    super.initState();
+    _myUid = FirebaseAuth.instance.currentUser?.uid;
+    _loadCosmetics();
+  }
+
+  Future<void> _loadCosmetics() async {
+    final cos = await service.loadCosmetics();
+    if (!mounted) return;
+    setState(() {
+      _myColor = troTroBodyColorFor(cos.equipped);
+      _myEquipped = cos.equipped;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final service = ProgressService();
-    final myUid = FirebaseAuth.instance.currentUser?.uid;
+    final myUid = _myUid;
     return Scaffold(
       appBar: AppBar(title: const Text('Tro Tro Rally')),
       body: StreamBuilder<List<LeaderboardEntry>>(
@@ -68,6 +93,8 @@ class TroTroRallyScreen extends StatelessWidget {
                   entry: entries[i],
                   progress: (entries[i].xp / topXp).clamp(0.05, 1.0),
                   isMe: entries[i].uid == myUid,
+                  myColor: _myColor,
+                  myEquipped: _myEquipped,
                 ),
               const SizedBox(height: 10),
               const Center(
@@ -87,11 +114,15 @@ class _Lane extends StatelessWidget {
   final LeaderboardEntry entry;
   final double progress;
   final bool isMe;
+  final Color myColor;
+  final Map<String, String> myEquipped;
   const _Lane({
     required this.rank,
     required this.entry,
     required this.progress,
     required this.isMe,
+    required this.myColor,
+    required this.myEquipped,
   });
 
   @override
@@ -165,8 +196,13 @@ class _Lane extends StatelessWidget {
                       curve: Curves.easeOutCubic,
                       left: travel * progress,
                       top: 2,
-                      child: TintableTroTro(
-                          bodyColor: _busColorFor(entry.uid), width: busW),
+                      child: isMe
+                          ? TintableTroTro(
+                              bodyColor: myColor,
+                              equipped: myEquipped,
+                              width: busW)
+                          : TintableTroTro(
+                              bodyColor: _busColorFor(entry.uid), width: busW),
                     ),
                   ],
                 ),
