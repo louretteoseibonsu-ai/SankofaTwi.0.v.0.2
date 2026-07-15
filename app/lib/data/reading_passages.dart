@@ -247,4 +247,79 @@ const List<ReadingPassage> kReadingPassages = [
       ),
     ],
   ),
+  ReadingPassage(
+    id: 'read_ananse_thin_waist',
+    title: 'Ananse ne Aponto Mmienu',
+    level: 'Folklore',
+    lines: [
+      'Nkuraa mmienu yɛɛ aponto da koro.',
+      'Ananse mpɛ sɛ ne werɛ fi biara.',
+      'Ɔde ahoma kyekyeree ne sisi.',
+      'Ne mma no twee ahoma no denneennen.',
+      'Ahoma no mia Ananse sisi ma ɛyɛɛ ketewa.',
+      'Ɛno nti na ananse asisi yɛ ketewa.',
+    ],
+    english:
+        'On the very same day, two villages were preparing a great feast. '
+        'Greedy Kwaku Ananse could not bear to miss either one. So he tied a '
+        'long rope around his waist and gave one end to his children in the '
+        'first village and the other to his children in the second, telling '
+        'each, “Pull the rope when the food is ready, and I will come running.” '
+        'But both feasts were ready at exactly the same moment. His children '
+        'pulled hard from both sides at once. The rope drew tight around '
+        'Ananse’s middle and held him fast — he could reach neither feast and '
+        'got nothing to eat at all. By the time they found him, the rope had '
+        'squeezed his waist thin and small. And that, they say, is why the '
+        'spider has a thin waist to this day.',
+    culturalContext:
+        'Many Anansesɛm are “pourquoi” tales — they explain why the world is '
+        'the way it is (why the spider’s waist is thin, why stories are told at '
+        'night). Ananse’s greed is the running joke, but the lesson lands '
+        'gently: wanting everything at once can leave you with nothing. Elders '
+        'tell it to warn against greed — anibere nkɔ, “greed leads nowhere.”',
+    vocab: [
+      MapEntry('aponto', 'a feast / celebration'),
+      MapEntry('ahoma', 'rope'),
+      MapEntry('sisi', 'waist'),
+      MapEntry('aduane', 'food'),
+      MapEntry('ketewa', 'small / thin'),
+    ],
+    questions: [
+      Challenge(
+        'Why did Ananse tie a rope around his waist?',
+        [
+          'To be pulled to whichever feast was ready',
+          'To climb a tree',
+          'To catch fish',
+          'To carry the food home'
+        ],
+        0,
+      ),
+      Challenge(
+        'What happened when both feasts were ready at once?',
+        [
+          'Both sides pulled and the rope squeezed him',
+          'He ate at both',
+          'He chose the nearer village',
+          'The rope snapped'
+        ],
+        0,
+      ),
+      Challenge(
+        'How much did Ananse get to eat?',
+        ['Nothing at all', 'A full meal', 'Half a meal', 'Only dessert'],
+        0,
+      ),
+      Challenge(
+        'What does this story explain?',
+        [
+          'Why the spider has a thin waist',
+          'Why spiders spin webs',
+          'Why feasts are held at night',
+          'Why ropes are strong'
+        ],
+        0,
+      ),
+    ],
+  ),
 ];

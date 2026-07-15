@@ -483,9 +483,9 @@ class _StoryStopHeaderState extends State<_StoryStopHeader>
               child: Container(height: 42, color: const Color(0xFF2C1D24)),
             ),
             const Positioned(
-              bottom: 22,
-              right: 44,
-              child: Text('🔥', style: TextStyle(fontSize: 28)),
+              bottom: 12,
+              right: 40,
+              child: _Campfire(),
             ),
             // Celebratory mascot drives in and parks by the fire.
             AnimatedBuilder(
@@ -516,4 +516,79 @@ class _Star extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text('✦',
       style: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: size));
+}
+
+/// A small hand-drawn campfire — crossed logs + three flame layers that flicker.
+class _Campfire extends StatefulWidget {
+  const _Campfire();
+  @override
+  State<_Campfire> createState() => _CampfireState();
+}
+
+class _CampfireState extends State<_Campfire>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _f = AnimationController(
+      vsync: this, duration: const Duration(milliseconds: 1300))
+    ..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _f.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+        width: 46,
+        height: 54,
+        child: AnimatedBuilder(
+          animation: _f,
+          builder: (_, __) =>
+              CustomPaint(painter: _CampfirePainter(_f.value)),
+        ),
+      );
+}
+
+class _CampfirePainter extends CustomPainter {
+  final double t; // 0..1 flicker
+  _CampfirePainter(this.t);
+
+  @override
+  void paint(Canvas c, Size s) {
+    final cx = s.width / 2;
+    final baseY = s.height - 12;
+    // ember glow
+    c.drawCircle(
+        Offset(cx, s.height - 8),
+        15,
+        Paint()
+          ..color = const Color(0x33FF8A2B)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6));
+    // crossed logs
+    final log = Paint()
+      ..color = const Color(0xFF5A3A24)
+      ..strokeWidth = 7
+      ..strokeCap = StrokeCap.round;
+    c.drawLine(Offset(cx - 16, s.height - 4), Offset(cx + 16, s.height - 11), log);
+    c.drawLine(Offset(cx + 16, s.height - 4), Offset(cx - 16, s.height - 11), log);
+    // flames (sway + height flicker)
+    final sway = (t - 0.5) * 4;
+    final hf = 1.0 + 0.10 * (t - 0.5) * 2;
+    Path flame(double w, double h) {
+      final tipx = cx + sway * (h / 40);
+      return Path()
+        ..moveTo(cx - w / 2, baseY)
+        ..quadraticBezierTo(cx - w * 0.55, baseY - h * 0.55, tipx, baseY - h)
+        ..quadraticBezierTo(cx + w * 0.55, baseY - h * 0.55, cx + w / 2, baseY)
+        ..quadraticBezierTo(cx, baseY + 2, cx - w / 2, baseY)
+        ..close();
+    }
+
+    c.drawPath(flame(28, 40 * hf), Paint()..color = const Color(0xFFD64525));
+    c.drawPath(flame(19, 29 * hf), Paint()..color = const Color(0xFFF0862A));
+    c.drawPath(flame(10, 16 * hf), Paint()..color = const Color(0xFFFFD23F));
+  }
+
+  @override
+  bool shouldRepaint(covariant _CampfirePainter old) => old.t != t;
 }
