@@ -322,4 +322,80 @@ const List<ReadingPassage> kReadingPassages = [
       ),
     ],
   ),
+  ReadingPassage(
+    id: 'read_ananse_stories',
+    title: 'Sɛdeɛ Anansesɛm Baa Wiase',
+    level: 'Folklore',
+    lines: [
+      'Kane no, Nyame na ɔwɔ anansesɛm nyinaa.',
+      'Ananse pɛ sɛ ɔtɔ bi.',
+      'Nyame kaa boɔ a ɛyɛ den.',
+      'Ananse de nyansa kyeree Onini ne Osebo.',
+      'Ɔde wɔn nyinaa kɔmaa Nyame.',
+      'Ɛfiri saa bɛr no, yɛfrɛ atetesɛm Anansesɛm.',
+    ],
+    english:
+        'Long ago, all the world’s stories belonged to Nyame, the Sky God, who '
+        'kept them locked in a box. Kwaku Ananse the spider longed to own them. '
+        'Nyame set a price no one had ever paid: “Bring me Onini the python, '
+        'the Mmoboro hornets, and Osebo the leopard.” With cunning instead of '
+        'strength, Ananse won all three. He tricked the python into being '
+        'measured against a pole — and tied it fast. He fooled the hornets into '
+        'a gourd by pretending it was raining, so they flew inside to shelter. '
+        'He trapped the fierce leopard in a hidden pit. He carried all three up '
+        'to the sky, and Nyame, astonished, handed over the stories. Ever '
+        'since, all folktales are called Anansesɛm — “Spider tales” — and '
+        'wisdom, Ananse teaches, achieves what force cannot.',
+    culturalContext:
+        'This is the origin tale that gives the whole tradition its name: '
+        'Anansesɛm, “Spider tales.” It sets out Ananse’s defining trait — he '
+        'wins not by strength but by cleverness (nyansa), outwitting creatures '
+        'far bigger than himself. Carried across the Atlantic, he lives on in '
+        'the Caribbean and the Americas as “Anansi.” The lesson: nyansa sen '
+        'ahoɔden — “wisdom is greater than strength.”',
+    vocab: [
+      MapEntry('Nyame', 'God (the Sky God)'),
+      MapEntry('anansesɛm', 'folktales (“spider tales”)'),
+      MapEntry('Onini', 'the python'),
+      MapEntry('Osebo', 'the leopard'),
+      MapEntry('nyansa', 'wisdom / cunning'),
+    ],
+    questions: [
+      Challenge(
+        'Who owned all the stories at first?',
+        ['Nyame the Sky God', 'Ananse', 'Osebo the leopard', 'The chief'],
+        0,
+      ),
+      Challenge(
+        'What price did Nyame set?',
+        [
+          'Capture the python, hornets, and leopard',
+          'Ten bags of gold',
+          'Climb the tallest tree',
+          'Tell a hundred stories'
+        ],
+        0,
+      ),
+      Challenge(
+        'How did Ananse win the stories?',
+        [
+          'With cunning, not strength',
+          'By fighting the animals',
+          'By paying with gold',
+          'By asking politely'
+        ],
+        0,
+      ),
+      Challenge(
+        'Why are folktales called Anansesɛm?',
+        [
+          'Because Ananse won the stories',
+          'Because spiders tell them',
+          'Because they are told at night',
+          'Because Nyame wrote them'
+        ],
+        0,
+      ),
+    ],
+  ),
 ];
