@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import '../services/sound_service.dart';
 import 'animations.dart' show celebrateBurst;
 import 'composable_trotro.dart' show TroTroSkin;
+import 'tappable_scale.dart';
 
 // High-saturation cartoon palette (Terracotta + grayscale Kente).
 const Color _ink = Color(0xFF2B2B2D);
@@ -66,8 +67,10 @@ class _StageClearView extends StatefulWidget {
 }
 
 class _StageClearViewState extends State<_StageClearView>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late final AnimationController _c;
+  late final AnimationController _breathe; // Act III Continue-button pulse
+  bool _showVictory = false; // Act III reached — waiting for Continue tap
   final Set<String> _fired = {};
   final List<_Puff> _puffs = [];
   final math.Random _rng = math.Random();
@@ -133,8 +136,15 @@ class _StageClearViewState extends State<_StageClearView>
     _c = AnimationController(vsync: this, duration: const Duration(seconds: 3))
       ..addListener(_tick)
       ..addStatusListener((s) {
-        if (s == AnimationStatus.completed) widget.onFinished();
+        // Act II done → hold on the black Victory screen until Continue is tapped
+        // (the Future resolves on the tap, never auto-advancing).
+        if (s == AnimationStatus.completed && mounted) {
+          setState(() => _showVictory = true);
+        }
       });
+    _breathe = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 2400))
+      ..repeat(reverse: true);
     _checkSprites();
     _c.forward();
   }
@@ -142,6 +152,7 @@ class _StageClearViewState extends State<_StageClearView>
   @override
   void dispose() {
     _c.dispose();
+    _breathe.dispose();
     super.dispose();
   }
 
@@ -228,43 +239,26 @@ class _StageClearViewState extends State<_StageClearView>
   @override
   Widget build(BuildContext context) {
     final p = _c.value;
-    final fade = (p / 0.12).clamp(0.0, 1.0) * (1 - ((p - 0.94) / 0.06).clamp(0.0, 1.0));
-    return IgnorePointer(
-      child: Stack(
-        children: [
-          // Dim scrim so the frozen lesson reads as "paused".
-          Positioned.fill(
-            child: Container(color: _ink.withValues(alpha: 0.30 * fade)),
+    // Act I: sharp cut to full black over the first ~0.4s, then hold black
+    // through the drive (Act II) and the victory screen (Act III).
+    final blackIn = (p / 0.13).clamp(0.0, 1.0);
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: Container(
+            color: Colors.black.withValues(alpha: _showVictory ? 1.0 : blackIn),
           ),
-          // Banner + collectable stars.
-          Positioned(
-            top: MediaQuery.of(context).padding.top + 24,
-            left: 0,
-            right: 0,
-            child: Opacity(
-              opacity: fade,
-              child: Column(
-                children: [
-                  Transform.rotate(
-                    angle: -0.035,
-                    child: Container(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: _terra,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: _ink, width: 2),
-                      ),
-                      child: const Text('STAGE CLEAR',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w800,
-                              fontSize: 16,
-                              letterSpacing: 0.5)),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
+        ),
+        // ── Act II: the tro tro drives across the black stage ──────────────
+        if (!_showVictory)
+          IgnorePointer(
+            child: Stack(
+              children: [
+                Positioned(
+                  top: MediaQuery.of(context).padding.top + 24,
+                  left: 0,
+                  right: 0,
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       for (var i = 0; i < widget.stars; i++)
@@ -278,31 +272,92 @@ class _StageClearViewState extends State<_StageClearView>
                                 size: 34,
                                 color: i < _collected
                                     ? _gold
-                                    : Colors.white.withValues(alpha: 0.5)),
+                                    : Colors.white.withValues(alpha: 0.4)),
                           ),
                         ),
                     ],
                   ),
-                ],
+                ),
+                Positioned.fill(
+                  child: CustomPaint(
+                    painter: _TroTroCharacterPainter(
+                      p: p,
+                      xFrac: _busXFrac(p),
+                      hopOffset: _hopOffset(p),
+                      puffs: _puffs,
+                      drawBus: !_spritesReady,
+                    ),
+                  ),
+                ),
+                if (_spritesReady) _buildSprite(context, p),
+              ],
+            ),
+          ),
+        // ── Act III: victory screen (interactive Continue) ─────────────────
+        if (_showVictory) _buildVictory(context),
+      ],
+    );
+  }
+
+  /// The black victory card: earned stars, headline, and a breathing terracotta
+  /// Continue button — the only thing on screen. Tapping it resolves the
+  /// sequence (removes the overlay, hands control back to the lesson).
+  Widget _buildVictory(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (var i = 0; i < widget.stars; i++)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  child: TweenAnimationBuilder<double>(
+                    tween: Tween(begin: 0.4, end: 1.0),
+                    duration: Duration(milliseconds: 380 + i * 160),
+                    curve: Curves.elasticOut,
+                    builder: (_, s, child) =>
+                        Transform.scale(scale: s, child: child),
+                    child: Icon(Icons.star_rounded,
+                        size: i == 1 ? 58 : 46, color: _gold),
+                  ),
+                ),
+            ],
+          ),
+          const SizedBox(height: 18),
+          const Text('STAGE CLEAR',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 18,
+                  letterSpacing: 1.5)),
+          const SizedBox(height: 36),
+          AnimatedBuilder(
+            animation: _breathe,
+            builder: (_, child) => Transform.scale(
+                scale: 1.0 + 0.05 * _breathe.value, child: child),
+            child: TappableScale(
+              onTap: () {
+                HapticFeedback.mediumImpact();
+                SoundService.instance.tap();
+                widget.onFinished();
+              },
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 54, vertical: 15),
+                decoration: BoxDecoration(
+                  color: _terra,
+                  borderRadius: BorderRadius.circular(28),
+                ),
+                child: const Text('Continue',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 17)),
               ),
             ),
           ),
-          // Dust + speed streaks (always) and the VECTOR bus (fallback only).
-          Positioned.fill(
-            child: CustomPaint(
-              painter: _TroTroCharacterPainter(
-                p: p,
-                xFrac: _busXFrac(p),
-                hopOffset: _hopOffset(p),
-                puffs: _puffs,
-                drawBus: !_spritesReady,
-              ),
-            ),
-          ),
-          // Illustrated (Midjourney) sprite — drives the same motion via
-          // transforms and swaps expression frame per beat. Shown only once the
-          // PNG frames are present.
-          if (_spritesReady) _buildSprite(context, p),
         ],
       ),
     );
