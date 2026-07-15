@@ -180,11 +180,15 @@ class _ChallengeQuizState extends State<ChallengeQuiz> {
       padding: const EdgeInsets.all(20),
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(widget.kicker,
-                style: const TextStyle(
-                    color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
+            Expanded(
+              child: Text(widget.kicker,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                      color: slate, fontWeight: FontWeight.w700, fontSize: 12)),
+            ),
+            const SizedBox(width: 8),
             Text('${_index + 1} / ${_session.length}',
                 style: const TextStyle(color: Colors.black54, fontSize: 12)),
           ],

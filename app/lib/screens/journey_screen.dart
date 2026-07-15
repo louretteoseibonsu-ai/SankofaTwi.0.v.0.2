@@ -13,6 +13,7 @@ import '../widgets/tappable_scale.dart';
 import '../widgets/tintable_trotro.dart';
 import '../widgets/trotro_mascot.dart';
 import 'customization_shop_screen.dart';
+import 'reading_screen.dart';
 import 'dialogue_boss_screen.dart';
 import 'lesson_quiz_screen.dart';
 import 'time_attack_screen.dart';
@@ -277,6 +278,13 @@ class _JourneyScreenState extends State<JourneyScreen>
     _reload();
   }
 
+  /// Opens the Anansesɛm folktale list (the campfire Story Stops).
+  void _openAnansesem() {
+    HapticFeedback.selectionClick();
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (_) => const ReadingListScreen(folkloreOnly: true)));
+  }
+
   /// Bus-fly into the Garage — powered by the reusable [OverlayFlight] helper.
   Future<void> _openGarage() async {
     if (_flying || _troKey.currentContext == null) {
@@ -374,7 +382,15 @@ class _JourneyScreenState extends State<JourneyScreen>
                         ]),
                       ),
                     ),
-                    const SizedBox(width: 4),
+                    IconButton(
+                      visualDensity: VisualDensity.compact,
+                      padding: const EdgeInsets.all(6),
+                      constraints: const BoxConstraints(),
+                      onPressed: _openAnansesem,
+                      icon: const Icon(Icons.local_fire_department_rounded),
+                      color: charcoal,
+                      tooltip: 'Anansesɛm',
+                    ),
                     IconButton(
                       key: _garageKey,
                       visualDensity: VisualDensity.compact,

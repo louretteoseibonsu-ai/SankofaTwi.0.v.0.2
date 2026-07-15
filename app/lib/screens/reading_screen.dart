@@ -9,7 +9,9 @@ import '../widgets/tintable_trotro.dart';
 
 /// Progressive list of reading passages — pass one to unlock the next.
 class ReadingListScreen extends StatefulWidget {
-  const ReadingListScreen({super.key});
+  /// When true, show only the folklore (Anansesɛm) passages, ungated.
+  final bool folkloreOnly;
+  const ReadingListScreen({super.key, this.folkloreOnly = false});
 
   @override
   State<ReadingListScreen> createState() => _ReadingListScreenState();
@@ -35,8 +37,12 @@ class _ReadingListScreenState extends State<ReadingListScreen> {
     });
   }
 
+  List<ReadingPassage> get _passages => widget.folkloreOnly
+      ? kReadingPassages.where((p) => p.level == 'Folklore').toList()
+      : kReadingPassages;
+
   bool _unlocked(int i) =>
-      i == 0 || _passed.contains(kReadingPassages[i - 1].id);
+      widget.folkloreOnly || i == 0 || _passed.contains(_passages[i - 1].id);
 
   Future<void> _open(ReadingPassage p) async {
     final result = await Navigator.of(context).push<bool>(
@@ -52,20 +58,27 @@ class _ReadingListScreenState extends State<ReadingListScreen> {
       child: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          const Text('Reading & Comprehension',
-              style: TextStyle(
+          Text(
+              widget.folkloreOnly
+                  ? 'Anansesɛm — Spider Tales'
+                  : 'Reading & Comprehension',
+              style: const TextStyle(
                   fontWeight: FontWeight.w800, fontSize: 26, color: ink)),
           const SizedBox(height: 4),
-          Text('${_passed.length} / ${kReadingPassages.length} passages passed. '
-              'Score 60% or more to pass and unlock the next.',
+          Text(
+              widget.folkloreOnly
+                  ? 'Pull up to the fire and hear a folktale. '
+                      '${_passages.length} stories to explore.'
+                  : '${_passed.length} / ${_passages.length} passages passed. '
+                      'Score 60% or more to pass and unlock the next.',
               style: const TextStyle(color: slate, fontSize: 13.5, height: 1.5)),
           const SizedBox(height: 16),
-          for (int i = 0; i < kReadingPassages.length; i++)
+          for (int i = 0; i < _passages.length; i++)
             _PassageRow(
-              passage: kReadingPassages[i],
+              passage: _passages[i],
               unlocked: _unlocked(i),
-              passed: _passed.contains(kReadingPassages[i].id),
-              onOpen: () => _open(kReadingPassages[i]),
+              passed: _passed.contains(_passages[i].id),
+              onOpen: () => _open(_passages[i]),
             ),
         ],
       ),
