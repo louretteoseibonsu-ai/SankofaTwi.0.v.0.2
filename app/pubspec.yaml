@@ -40,9 +40,9 @@ flutter:
     - assets/mascot/stageclear/
     - assets/mascot/trotro/
     - assets/mascot/trotro_gameplay/      # gameplay bus (map, garage, rally)
+    - assets/mascot/trotro_gameplay/kente/   # roof-kente trim cosmetics
     # Accessory layers — uncomment each folder once you add its PNGs:
     # - assets/mascot/trotro_gameplay/rim/
-    # - assets/mascot/trotro_gameplay/kente/
     # - assets/mascot/trotro_gameplay/roof/
     - assets/icon/app_icon.png
 
