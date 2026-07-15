@@ -5,6 +5,7 @@ import '../theme.dart';
 import '../widgets/challenge_quiz.dart';
 import '../widgets/floating_card.dart';
 import '../widgets/speak_button.dart';
+import '../widgets/tintable_trotro.dart';
 
 /// Progressive list of reading passages — pass one to unlock the next.
 class ReadingListScreen extends StatefulWidget {
@@ -92,7 +93,9 @@ class _PassageRow extends StatelessWidget {
       icon = Icons.check_circle;
       iconColor = const Color(0xFF2E6B3B);
     } else if (unlocked) {
-      icon = Icons.menu_book_outlined;
+      icon = passage.level == 'Folklore'
+          ? Icons.local_fire_department_rounded // Story Stop
+          : Icons.menu_book_outlined;
       iconColor = terracotta;
     } else {
       icon = Icons.lock_outline;
@@ -165,16 +168,22 @@ class _ReadingDetailScreenState extends State<ReadingDetailScreen> {
 
   // ── Reading view ──
   Widget _buildReading(ReadingPassage p) {
+    final folklore = p.culturalContext.isNotEmpty;
     return ListView(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.fromLTRB(20, folklore ? 12 : 20, 20, 20),
       children: [
-        Text(p.level.toUpperCase(),
-            style: const TextStyle(
-                color: terracotta,
-                fontWeight: FontWeight.w800,
-                fontSize: 12,
-                letterSpacing: 1.2)),
-        const SizedBox(height: 10),
+        if (folklore) ...[
+          const _StoryStopHeader(),
+          const SizedBox(height: 16),
+        ] else ...[
+          Text(p.level.toUpperCase(),
+              style: const TextStyle(
+                  color: terracotta,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 12,
+                  letterSpacing: 1.2)),
+          const SizedBox(height: 10),
+        ],
         FloatingCard(
           child: Column(
             children: [
@@ -384,4 +393,127 @@ class _ListenStrip extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Evening "Story Stop" header for folklore passages: the celebratory tro tro
+/// drives in and parks by a campfire under a starry sky, framing the tale like
+/// an Anansesɛm told at night.
+class _StoryStopHeader extends StatefulWidget {
+  const _StoryStopHeader();
+
+  @override
+  State<_StoryStopHeader> createState() => _StoryStopHeaderState();
+}
+
+class _StoryStopHeaderState extends State<_StoryStopHeader>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _c;
+
+  @override
+  void initState() {
+    super.initState();
+    _c = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1100))
+      ..forward();
+  }
+
+  @override
+  void dispose() {
+    _c.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(18),
+      child: SizedBox(
+        height: 172,
+        width: double.infinity,
+        child: Stack(
+          children: [
+            const Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFF241B3A),
+                      Color(0xFF3D2A4D),
+                      Color(0xFF7A3F36),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const Positioned(
+              top: 14,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Text('STORY STOP · ANANSESƐM',
+                    style: TextStyle(
+                        color: Color(0xFFF3ECDD),
+                        fontSize: 11,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1.5)),
+              ),
+            ),
+            Positioned(
+              top: 24,
+              right: 28,
+              child: Container(
+                width: 24,
+                height: 24,
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle, color: Color(0xFFF0E6C8)),
+              ),
+            ),
+            const Positioned(
+                top: 42, left: 44, child: _Star(9)),
+            const Positioned(
+                top: 60, left: 150, child: _Star(7)),
+            const Positioned(
+                top: 34, left: 208, child: _Star(8)),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(height: 42, color: const Color(0xFF2C1D24)),
+            ),
+            const Positioned(
+              bottom: 22,
+              right: 44,
+              child: Text('🔥', style: TextStyle(fontSize: 28)),
+            ),
+            // Celebratory mascot drives in and parks by the fire.
+            AnimatedBuilder(
+              animation: _c,
+              builder: (_, child) {
+                final t = Curves.easeOutCubic.transform(_c.value);
+                final x = -160 + 260 * t;
+                return Positioned(bottom: 16, left: x, child: child!);
+              },
+              child: Image.asset(
+                'assets/mascot/stageclear/trotro_tada.png',
+                width: 122,
+                fit: BoxFit.contain,
+                errorBuilder: (_, __, ___) =>
+                    const TintableTroTro(bodyColor: terracotta, width: 118),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Star extends StatelessWidget {
+  final double size;
+  const _Star(this.size);
+  @override
+  Widget build(BuildContext context) => Text('✦',
+      style: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: size));
 }
