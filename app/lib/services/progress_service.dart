@@ -385,18 +385,32 @@ class ProgressService {
 
   /// Opens a treasure chest if the user has ≥3 wisdom keys. Spends 3 keys and
   /// grants 1–2 streak freezes. Returns the reward, or null if not enough keys.
+  ///
+  /// Runs in a Firestore transaction so the read-check-spend is atomic: rapid
+  /// taps or a stale (offline-cached) read can no longer re-pass the ≥3 check
+  /// and hand out extra rewards. Fails closed (returns null) if offline.
   Future<int?> openChest() async {
     final uid = _uid;
     if (uid == null) return null;
-    final doc = await _db.collection('users').doc(uid).get();
-    final keys = (doc.data()?['keys'] as num?)?.toInt() ?? 0;
-    if (keys < 3) return null;
-    final reward = DateTime.now().millisecond % 10 < 3 ? 2 : 1; // 30% → 2
-    await _db.collection('users').doc(uid).set({
-      'keys': FieldValue.increment(-3),
-      'freezes': FieldValue.increment(reward),
-    }, SetOptions(merge: true));
-    return reward;
+    final ref = _db.collection('users').doc(uid);
+    try {
+      return await _db.runTransaction<int?>((tx) async {
+        final snap = await tx.get(ref);
+        final data = snap.data() ?? {};
+        final keys = (data['keys'] as num?)?.toInt() ?? 0;
+        if (keys < 3) return null;
+        final freezes = (data['freezes'] as num?)?.toInt() ?? 0;
+        final reward = DateTime.now().millisecond % 10 < 3 ? 2 : 1; // 30% → 2
+        tx.set(
+          ref,
+          {'keys': keys - 3, 'freezes': freezes + reward},
+          SetOptions(merge: true),
+        );
+        return reward;
+      });
+    } catch (_) {
+      return null; // offline or write contention — treat as not opened
+    }
   }
 
   /// Records an attempt (keeps the best per lesson), updates XP, streak,

@@ -629,8 +629,10 @@ class _TreasureCardState extends State<_TreasureCard> {
           ],
         ),
       );
-      await widget.onChanged();
     }
+    // Always refresh so the key count (and the button's enabled state) reflect
+    // the real balance — even if the open was rejected (keys already spent).
+    if (mounted) await widget.onChanged();
   }
 
   @override
