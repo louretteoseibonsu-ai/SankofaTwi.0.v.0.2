@@ -17,6 +17,11 @@ class Lesson {
 }
 
 /// A subject the learner can master.
+///
+/// Landmark ("boss zone") metadata is optional: most categories are ordinary
+/// stops, but the four blueprint zones (Welcome Mat, Makola Market, Tro Tro,
+/// Kitchen) — plus the Heritage capstone — carry a [zoneTheme] road palette,
+/// a [landmarkName], a [bossName] challenge, and a [bossArtifact] reward.
 class LessonCategory {
   final String id;
   final String name;
@@ -24,6 +29,19 @@ class LessonCategory {
   final String blurb;
   final IconData icon;
   final List<Lesson> lessons;
+
+  /// Map road/palette theme for this region ('' = default kente road).
+  final String zoneTheme;
+
+  /// Named landmark zone from the World Map blueprint ('' = ordinary stop).
+  final String landmarkName;
+
+  /// The final "Boss Challenge" label for a landmark zone.
+  final String bossName;
+
+  /// The Cultural Artifact / Power-Up unlocked by clearing the zone.
+  final String bossArtifact;
+
   const LessonCategory({
     required this.id,
     required this.name,
@@ -31,17 +49,30 @@ class LessonCategory {
     required this.blurb,
     required this.icon,
     required this.lessons,
+    this.zoneTheme = '',
+    this.landmarkName = '',
+    this.bossName = '',
+    this.bossArtifact = '',
   });
+
+  /// True when this category is a named landmark ("boss zone").
+  bool get isLandmark => landmarkName.isNotEmpty;
 }
 
-// ── The "Sankofa Twi" Spiral Trajectory (foundation → outward) ────────────
+// ── The "Sankofa Twi" World Map (Act order: foundation → outward) ──────────
+// Declaration order mirrors the four Acts (kCourses below) so every screen —
+// map, lesson list, dashboard — reads the same logical progression. Numbers
+// now sits in Act 1 (Foundations) where the curriculum needs it, before the
+// market. kLessonsFlat is built FROM kCourses so the two can never drift.
 const List<LessonCategory> kCategories = [
+  // ─────────────────────────── ACT 1 · FOUNDATIONS ──────────────────────────
   LessonCategory(
     id: 'alphabet',
     emoji: '🔤',
     name: 'The Twi Alphabet',
     blurb: 'Letters, vowels, and the sounds English misses.',
     icon: Icons.abc,
+    zoneTheme: 'village_gate',
     lessons: [
       Lesson(id: 'unit_065', title: 'The Twi Alphabet & Sounds', subtitle: 'Nsɛmfua', asset: 'assets/content/unit_065.json', categoryId: 'alphabet'),
     ],
@@ -52,8 +83,31 @@ const List<LessonCategory> kCategories = [
     name: 'Foundations · Greetings',
     blurb: 'The first words that open every door.',
     icon: Icons.waving_hand_outlined,
+    zoneTheme: 'village_compound',
+    landmarkName: 'The Welcome Mat',
+    bossName: "The Elder's Doorstep",
+    bossArtifact: 'Akwaaba Mat',
     lessons: [
       Lesson(id: 'unit_002', title: 'Greetings', subtitle: 'Nkyea', asset: 'assets/content/unit_002.json', categoryId: 'greetings'),
+    ],
+  ),
+  LessonCategory(
+    id: 'numbers',
+    emoji: '🔢',
+    name: 'Numbers & Counting',
+    blurb: 'Count from one all the way to one hundred.',
+    icon: Icons.tag_outlined,
+    lessons: [
+      Lesson(id: 'unit_003', title: 'Numbers 1–10', subtitle: 'Akontaabuo', asset: 'assets/content/unit_003.json', categoryId: 'numbers'),
+      Lesson(id: 'unit_005', title: 'Numbers 11–20', subtitle: 'Dubaako – Aduonu', asset: 'assets/content/unit_005.json', categoryId: 'numbers'),
+      Lesson(id: 'unit_006', title: 'Numbers 21–30', subtitle: 'Aduonu – Aduasa', asset: 'assets/content/unit_006.json', categoryId: 'numbers'),
+      Lesson(id: 'unit_007', title: 'Numbers 31–40', subtitle: 'Aduasa – Aduanan', asset: 'assets/content/unit_007.json', categoryId: 'numbers'),
+      Lesson(id: 'unit_008', title: 'Numbers 41–50', subtitle: 'Aduanan – Aduonum', asset: 'assets/content/unit_008.json', categoryId: 'numbers'),
+      Lesson(id: 'unit_009', title: 'Numbers 51–60', subtitle: 'Aduonum – Aduosia', asset: 'assets/content/unit_009.json', categoryId: 'numbers'),
+      Lesson(id: 'unit_010', title: 'Numbers 61–70', subtitle: 'Aduosia – Aduoson', asset: 'assets/content/unit_010.json', categoryId: 'numbers'),
+      Lesson(id: 'unit_011', title: 'Numbers 71–80', subtitle: 'Aduoson – Aduowɔtwe', asset: 'assets/content/unit_011.json', categoryId: 'numbers'),
+      Lesson(id: 'unit_012', title: 'Numbers 81–90', subtitle: 'Aduowɔtwe – Aduokron', asset: 'assets/content/unit_012.json', categoryId: 'numbers'),
+      Lesson(id: 'unit_013', title: 'Numbers 91–100', subtitle: 'Aduokron – Ɔha', asset: 'assets/content/unit_013.json', categoryId: 'numbers'),
     ],
   ),
   LessonCategory(
@@ -70,30 +124,57 @@ const List<LessonCategory> kCategories = [
       Lesson(id: 'unit_028', title: 'Everyday Verbs', subtitle: 'Adeyɛ', asset: 'assets/content/unit_028.json', categoryId: 'grammar'),
     ],
   ),
-  LessonCategory(
-    id: 'dining',
-    emoji: '🍲',
-    name: 'Food & Drink',
-    blurb: 'Order, cook, and ask for what you need.',
-    icon: Icons.restaurant_outlined,
-    lessons: [
-      Lesson(id: 'unit_016', title: 'Dining Out', subtitle: 'Adidie', asset: 'assets/content/unit_016.json', categoryId: 'dining'),
-      Lesson(id: 'unit_029', title: 'Food & Ingredients', subtitle: 'Nnuane', asset: 'assets/content/unit_029.json', categoryId: 'dining'),
-      Lesson(id: 'unit_030', title: 'Drinks', subtitle: 'Anonneɛ', asset: 'assets/content/unit_030.json', categoryId: 'dining'),
-      Lesson(id: 'unit_031', title: 'Cooking', subtitle: 'Noa', asset: 'assets/content/unit_031.json', categoryId: 'dining'),
-    ],
-  ),
+
+  // ────────────────────────── ACT 2 · EVERYDAY LIFE ──────────────────────────
+  // The city adventure: market → transit hub → home kitchen.
   LessonCategory(
     id: 'shopping',
     emoji: '🛍️',
     name: 'Shopping & Money',
     blurb: 'Markets, prices, clothes, and bargaining.',
     icon: Icons.shopping_bag_outlined,
+    zoneTheme: 'city_center',
+    landmarkName: 'The Makola Market Hustle',
+    bossName: 'The Haggle-Off',
+    bossArtifact: 'Haggling Pro',
     lessons: [
       Lesson(id: 'unit_032', title: 'At the Market', subtitle: 'Gua', asset: 'assets/content/unit_032.json', categoryId: 'shopping'),
       Lesson(id: 'unit_033', title: 'Shopping', subtitle: 'Adetɔ', asset: 'assets/content/unit_033.json', categoryId: 'shopping'),
       Lesson(id: 'unit_034', title: 'Money & Prices', subtitle: 'Sika', asset: 'assets/content/unit_034.json', categoryId: 'shopping'),
       Lesson(id: 'unit_035', title: 'Clothing', subtitle: 'Ntadeɛ', asset: 'assets/content/unit_035.json', categoryId: 'shopping'),
+    ],
+  ),
+  LessonCategory(
+    id: 'travel',
+    emoji: '✈️',
+    name: 'Travel & Getting Around',
+    blurb: 'Directions, transport, and going places.',
+    icon: Icons.flight_takeoff_outlined,
+    zoneTheme: 'transit_hub',
+    landmarkName: 'Tro Tro Commuter Talk',
+    bossName: 'The Rush-Hour Run',
+    bossArtifact: 'Golden Horn',
+    lessons: [
+      Lesson(id: 'unit_017', title: 'Travel', subtitle: 'Akwantuo', asset: 'assets/content/unit_017.json', categoryId: 'travel'),
+      Lesson(id: 'unit_038', title: 'Directions', subtitle: 'Akwankyerɛ', asset: 'assets/content/unit_038.json', categoryId: 'travel'),
+      Lesson(id: 'unit_039', title: 'Transport (Trotro)', subtitle: 'Trɔtrɔ', asset: 'assets/content/unit_039.json', categoryId: 'travel'),
+    ],
+  ),
+  LessonCategory(
+    id: 'dining',
+    emoji: '🍲',
+    name: 'Food & Drink',
+    blurb: 'Order, cook, and ask for what you need.',
+    icon: Icons.restaurant_outlined,
+    zoneTheme: 'family_kitchen',
+    landmarkName: 'Kitchen Wisdom',
+    bossName: "Grandma's Kitchen",
+    bossArtifact: 'Nkwan Ladle',
+    lessons: [
+      Lesson(id: 'unit_016', title: 'Dining Out', subtitle: 'Adidie', asset: 'assets/content/unit_016.json', categoryId: 'dining'),
+      Lesson(id: 'unit_029', title: 'Food & Ingredients', subtitle: 'Nnuane', asset: 'assets/content/unit_029.json', categoryId: 'dining'),
+      Lesson(id: 'unit_030', title: 'Drinks', subtitle: 'Anonneɛ', asset: 'assets/content/unit_030.json', categoryId: 'dining'),
+      Lesson(id: 'unit_031', title: 'Cooking', subtitle: 'Noa', asset: 'assets/content/unit_031.json', categoryId: 'dining'),
     ],
   ),
   LessonCategory(
@@ -109,18 +190,6 @@ const List<LessonCategory> kCategories = [
     ],
   ),
   LessonCategory(
-    id: 'travel',
-    emoji: '✈️',
-    name: 'Travel & Getting Around',
-    blurb: 'Directions, transport, and going places.',
-    icon: Icons.flight_takeoff_outlined,
-    lessons: [
-      Lesson(id: 'unit_017', title: 'Travel', subtitle: 'Akwantuo', asset: 'assets/content/unit_017.json', categoryId: 'travel'),
-      Lesson(id: 'unit_038', title: 'Directions', subtitle: 'Akwankyerɛ', asset: 'assets/content/unit_038.json', categoryId: 'travel'),
-      Lesson(id: 'unit_039', title: 'Transport (Trotro)', subtitle: 'Trɔtrɔ', asset: 'assets/content/unit_039.json', categoryId: 'travel'),
-    ],
-  ),
-  LessonCategory(
     id: 'dailylife',
     emoji: '🌤️',
     name: 'Daily Life',
@@ -131,16 +200,8 @@ const List<LessonCategory> kCategories = [
       Lesson(id: 'unit_041', title: 'Daily Routine & Time', subtitle: 'Da biara', asset: 'assets/content/unit_041.json', categoryId: 'dailylife'),
     ],
   ),
-  LessonCategory(
-    id: 'dating',
-    emoji: '❤️',
-    name: 'Dating & Love',
-    blurb: 'Affection, romance, and relationships.',
-    icon: Icons.favorite_border,
-    lessons: [
-      Lesson(id: 'unit_014', title: 'Dating & Love', subtitle: 'Ɔdɔ', asset: 'assets/content/unit_014.json', categoryId: 'dating'),
-    ],
-  ),
+
+  // ───────────────────────── ACT 3 · PEOPLE & CULTURE ────────────────────────
   LessonCategory(
     id: 'family',
     emoji: '👨🏾‍👩🏾‍👧🏾',
@@ -165,6 +226,28 @@ const List<LessonCategory> kCategories = [
     ],
   ),
   LessonCategory(
+    id: 'dating',
+    emoji: '❤️',
+    name: 'Dating & Love',
+    blurb: 'Affection, romance, and relationships.',
+    icon: Icons.favorite_border,
+    lessons: [
+      Lesson(id: 'unit_014', title: 'Dating & Love', subtitle: 'Ɔdɔ', asset: 'assets/content/unit_014.json', categoryId: 'dating'),
+    ],
+  ),
+  LessonCategory(
+    id: 'occasions',
+    emoji: '🎉',
+    name: 'Special Occasions',
+    blurb: 'Birthdays, Christmas, weddings, and funerals.',
+    icon: Icons.celebration_outlined,
+    lessons: [
+      Lesson(id: 'unit_021', title: 'Celebrations', subtitle: 'Afahyɛ', asset: 'assets/content/unit_021.json', categoryId: 'occasions'),
+      Lesson(id: 'unit_022', title: 'Weddings', subtitle: 'Ayeforɔhyia', asset: 'assets/content/unit_022.json', categoryId: 'occasions'),
+      Lesson(id: 'unit_023', title: 'Funerals & Condolences', subtitle: 'Ayie', asset: 'assets/content/unit_023.json', categoryId: 'occasions'),
+    ],
+  ),
+  LessonCategory(
     id: 'culture',
     emoji: '🪘',
     name: 'Culture & Custom',
@@ -180,24 +263,21 @@ const List<LessonCategory> kCategories = [
     ],
   ),
   LessonCategory(
-    id: 'numbers',
-    emoji: '🔢',
-    name: 'Numbers & Counting',
-    blurb: 'Count from one all the way to one hundred.',
-    icon: Icons.tag_outlined,
+    id: 'heritage',
+    emoji: '🌳',
+    name: 'Heritage & Lineage',
+    blurb: 'Abusua, personhood, and Akan cosmology.',
+    icon: Icons.account_tree_outlined,
+    zoneTheme: 'sacred_grove',
+    landmarkName: 'The Sankofa Capstone',
+    bossName: 'Return to the Source',
+    bossArtifact: 'Sankofa Crown',
     lessons: [
-      Lesson(id: 'unit_003', title: 'Numbers 1–10', subtitle: 'Akontaabuo', asset: 'assets/content/unit_003.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_005', title: 'Numbers 11–20', subtitle: 'Dubaako – Aduonu', asset: 'assets/content/unit_005.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_006', title: 'Numbers 21–30', subtitle: 'Aduonu – Aduasa', asset: 'assets/content/unit_006.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_007', title: 'Numbers 31–40', subtitle: 'Aduasa – Aduanan', asset: 'assets/content/unit_007.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_008', title: 'Numbers 41–50', subtitle: 'Aduanan – Aduonum', asset: 'assets/content/unit_008.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_009', title: 'Numbers 51–60', subtitle: 'Aduonum – Aduosia', asset: 'assets/content/unit_009.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_010', title: 'Numbers 61–70', subtitle: 'Aduosia – Aduoson', asset: 'assets/content/unit_010.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_011', title: 'Numbers 71–80', subtitle: 'Aduoson – Aduowɔtwe', asset: 'assets/content/unit_011.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_012', title: 'Numbers 81–90', subtitle: 'Aduowɔtwe – Aduokron', asset: 'assets/content/unit_012.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_013', title: 'Numbers 91–100', subtitle: 'Aduokron – Ɔha', asset: 'assets/content/unit_013.json', categoryId: 'numbers'),
+      Lesson(id: 'unit_001', title: 'Lineage & the Akan Person', subtitle: 'Abusua ne Onipa', asset: 'assets/content/unit_001.example.json', categoryId: 'heritage'),
     ],
   ),
+
+  // ────────────────────────── ACT 4 · ARTS & MEDIA ───────────────────────────
   LessonCategory(
     id: 'music',
     emoji: '🎵',
@@ -250,45 +330,16 @@ const List<LessonCategory> kCategories = [
       Lesson(id: 'unit_064', title: 'Social Media', subtitle: 'Intanɛt', asset: 'assets/content/unit_064.json', categoryId: 'visualarts'),
     ],
   ),
-  LessonCategory(
-    id: 'occasions',
-    emoji: '🎉',
-    name: 'Special Occasions',
-    blurb: 'Birthdays, Christmas, weddings, and funerals.',
-    icon: Icons.celebration_outlined,
-    lessons: [
-      Lesson(id: 'unit_021', title: 'Celebrations', subtitle: 'Afahyɛ', asset: 'assets/content/unit_021.json', categoryId: 'occasions'),
-      Lesson(id: 'unit_022', title: 'Weddings', subtitle: 'Ayeforɔhyia', asset: 'assets/content/unit_022.json', categoryId: 'occasions'),
-      Lesson(id: 'unit_023', title: 'Funerals & Condolences', subtitle: 'Ayie', asset: 'assets/content/unit_023.json', categoryId: 'occasions'),
-    ],
-  ),
-  LessonCategory(
-    id: 'heritage',
-    emoji: '🌳',
-    name: 'Heritage & Lineage',
-    blurb: 'Abusua, personhood, and Akan cosmology.',
-    icon: Icons.account_tree_outlined,
-    lessons: [
-      Lesson(id: 'unit_001', title: 'Lineage & the Akan Person', subtitle: 'Abusua ne Onipa', asset: 'assets/content/unit_001.example.json', categoryId: 'heritage'),
-    ],
-  ),
 ];
 
-/// Global order — defines unlock sequence and "next lesson".
-final List<Lesson> kLessonsFlat = [
-  for (final c in kCategories) ...c.lessons,
-];
+/// Quick lookup by id.
+LessonCategory categoryById(String id) =>
+    kCategories.firstWhere((c) => c.id == id);
 
-Lesson? nextLessonAfter(String lessonId) {
-  final i = kLessonsFlat.indexWhere((l) => l.id == lessonId);
-  if (i < 0 || i + 1 >= kLessonsFlat.length) return null;
-  return kLessonsFlat[i + 1];
-}
-
-// ── Structured Courses ──────────────────────────────────────────────────────
-/// A course is a named track that groups several categories into a coherent
-/// learning journey. Categories (and their lessons) remain the unit of study;
-/// courses give them structure and an overview.
+// ── Structured Courses (the four Acts) ──────────────────────────────────────
+/// A course is a named track ("Act") that groups several categories into a
+/// coherent learning journey. Categories (and their lessons) remain the unit of
+/// study; courses define the world-map ORDER — kLessonsFlat is built from them.
 class Course {
   final String id;
   final String name;
@@ -315,16 +366,16 @@ const List<Course> kCourses = [
   Course(
     id: 'foundations',
     name: 'Foundations',
-    blurb: 'Greetings, grammar and numbers — the bedrock of Twi.',
+    blurb: 'Greetings, numbers and grammar — the bedrock of Twi.',
     icon: Icons.foundation_outlined,
-    categoryIds: ['alphabet', 'greetings', 'grammar', 'numbers'],
+    categoryIds: ['alphabet', 'greetings', 'numbers', 'grammar'],
   ),
   Course(
     id: 'everyday',
     name: 'Everyday Life',
-    blurb: 'Get around, eat, and do the things you love.',
+    blurb: 'The city adventure — market, transit, kitchen, and more.',
     icon: Icons.wb_sunny_outlined,
-    categoryIds: ['dining', 'shopping', 'hobbies', 'travel', 'dailylife'],
+    categoryIds: ['shopping', 'travel', 'dining', 'hobbies', 'dailylife'],
   ),
   Course(
     id: 'people',
@@ -348,3 +399,17 @@ const List<Course> kCourses = [
     categoryIds: ['music', 'books', 'movies', 'visualarts'],
   ),
 ];
+
+/// Global order — defines the world-map sequence, unlock order and "next
+/// lesson". Built from the four Acts so the map, unlock gate and course
+/// overview can never drift apart.
+final List<Lesson> kLessonsFlat = [
+  for (final course in kCourses)
+    for (final category in course.categories) ...category.lessons,
+];
+
+Lesson? nextLessonAfter(String lessonId) {
+  final i = kLessonsFlat.indexWhere((l) => l.id == lessonId);
+  if (i < 0 || i + 1 >= kLessonsFlat.length) return null;
+  return kLessonsFlat[i + 1];
+}

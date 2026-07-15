@@ -1,4 +1,3 @@
-import 'dart:ui' as ui;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,8 +5,10 @@ import '../data/lesson_catalog.dart';
 import '../services/progress_service.dart';
 import '../services/sound_service.dart';
 import '../theme.dart';
+import '../widgets/celebration.dart';
 import '../widgets/composable_trotro.dart';
 import '../widgets/greeting.dart';
+import '../widgets/overlay_flight.dart';
 import '../widgets/tappable_scale.dart';
 import '../widgets/trotro_mascot.dart';
 import 'customization_shop_screen.dart';
@@ -22,6 +23,49 @@ const Color _roadMuted = Color(0xFFD9DCE0); // locked road ahead
 const Color _mutedDot = Color(0xFFBFC2C7);
 const Color _doneGreen = Color(0xFF2E6B3B);
 const Color _lockGrey = Color(0xFF9AA0A6);
+
+/// A travelled-road palette (base tarmac + centre kente thread) for a zone.
+class _ZonePalette {
+  final Color base;
+  final Color thread;
+  const _ZonePalette(this.base, this.thread);
+}
+
+const _ZonePalette _defaultZone = _ZonePalette(_roadActive, _roadGold);
+
+// Landmark zones override with their own flavour; everything else inherits its
+// Act's palette so the road shifts mood by Act rather than flickering per stop.
+const Map<String, _ZonePalette> _zonePalettes = {
+  'village_gate': _ZonePalette(Color(0xFFBE5235), Color(0xFFE3A92C)),
+  'village_compound': _ZonePalette(Color(0xFFBE5235), Color(0xFFE3A92C)),
+  'city_center': _ZonePalette(Color(0xFFC98A2B), Color(0xFFF0C36B)),
+  'transit_hub': _ZonePalette(Color(0xFF3E7CA8), Color(0xFFF0C36B)),
+  'family_kitchen': _ZonePalette(Color(0xFFC0553B), Color(0xFFF0C36B)),
+  'sacred_grove': _ZonePalette(Color(0xFF2E6B3B), Color(0xFFE3A92C)),
+};
+
+// Act-level fallback palettes (by course id).
+const Map<String, _ZonePalette> _actPalettes = {
+  'foundations': _ZonePalette(Color(0xFFBE5235), Color(0xFFE3A92C)),
+  'everyday': _ZonePalette(Color(0xFFC98A2B), Color(0xFFF0C36B)),
+  'people': _ZonePalette(Color(0xFF7A4FB5), Color(0xFFE3A92C)),
+  'arts': _ZonePalette(Color(0xFF1F7A8C), Color(0xFFF0C36B)),
+};
+
+// categoryId → course ("Act") id, precomputed from the catalog.
+final Map<String, String> _categoryCourse = {
+  for (final course in kCourses)
+    for (final cid in course.categoryIds) cid: course.id,
+};
+
+/// Resolves the road palette for a category: its own zone theme if it is a
+/// landmark, otherwise its Act's palette.
+_ZonePalette _paletteForCategory(String categoryId) {
+  final cat = categoryById(categoryId);
+  final own = _zonePalettes[cat.zoneTheme];
+  if (own != null) return own;
+  return _actPalettes[_categoryCourse[categoryId]] ?? _defaultZone;
+}
 
 /// The Sankofa "world map" — a winding kente road through cultural regions.
 /// The tro tro is the player's avatar: it parks at the current stop and drives
@@ -38,7 +82,9 @@ class _JourneyScreenState extends State<JourneyScreen>
   final _service = ProgressService();
   final GlobalKey _troKey = GlobalKey(); // the parked map bus
   final GlobalKey _garageKey = GlobalKey(); // the garage button (flight target)
+  final GlobalKey _warpNodeKey = GlobalKey(); // the stop we're warping into
   bool _flying = false; // hide the map bus while its clone is in flight
+  int? _warpTarget; // stop index carrying _warpNodeKey during a region warp
   Progress _p = Progress.empty;
   Stats _stats = Stats.empty;
   bool _loading = true;
@@ -84,6 +130,15 @@ class _JourneyScreenState extends State<JourneyScreen>
     }
 
     if (newCurrent > prev) {
+      // Crossing into a NEW region (section unlock) gets the "warp" flourish —
+      // the bus lifts off the road and arcs to the new stop. Advancing within
+      // the same region keeps the grounded road-slide.
+      final crossedRegion = kLessonsFlat[newCurrent].categoryId !=
+          kLessonsFlat[prev].categoryId;
+      if (crossedRegion && _troKey.currentContext != null) {
+        await _warpToStop(newCurrent);
+        return;
+      }
       // Cleared a stop: drive up the road to the newly unlocked one.
       setState(() {
         _troState = TroTroState.drive;
@@ -100,6 +155,52 @@ class _JourneyScreenState extends State<JourneyScreen>
     } else {
       setState(() => _displayIndex = newCurrent);
     }
+  }
+
+  /// "Warp to the new stop": arcs a clone of the customised bus from its parked
+  /// spot to the freshly unlocked region's stop via [OverlayFlight], then lands.
+  Future<void> _warpToStop(int target) async {
+    // Attach the flight-target key to the destination node and let it build.
+    setState(() {
+      _troState = TroTroState.idle;
+      _warpTarget = target;
+    });
+    await WidgetsBinding.instance.endOfFrame;
+    if (!mounted) return;
+
+    await OverlayFlight.run(
+      context: context,
+      vsync: this,
+      fromKey: _troKey,
+      toKey: _warpNodeKey,
+      endScale: 1.0,
+      arcHeight: 46,
+      duration: const Duration(milliseconds: 650),
+      builder: (w) => ComposableTroTro(skin: _skin, width: w),
+      onStart: () {
+        HapticFeedback.selectionClick();
+        setState(() => _flying = true); // hide the parked bus during flight
+      },
+    );
+    if (!mounted) return;
+
+    // Land: drop the clone, park the real bus at the new stop, honk.
+    setState(() {
+      _flying = false;
+      _warpTarget = null;
+      _displayIndex = target;
+    });
+    SoundService.instance.horn(_skin.horn);
+    HapticFeedback.mediumImpact();
+
+    // A new region is a real milestone — celebrate it by name.
+    if (!mounted) return;
+    final region = _catName[kLessonsFlat[target].categoryId] ?? 'a new region';
+    await celebrateMilestone(
+      context,
+      headline: 'New region unlocked!',
+      subline: 'Your tro tro just rolled into $region.',
+    );
   }
 
   Future<void> _open(Lesson l) async {
@@ -170,60 +271,25 @@ class _JourneyScreenState extends State<JourneyScreen>
     _reload();
   }
 
-  /// Bus-fly "Overlay Snapshot": capture the parked tro tro's screen rect, fly
-  /// a clone of it along an arc to the garage button, then open the Garage.
+  /// Bus-fly into the Garage — powered by the reusable [OverlayFlight] helper.
   Future<void> _openGarage() async {
-    final troCtx = _troKey.currentContext;
-    final garageCtx = _garageKey.currentContext;
-    // If anything isn't laid out (or a flight is running), just open normally.
-    if (_flying || troCtx == null || garageCtx == null) {
+    if (_flying || _troKey.currentContext == null) {
       _pushGarage();
       return;
     }
-    final overlay = Overlay.of(context);
-    final troBox = troCtx.findRenderObject() as RenderBox;
-    final garageBox = garageCtx.findRenderObject() as RenderBox;
-    final startCenter = troBox.localToGlobal(troBox.size.center(Offset.zero));
-    final startW = troBox.size.width;
-    final startH = troBox.size.height;
-    final endCenter =
-        garageBox.localToGlobal(garageBox.size.center(Offset.zero));
-
-    final controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 640));
-    final curved =
-        CurvedAnimation(parent: controller, curve: Curves.easeInOutCubic);
-
-    setState(() => _flying = true); // hide the real bus — its clone is flying
-
-    final entry = OverlayEntry(builder: (context) {
-      return AnimatedBuilder(
-        animation: curved,
-        builder: (context, _) {
-          final t = curved.value;
-          final dx = ui.lerpDouble(startCenter.dx, endCenter.dx, t)!;
-          final dyBase = ui.lerpDouble(startCenter.dy, endCenter.dy, t)!;
-          final arc = -90.0 * 4 * t * (1 - t); // upward lift, peaks mid-flight
-          final scale = ui.lerpDouble(1.0, 0.28, t)!; // shrink into the garage
-          final w = startW * scale;
-          final h = startH * scale;
-          return Positioned(
-            left: dx - w / 2,
-            top: dyBase + arc - h / 2,
-            width: w,
-            height: h,
-            child: IgnorePointer(
-                child: ComposableTroTro(skin: _skin, width: w)),
-          );
-        },
-      );
-    });
-
-    overlay.insert(entry);
-    HapticFeedback.selectionClick();
-    await controller.forward();
-    entry.remove();
-    controller.dispose();
+    await OverlayFlight.run(
+      context: context,
+      vsync: this,
+      fromKey: _troKey,
+      toKey: _garageKey,
+      endScale: 0.28, // shrink into the garage button
+      arcHeight: 90,
+      builder: (w) => ComposableTroTro(skin: _skin, width: w),
+      onStart: () {
+        HapticFeedback.selectionClick();
+        setState(() => _flying = true); // hide the real bus during the flight
+      },
+    );
     if (!mounted) return;
     _pushGarage();
   }
@@ -333,6 +399,10 @@ class _JourneyScreenState extends State<JourneyScreen>
               final passedFlags = [
                 for (int i = 0; i < n; i++) _p.passed(lessons[i].id)
               ];
+              final zonePalettes = [
+                for (int i = 0; i < n; i++)
+                  _paletteForCategory(lessons[i].categoryId)
+              ];
 
               return SingleChildScrollView(
                 reverse: true, // start scrolled to the bottom (stop 0)
@@ -346,7 +416,7 @@ class _JourneyScreenState extends State<JourneyScreen>
                     children: [
                       CustomPaint(
                         size: Size(w, height),
-                        painter: _RoadPainter(points, passedFlags),
+                        painter: _RoadPainter(points, passedFlags, zonePalettes),
                       ),
                       // Goal marker at the top of the map
                       if (n > 0)
@@ -366,9 +436,14 @@ class _JourneyScreenState extends State<JourneyScreen>
                                 : points[i].dx - 118,
                             top: points[i].dy - 12,
                             child: _RegionTag(
-                                _catName[lessons[i].categoryId] ?? '',
-                                _p.unlocked(lessons[i].id)),
+                            name: _catName[lessons[i].categoryId] ?? '',
+                            unlocked: _p.unlocked(lessons[i].id),
+                            landmark: categoryById(lessons[i].categoryId)
+                                .landmarkName,
+                            artifact: categoryById(lessons[i].categoryId)
+                                .bossArtifact,
                           ),
+                        ),
                       // Stars above cleared stops
                       for (int i = 0; i < n; i++)
                         if (i != _displayIndex && _p.passed(lessons[i].id))
@@ -399,6 +474,7 @@ class _JourneyScreenState extends State<JourneyScreen>
                             top: points[i].dy -
                                 (_bossIds.contains(lessons[i].id) ? 32 : 26),
                             child: _Node(
+                              key: i == _warpTarget ? _warpNodeKey : null,
                               passed: _p.passed(lessons[i].id),
                               unlocked: _p.unlocked(lessons[i].id),
                               isBoss: _bossIds.contains(lessons[i].id),
@@ -564,21 +640,74 @@ class _StarRow extends StatelessWidget {
 }
 
 class _RegionTag extends StatelessWidget {
-  final String text;
+  final String name;
   final bool unlocked;
-  const _RegionTag(this.text, this.unlocked);
+  final String landmark; // '' for ordinary regions
+  final String artifact; // reward unlocked at a landmark's boss
+  const _RegionTag({
+    required this.name,
+    required this.unlocked,
+    this.landmark = '',
+    this.artifact = '',
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
-      decoration: BoxDecoration(
-          color: unlocked ? const Color(0xFFF7E6DF) : glyphTile,
-          borderRadius: BorderRadius.circular(9)),
-      child: Text(unlocked ? text : '$text · locked',
-          style: TextStyle(
-              color: unlocked ? _roadActive : slate,
-              fontSize: 11,
-              fontWeight: FontWeight.w700)),
+    final isLandmark = landmark.isNotEmpty;
+    if (!isLandmark) {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+        decoration: BoxDecoration(
+            color: unlocked ? const Color(0xFFF7E6DF) : glyphTile,
+            borderRadius: BorderRadius.circular(9)),
+        child: Text(unlocked ? name : '$name · locked',
+            style: TextStyle(
+                color: unlocked ? _roadActive : slate,
+                fontSize: 11,
+                fontWeight: FontWeight.w700)),
+      );
+    }
+    // Landmark "sign": name + the artifact you earn for clearing its boss.
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 128),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
+        decoration: BoxDecoration(
+          color: unlocked ? const Color(0xFFFFF6E4) : glyphTile,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+              color: unlocked ? _roadGold : silver, width: 1.2),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(unlocked ? landmark : '$landmark · locked',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                    color: unlocked ? _roadActive : slate,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w800,
+                    height: 1.05)),
+            const SizedBox(height: 2),
+            Row(mainAxisSize: MainAxisSize.min, children: [
+              Icon(Icons.workspace_premium_rounded,
+                  size: 12, color: unlocked ? _roadGold : silver),
+              const SizedBox(width: 3),
+              Flexible(
+                child: Text(artifact,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: unlocked ? const Color(0xFF8A5A12) : slate,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600)),
+              ),
+            ]),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -589,6 +718,7 @@ class _Node extends StatelessWidget {
   final bool isBoss;
   final VoidCallback? onTap;
   const _Node({
+    super.key,
     required this.passed,
     required this.unlocked,
     required this.isBoss,
@@ -645,7 +775,8 @@ class _Node extends StatelessWidget {
 class _RoadPainter extends CustomPainter {
   final List<Offset> pts;
   final List<bool> passed; // passed[i] → segment i→i+1 is "travelled"
-  const _RoadPainter(this.pts, this.passed);
+  final List<_ZonePalette> palettes; // palettes[i] → colour of stop i's zone
+  const _RoadPainter(this.pts, this.passed, this.palettes);
 
   Path _segment(int i) {
     final a = pts[i], b = pts[i + 1];
@@ -661,6 +792,8 @@ class _RoadPainter extends CustomPainter {
     for (int i = 0; i < pts.length - 1; i++) {
       final active = i < passed.length && passed[i];
       final path = _segment(i);
+      // Travelled road takes the palette of the zone it leads INTO (stop i+1).
+      final zone = (i + 1) < palettes.length ? palettes[i + 1] : _defaultZone;
       // Road base
       canvas.drawPath(
         path,
@@ -669,14 +802,14 @@ class _RoadPainter extends CustomPainter {
           ..strokeCap = StrokeCap.round
           ..strokeJoin = StrokeJoin.round
           ..strokeWidth = active ? 14 : 12
-          ..color = active ? _roadActive : _roadMuted,
+          ..color = active ? zone.base : _roadMuted,
       );
-      // Centre pattern — gold kente thread when travelled, faint dots when locked
+      // Centre pattern — zone kente thread when travelled, faint dots when locked
       final centre = Paint()
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.round
         ..strokeWidth = active ? 4 : 3
-        ..color = active ? _roadGold : _mutedDot;
+        ..color = active ? zone.thread : _mutedDot;
       final dashOn = active ? 7.0 : 2.0;
       final dashGap = active ? 12.0 : 16.0;
       for (final m in path.computeMetrics()) {
@@ -691,5 +824,5 @@ class _RoadPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _RoadPainter old) =>
-      old.pts != pts || old.passed != passed;
+      old.pts != pts || old.passed != passed || old.palettes != palettes;
 }

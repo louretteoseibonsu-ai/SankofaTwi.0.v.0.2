@@ -11,8 +11,10 @@ import '../services/twi_speech.dart';
 import '../theme.dart';
 import '../widgets/animations.dart';
 import '../widgets/celebration.dart';
+import '../widgets/composable_trotro.dart';
 import '../widgets/continue_button.dart';
 import '../widgets/floating_card.dart';
+import '../widgets/stage_clear.dart';
 import '../widgets/tappable_scale.dart';
 
 const Color _correctGreen = Color(0xFF2E6B3B);
@@ -125,13 +127,23 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
     final o = await _progress.recordResult(widget.lesson.id, _correct,
         keysEarned: _keysEarned);
     if (!mounted) return;
+    final passed = _correct >= kPassScore;
+    // The Stage Clear drive-across celebration — fires on a passed run, with the
+    // star count and the player's equipped tro tro horn/skin.
+    if (passed) {
+      final cos = await _progress.loadCosmetics();
+      if (!mounted) return;
+      await StageClear.run(
+        context,
+        stars: o.stars < 1 ? 1 : o.stars,
+        skin: TroTroSkin.fromEquipped(cos.equipped),
+      );
+      if (!mounted) return;
+    }
+    // A level-up is a bigger, named milestone — show it after the drive.
     if (o.leveledUp) {
       celebrateMilestone(context,
           headline: 'Level up!', subline: 'You reached level ${o.level}');
-    } else if (o.starsGained > 0 && o.stars == 3) {
-      celebrateMilestone(context,
-          headline: 'Perfect — 3 stars!',
-          subline: 'Mastered ${widget.lesson.title}');
     }
   }
 
