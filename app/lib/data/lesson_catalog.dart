@@ -101,13 +101,9 @@ const List<LessonCategory> kCategories = [
       Lesson(id: 'unit_003', title: 'Numbers 1–10', subtitle: 'Akontaabuo', asset: 'assets/content/unit_003.json', categoryId: 'numbers'),
       Lesson(id: 'unit_005', title: 'Numbers 11–20', subtitle: 'Dubaako – Aduonu', asset: 'assets/content/unit_005.json', categoryId: 'numbers'),
       Lesson(id: 'unit_006', title: 'Numbers 21–30', subtitle: 'Aduonu – Aduasa', asset: 'assets/content/unit_006.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_007', title: 'Numbers 31–40', subtitle: 'Aduasa – Aduanan', asset: 'assets/content/unit_007.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_008', title: 'Numbers 41–50', subtitle: 'Aduanan – Aduonum', asset: 'assets/content/unit_008.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_009', title: 'Numbers 51–60', subtitle: 'Aduonum – Aduosia', asset: 'assets/content/unit_009.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_010', title: 'Numbers 61–70', subtitle: 'Aduosia – Aduoson', asset: 'assets/content/unit_010.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_011', title: 'Numbers 71–80', subtitle: 'Aduoson – Aduowɔtwe', asset: 'assets/content/unit_011.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_012', title: 'Numbers 81–90', subtitle: 'Aduowɔtwe – Aduokron', asset: 'assets/content/unit_012.json', categoryId: 'numbers'),
-      Lesson(id: 'unit_013', title: 'Numbers 91–100', subtitle: 'Aduokron – Ɔha', asset: 'assets/content/unit_013.json', categoryId: 'numbers'),
+      // The tens (40–100) + the pattern to build any number — no need to drill
+      // every value once 1–30 and the compounding rule are known.
+      Lesson(id: 'unit_007', title: 'Tens: 40–100', subtitle: 'Aduanan – Ɔha', asset: 'assets/content/unit_007.json', categoryId: 'numbers'),
     ],
   ),
   LessonCategory(

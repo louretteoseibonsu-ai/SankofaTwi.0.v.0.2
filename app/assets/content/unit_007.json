@@ -1,178 +1,99 @@
 {
   "unit_id": "unit_007",
-  "unit_title": "Akontaabuo: Numbers 31–40",
+  "unit_title": "Akontaabuo: Tens 40–100",
   "review_required": true,
   "vocabulary_spotlight": {
-    "headword": "aduasa baako",
-    "gloss": "The number 31. This unit covers 31 through 40.",
+    "headword": "aduanan",
+    "gloss": "The number 40. This unit covers the tens from 40 to 100. Learn these seven words and — with the units 1–9 you already know — you can say any number up to 100.",
     "phonetic_bridge": {
-      "pronunciation": "aduasa baako"
+      "pronunciation": "aduanan"
     },
     "example_sentences": [
-      "aduasa baako, aduasa mmienu, aduasa mmiɛnsa."
+      "aduanan, aduonum, aduosia — 40, 50, 60.",
+      "aduosia nwɔtwe = 68."
     ]
   },
   "grammar_mechanics": {
-    "focus": "Counting 31 to 40",
-    "explanation": "Tens are built on a base word (edu 10, aduonu 20, aduasa 30, aduanan 40, aduonum 50, aduosia 60, aduoson 70, aduowɔtwe 80, aduokron 90, ɔha 100). From 21 upward a number is the tens word plus the unit, e.g. 'aduonu baako' = 21.",
+    "focus": "The tens (40–100) and building any number",
+    "explanation": "Each ten has its own word: aduanan 40, aduonum 50, aduosia 60, aduoson 70, aduowɔtwe 80, aduokron 90, ɔha 100. To say a number in between, add the unit (1–9) after the tens word — e.g. 'aduanan enum' = 45, 'aduosia nwɔtwe' = 68. So you don't need to memorise every number; learn the tens and the pattern does the rest.",
     "patterns": [
-      "aduasa baako = 31",
-      "aduasa enum = 35",
-      "aduanan = 40"
+      "aduanan = 40",
+      "aduonum enum = 55",
+      "aduokron baako = 91",
+      "ɔha = 100"
     ]
   },
   "lineage_challenges": [
     {
-      "prompt": "How do you say '31' in Twi?",
-      "type": "recall",
-      "options": [
-        "aduasa baako",
-        "aduowɔtwe baako",
-        "aduonu nson",
-        "aduosia enum"
-      ],
-      "correct_index": 0
-    },
-    {
-      "prompt": "How do you say '32' in Twi?",
-      "type": "recall",
-      "options": [
-        "aduasa mmienu",
-        "aduowɔtwe nkron",
-        "aduoson",
-        "aduonum nsia"
-      ],
-      "correct_index": 0
-    },
-    {
-      "prompt": "How do you say '33' in Twi?",
-      "type": "recall",
-      "options": [
-        "aduasa mmiɛnsa",
-        "aduanan mmienu",
-        "aduosia baako",
-        "aduoson nsia"
-      ],
-      "correct_index": 0
-    },
-    {
-      "prompt": "How do you say '34' in Twi?",
-      "type": "recall",
-      "options": [
-        "aduasa ɛnan",
-        "aduosia",
-        "aduanan nwɔtwe",
-        "aduanan"
-      ],
-      "correct_index": 0
-    },
-    {
-      "prompt": "How do you say '35' in Twi?",
-      "type": "recall",
-      "options": [
-        "aduasa enum",
-        "aduasa mmienu",
-        "aduonu ɛnan",
-        "aduokron baako"
-      ],
-      "correct_index": 0
-    },
-    {
-      "prompt": "How do you say '36' in Twi?",
-      "type": "recall",
-      "options": [
-        "aduasa nsia",
-        "aduasa mmienu",
-        "dubaako",
-        "aduoson enum"
-      ],
-      "correct_index": 0
-    },
-    {
-      "prompt": "How do you say '37' in Twi?",
-      "type": "recall",
-      "options": [
-        "aduasa nson",
-        "aduanan",
-        "aduosia nkron",
-        "aduosia enum"
-      ],
-      "correct_index": 0
-    },
-    {
-      "prompt": "How do you say '38' in Twi?",
-      "type": "recall",
-      "options": [
-        "aduasa nwɔtwe",
-        "aduanan enum",
-        "aduokron enum",
-        "aduonum nkron"
-      ],
-      "correct_index": 0
-    },
-    {
-      "prompt": "How do you say '39' in Twi?",
-      "type": "recall",
-      "options": [
-        "aduasa nkron",
-        "aduasa nson",
-        "aduoson nkron",
-        "edu"
-      ],
-      "correct_index": 0
-    },
-    {
       "prompt": "How do you say '40' in Twi?",
       "type": "recall",
-      "options": [
-        "aduanan",
-        "dunsia",
-        "aduosia nson",
-        "aduonum enum"
-      ],
+      "options": ["aduanan", "aduonu", "aduoson", "aduokron"],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '50' in Twi?",
+      "type": "recall",
+      "options": ["aduonum", "aduanan", "aduosia", "ɔha"],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '60' in Twi?",
+      "type": "recall",
+      "options": ["aduosia", "aduoson", "aduonum", "aduowɔtwe"],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '70' in Twi?",
+      "type": "recall",
+      "options": ["aduoson", "aduosia", "aduokron", "aduanan"],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '80' in Twi?",
+      "type": "recall",
+      "options": ["aduowɔtwe", "aduokron", "aduoson", "aduonum"],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '90' in Twi?",
+      "type": "recall",
+      "options": ["aduokron", "aduowɔtwe", "ɔha", "aduosia"],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How do you say '100' in Twi?",
+      "type": "recall",
+      "options": ["ɔha", "aduokron", "aduowɔtwe", "apem"],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Using the pattern, how do you say '45'?",
+      "type": "recall",
+      "options": ["aduanan enum", "aduonum ɛnan", "aduanan nsia", "aduosia enum"],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Using the pattern, how do you say '68'?",
+      "type": "recall",
+      "options": ["aduosia nwɔtwe", "aduoson nsia", "aduowɔtwe nsia", "aduosia nson"],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Using the pattern, how do you say '91'?",
+      "type": "recall",
+      "options": ["aduokron baako", "aduowɔtwe baako", "ɔha baako", "aduokron nkron"],
       "correct_index": 0
     }
   ],
   "glossary": [
-    {
-      "twi": "aduasa baako",
-      "en": "31"
-    },
-    {
-      "twi": "aduasa mmienu",
-      "en": "32"
-    },
-    {
-      "twi": "aduasa mmiɛnsa",
-      "en": "33"
-    },
-    {
-      "twi": "aduasa ɛnan",
-      "en": "34"
-    },
-    {
-      "twi": "aduasa enum",
-      "en": "35"
-    },
-    {
-      "twi": "aduasa nsia",
-      "en": "36"
-    },
-    {
-      "twi": "aduasa nson",
-      "en": "37"
-    },
-    {
-      "twi": "aduasa nwɔtwe",
-      "en": "38"
-    },
-    {
-      "twi": "aduasa nkron",
-      "en": "39"
-    },
-    {
-      "twi": "aduanan",
-      "en": "40"
-    }
+    { "twi": "aduanan", "en": "40" },
+    { "twi": "aduonum", "en": "50" },
+    { "twi": "aduosia", "en": "60" },
+    { "twi": "aduoson", "en": "70" },
+    { "twi": "aduowɔtwe", "en": "80" },
+    { "twi": "aduokron", "en": "90" },
+    { "twi": "ɔha", "en": "100" },
+    { "twi": "aduanan enum", "en": "45 (pattern: tens + unit)" },
+    { "twi": "aduosia nwɔtwe", "en": "68 (pattern: tens + unit)" }
   ]
 }
