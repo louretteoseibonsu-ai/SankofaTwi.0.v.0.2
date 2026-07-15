@@ -10,6 +10,7 @@ import '../widgets/composable_trotro.dart';
 import '../widgets/greeting.dart';
 import '../widgets/overlay_flight.dart';
 import '../widgets/tappable_scale.dart';
+import '../widgets/tintable_trotro.dart';
 import '../widgets/trotro_mascot.dart';
 import 'customization_shop_screen.dart';
 import 'dialogue_boss_screen.dart';
@@ -91,7 +92,9 @@ class _JourneyScreenState extends State<JourneyScreen>
 
   int _displayIndex = 0;
   TroTroState _troState = TroTroState.idle;
-  TroTroSkin _skin = const TroTroSkin();
+  TroTroSkin _skin = const TroTroSkin(); // kept for the equipped horn sound
+  Color _bodyColor = kTroTroBodyColors.first;
+  Map<String, String> _equipped = const {}; // cosmetics for the layered avatar
   bool _firstLoad = true;
 
   // Boss = last stop of each region; region name keyed by category id.
@@ -120,6 +123,8 @@ class _JourneyScreenState extends State<JourneyScreen>
       _p = p;
       _stats = stats;
       _skin = TroTroSkin.fromEquipped(cos.equipped);
+      _bodyColor = troTroBodyColorFor(cos.equipped);
+      _equipped = cos.equipped;
       _loading = false;
     });
 
@@ -176,7 +181,8 @@ class _JourneyScreenState extends State<JourneyScreen>
       endScale: 1.0,
       arcHeight: 46,
       duration: const Duration(milliseconds: 650),
-      builder: (w) => ComposableTroTro(skin: _skin, width: w),
+      builder: (w) =>
+          TintableTroTro(bodyColor: _bodyColor, equipped: _equipped, width: w),
       onStart: () {
         HapticFeedback.selectionClick();
         setState(() => _flying = true); // hide the parked bus during flight
@@ -284,7 +290,8 @@ class _JourneyScreenState extends State<JourneyScreen>
       toKey: _garageKey,
       endScale: 0.28, // shrink into the garage button
       arcHeight: 90,
-      builder: (w) => ComposableTroTro(skin: _skin, width: w),
+      builder: (w) =>
+          TintableTroTro(bodyColor: _bodyColor, equipped: _equipped, width: w),
       onStart: () {
         HapticFeedback.selectionClick();
         setState(() => _flying = true); // hide the real bus during the flight
@@ -494,18 +501,27 @@ class _JourneyScreenState extends State<JourneyScreen>
                           height: 108 * 250 / 380,
                           child: GestureDetector(
                             onTap: () => _open(lessons[current]),
-                            // Parked = the user's customised (composable) bus;
-                            // drive/arrive use the animated PNG frames.
-                            child: _troState == TroTroState.idle
-                                ? Center(
-                                    child: Opacity(
-                                      opacity: _flying ? 0.0 : 1.0,
-                                      child: ComposableTroTro(
-                                          key: _troKey,
-                                          skin: _skin,
-                                          width: 104),
-                                    ))
-                                : TroTroMascot(state: _troState, width: 108),
+                            // Always the illustrated bus (parked, driving, or
+                            // arriving) — it just leans forward while driving so
+                            // the motion reads without swapping to a different
+                            // art style.
+                            child: Center(
+                              child: Opacity(
+                                opacity: _flying ? 0.0 : 1.0,
+                                child: AnimatedRotation(
+                                  turns: _troState == TroTroState.drive
+                                      ? -0.02
+                                      : 0.0,
+                                  duration: const Duration(milliseconds: 260),
+                                  curve: Curves.easeOut,
+                                  child: TintableTroTro(
+                                      key: _troKey,
+                                      bodyColor: _bodyColor,
+                                      equipped: _equipped,
+                                      width: 104),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                     ],

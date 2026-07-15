@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../services/progress_service.dart';
 import '../theme.dart';
-import '../widgets/composable_trotro.dart';
+import '../widgets/tintable_trotro.dart';
 
 const Color _terra = Color(0xFFBE5235);
 const Color _gold = Color(0xFFE3A92C);
@@ -165,9 +165,8 @@ class _Lane extends StatelessWidget {
                       curve: Curves.easeOutCubic,
                       left: travel * progress,
                       top: 2,
-                      child: ComposableTroTro(
-                          skin: TroTroSkin(body: _busColorFor(entry.uid)),
-                          width: busW),
+                      child: TintableTroTro(
+                          bodyColor: _busColorFor(entry.uid), width: busW),
                     ),
                   ],
                 ),

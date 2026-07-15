@@ -4,6 +4,8 @@ import '../services/progress_service.dart';
 import '../services/sound_service.dart';
 import '../theme.dart';
 import '../widgets/composable_trotro.dart';
+import '../widgets/tappable_scale.dart';
+import '../widgets/tintable_trotro.dart';
 
 const Color _terra = Color(0xFFBE5235);
 
@@ -23,6 +25,7 @@ class _CustomizationShopScreenState extends State<CustomizationShopScreen> {
   final _service = ProgressService();
   CosmeticState _cos = CosmeticState.empty;
   int _shards = 0;
+  int _bodyIndex = 0; // equipped body-colour palette index
   bool _loading = true;
 
   @override
@@ -38,8 +41,15 @@ class _CustomizationShopScreenState extends State<CustomizationShopScreen> {
     setState(() {
       _shards = stats.shards;
       _cos = cos;
+      _bodyIndex = troTroBodyIndexFor(cos.equipped);
       _loading = false;
     });
+  }
+
+  Future<void> _pickColor(int i) async {
+    setState(() => _bodyIndex = i);
+    SoundService.instance.tap();
+    await _service.equipBodyColor(i);
   }
 
   Future<void> _onTap(ShopItem item) async {
@@ -63,9 +73,6 @@ class _CustomizationShopScreenState extends State<CustomizationShopScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final skin = _loading
-        ? (widget.initialSkin ?? const TroTroSkin())
-        : TroTroSkin.fromEquipped(_cos.equipped);
     return Scaffold(
       appBar: AppBar(
         title: const Text('The Garage'),
@@ -95,14 +102,51 @@ class _CustomizationShopScreenState extends State<CustomizationShopScreen> {
                     border: Border.all(color: silverLight, width: 1.5),
                   ),
                   child: Center(
-                      child: ComposableTroTro(skin: skin, width: 240)),
+                      child: TintableTroTro(
+                          bodyColor: kTroTroBodyColors[_bodyIndex],
+                          equipped: _cos.equipped,
+                          width: 240)),
                 ),
                 const SizedBox(height: 8),
                 const Center(
                   child: Text('Earn shards with 3-star lessons.',
                       style: TextStyle(color: slate, fontSize: 12.5)),
                 ),
-                const SizedBox(height: 12),
+                // ── Body colour (free — swap any time) ──
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(2, 16, 0, 8),
+                  child: Text('Body Colour',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 15,
+                          color: ink)),
+                ),
+                Wrap(
+                  spacing: 12,
+                  runSpacing: 12,
+                  children: [
+                    for (int i = 0; i < kTroTroBodyColors.length; i++)
+                      TappableScale(
+                        onTap: () => _pickColor(i),
+                        child: Container(
+                          width: 42,
+                          height: 42,
+                          decoration: BoxDecoration(
+                            color: kTroTroBodyColors[i],
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                                color: _bodyIndex == i ? ink : Colors.white,
+                                width: _bodyIndex == i ? 3 : 2),
+                          ),
+                          child: _bodyIndex == i
+                              ? const Icon(Icons.check_rounded,
+                                  color: Colors.white, size: 22)
+                              : null,
+                        ),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 4),
                 if (_loading)
                   const Padding(
                     padding: EdgeInsets.only(top: 30),
