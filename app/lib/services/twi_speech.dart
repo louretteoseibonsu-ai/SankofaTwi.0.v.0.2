@@ -30,8 +30,10 @@ class TwiSpeech {
     if (raw.isEmpty) return false;
     final t = _sayAs[raw.toLowerCase()] ?? raw;
 
-    // 1) Bundled clip (free).
-    final asset = await AudioBundle.instance.assetPathFor(t);
+    // 1) Bundled clip (free). Look up by the real word, not the _sayAs
+    // phonetic respelling — otherwise words like "fie" miss their native clip
+    // and fall through to synthetic TTS. _sayAs only guides the TTS fallback.
+    final asset = await AudioBundle.instance.assetPathFor(raw);
     if (asset != null) {
       try {
         await _player.stop();
