@@ -35,3 +35,12 @@ coverage/
 
 # Local backups of original Joe clips before studio-audio replacement
 app/assets/audio/_backup_joe/
+
+# Ruby / fastlane bundled gems (installed locally via `bundle config set --local path 'vendor/bundle'`)
+app/android/vendor/
+vendor/bundle/
+.bundle/
+
+# Manifest backups
+app/assets/audio/manifest.json.bak
+*.bak
