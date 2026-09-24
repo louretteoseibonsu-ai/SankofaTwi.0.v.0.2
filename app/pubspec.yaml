@@ -44,6 +44,7 @@ flutter:
     - assets/blindbox/      # Ananse calabash unboxing render beats
     - assets/landmarks/     # cultural landmark icons
     - assets/hero/          # campaign hero / banner art
+    - assets/images/picwords/  # word→picture match illustrations (20 starter icons, PNG + SVG)
     - assets/icon/app_icon.png
 
 # Run once after `flutter pub get`:  dart run flutter_launcher_icons

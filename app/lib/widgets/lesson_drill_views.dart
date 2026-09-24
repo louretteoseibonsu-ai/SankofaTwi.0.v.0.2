@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../data/lesson_drills.dart';
+import '../data/picword_icons.dart';
 import '../services/twi_speech.dart';
 import '../theme.dart';
 import 'floating_card.dart';
@@ -255,14 +256,16 @@ class _ListenDrillViewState extends State<ListenDrillView> {
                 onTap: () => setState(() => _reveal = true),
                 child: const Padding(
                   padding: EdgeInsets.symmetric(vertical: 4),
-                  child: Row(mainAxisSize: MainAxisSize.min, children: [
+                  child: Row(children: [
                     Icon(Icons.volume_off_rounded, color: kOchre, size: 16),
                     SizedBox(width: 5),
-                    Text("Can't listen right now — show the word",
-                        style: TextStyle(
-                            color: kOchre,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 12.5)),
+                    Flexible(
+                      child: Text("Can't listen right now — show the word",
+                          style: TextStyle(
+                              color: kOchre,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12.5)),
+                    ),
                   ]),
                 ),
               ),
@@ -282,6 +285,201 @@ class _ListenDrillViewState extends State<ListenDrillView> {
               onTap: answered ? null : () => _choose(e),
             ),
         ],
+      ),
+    );
+  }
+}
+
+// ════════════════════════ WORD → PICTURE MATCH ════════════════════════
+
+class PictureMatchDrillView extends StatefulWidget {
+  final PictureDrill data;
+  final ValueChanged<bool> onAnswered;
+  const PictureMatchDrillView(
+      {super.key, required this.data, required this.onAnswered});
+
+  @override
+  State<PictureMatchDrillView> createState() => _PictureMatchDrillViewState();
+}
+
+class _PictureMatchDrillViewState extends State<PictureMatchDrillView> {
+  int? _picked;
+
+  String get _audio => widget.data.answer.audio ?? widget.data.answer.twi;
+
+  @override
+  void initState() {
+    super.initState();
+    // Auto-play the prompt once when the drill appears.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      TwiSpeech.instance.speak(_audio);
+    });
+  }
+
+  void _choose(int i) {
+    if (_picked != null) return;
+    setState(() => _picked = i);
+    HapticFeedback.selectionClick();
+    widget.onAnswered(i == widget.data.correctIndex);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final d = widget.data;
+    final answered = _picked != null;
+    return FloatingCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _kicker('Tap the picture'),
+          Row(
+            children: [
+              _SpeakChip(text: _audio, size: 30),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(d.answer.twi,
+                        style: const TextStyle(
+                            color: kVelvetInk,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 22)),
+                    Text(answered ? '= ${d.answer.en}' : 'tap to hear it',
+                        style: const TextStyle(
+                            color: kVelvetMuted, fontSize: 12.5)),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 14),
+          // 2-per-row picture tiles (handles 3 or 4 options).
+          for (int row = 0; row < (d.options.length / 2).ceil(); row++) ...[
+            if (row > 0) const SizedBox(height: 10),
+            Row(
+              children: [
+                for (int col = 0; col < 2; col++) ...[
+                  if (col > 0) const SizedBox(width: 10),
+                  Expanded(
+                    child: Builder(builder: (_) {
+                      final i = row * 2 + col;
+                      if (i >= d.options.length) return const SizedBox();
+                      return _PicTile(
+                        option: d.options[i],
+                        showLabel: d.showLabels,
+                        state: !answered
+                            ? _OptState.idle
+                            : i == d.correctIndex
+                                ? _OptState.correct
+                                : i == _picked
+                                    ? _OptState.wrong
+                                    : _OptState.dimmed,
+                        onTap: answered ? null : () => _choose(i),
+                      );
+                    }),
+                  ),
+                ],
+              ],
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _PicTile extends StatelessWidget {
+  final PictureOption option;
+  final bool showLabel;
+  final _OptState state;
+  final VoidCallback? onTap;
+  const _PicTile(
+      {required this.option,
+      required this.showLabel,
+      required this.state,
+      this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    Color border = const Color(0x3DFFFFFF), bg = _tileBg, fg = kVelvetInk;
+    double opacity = 1;
+    Widget? badge;
+    List<BoxShadow>? glow;
+    switch (state) {
+      case _OptState.idle:
+        break;
+      case _OptState.correct:
+        border = _green;
+        bg = _greenBg;
+        fg = _green;
+        badge = const Icon(Icons.check_circle, color: _green, size: 22);
+        glow = [
+          BoxShadow(
+              color: _green.withValues(alpha: 0.35),
+              blurRadius: 18,
+              spreadRadius: -4),
+        ];
+        break;
+      case _OptState.wrong:
+        border = _red;
+        bg = _redBg;
+        fg = _red;
+        badge = const Icon(Icons.cancel, color: _red, size: 22);
+        break;
+      case _OptState.dimmed:
+        border = const Color(0x1FFFFFFF);
+        fg = kVelvetMuted;
+        opacity = 0.45;
+        break;
+    }
+    return TappableScale(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: bg,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: border, width: 1.6),
+          boxShadow: glow,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Stack(
+              alignment: Alignment.topRight,
+              children: [
+                AspectRatio(
+                  aspectRatio: 1,
+                  child: Opacity(
+                    opacity: opacity,
+                    child: Image.asset(
+                      picwordAsset(option.iconStem),
+                      fit: BoxFit.contain,
+                      // Graceful fallback if artwork is missing.
+                      errorBuilder: (_, __, ___) => Center(
+                        child: Text(option.en,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: kVelvetInk,
+                                fontWeight: FontWeight.w700)),
+                      ),
+                    ),
+                  ),
+                ),
+                if (badge != null) badge,
+              ],
+            ),
+            if (showLabel) ...[
+              const SizedBox(height: 6),
+              Text(option.en,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: fg, fontWeight: FontWeight.w700, fontSize: 14)),
+            ],
+          ],
+        ),
       ),
     );
   }
@@ -376,14 +574,16 @@ class _BuildDrillViewState extends State<BuildDrillView> {
                 onTap: () => setState(() => _reveal = true),
                 child: const Padding(
                   padding: EdgeInsets.symmetric(vertical: 4),
-                  child: Row(mainAxisSize: MainAxisSize.min, children: [
+                  child: Row(children: [
                     Icon(Icons.volume_off_rounded, color: kOchre, size: 16),
                     SizedBox(width: 5),
-                    Text("Can't listen right now — show the sentence",
-                        style: TextStyle(
-                            color: kOchre,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 12.5)),
+                    Flexible(
+                      child: Text("Can't listen right now — show the sentence",
+                          style: TextStyle(
+                              color: kOchre,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12.5)),
+                    ),
                   ]),
                 ),
               ),

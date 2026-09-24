@@ -1,10 +1,30 @@
 import 'dart:math';
 import 'lesson_content.dart';
+import 'picword_icons.dart';
 
 /// The kinds of practice drill a lesson can serve. MCQ is the classic
 /// multiple-choice; the rest are generated from the unit's own glossary and
 /// example sentences so no extra authoring is needed.
-enum DrillKind { mcq, match, listen, build }
+enum DrillKind { mcq, match, listen, build, picture }
+
+/// One picture tile in a [PictureDrill].
+class PictureOption {
+  final String iconStem; // filename stem in assets/images/picwords/
+  final String en; // English label (shown only when the drill shows labels)
+  const PictureOption(this.iconStem, this.en);
+}
+
+/// Hear the Twi word, tap the matching picture. The gentle first rung of the
+/// difficulty staircase. [showLabels] carries the English under each tile on
+/// the very first rung, then turns off so the learner graduates to sound-only.
+class PictureDrill {
+  final GlossEntry answer; // the prompt word (Twi + audio + gloss)
+  final List<PictureOption> options;
+  final int correctIndex;
+  final bool showLabels;
+  const PictureDrill(
+      this.answer, this.options, this.correctIndex, this.showLabels);
+}
 
 /// Match English ↔ Twi pairs (up to four at a time).
 class MatchDrill {
@@ -33,8 +53,9 @@ class LessonDrill {
   final MatchDrill? match;
   final ListenDrill? listen;
   final BuildDrill? build;
+  final PictureDrill? picture;
   const LessonDrill._(this.kind,
-      {this.mcq, this.match, this.listen, this.build});
+      {this.mcq, this.match, this.listen, this.build, this.picture});
 
   factory LessonDrill.mcq(Challenge c) =>
       LessonDrill._(DrillKind.mcq, mcq: c);
@@ -44,6 +65,55 @@ class LessonDrill {
       LessonDrill._(DrillKind.listen, listen: l);
   factory LessonDrill.build(BuildDrill b) =>
       LessonDrill._(DrillKind.build, build: b);
+  factory LessonDrill.picture(PictureDrill p) =>
+      LessonDrill._(DrillKind.picture, picture: p);
+}
+
+/// Builds the word→picture drills that open a concrete-noun lesson: the easy
+/// first rung(s) of the staircase. Only glossary words that have artwork (see
+/// [picwordIcon]) can be a prompt or a distractor, so abstract units (greetings
+/// etc.) simply get none. The first drill carries English labels; the second
+/// drops them so the learner graduates to sound → picture.
+List<LessonDrill> _pictureDrills(UnitContent u, Random r, {int max = 2}) {
+  // The prompt must be a unit-glossary word that has artwork.
+  final answers = [
+    for (final g in u.glossary)
+      if (picwordIcon(g.twi) != null) g
+  ]..shuffle(r);
+  if (answers.isEmpty) return const [];
+
+  final out = <LessonDrill>[];
+  for (var n = 0; n < answers.length && out.length < max; n++) {
+    final ans = answers[n];
+    final ansStem = picwordIcon(ans.twi)!;
+
+    // Distractors: prefer other illustrated words from THIS unit (topical),
+    // then top up from the shared pool so every unit with one illustrated word
+    // still gets a full 4-tile choice.
+    final opts = <PictureOption>[PictureOption(ansStem, ans.en)];
+    final usedStems = <String>{ansStem};
+
+    final local = [
+      for (final g in u.glossary)
+        if (g.twi != ans.twi && picwordIcon(g.twi) != null) g
+    ]..shuffle(r);
+    for (final g in local) {
+      if (opts.length >= 4) break;
+      final s = picwordIcon(g.twi)!;
+      if (usedStems.add(s)) opts.add(PictureOption(s, g.en));
+    }
+    final global = [...kPicwordEntries]..shuffle(r);
+    for (final e in global) {
+      if (opts.length >= 4) break;
+      if (usedStems.add(e.stem)) opts.add(PictureOption(e.stem, e.en));
+    }
+
+    opts.shuffle(r);
+    final correct = opts.indexWhere((o) => o.iconStem == ansStem);
+    out.add(LessonDrill.picture(
+        PictureDrill(ans, opts, correct, out.isEmpty))); // labels on rung 1 only
+  }
+  return out;
 }
 
 /// Builds an interleaved, varied practice sequence for [u]: the classic MCQs
@@ -107,5 +177,11 @@ List<LessonDrill> buildLessonDrills(UnitContent u, Random r, {int cap = 12}) {
       break;
     }
   }
-  return out.isEmpty ? mcqs : out;
+  final body = out.isEmpty ? mcqs : out;
+  // Open with the easy word→picture rung(s), then the harder drills. This is
+  // the difficulty staircase: the advanced word→sentence match is now gated
+  // behind a gentle picture match instead of being the very first thing.
+  final pictures = _pictureDrills(u, r);
+  if (pictures.isEmpty) return body;
+  return [...pictures, ...body].take(cap).toList();
 }

@@ -155,6 +155,11 @@ class _LessonQuizScreenState extends State<LessonQuizScreen> {
             key: ValueKey('build$i'),
             data: d.build!,
             onAnswered: (c) => _answerDrill(i, c));
+      case DrillKind.picture:
+        return PictureMatchDrillView(
+            key: ValueKey('picture$i'),
+            data: d.picture!,
+            onAnswered: (c) => _answerDrill(i, c));
     }
   }
 
